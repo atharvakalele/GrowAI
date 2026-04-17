@@ -1,0 +1,157 @@
+{
+  "schema_type": "impact_summary",
+  "schema_version": "1.0",
+  "feature_id": "M04",
+  "feature_key": "stock",
+  "feature_name": "Stock Monitor",
+  "module_group": "inventory",
+  "generated_at": "2026-04-15T19:56:00.870872",
+  "period": "manual",
+  "status": "partial",
+  "impact_level": "high",
+  "business_areas": [
+    "inventory",
+    "availability",
+    "revenue_protection"
+  ],
+  "headline": "Stock risk detected on 20 ASIN(s).",
+  "summary_metrics": {
+    "profit_impact_rs": 0,
+    "loss_prevented_rs": 0,
+    "waste_blocked_rs": 0,
+    "revenue_protected_rs": 0,
+    "ai_action_sales_protected_rs": 0,
+    "ai_actions_executed_count": 1,
+    "ai_actions_identified_count": 20,
+    "tracked_asins_count": 330,
+    "risk_item_count": 20,
+    "zero_stock_count": 20,
+    "low_stock_count": 0,
+    "healthy_count": 310,
+    "revenue_at_risk_7d_rs": 23922.88
+  },
+  "positive_impacts": [
+    {
+      "type": "healthy_inventory",
+      "message": "310 ASIN(s) currently look healthy on stock.",
+      "estimated_sales7d_rs": 0
+    }
+  ],
+  "negative_impacts": [
+    {
+      "type": "stock_risk",
+      "message": "20 ASIN(s) are out of stock and 0 ASIN(s) are below threshold.",
+      "estimated_sales7d_at_risk_rs": 23922.88
+    }
+  ],
+  "top_risks": [
+    {
+      "asin": "B0GQGG3Q1X",
+      "sku": "Vidyapith_SugarChurna_100",
+      "sales7d_rs": 5714.3,
+      "buy_box_status": "HEALTHY",
+      "competitor_count": 4935,
+      "price_gap_rs": 0,
+      "recommendation": "Monitor stock"
+    },
+    {
+      "asin": "B0GQGN44GP",
+      "sku": "Vidyapith_SugarChurna_100",
+      "sales7d_rs": 3142.81,
+      "buy_box_status": "HEALTHY",
+      "competitor_count": 4751,
+      "price_gap_rs": 0,
+      "recommendation": "Monitor stock"
+    },
+    {
+      "asin": "B0DGQS8X8C",
+      "sku": "USLabsLibidex40Plus_30Cap",
+      "sales7d_rs": 2190.48,
+      "buy_box_status": "HEALTHY",
+      "competitor_count": 1000,
+      "price_gap_rs": 0,
+      "recommendation": "Monitor stock"
+    },
+    {
+      "asin": "B0GQGG59V3",
+      "sku": "Vidyapith_SugarChurna_100",
+      "sales7d_rs": 1619.04,
+      "buy_box_status": "HEALTHY",
+      "competitor_count": 4985,
+      "price_gap_rs": 0,
+      "recommendation": "Monitor stock"
+    },
+    {
+      "asin": "B0DBVQKNV8",
+      "sku": "DrRelaxVisiorax_30cps_v3_",
+      "sales7d_rs": 1333.35,
+      "buy_box_status": "HEALTHY",
+      "competitor_count": 444,
+      "price_gap_rs": 0,
+      "recommendation": "Monitor stock"
+    },
+    {
+      "asin": "B0GQGLM31G",
+      "sku": "Vidyapith_SugarChurna_100",
+      "sales7d_rs": 1282.86,
+      "buy_box_status": "HEALTHY",
+      "competitor_count": 4951,
+      "price_gap_rs": 0,
+      "recommendation": "Monitor stock"
+    },
+    {
+      "asin": "B0FBWXQ9JL",
+      "sku": "LS_SkyBlu_CelticSeaSalt_2",
+      "sales7d_rs": 1245.0,
+      "buy_box_status": "HEALTHY",
+      "competitor_count": 3784,
+      "price_gap_rs": 0,
+      "recommendation": "Monitor stock"
+    },
+    {
+      "asin": "B0GNFSZ7CC",
+      "sku": "Gray_LibidexCartoon_1Anot",
+      "sales7d_rs": 952.38,
+      "buy_box_status": "HEALTHY",
+      "competitor_count": 4989,
+      "price_gap_rs": 0,
+      "recommendation": "Monitor stock"
+    },
+    {
+      "asin": "B0GT1PHQ66",
+      "sku": "Blue_CelticSalt_420GM_V2",
+      "sales7d_rs": 914.29,
+      "buy_box_status": "HEALTHY",
+      "competitor_count": 4977,
+      "price_gap_rs": 0,
+      "recommendation": "Monitor stock"
+    },
+    {
+      "asin": "B0FT3WRZYW",
+      "sku": "Black_VastuSeaSalt_920gm",
+      "sales7d_rs": 836.0,
+      "buy_box_status": "HEALTHY",
+      "competitor_count": 4405,
+      "price_gap_rs": 0,
+      "recommendation": "Monitor stock"
+    }
+  ],
+  "ai_action_summary": {
+    "headline": "AI auto-stocked seller listings for 20 risky ASIN(s).",
+    "status": "executed",
+    "actions_identified": 20,
+    "actions_executed": 1,
+    "expected_sales_protected_rs": 0,
+    "items": []
+  },
+  "recommendations": [
+    "Seller listing stock is controlled from the stock control panel.",
+    "Excluded products remain visible in the panel but will not auto stock.",
+    "Action routing status: executed."
+  ],
+  "detail_ref": {
+    "raw_file": "ClaudeCode/Report/15 April 2026/Json/stock_status.json",
+    "detail_file": "ClaudeCode/Report/15 April 2026/Json/stock_status_20260415_195103.json",
+    "supporting_report": "ClaudeCode/Report/15 April 2026/Json/stock_status.json"
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "schema_type": "impact_summary",
+  "schema_version": "1.0",
+  "feature_id": "M02",
+  "feature_key": "buybox",
+  "feature_name": "Buy Box Monitor",
+  "module_group": "market_intelligence",
+  "generated_at": "2026-04-15T17:00:54.905373",
+  "period": "manual",
+  "status": "warning",
+  "impact_level": "high",
+  "business_areas": [
+    "buy_box",
+    "pricing",
+    "listing_health",
+    "revenue_protection"
+  ],
+  "headline": "Buy Box risk detected on 48 ASIN(s).",
+  "summary_metrics": {
+    "profit_impact_rs": 0,
+    "loss_prevented_rs": 0,
+    "waste_blocked_rs": 0,
+    "revenue_protected_rs": 23922.88,
+    "ai_action_sales_protected_rs": 0,
+    "ai_actions_executed_count": 0,
+    "ai_actions_identified_count": 0,
+    "tracked_asins_count": 300,
+    "buy_box_won_count": 252,
+    "buy_box_lost_count": 3,
+    "no_buy_box_count": 45,
+    "revenue_at_risk_7d_rs": 0.0
+  },
+  "positive_impacts": [
+    {
+      "type": "buy_box_protected",
+      "message": "252 ASIN(s) currently hold Buy Box.",
+      "estimated_sales7d_rs": 23922.88
+    }
+  ],
+  "negative_impacts": [
+    {
+      "type": "buy_box_risk",
+      "message": "48 ASIN(s) need Buy Box or listing recovery action.",
+      "estimated_sales7d_at_risk_rs": 0.0
+    }
+  ],
+  "top_risks": [
+    {
+      "asin": "B0F1TX2R7B",
+      "sku": "Blk_Organic_CelticSallt",
+      "sales7d_rs": 0.0,
+      "buy_box_status": "LOST",
+      "competitor_count": 1,
+      "price_gap_rs": 0.0,
+      "recommendation": "Our offer not found in Buy Box competition. Listing may need review."
+    },
+    {
+      "asin": "B0F3CWZCFT",
+      "sku": "Brown_Organic_CelticSallt_v1",
+      "sales7d_rs": 0.0,
+      "buy_box_status": "LOST",
+      "competitor_count": 2,
+      "price_gap_rs": 0.0,
+      "recommendation": "Our offer not found in Buy Box competition. Listing may need review."
+    },
+    {
+      "asin": "B0F3XSJCH8",
+      "sku": "Vastu Sea Salt - 920 gram",
+      "sales7d_rs": 0.0,
+      "buy_box_status": "LOST",
+      "competitor_count": 3,
+      "price_gap_rs": 0.0,
+      "recommendation": "Our offer not found in Buy Box competition. Listing may need review."
+    },
+    {
+      "asin": "B0D3CK886B",
+      "sku": "UsLabs_AddyiPlus_ForWomen_30cp",
+      "sales7d_rs": 0.0,
+      "buy_box_status": "NO_BUYBOX",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0DC4CZ3Z8",
+      "sku": "goldLibidex_oil",
+      "sales7d_rs": 0.0,
+      "buy_box_status": "NO_BUYBOX",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0DC48PQM7",
+      "sku": "goldLibidex",
+      "sales7d_rs": 0.0,
+      "buy_box_status": "NO_BUYBOX",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0D54MR138",
+      "sku": "NewBoldCareLibidexPlus30Cpsl_P",
+      "sales7d_rs": 0.0,
+      "buy_box_status": "NO_BUYBOX",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0DX7BWSKG",
+      "sku": "LibidSafe_iGainCpsl30_P2",
+      "sales7d_rs": 0.0,
+      "buy_box_status": "NO_BUYBOX",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0DVLY9N6F",
+      "sku": "VidyapithAyrvedSugarChurnSpeci",
+      "sales7d_rs": 0.0,
+      "buy_box_status": "NO_BUYBOX",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0D54G6W7K",
+      "sku": "XhlthBoosterLibidex_p2_v8",
+      "sales7d_rs": 0.0,
+      "buy_box_status": "NO_BUYBOX",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "No Buy Box available (listing may be suppressed or inactive)"
+    }
+  ],
+  "ai_action_summary": {
+    "headline": "AI did not execute a Buy Box corrective action in this cycle.",
+    "status": "skipped",
+    "actions_identified": 0,
+    "actions_executed": 0,
+    "expected_sales_protected_rs": 0,
+    "items": []
+  },
+  "recommendations": [
+    "Price-gap Buy Box losses should route to price optimizer.",
+    "No Buy Box items should route to listing recovery.",
+    "Action routing status: skipped."
+  ],
+  "detail_ref": {
+    "raw_file": "ClaudeCode/Report/15 April 2026/Json/buy_box_status.json",
+    "detail_file": "ClaudeCode/Report/15 April 2026/Json/buy_box_status_backfill_20260415_170054.json",
+    "supporting_report": "ClaudeCode/Report/15 April 2026/Json/buy_box_status.json"
+  }
+}

@@ -1,0 +1,290 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-04-16T13:03:57.615797",
+  "summary": {
+    "dead": 9,
+    "fixable": 39,
+    "at_risk": 11
+  },
+  "dead_listings": [
+    {
+      "asin": "B0FG19CFSM",
+      "sku": "Vedalabs LiBiDEXX30-Capsule"
+    },
+    {
+      "asin": "B0DLCKR3CB",
+      "sku": "RED_HorsePowerCpls30_P2_V2_v8"
+    },
+    {
+      "asin": "B0G2CWZWCD",
+      "sku": "WhiteBlue_Ashwagandha AF-43_Ca"
+    },
+    {
+      "asin": "B0D3CK886B",
+      "sku": "UsLabs_AddyiPlus_ForWomen_30cp"
+    },
+    {
+      "asin": "B0FH2GCNRP",
+      "sku": "Red_HorseForce_Cap30_P2_FBA"
+    },
+    {
+      "asin": "B0D54MR138",
+      "sku": "NewBoldCareLibidexPlus30Cpsl_P"
+    },
+    {
+      "asin": "B0DX7BWSKG",
+      "sku": "LibidSafe_iGainCpsl30_P2"
+    },
+    {
+      "asin": "B0FDLG2T8R",
+      "sku": "BluWit_MultivitaminPlusMenCap3"
+    },
+    {
+      "asin": "B0F3CWZCFT",
+      "sku": "Brown_Organic_CelticSallt_v1"
+    }
+  ],
+  "fixable_listings": [
+    {
+      "asin": "B0DGD7VS5P",
+      "sku": "CelticSaltWhitePouch500gm_P12",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FQ3RWDG3",
+      "sku": "GrayBottle_Libidex_Cap30_V1",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FR47C6N9",
+      "sku": "BlackGold_StayExtraLong_Cpsls3",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FKHJSK2X",
+      "sku": "BluWit_SeaBuckthornBerryCap30",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0GQGF5RKF",
+      "sku": "Vidyapith_SugarChurna_100gm_P4",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0DVLY9N6F",
+      "sku": "VidyapithAyrvedSugarChurnSpeci",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0G1NDQ4LG",
+      "sku": "Libidexx30Cap_30_cap",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FF9GM45G",
+      "sku": "BluWit_TentexRoyalCap30",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0GQGHZH1B",
+      "sku": "Vidyapith_SugarChurna_100gm_P3",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0GQZGVFQM",
+      "sku": "Vidyapith_SugarChurna_1Another",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FF3DLPCP",
+      "sku": "WhitBlu_libidex_Cap30",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FBWQLQ8T",
+      "sku": "QM-QCKY-U4ZY",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FDLD6WCH",
+      "sku": "BluWit_PartysmartCap30",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FF3GRXXF",
+      "sku": "CartoonLibidex_V3",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0D54G6W7K",
+      "sku": "XhlthBoosterLibidex_p2_v8",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FF9JSV3N",
+      "sku": "BluWit_Testo7XCap30",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FQ3Y7WYN",
+      "sku": "RedHorsePower_CartoonCap30",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FVWDSQ4D",
+      "sku": "IH-4 Oil_50ml",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0G85XKMP6",
+      "sku": "BluWit_HeightGrowthCap_1Anothe",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FBMF69WS",
+      "sku": "vedLab_libidex_cartoon_V1",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FF3JDZ8V",
+      "sku": "PureAmrit_Libidex_Cap30_1Oil",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0G2CWXCRD",
+      "sku": "BlackBlue_Proman_Cap30_V5",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0F3XSJCH8",
+      "sku": "Vastu Sea Salt - 920 gram",
+      "reason": "Our offer not found in Buy Box competition. Listing may need review."
+    },
+    {
+      "asin": "B0FF3GCHM9",
+      "sku": "LeoLibidex_Cap30_P2",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FF3FM1JR",
+      "sku": "WhitBlu_libidex_Cap30_1Oil",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0DC4CZ3Z8",
+      "sku": "goldLibidex_oil",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FN4CQJCN",
+      "sku": "Jaitunsalt_100gmBox",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0G2XV9W71",
+      "sku": "Orange_HealthTone_Cap30_P2",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0G2CWZ1MX",
+      "sku": "Orange_HealthTone_Cap30",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FBLC98WH",
+      "sku": "Blck_SehatCap30",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0DFMSTXFJ",
+      "sku": "ShilajitResinRed_p1_v2",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0DC1YMY63",
+      "sku": "UsLabsLionsManeCaps30_v3",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0CZJPC3M5",
+      "sku": "DrRelaxLibidex_40up_v8",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FT16WLM9",
+      "sku": "OrangeSehat with AnotherHeight",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FG3FCXDM",
+      "sku": "vedaLab_Libidex_Cartoon_v1",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0FSFD8NDV",
+      "sku": "PT-MGEU-S4MJ",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0DC48PQM7",
+      "sku": "goldLibidex",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0DCW4B332",
+      "sku": "CelticSaltWhite_500GM_FBA",
+      "reason": "No Buy Box available (listing may be suppressed or inactive)"
+    },
+    {
+      "asin": "B0F1TX2R7B",
+      "sku": "Blk_Organic_CelticSallt",
+      "reason": "Our offer not found in Buy Box competition. Listing may need review."
+    }
+  ],
+  "at_risk_listings": [
+    {
+      "asin": "B0CTHXGWPC",
+      "sku": "DrRLXCayennePapperCap30_v1"
+    },
+    {
+      "asin": "B0DCTRKV5Q",
+      "sku": "CelticSaltGold_1kg_PouchV2"
+    },
+    {
+      "asin": "B0D2V5NWSG",
+      "sku": "DrRelaxStressGuardCap30_v1"
+    },
+    {
+      "asin": "B0D3DB5P73",
+      "sku": "xhlthboostrLibidx30Cap_Advan_F"
+    },
+    {
+      "asin": "B0DG5SZMVR",
+      "sku": "BLKHorsePowerCap30_1Oil_v8"
+    },
+    {
+      "asin": "B0FH2JPPR1",
+      "sku": "Black_HorseForce_Cap30_P2_FBA"
+    },
+    {
+      "asin": "B0CXQ8TVMZ",
+      "sku": "DrRLXKeedaJadiGoldCaps30_v8"
+    },
+    {
+      "asin": "B0FGYHYDL7",
+      "sku": "Black_HorsePower_Cap30_P2_V8_F"
+    },
+    {
+      "asin": "B0FDLFVMH5",
+      "sku": "BluWit_MagnesiumGlycinateCap30"
+    },
+    {
+      "asin": "B0DCSY651M",
+      "sku": "JoshBoosterLibidex30Cap_FBA"
+    },
+    {
+      "asin": "B0DGB3M71M",
+      "sku": "DrRelaxHolisticBerberineCaps30"
+    }
+  ]
+}

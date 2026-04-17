@@ -1,0 +1,1255 @@
+#!/usr/bin/env python3
+"""
+Grow24 AI — Auto Price Optimizer v1.0 (G16 + P07 + P16 + S13)
+===============================================================
+Automatically:
+  1. Increase price of top-selling + high-rated products by configured %
+  2. Detect inactive listings (price error / suppressed)
+  3. Decrease price to recover listing
+  4. Track impact: before/after sales, profit, buy box, deactivation history
+  5. Anti-oscillation: detect price bounce loops and stop
+
+Reuses data from: fetch_pricing, buy_box_monitor, top_listing_monitor, true_profit
+New: Price change via SP-API Feeds API v2021-06-30 (JSON_LISTINGS_FEED)
+
+Usage:
+    python price_optimizer_v1.0.py                 (run full cycle)
+    python price_optimizer_v1.0.py --dry-run       (preview only)
+    python price_optimizer_v1.0.py --status        (show current status)
+    python price_optimizer_v1.0.py --history       (show price change history)
+
+Schedule: Every 30 minutes (configurable in config_price_optimizer.json)
+"""
+
+import json
+import os
+import sys
+import ssl
+import time
+import io
+import argparse
+from datetime import datetime, timedelta
+from urllib.request import Request, urlopen
+from urllib.parse import urlencode, quote
+from urllib.error import HTTPError
+from copy import deepcopy
+
+# Fix Windows console encoding for emojis
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+if sys.stderr.encoding != 'utf-8':
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+
+# ── Paths ──
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def find_project_dir(start_dir):
+    current = os.path.abspath(start_dir)
+    while True:
+        if (
+            os.path.exists(os.path.join(current, "sp_api_credentials.json"))
+            and os.path.exists(os.path.join(current, "config_price_optimizer.json"))
+        ):
+            return current
+        parent = os.path.dirname(current)
+        if parent == current:
+            raise RuntimeError("Project root not found for price optimizer")
+        current = parent
+
+
+PROJECT_DIR = find_project_dir(SCRIPT_DIR)
+SP_CREDS_FILE = os.path.join(PROJECT_DIR, "sp_api_credentials.json")
+CONFIG_FILE = os.path.join(PROJECT_DIR, "config_price_optimizer.json")
+PROFIT_CONFIG = os.path.join(PROJECT_DIR, "config_true_profit.json")
+EMAIL_CONFIG = os.path.join(PROJECT_DIR, "config_email.json")
+
+REPORT_BASE = os.path.join(PROJECT_DIR, "ClaudeCode", "Report")
+report_folders = [f for f in os.listdir(REPORT_BASE) if os.path.isdir(os.path.join(REPORT_BASE, f))]
+report_folders.sort(key=lambda x: os.path.getmtime(os.path.join(REPORT_BASE, x)), reverse=True)
+LATEST_REPORT = report_folders[0] if report_folders else datetime.now().strftime("%d %B %Y")
+JSON_DIR = os.path.join(REPORT_BASE, LATEST_REPORT, "Json")
+
+# Price optimizer data files
+PRODUCTS_FILE = os.path.join(JSON_DIR, "price_optimizer_products.json")
+LOG_FILE = os.path.join(JSON_DIR, "price_optimizer_log.json")
+STATUS_FILE = os.path.join(JSON_DIR, "price_optimizer_status.json")
+
+MARKETPLACE_ID = "A21TJRUUN4KGV"
+SELLER_ID = "A2AC2AS9R9CBEA"
+SP_ENDPOINT = "https://sellingpartnerapi-eu.amazon.com"
+TOKEN_URL = "https://api.amazon.com/auth/o2/token"
+
+SSL_CTX = None
+try:
+    import certifi
+    SSL_CTX = ssl.create_default_context(cafile=certifi.where())
+except ImportError:
+    SSL_CTX = ssl.create_default_context()
+
+# ── SP-API Auth (shared pattern) ──
+_sp_token = None
+_sp_expiry = None
+
+def sp_get_token():
+    global _sp_token, _sp_expiry
+    if _sp_token and _sp_expiry and datetime.now() < _sp_expiry:
+        return _sp_token
+    sp = json.load(open(SP_CREDS_FILE))["sp_api_credentials"]
+    data = urlencode({"grant_type": "refresh_token", "refresh_token": sp["refresh_token"],
+                      "client_id": sp["lwa_client_id"], "client_secret": sp["lwa_client_secret"]}).encode()
+    req = Request(TOKEN_URL, data=data, headers={"Content-Type": "application/x-www-form-urlencoded"})
+    result = json.loads(urlopen(req, context=SSL_CTX).read().decode())
+    _sp_token = result["access_token"]
+    _sp_expiry = datetime.now() + timedelta(seconds=result["expires_in"] - 60)
+    return _sp_token
+
+
+def sp_api_call(method, path, body=None):
+    """Generic SP-API call"""
+    token = sp_get_token()
+    url = SP_ENDPOINT + path
+    headers = {
+        "x-amz-access-token": token,
+        "x-amz-date": datetime.utcnow().strftime('%Y%m%dT%H%M%SZ'),
+        "Content-Type": "application/json",
+        "Host": "sellingpartnerapi-eu.amazon.com"
+    }
+    data = json.dumps(body).encode() if body else None
+    req = Request(url, data=data, headers=headers, method=method)
+    try:
+        resp = urlopen(req, context=SSL_CTX)
+        return json.loads(resp.read().decode()), resp.status
+    except HTTPError as e:
+        return {"error": e.read().decode()[:300]}, e.code
+
+
+# ══════════════════════════════════════════════
+# HELPER: Load existing data (no duplicate fetching)
+# ══════════════════════════════════════════════
+def load_json(path):
+    if os.path.exists(path):
+        try:
+            with open(path, encoding='utf-8') as f:
+                return json.load(f)
+        except:
+            pass
+    return {}
+
+
+def load_route_requests(route_file):
+    if not route_file:
+        return {}
+    return load_json(route_file)
+
+
+def qualify_route_requests(data, route_payload):
+    """Build targeted qualified list from external route requests."""
+    qualified = {}
+    requests = route_payload.get("requests", []) if isinstance(route_payload, dict) else []
+    for req in requests:
+        asin = req.get("asin", "")
+        sku = req.get("sku", "")
+        if not asin or not sku:
+            continue
+        key = f"{asin}_{sku}"
+        current_price = float(req.get("current_price", 0) or 0)
+        if current_price <= 0 and asin in data["pricing"]:
+            current_price = float(data["pricing"][asin].get("your_price", 0) or 0)
+        qualified[key] = {
+            "asin": asin,
+            "sku": sku,
+            "current_price": current_price,
+            "rating": 0,
+            "orders_30d_est": 0,
+            "revenue_7d": float(req.get("sales7d_rs", 0) or 0),
+            "source": "route",
+            "qualify_reason": req.get("route_reason", "External route request"),
+            "route_request": req,
+        }
+    return qualified
+
+
+def load_existing_data():
+    """Load all pre-fetched data from other scripts"""
+    data = {
+        "pricing": load_json(os.path.join(JSON_DIR, "sp_pricing_data.json")),
+        "profit": load_json(os.path.join(JSON_DIR, "true_profit_per_asin.json")),
+        "buy_box": load_json(os.path.join(JSON_DIR, "buy_box_status.json")),
+        "product_ads": load_json(os.path.join(JSON_DIR, "sp_product_ads_list.json")),
+        "listing_status": load_json(os.path.join(JSON_DIR, "top_listing_status.json")),
+        "campaigns_summary": load_json(os.path.join(JSON_DIR, "sp_campaigns_summary.json")),
+        "sales_snapshots": load_json(os.path.join(JSON_DIR, "sales_snapshots.json")),
+    }
+    # profit can be list or dict
+    if isinstance(data["profit"], list):
+        data["profit_map"] = {p.get("asin", ""): p for p in data["profit"]}
+    else:
+        data["profit_map"] = data["profit"]
+
+    # buy_box can be list
+    if isinstance(data["buy_box"], list):
+        data["bb_map"] = {b.get("asin", ""): b for b in data["buy_box"]}
+    else:
+        data["bb_map"] = data["buy_box"]
+
+    # listing_status can be list
+    if isinstance(data["listing_status"], list):
+        data["listing_map"] = {l.get("asin", ""): l for l in data["listing_status"]}
+    else:
+        data["listing_map"] = data["listing_status"]
+
+    # ASIN ↔ SKU mapping
+    asin_skus = {}
+    ads = data["product_ads"] if isinstance(data["product_ads"], list) else []
+    for a in ads:
+        asin = a.get("asin", a.get("advertisedAsin", ""))
+        sku = a.get("sku", a.get("advertisedSku", ""))
+        if asin:
+            if asin not in asin_skus:
+                asin_skus[asin] = set()
+            if sku:
+                asin_skus[asin].add(sku)
+    data["asin_skus"] = {k: list(v) for k, v in asin_skus.items()}
+
+    return data
+
+
+# ══════════════════════════════════════════════
+# LISTING STATUS CHECK (reuse top_listing_monitor logic)
+# ══════════════════════════════════════════════
+def check_listing_active(sku):
+    """Check if listing is BUYABLE + DISCOVERABLE via Listings API"""
+    try:
+        encoded_sku = quote(sku)
+        path = f"/listings/2021-08-01/items/{SELLER_ID}/{encoded_sku}?marketplaceIds={MARKETPLACE_ID}&includedData=summaries,issues"
+        result, status = sp_api_call("GET", path)
+
+        if "error" in result:
+            return {"status": "API_ERROR", "buyable": False, "discoverable": False,
+                    "issues": [], "error": result["error"]}
+
+        summaries = result.get("summaries", [])
+        issues = result.get("issues", [])
+
+        status_list = []
+        asin = ""
+        for s in summaries:
+            if s.get("marketplaceId") == MARKETPLACE_ID:
+                status_list = s.get("status", [])
+                asin = s.get("asin", "")
+                break
+
+        is_buyable = "BUYABLE" in status_list
+        is_discoverable = "DISCOVERABLE" in status_list
+        critical = [i for i in issues if i.get("severity") in ("ERROR", "WARNING")]
+
+        if is_buyable and is_discoverable:
+            lst = "ACTIVE"
+        elif is_buyable:
+            lst = "NOT_SEARCHABLE"
+        else:
+            lst = "INACTIVE"
+
+        return {"status": lst, "buyable": is_buyable, "discoverable": is_discoverable,
+                "asin": asin, "issues": [{"msg": i.get("message", ""), "sev": i.get("severity", "")} for i in critical[:3]]}
+    except Exception as e:
+        return {"status": "ERROR", "buyable": False, "discoverable": False,
+                "issues": [], "error": str(e)[:100]}
+
+
+# ══════════════════════════════════════════════
+# PRICE UPDATE via SP-API Feeds API (JSON_LISTINGS_FEED)
+# ══════════════════════════════════════════════
+def update_price_via_feeds(sku, new_price, marketplace_id=MARKETPLACE_ID):
+    """Update price using Feeds API v2021-06-30 (JSON_LISTINGS_FEED)"""
+    # Step 1: Create feed document
+    feed_body = {
+        "header": {
+            "sellerId": SELLER_ID,
+            "version": "2.0",
+            "issueLocale": "en_US"
+        },
+        "messages": [{
+            "messageId": 1,
+            "sku": sku,
+            "operationType": "PATCH",
+            "productType": "PRODUCT",
+            "patches": [{
+                "op": "replace",
+                "path": "/attributes/purchasable_offer",
+                "value": [{
+                    "marketplace_id": marketplace_id,
+                    "currency": "INR",
+                    "our_price": [{
+                        "schedule": [{
+                            "value_with_tax": new_price
+                        }]
+                    }]
+                }]
+            }]
+        }]
+    }
+
+    # Create feed document (get upload URL)
+    create_resp, create_status = sp_api_call("POST", "/feeds/2021-06-30/documents",
+        {"contentType": "application/json"})
+
+    if create_status != 201 and create_status != 200:
+        return {"success": False, "error": f"Create doc failed: {create_resp}", "feed_id": None}
+
+    doc_id = create_resp.get("feedDocumentId", "")
+    upload_url = create_resp.get("url", "")
+
+    if not upload_url:
+        return {"success": False, "error": "No upload URL", "feed_id": None}
+
+    # Upload feed content
+    try:
+        feed_data = json.dumps(feed_body).encode("utf-8")
+        upload_req = Request(upload_url, data=feed_data, method="PUT",
+                            headers={"Content-Type": "application/json"})
+        urlopen(upload_req, context=SSL_CTX)
+    except Exception as e:
+        return {"success": False, "error": f"Upload failed: {str(e)[:100]}", "feed_id": None}
+
+    # Create feed
+    feed_resp, feed_status = sp_api_call("POST", "/feeds/2021-06-30/feeds", {
+        "feedType": "JSON_LISTINGS_FEED",
+        "marketplaceIds": [marketplace_id],
+        "inputFeedDocumentId": doc_id
+    })
+
+    feed_id = feed_resp.get("feedId", "")
+
+    if feed_id:
+        return {"success": True, "feed_id": feed_id, "doc_id": doc_id}
+    else:
+        return {"success": False, "error": f"Feed create failed: {feed_resp}", "feed_id": None}
+
+
+def update_price_via_listings(sku, new_price):
+    """Fallback: Update price via Listings Items PATCH API"""
+    path = f"/listings/2021-08-01/items/{SELLER_ID}/{quote(sku)}?marketplaceIds={MARKETPLACE_ID}"
+    body = {
+        "productType": "PRODUCT",
+        "patches": [{
+            "op": "replace",
+            "path": "/attributes/purchasable_offer",
+            "value": [{
+                "marketplace_id": MARKETPLACE_ID,
+                "currency": "INR",
+                "our_price": [{
+                    "schedule": [{
+                        "value_with_tax": new_price
+                    }]
+                }]
+            }]
+        }]
+    }
+    resp, status = sp_api_call("PATCH", path, body)
+    if status in (200, 204):
+        return {"success": True, "method": "listings_patch"}
+    return {"success": False, "error": str(resp)[:200], "method": "listings_patch"}
+
+
+# ══════════════════════════════════════════════
+# QUALIFY PRODUCTS
+# ══════════════════════════════════════════════
+def qualify_products(config, data):
+    """Determine which products qualify for price optimization"""
+    rules = config.get("qualify_rules", {})
+    min_orders = rules.get("min_orders_30d", 5)
+    star_rating_on = rules.get("star_rating_enabled", False)
+    min_rating = rules.get("min_star_rating", 4.0) if star_rating_on else 0
+    top_n = rules.get("top_n_by_revenue", 50)
+    manual_asins = set(rules.get("manual_asins", [])) if rules.get("manual_asins_enabled", False) else set()
+    manual_skus = set(rules.get("manual_skus", [])) if rules.get("manual_skus_enabled", False) else set()
+    exclude_asins = set(rules.get("exclude_asins", []))
+    exclude_skus = set(rules.get("exclude_skus", []))
+
+    qualified = {}
+
+    # From profit data — top sellers with good rating
+    if rules.get("auto_qualify_enabled", rules.get("auto_qualify_top_sellers", True)):
+        profit_items = []
+        for asin, p in data["profit_map"].items():
+            if asin in exclude_asins:
+                continue
+            orders = 0
+            # Try to get orders from profit data
+            if isinstance(p, dict):
+                orders = int(p.get("orders_7d", p.get("purchases7d", 0)))
+                # Estimate 30d from 7d
+                orders_30d = orders * 4
+            else:
+                orders_30d = 0
+
+            rating = 0
+            if isinstance(p, dict):
+                rating = float(p.get("star_rating", p.get("rating", 0)))
+
+            revenue = 0
+            if isinstance(p, dict):
+                revenue = float(p.get("sales_7d", p.get("sales7d", p.get("revenue_7d", 0))))
+
+            sale_price = 0
+            if isinstance(p, dict):
+                sale_price = float(p.get("sale_price", p.get("sale_price_real",
+                              p.get("sale_price_api", 0))))
+
+            # Check pricing data for current price
+            if asin in data["pricing"] and sale_price == 0:
+                sale_price = float(data["pricing"][asin].get("your_price", 0))
+
+            profit_items.append({
+                "asin": asin,
+                "orders_30d_est": orders_30d,
+                "rating": rating,
+                "revenue_7d": revenue,
+                "current_price": sale_price,
+                "source": "auto"
+            })
+
+        # Sort by revenue (top sellers first)
+        profit_items.sort(key=lambda x: x["revenue_7d"], reverse=True)
+
+        for item in profit_items[:top_n]:
+            asin = item["asin"]
+            # Auto qualify: orders + rating threshold
+            passes_orders = item["orders_30d_est"] >= min_orders or item["revenue_7d"] > 0
+            passes_rating = item["rating"] >= min_rating or item["rating"] == 0  # 0 = unknown, include
+
+            if passes_orders and passes_rating:
+                skus = data["asin_skus"].get(asin, [])
+                for sku in skus:
+                    if sku not in exclude_skus:
+                        qualified[f"{asin}_{sku}"] = {
+                            "asin": asin, "sku": sku,
+                            "current_price": item["current_price"],
+                            "rating": item["rating"],
+                            "orders_30d_est": item["orders_30d_est"],
+                            "revenue_7d": item["revenue_7d"],
+                            "source": "auto_top_seller",
+                            "qualify_reason": f"Top seller (rev ₹{item['revenue_7d']:.0f}/7d, rating {item['rating']})"
+                        }
+
+    # Manual ASINs (user added)
+    for asin in manual_asins:
+        if asin in exclude_asins:
+            continue
+        skus = data["asin_skus"].get(asin, [asin])
+        for sku in skus:
+            if sku not in exclude_skus:
+                key = f"{asin}_{sku}"
+                if key not in qualified:
+                    price = 0
+                    if asin in data["pricing"]:
+                        price = float(data["pricing"][asin].get("your_price", 0))
+                    qualified[key] = {
+                        "asin": asin, "sku": sku,
+                        "current_price": price,
+                        "rating": 0, "orders_30d_est": 0, "revenue_7d": 0,
+                        "source": "manual",
+                        "qualify_reason": "Manually added by user"
+                    }
+
+    # Manual SKUs
+    for sku in manual_skus:
+        if sku in exclude_skus:
+            continue
+        # Find ASIN for this SKU
+        asin = ""
+        for a, s_list in data["asin_skus"].items():
+            if sku in s_list:
+                asin = a
+                break
+        key = f"{asin}_{sku}"
+        if key not in qualified:
+            price = 0
+            if asin and asin in data["pricing"]:
+                price = float(data["pricing"][asin].get("your_price", 0))
+            qualified[key] = {
+                "asin": asin, "sku": sku,
+                "current_price": price,
+                "rating": 0, "orders_30d_est": 0, "revenue_7d": 0,
+                "source": "manual_sku",
+                "qualify_reason": "Manually added SKU"
+            }
+
+    return qualified
+
+
+# ══════════════════════════════════════════════
+# SAFETY CHECKS
+# ══════════════════════════════════════════════
+def check_safety(asin, sku, current_price, new_price, config, history):
+    """Check all safety guardrails before price change"""
+    safety = config.get("safety", {})
+    issues = []
+
+    # Min price check
+    min_prices = safety.get("min_price", {})
+    min_p = float(min_prices.get(asin, min_prices.get(sku, 0)))
+    if min_p > 0 and new_price < min_p:
+        issues.append(f"Below min price ₹{min_p}")
+        new_price = min_p
+
+    # Max price check
+    max_prices = safety.get("max_price", {})
+    max_p = float(max_prices.get(asin, max_prices.get(sku, 0)))
+    if max_p > 0 and new_price > max_p:
+        issues.append(f"Above max price ₹{max_p}")
+        new_price = max_p
+
+    # Max increase per cycle
+    max_cycle = safety.get("max_increase_per_cycle_pct", 3.0)
+    if current_price > 0:
+        change_pct = abs(new_price - current_price) / current_price * 100
+        if new_price > current_price and change_pct > max_cycle:
+            new_price = round(current_price * (1 + max_cycle / 100), 2)
+            issues.append(f"Capped at {max_cycle}% per cycle")
+
+    # Max total increase from original
+    max_total = safety.get("max_total_increase_from_original_pct", 15.0)
+    original = get_original_price(asin, sku, history)
+    if original > 0 and new_price > original:
+        total_increase_pct = (new_price - original) / original * 100
+        if total_increase_pct > max_total:
+            new_price = round(original * (1 + max_total / 100), 2)
+            issues.append(f"Total increase capped at {max_total}% from original ₹{original}")
+
+    # Profit margin check
+    min_margin = safety.get("min_profit_margin_pct", 10.0)
+    profit_config = load_json(PROFIT_CONFIG)
+    if profit_config:
+        cost = float(profit_config.get("account_default", {}).get("product_cost", 85))
+        ref_pct = float(profit_config.get("amazon_fees", {}).get("referral_fee_pct", 3.0))
+        closing = float(profit_config.get("amazon_fees", {}).get("closing_fee", 5))
+        shipping = float(profit_config.get("shipping", {}).get("default", 95))
+        amazon_fee = (ref_pct / 100 * new_price) + closing
+        est_profit = new_price - cost - amazon_fee - shipping
+        margin = (est_profit / new_price * 100) if new_price > 0 else 0
+        if margin < min_margin and new_price < current_price:
+            issues.append(f"Profit margin {margin:.1f}% below min {min_margin}%")
+
+    # Anti-oscillation check
+    max_flips = safety.get("anti_oscillation_max_flips", 3)
+    window_hrs = safety.get("anti_oscillation_window_hours", 24)
+    flips = count_price_flips(asin, sku, history, window_hrs)
+    if flips >= max_flips:
+        issues.append(f"Anti-oscillation: {flips} flips in {window_hrs}hrs (max {max_flips})")
+        return new_price, issues, True  # blocked
+
+    return new_price, issues, False  # not blocked
+
+
+def get_original_price(asin, sku, history):
+    """Get original price before any optimizer changes"""
+    key = f"{asin}_{sku}"
+    entries = history.get(key, [])
+    if entries:
+        return float(entries[0].get("old_price", 0))
+    return 0
+
+
+def count_price_flips(asin, sku, history, window_hrs):
+    """Count how many times price direction flipped (up→down or down→up)"""
+    key = f"{asin}_{sku}"
+    entries = history.get(key, [])
+    cutoff = datetime.now() - timedelta(hours=window_hrs)
+    recent = []
+    for e in entries:
+        try:
+            ts = datetime.fromisoformat(e.get("timestamp", ""))
+            if ts > cutoff:
+                recent.append(e)
+        except:
+            pass
+
+    if len(recent) < 2:
+        return 0
+
+    flips = 0
+    for i in range(1, len(recent)):
+        prev_dir = "up" if float(recent[i-1].get("new_price", 0)) > float(recent[i-1].get("old_price", 0)) else "down"
+        curr_dir = "up" if float(recent[i].get("new_price", 0)) > float(recent[i].get("old_price", 0)) else "down"
+        if prev_dir != curr_dir:
+            flips += 1
+    return flips
+
+
+# ══════════════════════════════════════════════
+# LOAD / SAVE HISTORY + STATUS
+# ══════════════════════════════════════════════
+def load_history():
+    """Load price change history {asin_sku: [entries]}"""
+    return load_json(LOG_FILE) if os.path.exists(LOG_FILE) else {}
+
+
+def save_history(history):
+    os.makedirs(JSON_DIR, exist_ok=True)
+    with open(LOG_FILE, "w", encoding="utf-8") as f:
+        json.dump(history, f, indent=2, ensure_ascii=False)
+
+
+def load_status():
+    return load_json(STATUS_FILE) if os.path.exists(STATUS_FILE) else {}
+
+
+def save_status(status):
+    os.makedirs(JSON_DIR, exist_ok=True)
+    with open(STATUS_FILE, "w", encoding="utf-8") as f:
+        json.dump(status, f, indent=2, ensure_ascii=False)
+
+
+# ══════════════════════════════════════════════
+# IMPACT TRACKER — Before/After Sales
+# ══════════════════════════════════════════════
+def calculate_impact(asin, sku, history, data):
+    """Calculate before/after impact of price changes"""
+    key = f"{asin}_{sku}"
+    entries = history.get(key, [])
+    if not entries:
+        return None
+
+    first_change = entries[0]
+    latest = entries[-1]
+    original_price = float(first_change.get("old_price", 0))
+    current_price = float(latest.get("new_price", 0))
+    price_change_pct = ((current_price - original_price) / original_price * 100) if original_price > 0 else 0
+
+    # Sales data from profit
+    profit_data = data["profit_map"].get(asin, {})
+    current_sales_7d = float(profit_data.get("sales_7d", profit_data.get("sales7d", 0))) if isinstance(profit_data, dict) else 0
+    current_orders_7d = int(profit_data.get("orders_7d", profit_data.get("purchases7d", 0))) if isinstance(profit_data, dict) else 0
+
+    # Before sales (from first entry snapshot)
+    before_sales_7d = float(first_change.get("snapshot_sales_7d", 0))
+    before_orders_7d = int(first_change.get("snapshot_orders_7d", 0))
+
+    sales_change = current_sales_7d - before_sales_7d
+    sales_change_pct = ((current_sales_7d - before_sales_7d) / before_sales_7d * 100) if before_sales_7d > 0 else 0
+
+    # Deactivation tracking
+    deactivations = [e for e in entries if e.get("action") == "DECREASE_RECOVERY"]
+    recoveries = [e for e in entries if e.get("recovery_status") == "RECOVERED"]
+    total_inactive_minutes = sum(int(e.get("inactive_duration_min", 0)) for e in recoveries)
+
+    # Buy Box status
+    bb = data["bb_map"].get(asin, {})
+    buy_box_status = bb.get("buy_box_status", bb.get("is_ours", "UNKNOWN"))
+
+    # Profit impact
+    true_profit_now = float(profit_data.get("true_profit_real", profit_data.get("true_profit", 0))) if isinstance(profit_data, dict) else 0
+    before_profit = float(first_change.get("snapshot_profit", 0))
+    profit_change = true_profit_now - before_profit
+
+    return {
+        "asin": asin,
+        "sku": sku,
+        "original_price": original_price,
+        "current_price": current_price,
+        "price_change_pct": round(price_change_pct, 1),
+        "total_changes": len(entries),
+        "increases": sum(1 for e in entries if e.get("action") == "INCREASE"),
+        "decreases": sum(1 for e in entries if "DECREASE" in e.get("action", "")),
+        "before_sales_7d": before_sales_7d,
+        "current_sales_7d": current_sales_7d,
+        "sales_change": round(sales_change, 0),
+        "sales_change_pct": round(sales_change_pct, 1),
+        "before_orders_7d": before_orders_7d,
+        "current_orders_7d": current_orders_7d,
+        "before_profit_per_unit": before_profit,
+        "current_profit_per_unit": true_profit_now,
+        "profit_change": round(profit_change, 1),
+        "buy_box_status": buy_box_status,
+        "deactivation_count": len(deactivations),
+        "recovery_count": len(recoveries),
+        "total_inactive_minutes": total_inactive_minutes,
+        "anti_oscillation_blocked": any(e.get("blocked_reason", "").startswith("Anti-osc") for e in entries),
+        "first_change_date": first_change.get("timestamp", ""),
+        "last_change_date": latest.get("timestamp", ""),
+    }
+
+
+# ══════════════════════════════════════════════
+# EMAIL ALERT
+# ══════════════════════════════════════════════
+def send_price_alert(subject, items_info, alert_type="info"):
+    """Send email alert for price optimizer events"""
+    try:
+        email_cfg = load_json(EMAIL_CONFIG)
+        if not email_cfg.get("enabled") or not email_cfg.get("sender_email"):
+            return
+        if email_cfg.get("sender_app_password", "").startswith("PASTE"):
+            return
+
+        import smtplib
+        from email.mime.multipart import MIMEMultipart
+        from email.mime.text import MIMEText
+
+        color = "#DC2626" if alert_type == "critical" else "#D97706" if alert_type == "warning" else "#059669"
+
+        rows_html = ""
+        for item in items_info:
+            rows_html += f"""<tr style='border-bottom:1px solid #eee'>
+                <td style='padding:6px'>{item.get('asin','')}</td>
+                <td style='padding:6px'>{item.get('sku','')[:20]}</td>
+                <td style='padding:6px'>₹{item.get('old_price',0):.0f}</td>
+                <td style='padding:6px'>₹{item.get('new_price',0):.0f}</td>
+                <td style='padding:6px'>{item.get('reason','')}</td>
+            </tr>"""
+
+        html = f"""<html><body style='font-family:Calibri'>
+        <div style='background:{color};color:white;padding:12px;border-radius:8px'>
+            <h3>Grow24 AI — {subject}</h3>
+        </div>
+        <table style='width:100%;border-collapse:collapse;margin-top:10px'>
+            <tr style='background:#f5f5f5'><th>ASIN</th><th>SKU</th><th>Old ₹</th><th>New ₹</th><th>Reason</th></tr>
+            {rows_html}
+        </table>
+        <p style='color:#999;font-size:12px'>{datetime.now().strftime('%d %B %Y, %I:%M %p')}</p>
+        </body></html>"""
+
+        msg = MIMEMultipart()
+        msg["From"] = f"Grow24 AI <{email_cfg['sender_email']}>"
+        msg["Subject"] = f"Grow24 AI — {subject}"
+        recipients = email_cfg.get("recipients", [email_cfg.get("sender_email", "")])
+        msg["To"] = ", ".join(recipients) if isinstance(recipients, list) else recipients
+        msg.attach(MIMEText(html, "html"))
+
+        with smtplib.SMTP_SSL(email_cfg.get("smtp_server", "smtp.gmail.com"),
+                              int(email_cfg.get("smtp_port", 465))) as server:
+            server.login(email_cfg["sender_email"], email_cfg["sender_app_password"])
+            server.send_message(msg)
+        print(f"    📧 Alert sent: {subject}")
+    except Exception as e:
+        print(f"    ⚠️ Alert failed: {str(e)[:60]}")
+
+
+# ══════════════════════════════════════════════
+# MAIN CYCLE
+# ══════════════════════════════════════════════
+def run_cycle(config, dry_run=False, route_payload=None):
+    """Run one optimization cycle"""
+    print(f"\n  Loading existing data (no duplicate API calls)...")
+    data = load_existing_data()
+    history = load_history()
+
+    pricing_rules = config.get("pricing_rules", {})
+    safety_cfg = config.get("safety", {})
+    alert_cfg = config.get("alerts", {})
+    increase_pct = pricing_rules.get("increase_pct", 1.0)
+    decrease_pct = pricing_rules.get("decrease_pct", 1.0)
+    overrides = pricing_rules.get("per_product_override", {})
+
+    # Step 1: Qualify products
+    route_mode = bool(route_payload and route_payload.get("requests"))
+    if route_mode:
+        qualified = qualify_route_requests(data, route_payload)
+        print(f"  Routed products:    {len(qualified)}")
+    else:
+        qualified = qualify_products(config, data)
+        print(f"  Qualified products: {len(qualified)}")
+
+    if not qualified:
+        print("  No qualified products. Diagnostics:")
+        pricing_count = len(data["pricing"]) if isinstance(data["pricing"], dict) else 0
+        profit_count = len(data["profit_map"]) if isinstance(data["profit_map"], dict) else 0
+        ads_count = len(data["product_ads"]) if isinstance(data["product_ads"], list) else 0
+        asin_sku_count = len(data["asin_skus"])
+        print(f"    Pricing data:  {pricing_count} ASINs {'OK' if pricing_count > 0 else 'MISSING — run fetch_pricing first!'}")
+        print(f"    Profit data:   {profit_count} ASINs {'OK' if profit_count > 0 else 'MISSING — run true_profit_calculator first!'}")
+        print(f"    Product Ads:   {ads_count} items {'OK' if ads_count > 0 else 'MISSING — run import first!'}")
+        print(f"    ASIN-SKU map:  {asin_sku_count} ASINs")
+        if pricing_count == 0 or profit_count == 0:
+            print("    >> Run daily pipeline (import → pricing → profit) before price optimizer")
+        return {"total": 0, "increased": 0, "decreased": 0, "blocked": 0, "skipped": 0,
+                "actions": [], "inactive_found": [], "recoveries": [], "alert_items": [],
+                "route_mode": route_mode, "route_run_id": route_payload.get("route_run_id", "") if route_mode else ""}
+
+    results = {"total": len(qualified), "increased": 0, "decreased": 0,
+               "blocked": 0, "skipped": 0, "actions": [], "inactive_found": [],
+               "recoveries": [], "alert_items": [], "route_mode": route_mode,
+               "route_run_id": route_payload.get("route_run_id", "") if route_mode else ""}
+
+    for key, product in qualified.items():
+        asin = product["asin"]
+        sku = product["sku"]
+        current_price = product["current_price"]
+        route_request = product.get("route_request", {})
+
+        if current_price <= 0:
+            results["skipped"] += 1
+            continue
+
+        # Get product-specific overrides
+        prod_override = overrides.get(asin, overrides.get(sku, {}))
+        inc_pct = float(prod_override.get("increase_pct", increase_pct))
+        dec_pct = float(prod_override.get("decrease_pct", decrease_pct))
+
+        # Step 2: Check listing status
+        print(f"  {asin} ({sku[:25]}) ₹{current_price:.0f} ...", end=" ", flush=True)
+        time.sleep(0.5)  # Rate limit for Listings API
+        listing = check_listing_active(sku)
+        listing_status = listing["status"]
+
+        # Step 3: Decide action
+        action = None
+        new_price = current_price
+        reason = ""
+
+        if route_request:
+            desired_action = str(route_request.get("desired_action", "DECREASE_COMPETITOR") or "DECREASE_COMPETITOR").upper()
+            if desired_action == "DECREASE_RECOVERY":
+                if listing_status not in ("INACTIVE", "NOT_SEARCHABLE"):
+                    print(f"= recovery route not needed ({listing_status})")
+                    results["skipped"] += 1
+                    continue
+
+                reduction_pct = float(route_request.get("reduction_pct", dec_pct) or dec_pct)
+                target_price = float(route_request.get("target_price", 0) or 0)
+                if target_price <= 0:
+                    target_price = round(current_price * (1 - reduction_pct / 100), 2)
+                if target_price <= 0 or target_price >= current_price:
+                    print("= no recovery price change")
+                    results["skipped"] += 1
+                    continue
+
+                action = "DECREASE_RECOVERY"
+                new_price = round(target_price, 2)
+                reason = route_request.get("route_reason", f"-{reduction_pct}% routed recovery ({listing_status})")
+
+                hist_key = f"{asin}_{sku}"
+                recent_decreases = [e for e in history.get(hist_key, [])
+                                   if e.get("action") == "DECREASE_RECOVERY"
+                                   and _is_recent(e.get("timestamp"), hours=24)]
+                retry_count = len(recent_decreases)
+                max_r1 = safety_cfg.get("max_retries_batch1", 3)
+                max_r2 = safety_cfg.get("max_retries_batch2", 3)
+
+                if retry_count >= max_r1 + max_r2:
+                    action = "MAX_RETRY_REACHED"
+                    reason = f"Max retries ({max_r1}+{max_r2}) reached. Still inactive."
+                    print(f"⛔ MAX RETRY ({retry_count})")
+                    results["blocked"] += 1
+
+                    if alert_cfg.get("on_max_retry_reached"):
+                        results["alert_items"].append({
+                            "asin": asin, "sku": sku,
+                            "old_price": current_price, "new_price": current_price,
+                            "reason": reason
+                        })
+                    continue
+
+                results["inactive_found"].append({
+                    "asin": asin, "sku": sku, "status": listing_status,
+                    "retry_attempt": retry_count + 1,
+                    "issues": listing.get("issues", [])
+                })
+            else:
+                target_price = float(route_request.get("target_price", route_request.get("lowest_competitor_price", 0)) or 0)
+                if target_price <= 0 or target_price >= current_price:
+                    print("= no route price change")
+                    results["skipped"] += 1
+                    continue
+                action = "DECREASE_COMPETITOR"
+                new_price = round(target_price, 2)
+                reason = route_request.get("route_reason", "Competitor price route")
+        elif listing_status == "ACTIVE":
+            # Increase price
+            new_price = round(current_price * (1 + inc_pct / 100), 2)
+            action = "INCREASE"
+            reason = f"+{inc_pct}% (top seller, rating OK, active)"
+
+        elif listing_status in ("INACTIVE", "NOT_SEARCHABLE"):
+            # Decrease price to recover
+            new_price = round(current_price * (1 - dec_pct / 100), 2)
+            action = "DECREASE_RECOVERY"
+            reason = f"-{dec_pct}% recovery ({listing_status})"
+
+            # Check retry count
+            hist_key = f"{asin}_{sku}"
+            recent_decreases = [e for e in history.get(hist_key, [])
+                               if e.get("action") == "DECREASE_RECOVERY"
+                               and _is_recent(e.get("timestamp"), hours=24)]
+            retry_count = len(recent_decreases)
+            max_r1 = safety_cfg.get("max_retries_batch1", 3)
+            max_r2 = safety_cfg.get("max_retries_batch2", 3)
+
+            if retry_count >= max_r1 + max_r2:
+                action = "MAX_RETRY_REACHED"
+                reason = f"Max retries ({max_r1}+{max_r2}) reached. Still inactive."
+                print(f"⛔ MAX RETRY ({retry_count})")
+                results["blocked"] += 1
+
+                if alert_cfg.get("on_max_retry_reached"):
+                    results["alert_items"].append({
+                        "asin": asin, "sku": sku,
+                        "old_price": current_price, "new_price": current_price,
+                        "reason": reason
+                    })
+                continue
+
+            results["inactive_found"].append({
+                "asin": asin, "sku": sku, "status": listing_status,
+                "retry_attempt": retry_count + 1,
+                "issues": listing.get("issues", [])
+            })
+
+        elif listing_status in ("API_ERROR", "ERROR"):
+            print(f"⚠️ API error")
+            results["skipped"] += 1
+            continue
+        else:
+            results["skipped"] += 1
+            continue
+
+        if action in ("INCREASE", "DECREASE_RECOVERY", "DECREASE_COMPETITOR"):
+            # Step 4: Safety checks
+            new_price, safety_issues, blocked = check_safety(
+                asin, sku, current_price, new_price, config, history)
+
+            if blocked:
+                print(f"🚫 BLOCKED ({safety_issues[0] if safety_issues else 'safety'})")
+                results["blocked"] += 1
+                # Log the block
+                hist_key = f"{asin}_{sku}"
+                if hist_key not in history:
+                    history[hist_key] = []
+                history[hist_key].append({
+                    "timestamp": datetime.now().isoformat(),
+                    "action": "BLOCKED",
+                    "old_price": current_price,
+                    "new_price": new_price,
+                    "blocked_reason": "; ".join(safety_issues),
+                })
+                if alert_cfg.get("on_anti_oscillation_triggered"):
+                    results["alert_items"].append({
+                        "asin": asin, "sku": sku,
+                        "old_price": current_price, "new_price": new_price,
+                        "reason": f"BLOCKED: {safety_issues[0]}"
+                    })
+                continue
+
+            if new_price == current_price:
+                print("= no change")
+                results["skipped"] += 1
+                continue
+
+            # Step 5: Execute
+            if dry_run:
+                status_str = "DRY_RUN"
+                print(f"{'📈' if action == 'INCREASE' else '📉'} ₹{current_price:.0f}→₹{new_price:.0f} ({reason}) [DRY]")
+            else:
+                # Try Listings PATCH first (faster), fallback to Feeds
+                update_result = update_price_via_listings(sku, new_price)
+                if update_result["success"]:
+                    status_str = "OK"
+                    print(f"{'📈' if action == 'INCREASE' else '📉'} ₹{current_price:.0f}→₹{new_price:.0f} ✅")
+                else:
+                    # Fallback to Feeds API
+                    feed_result = update_price_via_feeds(sku, new_price)
+                    if feed_result["success"]:
+                        status_str = f"OK_FEED:{feed_result['feed_id']}"
+                        print(f"{'📈' if action == 'INCREASE' else '📉'} ₹{current_price:.0f}→₹{new_price:.0f} ✅ (feed)")
+                    else:
+                        status_str = "FAILED"
+                        print(f"❌ FAILED: {feed_result.get('error', '')[:40]}")
+
+            # Snapshot current sales for before/after tracking
+            profit_data = data["profit_map"].get(asin, {})
+            snapshot_sales = float(profit_data.get("sales_7d", profit_data.get("sales7d", 0))) if isinstance(profit_data, dict) else 0
+            snapshot_orders = int(profit_data.get("orders_7d", profit_data.get("purchases7d", 0))) if isinstance(profit_data, dict) else 0
+            snapshot_profit = float(profit_data.get("true_profit_real", profit_data.get("true_profit", 0))) if isinstance(profit_data, dict) else 0
+
+            # Step 6: Log
+            hist_key = f"{asin}_{sku}"
+            if hist_key not in history:
+                history[hist_key] = []
+
+            entry = {
+                "timestamp": datetime.now().isoformat(),
+                "action": action,
+                "old_price": current_price,
+                "new_price": new_price,
+                "change_pct": round((new_price - current_price) / current_price * 100, 2) if current_price > 0 else 0,
+                "reason": reason,
+                "status": status_str,
+                "listing_status": listing_status,
+                "safety_notes": safety_issues if safety_issues else [],
+                "snapshot_sales_7d": snapshot_sales,
+                "snapshot_orders_7d": snapshot_orders,
+                "snapshot_profit": snapshot_profit,
+                "dry_run": dry_run,
+            }
+            if route_request:
+                entry["route_run_id"] = route_request.get("route_run_id", "")
+                entry["route_source"] = route_request.get("source_feature_key", "")
+                entry["route_issue_type"] = route_request.get("issue_type", "")
+
+            # Track recovery for inactive listings
+            if action == "DECREASE_RECOVERY":
+                entry["inactive_since"] = datetime.now().isoformat()
+
+            # Check if previous decrease recovered
+            prev_entries = history.get(hist_key, [])
+            for pe in reversed(prev_entries):
+                if pe.get("action") == "DECREASE_RECOVERY" and pe.get("recovery_status") is None:
+                    if listing_status == "ACTIVE":
+                        pe["recovery_status"] = "RECOVERED"
+                        pe["recovered_at"] = datetime.now().isoformat()
+                        pe["recovered_price"] = current_price
+                        try:
+                            inactive_since = datetime.fromisoformat(pe.get("inactive_since", ""))
+                            pe["inactive_duration_min"] = int((datetime.now() - inactive_since).total_seconds() / 60)
+                        except:
+                            pe["inactive_duration_min"] = 0
+                        results["recoveries"].append({
+                            "asin": asin, "sku": sku,
+                            "inactive_price": pe["new_price"],
+                            "recovered_price": current_price,
+                            "duration_min": pe.get("inactive_duration_min", 0)
+                        })
+                    break
+
+            history[hist_key].append(entry)
+
+            if action == "INCREASE":
+                results["increased"] += 1
+            else:
+                results["decreased"] += 1
+
+            results["actions"].append({
+                "asin": asin, "sku": sku[:25],
+                "old_price": current_price, "new_price": new_price,
+                "action": action, "reason": reason, "status": status_str,
+                "route_run_id": route_request.get("route_run_id", "") if route_request else "",
+                "route_source": route_request.get("source_feature_key", "") if route_request else ""
+            })
+
+    # Save history
+    save_history(history)
+
+    # Step 7: Build & save status with impact
+    status = {
+        "last_run": datetime.now().isoformat(),
+        "dry_run": dry_run,
+        "route_mode": route_mode,
+        "route_run_id": route_payload.get("route_run_id", "") if route_mode else "",
+        "route_source": route_payload.get("source_feature_key", "") if route_mode else "",
+        "summary": {
+            "total_qualified": results["total"],
+            "price_increased": results["increased"],
+            "price_decreased": results["decreased"],
+            "blocked": results["blocked"],
+            "skipped": results["skipped"],
+        },
+        "inactive_found": results["inactive_found"],
+        "recoveries": results["recoveries"],
+        "actions": results["actions"],
+        "impact": [],
+    }
+
+    # Calculate impact for all tracked products
+    for hist_key in history:
+        parts = hist_key.split("_", 1)
+        if len(parts) == 2:
+            impact = calculate_impact(parts[0], parts[1], history, data)
+            if impact:
+                status["impact"].append(impact)
+
+    save_status(status)
+
+    # Send alerts
+    if not dry_run:
+        if results["inactive_found"] and alert_cfg.get("on_listing_inactive"):
+            send_price_alert(
+                f"⚠️ {len(results['inactive_found'])} Listing(s) INACTIVE — Recovery Started",
+                [{"asin": i["asin"], "sku": i["sku"], "old_price": "", "new_price": "",
+                  "reason": f"{i['status']} (retry #{i['retry_attempt']})"} for i in results["inactive_found"]],
+                "critical"
+            )
+
+        if results["recoveries"] and alert_cfg.get("on_recovery_success"):
+            send_price_alert(
+                f"✅ {len(results['recoveries'])} Listing(s) RECOVERED",
+                [{"asin": r["asin"], "sku": r["sku"],
+                  "old_price": r["inactive_price"], "new_price": r["recovered_price"],
+                  "reason": f"Recovered in {r['duration_min']}min"} for r in results["recoveries"]],
+                "info"
+            )
+
+        decreased_items = [a for a in results["actions"] if a["action"] == "DECREASE_RECOVERY"]
+        if decreased_items and alert_cfg.get("on_price_decreased"):
+            send_price_alert(
+                f"📉 {len(decreased_items)} Price(s) Decreased for Recovery",
+                decreased_items, "warning"
+            )
+
+        if results["alert_items"]:
+            send_price_alert(
+                f"🚫 {len(results['alert_items'])} Price Action(s) Blocked/Max Retry",
+                results["alert_items"], "critical"
+            )
+
+    return results
+
+
+def _is_recent(timestamp_str, hours=24):
+    try:
+        ts = datetime.fromisoformat(timestamp_str)
+        return datetime.now() - ts < timedelta(hours=hours)
+    except:
+        return False
+
+
+# ══════════════════════════════════════════════
+# SHOW STATUS / HISTORY
+# ══════════════════════════════════════════════
+def show_status():
+    """Display current optimizer status + impact"""
+    status = load_status()
+    if not status:
+        print("  No optimizer data yet. Run a cycle first.")
+        return
+
+    print(f"\n  Last run: {status.get('last_run', 'never')}")
+    s = status.get("summary", {})
+    print(f"  Qualified: {s.get('total_qualified', 0)} | Increased: {s.get('price_increased', 0)} | "
+          f"Decreased: {s.get('price_decreased', 0)} | Blocked: {s.get('blocked', 0)}")
+
+    impacts = status.get("impact", [])
+    if impacts:
+        print(f"\n  {'='*110}")
+        print(f"  PRICE IMPACT DASHBOARD")
+        print(f"  {'='*110}")
+        print(f"  {'ASIN':<14} {'Orig ₹':>7} {'Now ₹':>7} {'Chg%':>6} {'Sale Before':>11} {'Sale Now':>9} {'Sale%':>6} "
+              f"{'Profit':>7} {'BB':>5} {'Deact':>5} {'Inact Min':>9}")
+        print(f"  {'-'*110}")
+
+        for imp in sorted(impacts, key=lambda x: abs(x.get("sales_change_pct", 0)), reverse=True):
+            sale_emoji = "📈" if imp["sales_change_pct"] > 0 else "📉" if imp["sales_change_pct"] < 0 else "➡️"
+            bb = "✅" if imp["buy_box_status"] in ("WON", True) else "❌" if imp["buy_box_status"] in ("LOST", False) else "?"
+            print(f"  {imp['asin']:<14} ₹{imp['original_price']:>6.0f} ₹{imp['current_price']:>6.0f} "
+                  f"{imp['price_change_pct']:>+5.1f}% "
+                  f"₹{imp['before_sales_7d']:>9.0f} ₹{imp['current_sales_7d']:>7.0f} "
+                  f"{sale_emoji}{imp['sales_change_pct']:>+5.1f}% "
+                  f"₹{imp['profit_change']:>+6.0f} {bb:>5} "
+                  f"{imp['deactivation_count']:>5} {imp['total_inactive_minutes']:>9}")
+
+    inactive = status.get("inactive_found", [])
+    if inactive:
+        print(f"\n  ⚠️ CURRENTLY INACTIVE ({len(inactive)}):")
+        for i in inactive:
+            issues_str = "; ".join([iss["msg"][:40] for iss in i.get("issues", [])[:2]])
+            print(f"    {i['asin']} {i['sku'][:25]} — {i['status']} (retry #{i['retry_attempt']}) {issues_str}")
+
+    recoveries = status.get("recoveries", [])
+    if recoveries:
+        print(f"\n  ✅ RECOVERED THIS CYCLE ({len(recoveries)}):")
+        for r in recoveries:
+            print(f"    {r['asin']} — inactive at ₹{r['inactive_price']:.0f}, recovered at ₹{r['recovered_price']:.0f} "
+                  f"({r['duration_min']}min downtime)")
+
+
+def show_history():
+    """Show full price change history"""
+    history = load_history()
+    if not history:
+        print("  No price history yet.")
+        return
+
+    print(f"\n  {'='*100}")
+    print(f"  FULL PRICE CHANGE HISTORY ({sum(len(v) for v in history.values())} entries)")
+    print(f"  {'='*100}")
+
+    for key, entries in history.items():
+        parts = key.split("_", 1)
+        asin = parts[0] if parts else key
+        sku = parts[1] if len(parts) > 1 else ""
+        print(f"\n  {asin} ({sku[:25]}) — {len(entries)} changes:")
+        for e in entries[-10:]:  # last 10
+            ts = e.get("timestamp", "")[:16]
+            action = e.get("action", "?")
+            icon = "📈" if action == "INCREASE" else "📉" if "DECREASE" in action else "🚫"
+            status = e.get("status", "?")
+            print(f"    {ts} {icon} ₹{e.get('old_price', 0):.0f}→₹{e.get('new_price', 0):.0f} "
+                  f"({e.get('change_pct', 0):+.1f}%) [{status}] {e.get('reason', '')[:40]}")
+
+
+# ══════════════════════════════════════════════
+# MAIN
+# ══════════════════════════════════════════════
+def main():
+    parser = argparse.ArgumentParser(description="Grow24 AI — Auto Price Optimizer")
+    parser.add_argument("--dry-run", action="store_true", help="Preview only, no price changes")
+    parser.add_argument("--status", action="store_true", help="Show current status + impact")
+    parser.add_argument("--history", action="store_true", help="Show price change history")
+    parser.add_argument("--route-file", help="Run only targeted route requests from another detector module")
+    args = parser.parse_args()
+
+    print("=" * 65)
+    print("  Grow24 AI — Auto Price Optimizer v1.0")
+    print(f"  {datetime.now().strftime('%d %B %Y, %I:%M %p')}")
+    if args.dry_run:
+        print("  Mode: DRY RUN (no actual price changes)")
+    print("=" * 65)
+
+    if args.status:
+        show_status()
+        return 0
+
+    if args.history:
+        show_history()
+        return 0
+
+    # Load config
+    if not os.path.exists(CONFIG_FILE):
+        print(f"  ❌ Config not found: {CONFIG_FILE}")
+        return 1
+
+    config = load_json(CONFIG_FILE)
+    if not config.get("enabled", True):
+        print("  ⏸️ Price optimizer is DISABLED in config.")
+        return 0
+
+    # Check active hours
+    schedule = config.get("schedule", {})
+    if schedule.get("enabled"):
+        now_time = datetime.now().strftime("%H:%M")
+        start = schedule.get("active_hours_start", "06:00")
+        end = schedule.get("active_hours_end", "23:00")
+        if now_time < start or now_time > end:
+            print(f"  💤 Outside active hours ({start}–{end}). Current: {now_time}")
+            return 0
+
+    # Run cycle
+    route_payload = load_route_requests(args.route_file) if args.route_file else None
+    results = run_cycle(config, dry_run=args.dry_run, route_payload=route_payload)
+
+    # Summary
+    print(f"\n  {'='*65}")
+    print(f"  {'PREVIEW' if args.dry_run else 'EXECUTION'} COMPLETE")
+    print(f"  {'='*65}")
+    print(f"  Total qualified:  {results['total']}")
+    print(f"  Price increased:  {results['increased']} 📈")
+    print(f"  Price decreased:  {results['decreased']} 📉 (recovery)")
+    print(f"  Blocked (safety): {results['blocked']} 🚫")
+    print(f"  Skipped:          {results['skipped']}")
+
+    if results.get("inactive_found"):
+        print(f"\n  ⚠️ INACTIVE LISTINGS: {len(results['inactive_found'])}")
+    if results.get("recoveries"):
+        print(f"  ✅ RECOVERED: {len(results['recoveries'])}")
+
+    print(f"\n  Status: {STATUS_FILE}")
+    print(f"  History: {LOG_FILE}")
+    print(f"  {'='*65}")
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

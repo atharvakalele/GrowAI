@@ -1,0 +1,103 @@
+{
+  "route_type": "stock_restock_auto",
+  "engine": "stock_restock",
+  "generated_at": "2026-04-15T19:56:00.870872",
+  "request_count": 20,
+  "status": "executed",
+  "reason": "Seller listing auto stock executed from stock control panel.",
+  "actions": [
+    {
+      "action": "AUTO_STOCK_SELLER_LISTING",
+      "status": "executed",
+      "asin": "B0D3CK886B",
+      "sku": "UsLabs_AddyiPlus_ForWomen",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0,
+      "target_stock": 1000
+    },
+    {
+      "action": "AUTO_STOCK_SELLER_LISTING",
+      "status": "executed",
+      "asin": "B0D54MR138",
+      "sku": "NewBoldCareLibidexPlus30C",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0,
+      "target_stock": 1000
+    },
+    {
+      "action": "AUTO_STOCK_SELLER_LISTING",
+      "status": "executed",
+      "asin": "B0DX7BWSKG",
+      "sku": "LibidSafe_iGainCpsl30_P2",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0,
+      "target_stock": 1000
+    },
+    {
+      "action": "AUTO_STOCK_SELLER_LISTING",
+      "status": "executed",
+      "asin": "B0DG5SZMVR",
+      "sku": "BLKHorsePowerCap30_1Oil_v",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0,
+      "target_stock": 1000
+    },
+    {
+      "action": "AUTO_STOCK_SELLER_LISTING",
+      "status": "executed",
+      "asin": "B0D3DB5P73",
+      "sku": "xhlthboostrLibidx30Cap_Ad",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0,
+      "target_stock": 1000
+    },
+    {
+      "action": "AUTO_STOCK_SELLER_LISTING",
+      "status": "executed",
+      "asin": "B0DLCKR3CB",
+      "sku": "RED_HorsePowerCpls30_P2_V",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0,
+      "target_stock": 1000
+    },
+    {
+      "action": "AUTO_STOCK_SELLER_LISTING",
+      "status": "executed",
+      "asin": "B0CXQ8TVMZ",
+      "sku": "DrRLXKeedaJadiGoldCaps30_",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0,
+      "target_stock": 1000
+    },
+    {
+      "action": "AUTO_STOCK_SELLER_LISTING",
+      "status": "executed",
+      "asin": "B0DCTRKV5Q",
+      "sku": "CelticSaltGold_1kg_PouchV",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0,
+      "target_stock": 1000
+    },
+    {
+      "action": "AUTO_STOCK_SELLER_LISTING",
+      "status": "executed",
+      "asin": "B0FG19CFSM",
+      "sku": "Vedalabs LiBiDEXX30-Capsu",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0,
+      "target_stock": 1000
+    },
+    {
+      "action": "AUTO_STOCK_SELLER_LISTING",
+      "status": "executed",
+      "asin": "B0FDLFVMH5",
+      "sku": "BluWit_MagnesiumGlycinate",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0,
+      "target_stock": 1000
+    }
+  ],
+  "return_code": 0,
+  "command": "C:\\Users\\Clu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe C:\\Users\\Clu\\Documents\\Be Extra Carefull Sonet Amazon Bussiness Grouth Automation AI\\Grow24_AI\\marketplaces\\amazon\\seller_api\\inventory\\stock_restock_v1.0.py --execute",
+  "output_file": "ClaudeCode/Report/15 April 2026/Json/stock_activity_log.json"
+}

@@ -1,0 +1,73 @@
+{
+  "campaign_name": "LiBiDEXX30_13Apr2026_AI_BidDown5%OfAdSpend25%ofProfit",
+  "campaign_id": "133254587730403",
+  "adgroup_id": "179099798779946",
+  "asin": "B0FK4PK4HK",
+  "budget": 462.0,
+  "bid": 23.09,
+  "keywords": [
+    {
+      "kw": "libidex capsule",
+      "mt": "PHRASE"
+    },
+    {
+      "kw": "libidex oil",
+      "mt": "PHRASE"
+    },
+    {
+      "kw": "libidex men",
+      "mt": "PHRASE"
+    },
+    {
+      "kw": "libedax capsule",
+      "mt": "PHRASE"
+    },
+    {
+      "kw": "libidecx capsule",
+      "mt": "PHRASE"
+    },
+    {
+      "kw": "libidex capsule men",
+      "mt": "EXACT"
+    },
+    {
+      "kw": "libidex capsule men original",
+      "mt": "EXACT"
+    },
+    {
+      "kw": "libidex gold capsule",
+      "mt": "EXACT"
+    },
+    {
+      "kw": "libedex original capsule",
+      "mt": "EXACT"
+    },
+    {
+      "kw": "libidex ultimate capsule",
+      "mt": "EXACT"
+    },
+    {
+      "kw": "libidex capsules rs 2490",
+      "mt": "EXACT"
+    },
+    {
+      "kw": "erectile dysfunction homeopathic medicine",
+      "mt": "EXACT"
+    },
+    {
+      "kw": "libidex gold capsule patanjali",
+      "mt": "EXACT"
+    },
+    {
+      "kw": "libdiex capsule men",
+      "mt": "EXACT"
+    },
+    {
+      "kw": "libidix capsule man",
+      "mt": "EXACT"
+    }
+  ],
+  "created_at": "2026-04-13T10:28:44.838245",
+  "formula": "25% of true profit = budget, 5% of budget = bid",
+  "true_profit": 1847.28
+}

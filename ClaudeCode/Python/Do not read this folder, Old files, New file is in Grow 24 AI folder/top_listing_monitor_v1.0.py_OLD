@@ -1,0 +1,324 @@
+#!/usr/bin/env python3
+"""
+AutoGrow AI — Top Selling Listing Monitor v1.0
+================================================
+Monitors top selling products every 30 minutes.
+If any top seller is NOT active (suppressed/inactive/no Buy Box) → IMMEDIATE alert!
+
+Top sellers = highest revenue ASINs from last 7 days ad data.
+Status check via SP-API Listings Items API (summaries → status).
+
+Statuses:
+  BUYABLE + DISCOVERABLE = OK
+  Missing BUYABLE = NOT ACTIVE → ALERT!
+  Missing DISCOVERABLE = NOT SEARCHABLE → WARNING!
+
+Schedule: Every 30 minutes
+Alert: Email + console
+
+Usage:
+    python top_listing_monitor_v1.0.py
+    python top_listing_monitor_v1.0.py --top 30  (check top 30, default 20)
+"""
+
+import json
+import os
+import sys
+import ssl
+import time
+import argparse
+from datetime import datetime, timedelta
+from urllib.request import Request, urlopen
+from urllib.parse import urlencode, quote
+from urllib.error import HTTPError
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = os.path.dirname(os.path.dirname(SCRIPT_DIR))
+SP_CREDS = json.load(open(os.path.join(PROJECT_DIR, "sp_api_credentials.json")))["sp_api_credentials"]
+EMAIL_CONFIG = os.path.join(PROJECT_DIR, "config_email.json")
+
+REPORT_BASE = os.path.join(SCRIPT_DIR, "..", "Report")
+report_folders = [f for f in os.listdir(REPORT_BASE) if os.path.isdir(os.path.join(REPORT_BASE, f))]
+report_folders.sort(key=lambda x: os.path.getmtime(os.path.join(REPORT_BASE, x)), reverse=True)
+LATEST_REPORT = report_folders[0] if report_folders else datetime.now().strftime("%d %B %Y")
+JSON_DIR = os.path.join(REPORT_BASE, LATEST_REPORT, "Json")
+
+MARKETPLACE_ID = "A21TJRUUN4KGV"
+SELLER_ID = "A2AC2AS9R9CBEA"
+SP_ENDPOINT = "https://sellingpartnerapi-eu.amazon.com"
+STATUS_FILE = os.path.join(JSON_DIR, "top_listing_status.json")
+
+SSL_CONTEXT = None
+try:
+    import certifi
+    SSL_CONTEXT = ssl.create_default_context(cafile=certifi.where())
+except ImportError:
+    SSL_CONTEXT = ssl.create_default_context()
+
+_token = None
+_expiry = None
+
+def get_token():
+    global _token, _expiry
+    if _token and _expiry and datetime.now() < _expiry:
+        return _token
+    data = urlencode({'grant_type': 'refresh_token', 'refresh_token': SP_CREDS['refresh_token'],
+        'client_id': SP_CREDS['lwa_client_id'], 'client_secret': SP_CREDS['lwa_client_secret']}).encode()
+    req = Request(SP_CREDS['token_url'], data=data, headers={'Content-Type': 'application/x-www-form-urlencoded'})
+    result = json.loads(urlopen(req, context=SSL_CONTEXT).read().decode())
+    _token = result['access_token']
+    _expiry = datetime.now() + timedelta(seconds=result['expires_in'] - 60)
+    return _token
+
+
+def check_listing_status(sku):
+    """Check if listing is BUYABLE + DISCOVERABLE"""
+    token = get_token()
+    encoded_sku = quote(sku)
+    url = f"{SP_ENDPOINT}/listings/2021-08-01/items/{SELLER_ID}/{encoded_sku}?marketplaceIds={MARKETPLACE_ID}&includedData=summaries,issues"
+    headers = {
+        'x-amz-access-token': token,
+        'x-amz-date': datetime.utcnow().strftime('%Y%m%dT%H%M%SZ'),
+        'Host': 'sellingpartnerapi-eu.amazon.com',
+    }
+    req = Request(url, headers=headers)
+
+    try:
+        resp = urlopen(req, context=SSL_CONTEXT)
+        result = json.loads(resp.read().decode())
+
+        summaries = result.get('summaries', [])
+        issues = result.get('issues', [])
+
+        status_list = []
+        asin = ''
+        item_name = ''
+        for s in summaries:
+            if s.get('marketplaceId') == MARKETPLACE_ID:
+                status_list = s.get('status', [])
+                asin = s.get('asin', '')
+                item_name = s.get('itemName', '')[:40]
+                break
+
+        is_buyable = 'BUYABLE' in status_list
+        is_discoverable = 'DISCOVERABLE' in status_list
+
+        # Check issues
+        critical_issues = [i for i in issues if i.get('severity') in ('ERROR', 'WARNING')]
+
+        if is_buyable and is_discoverable:
+            status = 'ACTIVE'
+        elif is_buyable and not is_discoverable:
+            status = 'NOT SEARCHABLE'
+        elif not is_buyable:
+            status = 'NOT ACTIVE'
+        else:
+            status = 'UNKNOWN'
+
+        return {
+            'asin': asin,
+            'sku': sku,
+            'name': item_name,
+            'status': status,
+            'buyable': is_buyable,
+            'discoverable': is_discoverable,
+            'statuses': status_list,
+            'issues_count': len(critical_issues),
+            'issues': [{'message': i.get('message',''), 'severity': i.get('severity','')} for i in critical_issues[:3]],
+        }
+
+    except HTTPError as e:
+        return {
+            'asin': '', 'sku': sku, 'name': '',
+            'status': 'API ERROR',
+            'buyable': False, 'discoverable': False,
+            'statuses': [], 'issues_count': 0, 'issues': [],
+            'error': e.read().decode()[:100],
+        }
+
+
+def send_alert_email(inactive_listings):
+    """Send immediate alert for inactive top sellers"""
+    try:
+        config = json.load(open(EMAIL_CONFIG, encoding='utf-8'))
+        if not config.get('enabled') or config.get('sender_app_password', '').startswith('PASTE'):
+            return
+
+        import smtplib
+        from email.mime.multipart import MIMEMultipart
+        from email.mime.text import MIMEText
+
+        items_html = ""
+        for item in inactive_listings:
+            color = "#DC2626" if item['status'] == 'NOT ACTIVE' else "#D97706"
+            issues = "<br>".join([f"- {i['message']}" for i in item.get('issues', [])[:3]])
+            items_html += f"""
+            <tr style="border-bottom:1px solid #eee">
+                <td style="padding:8px">{item['asin']}</td>
+                <td style="padding:8px">{item['sku'][:25]}</td>
+                <td style="padding:8px;color:{color};font-weight:bold">{item['status']}</td>
+                <td style="padding:8px;font-size:12px">{issues}</td>
+            </tr>"""
+
+        html = f"""
+        <html><body style="font-family:Calibri,Arial">
+        <div style="background:#DC2626;color:white;padding:15px;border-radius:8px">
+            <h2>AutoGrow AI — TOP SELLER ALERT!</h2>
+            <p>{len(inactive_listings)} top selling product(s) are NOT ACTIVE!</p>
+        </div>
+        <div style="padding:15px;border:1px solid #ddd;border-radius:0 0 8px 8px">
+            <table style="width:100%;border-collapse:collapse">
+                <tr style="background:#f8f8f8"><th>ASIN</th><th>SKU</th><th>Status</th><th>Issues</th></tr>
+                {items_html}
+            </table>
+            <p style="margin-top:15px;color:#666">Check Amazon Seller Central immediately. Revenue loss every minute!</p>
+            <p style="font-size:12px;color:#999">{datetime.now().strftime('%d %B %Y, %I:%M %p')}</p>
+        </div></body></html>"""
+
+        msg = MIMEMultipart()
+        msg['From'] = f"AutoGrow AI <{config['sender_email']}>"
+        msg['To'] = ", ".join(config['recipients']['critical_alerts'])
+        msg['Subject'] = f"URGENT: {len(inactive_listings)} Top Seller(s) NOT ACTIVE!"
+        msg.attach(MIMEText(html, 'html'))
+
+        server = smtplib.SMTP(config['smtp_server'], config['smtp_port'])
+        server.starttls()
+        server.login(config['sender_email'], config['sender_app_password'])
+        server.send_message(msg)
+        server.quit()
+        print(f"  ALERT EMAIL SENT to {len(config['recipients']['critical_alerts'])} recipients!")
+
+    except Exception as e:
+        print(f"  Email alert failed: {str(e)[:100]}")
+
+
+def get_top_sellers(top_n=20):
+    """Get top selling ASINs from ad data"""
+    prod_file = os.path.join(JSON_DIR, "sp_advertisedproduct_daily.json")
+    ads_file = os.path.join(JSON_DIR, "sp_product_ads_list.json")
+
+    if not os.path.exists(prod_file):
+        print("  No ad data found. Run data import first.")
+        return []
+
+    with open(prod_file, encoding='utf-8') as f:
+        prod = json.load(f)
+
+    # ASIN → SKU mapping
+    sku_map = {}
+    if os.path.exists(ads_file):
+        with open(ads_file, encoding='utf-8') as f:
+            for a in json.load(f):
+                if a.get('asin') and a.get('sku'):
+                    sku_map[a['asin']] = a['sku']
+
+    asins = {}
+    for r in prod:
+        a = r.get('advertisedAsin', '')
+        if a not in asins:
+            asins[a] = {'sku': r.get('advertisedSku', sku_map.get(a, '')), 'sales': 0, 'orders': 0}
+        asins[a]['sales'] += float(r.get('sales7d', 0))
+        asins[a]['orders'] += int(r.get('purchases7d', 0))
+
+    # ALL ASINs with at least 1 sale — monitor every one that generates revenue
+    sellers = [(a, d) for a, d in asins.items() if d['orders'] >= 1]
+    sellers.sort(key=lambda x: x[1]['sales'], reverse=True)
+    if top_n > 0:
+        sellers = sellers[:top_n]
+    return [{'asin': a, 'sku': d['sku'], 'sales': d['sales'], 'orders': d['orders']} for a, d in sellers]
+
+
+def main():
+    parser = argparse.ArgumentParser(description='Top Listing Monitor')
+    parser.add_argument('--top', type=int, default=20, help='Check top N sellers (default: 20)')
+    args = parser.parse_args()
+
+    print("=" * 55)
+    print("  AutoGrow AI — Top Listing Monitor v1.0")
+    print(f"  {datetime.now().strftime('%d %B %Y, %I:%M %p')}")
+    print(f"  Checking top {args.top} sellers")
+    print("=" * 55)
+
+    top = get_top_sellers(args.top)
+    if not top:
+        return 1
+
+    print(f"\n  Checking {len(top)} top sellers...")
+
+    results = []
+    active = 0
+    inactive = []
+    warnings = []
+
+    for i, item in enumerate(top):
+        sku = item['sku']
+        if not sku:
+            continue
+
+        status = check_listing_status(sku)
+        status['weekly_sales'] = item['sales']
+        status['weekly_orders'] = item['orders']
+        results.append(status)
+
+        if status['status'] == 'ACTIVE':
+            active += 1
+        elif status['status'] == 'NOT ACTIVE':
+            inactive.append(status)
+            print(f"  {status['asin']} | {sku[:25]:<25} | NOT ACTIVE! | Sales: Rs.{item['sales']:,.0f}")
+        elif status['status'] == 'NOT SEARCHABLE':
+            warnings.append(status)
+            print(f"  {status['asin']} | {sku[:25]:<25} | NOT SEARCHABLE | Sales: Rs.{item['sales']:,.0f}")
+        elif status['status'] == 'API ERROR':
+            print(f"  {'?':<14} | {sku[:25]:<25} | API ERROR | {status.get('error','')[:40]}")
+
+        if (i + 1) % 10 == 0:
+            print(f"    Checked {i+1}/{len(top)}...")
+        time.sleep(0.5)
+
+    # Summary
+    print(f"\n  {'='*55}")
+    print(f"  SUMMARY")
+    print(f"  {'='*55}")
+    print(f"  Total checked:   {len(results)}")
+    print(f"  Active:          {active}")
+    print(f"  NOT Active:      {len(inactive)} {'— ALERT!' if inactive else ''}")
+    print(f"  NOT Searchable:  {len(warnings)} {'— WARNING!' if warnings else ''}")
+
+    # Alert
+    if inactive:
+        print(f"\n  {'!'*55}")
+        print(f"  CRITICAL: {len(inactive)} top seller(s) NOT ACTIVE!")
+        for item in inactive:
+            rev = item.get('weekly_sales', 0)
+            print(f"    {item['asin']} ({item['sku'][:20]}) — Weekly sales: Rs.{rev:,.0f}")
+            for issue in item.get('issues', []):
+                print(f"      Issue: {issue['message'][:60]}")
+        print(f"  {'!'*55}")
+
+        # Send email alert
+        send_alert_email(inactive)
+
+    if warnings:
+        print(f"\n  WARNING: {len(warnings)} listing(s) not searchable")
+        for item in warnings:
+            print(f"    {item['asin']} ({item['sku'][:20]})")
+
+    # Save
+    os.makedirs(JSON_DIR, exist_ok=True)
+    with open(STATUS_FILE, 'w', encoding='utf-8') as f:
+        json.dump({
+            'timestamp': datetime.now().isoformat(),
+            'total': len(results),
+            'active': active,
+            'inactive': len(inactive),
+            'warnings': len(warnings),
+            'results': results,
+            'inactive_details': inactive,
+        }, f, indent=2, ensure_ascii=False)
+    print(f"\n  Saved: {STATUS_FILE}")
+
+    return 1 if inactive else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

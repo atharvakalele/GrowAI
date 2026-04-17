@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GoAmrita Dashboard</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="300">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:Calibri,Arial; background:#F5F6FA; color:#2C3E50; padding:20px; }
+        .header { background:linear-gradient(135deg,#1B3A5C,#2980B9); color:white; padding:25px; border-radius:12px; margin-bottom:20px; }
+        .header h1 { font-size:28px; margin-bottom:5px; }
+        .header p { opacity:0.85; }
+        .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:15px; margin-bottom:20px; }
+        .card { background:white; border-radius:10px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+        .card h3 { font-size:13px; color:#7F8C8D; text-transform:uppercase; margin-bottom:8px; }
+        .card .value { font-size:28px; font-weight:bold; color:#1B3A5C; }
+        .card .sub { font-size:12px; color:#95A5A6; margin-top:4px; }
+        .section { background:white; border-radius:10px; padding:20px; margin-bottom:15px; box-shadow:0 2px 8px rgba(0,0,0,0.08); }
+        .section h2 { font-size:16px; color:#1B3A5C; margin-bottom:12px; border-bottom:2px solid #E8F0FE; padding-bottom:8px; }
+        table { width:100%; border-collapse:collapse; font-size:14px; }
+        th { background:#F8F9FA; padding:10px 12px; text-align:left; font-size:12px; color:#7F8C8D; text-transform:uppercase; }
+        td { padding:10px 12px; border-bottom:1px solid #F0F0F0; }
+        tr:hover { background:#F8F9FA; }
+        .green { color:#27AE60; } .red { color:#E74C3C; } .orange { color:#E67E22; }
+        .badge { display:inline-block; padding:3px 10px; border-radius:12px; font-size:12px; font-weight:bold; }
+        .badge-green { background:#D5F5E3; color:#1E8449; }
+        .badge-red { background:#FADBD8; color:#C0392B; }
+        .badge-orange { background:#FDEBD0; color:#E67E22; }
+        .refresh { text-align:center; color:#BDC3C7; font-size:12px; margin-top:15px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>GoAmrita — Activity Dashboard</h1>
+        <p>13 April 2026, 06:07 PM | Auto-refresh every 5 minutes</p>
+    </div>
+
+    <div style="background:#E67E22;color:white;padding:12px;border-radius:8px;margin:10px 0;text-align:center">Buy Box Lost: 3 products</div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Today's Sales</h3>
+            <div class="value">Rs.43,716</div>
+            <div class="sub">75 orders</div>
+        </div>
+        <div class="card">
+            <h3>Buy Box</h3>
+            <div class="value green">277</div>
+            <div class="sub">Won | <span class="red">3 Lost</span> | 50 No BB</div>
+        </div>
+        <div class="card">
+            <h3>Stock Status</h3>
+            <div class="value red">38</div>
+            <div class="sub">Out of Stock | 7 Low | 285 OK</div>
+        </div>
+        <div class="card">
+            <h3>AI Actions Today</h3>
+            <div class="value">294</div>
+            <div class="sub">Executed | 120 Failed</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Scheduled Tasks</h2>
+        <table>
+            <tr><th>Task</th><th>Next Run</th><th>Status</th></tr>
+            <tr><td>GoAmrita_AutoExecute</td><td>4/14/2026 10:00:00 AM</td><td style="color:#27AE60;font-weight:bold">Ready</td></tr><tr><td>GoAmrita_BuyBoxMonitor</td><td>4/13/2026 6:43:00 PM</td><td style="color:#27AE60;font-weight:bold">Ready</td></tr><tr><td>GoAmrita_CampaignCreator</td><td>4/14/2026 9:00:00 AM</td><td style="color:#27AE60;font-weight:bold">Ready</td></tr><tr><td>GoAmrita_DailyPipeline</td><td>4/14/2026 8:30:00 AM</td><td style="color:#27AE60;font-weight:bold">Ready</td></tr><tr><td>GoAmrita_PricingRefresh</td><td>4/13/2026 8:00:00 PM</td><td style="color:#27AE60;font-weight:bold">Ready</td></tr><tr><td>GoAmrita_SalesCompare</td><td>4/13/2026 6:17:00 PM</td><td style="color:#27AE60;font-weight:bold">Ready</td></tr><tr><td>GoAmrita_StockMonitor</td><td>4/13/2026 7:07:00 PM</td><td style="color:#27AE60;font-weight:bold">Ready</td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Recent Executions</h2>
+        <table>
+            <tr><th>Time</th><th>OK</th><th>Failed</th><th>Undo Available</th><th>Note</th></tr>
+            <tr><td>2026-04-13T14:55:42</td><td>294</td><td>120</td><td>294</td><td></td></tr><tr><td>2026-04-13T14:52:00</td><td>323</td><td>91</td><td>323</td><td><span style="color:#E67E22">[DRY RUN]</span></td></tr><tr><td>2026-04-13T14:51:24</td><td>295</td><td>75</td><td>295</td><td><span style="color:#E67E22">[DRY RUN]</span></td></tr><tr><td>2026-04-13T14:38:19</td><td>295</td><td>75</td><td>0</td><td><span style="color:#E67E22">[DRY RUN]</span></td></tr><tr><td>2026-04-13T14:20:58</td><td>295</td><td>75</td><td>0</td><td><span style="color:#E67E22">[DRY RUN]</span></td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>AI-Created Campaigns</h2>
+        <table>
+            <tr><th>Campaign</th><th>ASIN</th><th>Budget</th><th>Keywords</th><th>Created</th></tr>
+            <tr><td>CelticSalt2kg_13Apr2026_AI_BidDown5</td><td>B0DFM7TY5T</td><td>Rs.439</td><td>20</td><td>2026-04-13</td></tr><tr><td>LiBiDEXX30_13Apr2026_AI_BidDown5%Of</td><td>B0FK4PK4HK</td><td>Rs.462.0</td><td>[{'kw': 'libidex capsule', 'mt': 'PHRASE'}, {'kw': 'libidex oil', 'mt': 'PHRASE'}, {'kw': 'libidex men', 'mt': 'PHRASE'}, {'kw': 'libedax capsule', 'mt': 'PHRASE'}, {'kw': 'libidecx capsule', 'mt': 'PHRASE'}, {'kw': 'libidex capsule men', 'mt': 'EXACT'}, {'kw': 'libidex capsule men original', 'mt': 'EXACT'}, {'kw': 'libidex gold capsule', 'mt': 'EXACT'}, {'kw': 'libedex original capsule', 'mt': 'EXACT'}, {'kw': 'libidex ultimate capsule', 'mt': 'EXACT'}, {'kw': 'libidex capsules rs 2490', 'mt': 'EXACT'}, {'kw': 'erectile dysfunction homeopathic medicine', 'mt': 'EXACT'}, {'kw': 'libidex gold capsule patanjali', 'mt': 'EXACT'}, {'kw': 'libdiex capsule men', 'mt': 'EXACT'}, {'kw': 'libidix capsule man', 'mt': 'EXACT'}]</td><td>2026-04-13</td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Reports</h2>
+        <table>
+            <tr><th>File</th><th>Size</th><th>Generated</th></tr>
+            <tr><td>GoAmrita_Action_Report_12 April 2026.xlsx</td><td>151 KB</td><td>3.3 hrs ago</td></tr><tr><td>GoAmrita_Listing_Health_Report_12 April 2026.xlsx</td><td>51 KB</td><td>3.9 hrs ago</td></tr><tr><td>GoAmrita_Restock_Approval.xlsx</td><td>13 KB</td><td>2.6 hrs ago</td></tr>
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Stock Activity</h2>
+        <p>Restocked: <b>46</b> | Don't Restock: <b>1</b> | Total Actions: <b>141</b></p>
+    </div>
+
+    <div class="refresh">
+        Dashboard generated at 06:07 PM | Auto-refreshes every 5 minutes | <a href="GoAmrita_Dashboard.html">Refresh Now</a>
+    </div>
+</body>
+</html>

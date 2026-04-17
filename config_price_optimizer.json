@@ -1,0 +1,59 @@
+{
+  "alerts": {
+    "on_anti_oscillation_triggered": true,
+    "on_listing_inactive": true,
+    "on_max_retry_reached": true,
+    "on_price_decreased": true,
+    "on_price_increased": false,
+    "on_recovery_failed": true,
+    "on_recovery_success": true
+  },
+  "description": "Auto Price Optimizer — increase price for top sellers, recover inactive listings",
+  "enabled": false,
+  "pricing_rules": {
+    "decrease_pct": 1,
+    "increase_pct": 1,
+    "note_override": "per_product_override: { 'ASIN': { 'increase_pct': 2.0, 'decrease_pct': 0.5 } }",
+    "per_product_override": {}
+  },
+  "qualify_rules": {
+    "auto_qualify_enabled": true,
+    "auto_qualify_top_sellers": true,
+    "exclude_asins": [],
+    "exclude_skus": [],
+    "manual_asins": [],
+    "manual_asins_enabled": false,
+    "manual_skus": [],
+    "manual_skus_enabled": false,
+    "min_orders_30d": 5,
+    "min_star_rating": 4,
+    "note": "If only ASIN given (no SKU), all SKUs of that ASIN are included. Each filter has its own ON/OFF toggle.",
+    "star_rating_enabled": false,
+    "top_n_by_revenue": 50
+  },
+  "safety": {
+    "anti_oscillation_max_flips": 3,
+    "anti_oscillation_window_hours": 24,
+    "cooldown_between_retries_min": 30,
+    "max_increase_per_cycle_pct": 3,
+    "max_price": {},
+    "max_retries_batch1": 3,
+    "max_retries_batch2": 3,
+    "max_total_increase_from_original_pct": 15,
+    "min_price": {},
+    "min_profit_margin_pct": 10,
+    "note_min_max": "min_price/max_price: { 'ASIN': 199 } — per product floor/ceiling"
+  },
+  "schedule": {
+    "active_hours_end": "23:00",
+    "active_hours_start": "06:00",
+    "enabled": true,
+    "interval_minutes": 1100
+  },
+  "tracking": {
+    "sales_compare_after_days": 7,
+    "sales_compare_before_days": 7,
+    "track_profit_per_price_point": true
+  },
+  "version": "1.0"
+}

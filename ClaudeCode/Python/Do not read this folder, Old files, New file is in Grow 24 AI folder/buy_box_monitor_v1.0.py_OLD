@@ -1,0 +1,317 @@
+#!/usr/bin/env python3
+"""
+GoAmrita - Buy Box Monitor v1.0 (P07)
+======================================
+Checks Buy Box status for ALL ASINs.
+Identifies lost Buy Box + likely reason.
+
+API: Pricing v2022-05-01 (getCompetitiveSummary)
+Rate: 0.033 req/sec — uses saved pricing data if fresh, else re-fetches
+
+Output: ASIN, SKU, Buy Box Status, Our Price, Winner Price, Reason
+
+Usage: python buy_box_monitor_v1.0.py
+       python buy_box_monitor_v1.0.py --refresh   (force fresh API pull)
+"""
+
+import json
+import os
+import sys
+import ssl
+import time
+from datetime import datetime, timedelta
+from urllib.request import Request, urlopen
+from urllib.parse import urlencode
+from urllib.error import HTTPError
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = os.path.dirname(os.path.dirname(SCRIPT_DIR))
+SP_CREDS_FILE = os.path.join(PROJECT_DIR, "sp_api_credentials.json")
+
+REPORT_BASE = os.path.join(SCRIPT_DIR, "..", "Report")
+report_folders = [f for f in os.listdir(REPORT_BASE) if os.path.isdir(os.path.join(REPORT_BASE, f))]
+report_folders.sort(key=lambda x: os.path.getmtime(os.path.join(REPORT_BASE, x)), reverse=True)
+LATEST_REPORT = report_folders[0] if report_folders else datetime.now().strftime("%d %B %Y")
+JSON_DIR = os.path.join(REPORT_BASE, LATEST_REPORT, "Json")
+
+MARKETPLACE_ID = "A21TJRUUN4KGV"
+OUR_SELLER_ID = "A2AC2AS9R9CBEA"
+SP_ENDPOINT = "https://sellingpartnerapi-eu.amazon.com"
+TOKEN_URL = "https://api.amazon.com/auth/o2/token"
+
+SSL_CONTEXT = None
+try:
+    import certifi
+    SSL_CONTEXT = ssl.create_default_context(cafile=certifi.where())
+except ImportError:
+    SSL_CONTEXT = ssl.create_default_context()
+
+BATCH_SIZE = 20
+DELAY = 32
+
+SP = json.load(open(SP_CREDS_FILE))["sp_api_credentials"]
+
+_cached_token = None
+_token_expiry = None
+
+def get_token():
+    global _cached_token, _token_expiry
+    if _cached_token and _token_expiry and datetime.now() < _token_expiry:
+        return _cached_token
+    data = urlencode({"grant_type": "refresh_token", "refresh_token": SP["refresh_token"],
+                      "client_id": SP["lwa_client_id"], "client_secret": SP["lwa_client_secret"]}).encode()
+    req = Request(TOKEN_URL, data=data, headers={"Content-Type": "application/x-www-form-urlencoded"})
+    result = json.loads(urlopen(req, context=SSL_CONTEXT).read().decode())
+    _cached_token = result["access_token"]
+    _token_expiry = datetime.now() + timedelta(seconds=result["expires_in"] - 60)
+    return _cached_token
+
+
+def fetch_competitive_batch(asin_list):
+    token = get_token()
+    body = {"requests": []}
+    for asin in asin_list:
+        body["requests"].append({
+            "asin": asin,
+            "marketplaceId": MARKETPLACE_ID,
+            "includedData": ["featuredBuyingOptions", "lowestPricedOffers", "referencePrices"],
+            "method": "GET",
+            "uri": "/products/pricing/2022-05-01/items/competitiveSummary"
+        })
+
+    url = f"{SP_ENDPOINT}/batches/products/pricing/2022-05-01/items/competitiveSummary"
+    headers = {
+        "x-amz-access-token": token,
+        "x-amz-date": datetime.utcnow().strftime('%Y%m%dT%H%M%SZ'),
+        "Content-Type": "application/json",
+        "Host": "sellingpartnerapi-eu.amazon.com"
+    }
+    req = Request(url, data=json.dumps(body).encode(), headers=headers, method="POST")
+
+    try:
+        resp = urlopen(req, context=SSL_CONTEXT)
+        return json.loads(resp.read().decode())
+    except HTTPError as e:
+        print(f"    API Error {e.code}: {e.read().decode()[:200]}")
+        return None
+
+
+def analyze_buybox(response_body):
+    """Analyze single ASIN's Buy Box status + reason"""
+    asin = response_body.get("asin", "")
+    result = {
+        "asin": asin,
+        "buy_box_status": "UNKNOWN",
+        "our_price": 0,
+        "bb_price": 0,
+        "bb_seller": "",
+        "bb_fulfillment": "",
+        "is_ours": False,
+        "lowest_price": 0,
+        "lowest_seller": "",
+        "lowest_fulfillment": "",
+        "num_competitors": 0,
+        "reason": "",
+        "was_price": 0,
+    }
+
+    # Featured Buying Options = Buy Box
+    fbo = response_body.get("featuredBuyingOptions", [])
+    for opt in fbo:
+        offers = opt.get("segmentedFeaturedOffers", [])
+        for offer in offers:
+            lp = offer.get("listingPrice", {})
+            price = float(lp.get("amount", 0))
+            seller = offer.get("sellerId", "")
+            fulfillment = offer.get("fulfillmentType", "")
+            prime = offer.get("primeDetails", {}).get("eligibility", "NONE")
+
+            result["bb_price"] = price
+            result["bb_seller"] = seller
+            result["bb_fulfillment"] = fulfillment
+            result["is_ours"] = (seller == OUR_SELLER_ID)
+
+            if result["is_ours"]:
+                result["our_price"] = price
+                result["buy_box_status"] = "WON"
+            else:
+                result["buy_box_status"] = "LOST"
+            break
+
+    # Lowest priced offers
+    lpo = response_body.get("lowestPricedOffers", [])
+    competitors = []
+    for offer_group in lpo:
+        for offer in offer_group.get("offers", []):
+            op = float(offer.get("listingPrice", {}).get("amount", 0))
+            os_id = offer.get("sellerId", "")
+            of = offer.get("fulfillmentType", "")
+
+            if os_id == OUR_SELLER_ID:
+                result["our_price"] = op
+            competitors.append({"price": op, "seller": os_id, "fulfillment": of})
+
+    result["num_competitors"] = len([c for c in competitors if c["seller"] != OUR_SELLER_ID])
+
+    if competitors:
+        cheapest = min(competitors, key=lambda x: x["price"])
+        result["lowest_price"] = cheapest["price"]
+        result["lowest_seller"] = cheapest["seller"]
+        result["lowest_fulfillment"] = cheapest["fulfillment"]
+
+    # Reference prices
+    for rp in response_body.get("referencePrices", []):
+        if rp["name"] == "WasPrice":
+            result["was_price"] = float(rp["price"]["amount"])
+
+    # If no Buy Box data at all
+    if not fbo:
+        result["buy_box_status"] = "NO_BUYBOX"
+        result["reason"] = "No Buy Box available (listing may be suppressed or inactive)"
+        return result
+
+    # Determine reason for loss
+    if result["buy_box_status"] == "LOST":
+        if result["our_price"] > 0 and result["bb_price"] > 0:
+            price_diff = result["our_price"] - result["bb_price"]
+            price_diff_pct = (price_diff / result["bb_price"] * 100) if result["bb_price"] > 0 else 0
+
+            if price_diff > 0:
+                result["reason"] = f"Price too high by Rs.{price_diff:.0f} ({price_diff_pct:.1f}%). Winner: Rs.{result['bb_price']:.0f} ({result['bb_fulfillment']})"
+            elif result["bb_fulfillment"] == "AFN" and result["lowest_fulfillment"] != "AFN":
+                result["reason"] = f"Competitor has FBA (Prime). Our: MFN. Same/similar price."
+            else:
+                result["reason"] = f"Competitor wins at Rs.{result['bb_price']:.0f} ({result['bb_fulfillment']}). May have better seller metrics."
+        elif result["our_price"] == 0:
+            result["reason"] = "Our offer not found in Buy Box competition. Listing may need review."
+        else:
+            result["reason"] = f"Lost to seller {result['bb_seller'][:10]} at Rs.{result['bb_price']:.0f}"
+
+    elif result["buy_box_status"] == "WON":
+        if result["num_competitors"] == 0:
+            result["reason"] = "Only seller (no competition)"
+        else:
+            result["reason"] = f"Winning against {result['num_competitors']} competitor(s)"
+
+    return result
+
+
+def main():
+    force_refresh = "--refresh" in sys.argv
+
+    print("=" * 70)
+    print("  GoAmrita - Buy Box Monitor v1.0 (P07)")
+    print(f"  {datetime.now().strftime('%d %B %Y, %I:%M %p')}")
+    print("=" * 70)
+
+    # Load ASIN + SKU mapping
+    ads_file = os.path.join(JSON_DIR, "sp_product_ads_list.json")
+    with open(ads_file, "r", encoding="utf-8") as f:
+        ads = json.load(f)
+
+    asin_sku = {}
+    for a in ads:
+        asin = a.get("asin", "")
+        if asin and asin not in asin_sku:
+            asin_sku[asin] = a.get("sku", "")
+
+    all_asins = list(asin_sku.keys())
+    print(f"\n  {len(all_asins)} ASINs to check")
+
+    # Check if recent pricing data exists (< 2 hours = fresh)
+    pricing_file = os.path.join(JSON_DIR, "sp_pricing_data.json")
+    use_cached = False
+
+    if os.path.exists(pricing_file) and not force_refresh:
+        file_age = time.time() - os.path.getmtime(pricing_file)
+        if file_age < 7200:  # 2 hours
+            use_cached = True
+            print(f"  Using cached pricing data ({file_age/60:.0f} min old)")
+
+    if use_cached:
+        # Re-analyze from cached data with full competitive details
+        # But cached data may not have full lowestPricedOffers, so fetch fresh for accuracy
+        print("  Note: Cached data has basic Buy Box info. For full competitor analysis, use --refresh")
+
+    # Fetch fresh data
+    batches = [all_asins[i:i+BATCH_SIZE] for i in range(0, len(all_asins), BATCH_SIZE)]
+    est = len(batches) * DELAY
+    print(f"  {len(batches)} batches, ~{est//60}m {est%60}s estimated")
+
+    all_results = []
+    for i, batch in enumerate(batches):
+        print(f"  Batch {i+1}/{len(batches)}...", end=" ", flush=True)
+        resp = fetch_competitive_batch(batch)
+        if resp:
+            for r in resp.get("responses", []):
+                analysis = analyze_buybox(r.get("body", {}))
+                analysis["sku"] = asin_sku.get(analysis["asin"], "")[:30]
+                all_results.append(analysis)
+            print(f"{len(resp.get('responses', []))} items")
+        else:
+            print("FAILED")
+
+        if i < len(batches) - 1:
+            time.sleep(DELAY)
+
+    # Categorize
+    won = [r for r in all_results if r["buy_box_status"] == "WON"]
+    lost = [r for r in all_results if r["buy_box_status"] == "LOST"]
+    no_bb = [r for r in all_results if r["buy_box_status"] == "NO_BUYBOX"]
+    unknown = [r for r in all_results if r["buy_box_status"] == "UNKNOWN"]
+
+    # Display LOST first (critical!)
+    print(f"\n{'='*100}")
+    print(f"  BUY BOX REPORT")
+    print(f"{'='*100}")
+
+    if lost:
+        print(f"\n  {'='*96}")
+        print(f"  LOST BUY BOX ({len(lost)} products) — ACTION NEEDED!")
+        print(f"  {'='*96}")
+        print(f"  {'ASIN':<14} {'SKU':<28} {'Our':>7} {'BB':>7} {'Diff':>7} {'Reason'}")
+        print(f"  {'-'*96}")
+        for r in sorted(lost, key=lambda x: x["bb_price"] - x["our_price"] if x["our_price"] > 0 else 0):
+            diff = f"Rs.{r['our_price'] - r['bb_price']:.0f}" if r['our_price'] > 0 and r['bb_price'] > 0 else "-"
+            print(f"  {r['asin']:<14} {r['sku']:<28} Rs.{r['our_price']:>5.0f} Rs.{r['bb_price']:>5.0f} {diff:>7} {r['reason'][:50]}")
+
+    if no_bb:
+        print(f"\n  {'='*96}")
+        print(f"  NO BUY BOX ({len(no_bb)} products) — Listing issues?")
+        print(f"  {'='*96}")
+        for r in no_bb[:10]:
+            print(f"  {r['asin']:<14} {r['sku']:<28} {r['reason'][:60]}")
+
+    print(f"\n  {'='*96}")
+    print(f"  WON BUY BOX ({len(won)} products)")
+    print(f"  {'='*96}")
+    sole_seller = sum(1 for r in won if "Only seller" in r["reason"])
+    with_comp = len(won) - sole_seller
+    print(f"  Sole seller (no competition): {sole_seller}")
+    print(f"  Winning against competitors: {with_comp}")
+
+    # Summary
+    print(f"\n  {'='*96}")
+    print(f"  SUMMARY")
+    print(f"  {'='*96}")
+    print(f"  Total ASINs checked: {len(all_results)}")
+    print(f"  Won Buy Box:    {len(won)} ({len(won)/len(all_results)*100:.0f}%)")
+    print(f"  Lost Buy Box:   {len(lost)} ({len(lost)/len(all_results)*100:.0f}%) — NEEDS ACTION!")
+    print(f"  No Buy Box:     {len(no_bb)} ({len(no_bb)/len(all_results)*100:.0f}%)")
+    print(f"  Unknown:        {len(unknown)}")
+
+    # Save
+    output = os.path.join(JSON_DIR, "buy_box_status.json")
+    with open(output, "w", encoding="utf-8") as f:
+        json.dump(all_results, f, indent=2, ensure_ascii=False)
+    print(f"\n  Saved: {output}")
+
+    # Alert if any lost
+    if lost:
+        print(f"\n  ALERT: {len(lost)} products LOST Buy Box!")
+        print(f"  Review above and take action: price adjustment or listing improvement needed.")
+
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(main())

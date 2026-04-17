@@ -1,0 +1,251 @@
+{
+  "version": "1.0",
+  "rules": [
+    {
+      "id": "rule_001",
+      "name": "Pause High Loss Campaigns",
+      "enabled": true,
+      "applies_to": "campaign",
+      "conditions": [
+        {
+          "field": "campaign.cost",
+          "operator": ">",
+          "value": 1000
+        },
+        {
+          "field": "campaign.purchases7d",
+          "operator": "=",
+          "value": 0
+        }
+      ],
+      "condition_logic": "AND",
+      "actions": [
+        {
+          "type": "pause_campaign",
+          "reason": "Zero sales with Rs.1000+ spend"
+        }
+      ],
+      "schedule": "daily",
+      "priority": 1,
+      "created": "2026-04-13",
+      "last_triggered": "2026-04-13T19:35:07.713500",
+      "trigger_count": 1
+    },
+    {
+      "id": "rule_002",
+      "name": "Scale Star Campaigns",
+      "enabled": true,
+      "applies_to": "campaign",
+      "conditions": [
+        {
+          "field": "campaign.clickThroughRate",
+          "operator": ">",
+          "value": 1.5
+        },
+        {
+          "field": "campaign.purchases7d",
+          "operator": ">",
+          "value": 5
+        },
+        {
+          "field": "product_profit.true_profit",
+          "operator": ">",
+          "value": 200
+        }
+      ],
+      "condition_logic": "AND",
+      "actions": [
+        {
+          "type": "increase_budget",
+          "value": 20,
+          "reason": "Star campaign with good CTR + orders + profit"
+        }
+      ],
+      "schedule": "daily",
+      "priority": 2,
+      "created": "2026-04-13",
+      "last_triggered": null,
+      "trigger_count": 0
+    },
+    {
+      "id": "rule_003",
+      "name": "Alert Buy Box Lost",
+      "enabled": true,
+      "applies_to": "product",
+      "conditions": [
+        {
+          "field": "buy_box.is_ours",
+          "operator": "=",
+          "value": false
+        },
+        {
+          "field": "buy_box.buy_box_status",
+          "operator": "=",
+          "value": "LOST"
+        }
+      ],
+      "condition_logic": "AND",
+      "actions": [
+        {
+          "type": "send_alert",
+          "message": "Buy Box lost on {asin}!"
+        },
+        {
+          "type": "reduce_budget",
+          "value": 50,
+          "reason": "No Buy Box = ads less effective"
+        }
+      ],
+      "schedule": "every_2hr",
+      "priority": 1,
+      "created": "2026-04-13",
+      "last_triggered": null,
+      "trigger_count": 0
+    }
+  ],
+  "available_fields": {
+    "campaign": [
+      "cost",
+      "clicks",
+      "impressions",
+      "purchases7d",
+      "sales7d",
+      "clickThroughRate",
+      "costPerClick",
+      "campaignStatus",
+      "campaignBudgetAmount"
+    ],
+    "keyword": [
+      "cost",
+      "clicks",
+      "impressions",
+      "purchases7d",
+      "sales7d",
+      "matchType",
+      "keyword",
+      "keywordId",
+      "clickThroughRate"
+    ],
+    "search_term": [
+      "cost",
+      "clicks",
+      "impressions",
+      "purchases7d",
+      "sales7d",
+      "searchTerm",
+      "keywordType"
+    ],
+    "product_ad": [
+      "cost",
+      "clicks",
+      "impressions",
+      "purchases7d",
+      "sales7d",
+      "advertisedAsin",
+      "advertisedSku"
+    ],
+    "product_profit": [
+      "true_profit",
+      "sale_price",
+      "product_cost",
+      "amazon_fee",
+      "shipping",
+      "profitable_for_ads"
+    ],
+    "pricing": [
+      "your_price",
+      "buy_box_winner",
+      "fulfillment",
+      "was_price"
+    ],
+    "buy_box": [
+      "buy_box_status",
+      "is_ours",
+      "our_price",
+      "bb_price",
+      "num_competitors"
+    ],
+    "stock": [
+      "total_stock",
+      "fba_stock",
+      "mnf_stock"
+    ],
+    "ad_group": [
+      "defaultBid",
+      "state"
+    ],
+    "keyword_list": [
+      "bid",
+      "matchType",
+      "state",
+      "keywordText"
+    ],
+    "sales": [
+      "orders",
+      "revenue"
+    ]
+  },
+  "available_entities": [
+    {"type": "campaign", "label": "Campaign"},
+    {"type": "keyword", "label": "Keyword"},
+    {"type": "product", "label": "Product (with pricing, stock, buy box, profit merged)"},
+    {"type": "search_term", "label": "Search Term"},
+    {"type": "stock", "label": "Stock Items"},
+    {"type": "buy_box", "label": "Buy Box Status"},
+    {"type": "asin_all", "label": "All ASINs"},
+    {"type": "account", "label": "Account Level (overall metrics)"}
+  ],
+  "available_operators": [
+    ">",
+    "<",
+    "=",
+    ">=",
+    "<=",
+    "!=",
+    "contains",
+    "not_contains"
+  ],
+  "available_actions": [
+    {
+      "type": "pause_campaign",
+      "label": "Pause Campaign"
+    },
+    {
+      "type": "pause_keyword",
+      "label": "Pause Keyword"
+    },
+    {
+      "type": "reduce_bid",
+      "label": "Reduce Bid %",
+      "needs_value": true
+    },
+    {
+      "type": "increase_bid",
+      "label": "Increase Bid %",
+      "needs_value": true
+    },
+    {
+      "type": "reduce_budget",
+      "label": "Reduce Budget %",
+      "needs_value": true
+    },
+    {
+      "type": "increase_budget",
+      "label": "Increase Budget %",
+      "needs_value": true
+    },
+    {
+      "type": "add_negative",
+      "label": "Add as Negative Keyword"
+    },
+    {
+      "type": "send_alert",
+      "label": "Send Email Alert",
+      "needs_message": true
+    },
+    {
+      "type": "monitor",
+      "label": "Monitor Only (No Action)"
+    }
+  ]
+}

@@ -1,0 +1,1323 @@
+{
+  "timestamp": "2026-04-13T18:59:12.148349",
+  "total": 51,
+  "active": 50,
+  "inactive": 1,
+  "warnings": 0,
+  "results": [
+    {
+      "asin": "B0FBWXQ9JL",
+      "sku": "LS_SkyBlu_CelticSeaSalt_250gm",
+      "name": "Celtic Sea Salt Organic 82 Minerals Coar",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 17189.0,
+      "weekly_orders": 87,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0DX7J5ZXT",
+      "sku": "JoshBoosterLibidex30_p2",
+      "name": "Ayurvedic Josh Booster Libidex40 UP Caps",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 6347.620000000001,
+      "weekly_orders": 6,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0GQGN44GP",
+      "sku": "Vidyapith_SugarChurna_100gm__V9",
+      "name": "Vidyapith Ayurved Sugar Churna Powder 10",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 5999.93,
+      "weekly_orders": 16,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing."
+      ]
+    },
+    {
+      "asin": "B0CXP6ZJZF",
+      "sku": "DrRLXManasamitraVatakamCaps30_v1",
+      "name": "Extra Powerful Manasamitra Vatakam Capsu",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "Your submission is missing few key attributes: item_form. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 5961.900000000001,
+      "weekly_orders": 11,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Your submission is missing few key attributes: item_form. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing."
+      ]
+    },
+    {
+      "asin": "B0GQGF94TF",
+      "sku": "Vidyapith_SugarChurna_100gm_P5_V17",
+      "name": "Vidyapith Ayurved Sugar Diabetes Churna ",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "BUYABLE",
+        "DISCOVERABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 5645.75,
+      "weekly_orders": 11,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing."
+      ]
+    },
+    {
+      "asin": "B0GT4T9JKB",
+      "sku": "Blue_CelticSalt_250GM_V1",
+      "name": "Celtic Sea Salt Pure Natural Salt – Coar",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "BUYABLE",
+        "DISCOVERABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 4962.139999999999,
+      "weekly_orders": 6,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0DGQS8X8C",
+      "sku": "USLabsLibidex40Plus_30Cap",
+      "name": "Only For Man Whom age is 40 + year old, ",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "Your submission is missing few key attributes: primary_supplement_type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 4069.5,
+      "weekly_orders": 3,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Your submission is missing few key attributes: primary_supplement_type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing."
+      ]
+    },
+    {
+      "asin": "B0GT1MTW5R",
+      "sku": "Blue_CelticSalt_920GM_V3",
+      "name": "Celtic Sea Salt Authentic & High Mineral",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 3695.0499999999997,
+      "weekly_orders": 4,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0GNG7TF5Z",
+      "sku": "White_XenoprostCap30_1AnotherCap",
+      "name": "Get Xenoprost Active Capsule with Anothe",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 3644.76,
+      "weekly_orders": 5,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0GQJ7P2H9",
+      "sku": "WhitGold_BigJack + SkyBlu_LibidexCrtn30",
+      "name": "Double Strength Big Jack Gold Capsules w",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 2,
+      "issues": [
+        {
+          "message": "Copyright Infringement",
+          "severity": "ERROR"
+        },
+        {
+          "message": "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 3499.06,
+      "weekly_orders": 3,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Copyright Infringement",
+        "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing."
+      ]
+    },
+    {
+      "asin": "B0DBVQKNV8",
+      "sku": "DrRelaxVisiorax_30cps_v3_FBA",
+      "name": "Visiorax Ayurvedic Capsules: Harnessing ",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "Your submission is missing few key attributes: product_benefit, specific_uses_for_product. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 3442.9000000000005,
+      "weekly_orders": 12,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Your submission is missing few key attributes: product_benefit, specific_uses_for_product. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing."
+      ]
+    },
+    {
+      "asin": "B0DG5T519Z",
+      "sku": "RED_HorsePowerCap30_v1",
+      "name": "US Labs Instant Effective Horse Power Ca",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "Your image PT01 violates Amazon's image standards. Review image requirements mentioned in the 'Product image requirements' help page and upload a new image.",
+          "severity": "ERROR"
+        }
+      ],
+      "weekly_sales": 3140.92,
+      "weekly_orders": 6,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Your image PT01 violates Amazon's image standards. Review image requirements mentioned in the 'Product image requirements' help page and upload a new image."
+      ]
+    },
+    {
+      "asin": "B0GQGLM31G",
+      "sku": "Vidyapith_SugarChurna_100gm_P2__V11",
+      "name": "Vidyapith Ayurved Sugar Control Churna P",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 2,
+      "issues": [
+        {
+          "message": "The Listing data provided is different from what's already in the Amazon catalogue. The item_id provided matches ASIN B0GQGLM31G but some of the listing data contradicts what is already in the Amazon catalogue. The following listing attribute value(s) conflict with Amazon catalogue value(s): 'item_package_quantity' (Merchant [\"30\"] / Amazon []). To fix the issue, please follow these steps 1) If the product you are listing is the same as B0GQGLM31G, then update your listing's 'item_package_quantity' attribute(s) to match Amazon's catalog value, 2) If it's not the right ASIN, make sure the item_id provided is correct, or 3) If you disagree with the data in Amazon catalog contact Selling Partner Support to start the appeal process.",
+          "severity": "ERROR"
+        },
+        {
+          "message": "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 2714.28,
+      "weekly_orders": 5,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "The Listing data provided is different from what's already in the Amazon catalogue. The item_id provided matches ASIN B0GQGLM31G but some of the listing data contradicts what is already in the Amazon catalogue. The following listing attribute value(s) conflict with Amazon catalogue value(s): 'item_package_quantity' (Merchant [\"30\"] / Amazon []). To fix the issue, please follow these steps 1) If the product you are listing is the same as B0GQGLM31G, then update your listing's 'item_package_quantity' attribute(s) to match Amazon's catalog value, 2) If it's not the right ASIN, make sure the item_id provided is correct, or 3) If you disagree with the data in Amazon catalog contact Selling Partner Support to start the appeal process.",
+        "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing."
+      ]
+    },
+    {
+      "asin": "B0DTPR8QPM",
+      "sku": "DrRlxLibidexGold30cap_Oil",
+      "name": "24K Gold Libidex40 UP Multivitamin Capsu",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "BUYABLE",
+        "DISCOVERABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "The Listing data provided is different from what's already in the Amazon catalogue. The item_id provided matches ASIN B0DTPR8QPM but some of the listing data contradicts what is already in the Amazon catalogue. The following listing attribute value(s) conflict with Amazon catalogue value(s): 'manufacturer' (Merchant [en_IN: \"PR Herbal – Nature’s Promise in Every Dose.\"] / Amazon [en_IN: \"LibidSafe Elevating Wellness With Innovative Products for a Better You\"]). To fix the issue, please follow these steps 1) If the product you are listing is the same as B0DTPR8QPM, then update your listing's 'manufacturer' attribute(s) to match Amazon's catalog value, 2) If it's not the right ASIN, make sure the item_id provided is correct, or 3) If you disagree with the data in Amazon catalog contact Selling Partner Support to start the appeal process.",
+          "severity": "ERROR"
+        }
+      ],
+      "weekly_sales": 2419.9900000000002,
+      "weekly_orders": 4,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "The Listing data provided is different from what's already in the Amazon catalogue. The item_id provided matches ASIN B0DTPR8QPM but some of the listing data contradicts what is already in the Amazon catalogue. The following listing attribute value(s) conflict with Amazon catalogue value(s): 'manufacturer' (Merchant [en_IN: \"PR Herbal – Nature’s Promise in Every Dose.\"] / Amazon [en_IN: \"LibidSafe Elevating Wellness With Innovative Products for a Better You\"]). To fix the issue, please follow these steps 1) If the product you are listing is the same as B0DTPR8QPM, then update your listing's 'manufacturer' attribute(s) to match Amazon's catalog value, 2) If it's not the right ASIN, make sure the item_id provided is correct, or 3) If you disagree with the data in Amazon catalog contact Selling Partner Support to start the appeal process."
+      ]
+    },
+    {
+      "asin": "B0FMRNM72Q",
+      "sku": "HorseGold_Cap30_MN",
+      "name": "Best Fire Tablet : Horse Gold, Extra Eff",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 1942.86,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0FRYJ26TJ",
+      "sku": "HorseGold_OneAnother",
+      "name": "Best Fire Tablet : Horse Gold, Extra Eff",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 1942.86,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0GQGG3Q1X",
+      "sku": "Vidyapith_SugarChurna_100gm_P3__V13",
+      "name": "Vidyapith Ayurved Sugar Care Herbal Powd",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 1851.4299999999998,
+      "weekly_orders": 4,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing."
+      ]
+    },
+    {
+      "asin": "B0FT3WRZYW",
+      "sku": "Black_VastuSeaSalt_920gm",
+      "name": "Vastu Sea Salt - Natural Khada Namak for",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "BUYABLE",
+        "DISCOVERABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 1734.33,
+      "weekly_orders": 4,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0G4K1ZYZ3",
+      "sku": "White_XenoprostActive_Cap30_P2",
+      "name": "Xenoprost Active Capsule for Men – Ayurv",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 2,
+      "issues": [
+        {
+          "message": "Having the most relevant product type for a product enhances both the seller and customer experience. Therefore, your product type has been updated from HEALTH_PERSONAL_CARE to HERBAL_SUPPLEMENT. If you believe the original product type you selected is correct, you may change the SKU attributes such as title, product description and bullet points to better match HEALTH_PERSONAL_CARE.",
+          "severity": "WARNING"
+        },
+        {
+          "message": "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 1722.8600000000001,
+      "weekly_orders": 2,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Having the most relevant product type for a product enhances both the seller and customer experience. Therefore, your product type has been updated from HEALTH_PERSONAL_CARE to HERBAL_SUPPLEMENT. If you believe the original product type you selected is correct, you may change the SKU attributes such as title, product description and bullet points to better match HEALTH_PERSONAL_CARE.",
+        "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing."
+      ]
+    },
+    {
+      "asin": "B0GQGHZH1B",
+      "sku": "Vidyapith_SugarChurna_100gm_P3__V14",
+      "name": "Vidyapith Ayurved Natural Sugar Churna P",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 1691.44,
+      "weekly_orders": 4,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0FVS9YQ7W",
+      "sku": "NamakJaitunSilver_Salt100gm",
+      "name": "Pure & Fresh Namak Jaitun Silver Salt - ",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "BUYABLE",
+        "DISCOVERABLE"
+      ],
+      "issues_count": 2,
+      "issues": [
+        {
+          "message": "Your image PT05 violates Amazon's image standards. Review image requirements mentioned in the 'Product image requirements' help page and upload a new image.",
+          "severity": "ERROR"
+        },
+        {
+          "message": "Your image PT06 violates Amazon's image standards. Review image requirements mentioned in the 'Product image requirements' help page and upload a new image.",
+          "severity": "ERROR"
+        }
+      ],
+      "weekly_sales": 1612.0,
+      "weekly_orders": 5,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Your image PT05 violates Amazon's image standards. Review image requirements mentioned in the 'Product image requirements' help page and upload a new image.",
+        "Your image PT06 violates Amazon's image standards. Review image requirements mentioned in the 'Product image requirements' help page and upload a new image."
+      ]
+    },
+    {
+      "asin": "B0GNG4GQVH",
+      "sku": "Black_HorsePowerCap30_1AnotherCap",
+      "name": "Get Black Horse Power Capsule & One Anot",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "The media at https://d1gevr1kq4ckjt.cloudfront.net/A2AC2AS9R9CBEA_fc82042771e0e7a15c40ebe029800efd_ProductImage_PT01 is blocked by the hosting website due to policy/copyright restrictions or their terms of service may have changed regarding third-party links. Please upload your media to a different hosting website and try again with different URL.",
+          "severity": "ERROR"
+        }
+      ],
+      "weekly_sales": 1454.28,
+      "weekly_orders": 3,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "The media at https://d1gevr1kq4ckjt.cloudfront.net/A2AC2AS9R9CBEA_fc82042771e0e7a15c40ebe029800efd_ProductImage_PT01 is blocked by the hosting website due to policy/copyright restrictions or their terms of service may have changed regarding third-party links. Please upload your media to a different hosting website and try again with different URL."
+      ]
+    },
+    {
+      "asin": "B0GT1PHQ66",
+      "sku": "Blue_CelticSalt_420GM_V2",
+      "name": "Celtic Sea Salt with High Mineral Conten",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 1112.29,
+      "weekly_orders": 2,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0G39Y3TWS",
+      "sku": "SkyBlu_LibidexCartoon_Cap30_V7",
+      "name": "LiBiDEXX30 Capsule for Men Original | Ay",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 2,
+      "issues": [
+        {
+          "message": "Your submission is missing few key attributes: container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        },
+        {
+          "message": "Copyright Infringement",
+          "severity": "ERROR"
+        }
+      ],
+      "weekly_sales": 969.52,
+      "weekly_orders": 2,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Your submission is missing few key attributes: container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+        "Copyright Infringement"
+      ]
+    },
+    {
+      "asin": "B0G4JZ91FW",
+      "sku": "BlueWhite_XenoprostActive_Cap30",
+      "name": "Xenoprost Active Capsule for Men | Ayurv",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 2,
+      "issues": [
+        {
+          "message": "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        },
+        {
+          "message": "Having the most relevant product type for a product enhances both the seller and customer experience. Therefore, your product type has been updated from HEALTH_PERSONAL_CARE to HERBAL_SUPPLEMENT. If you believe the original product type you selected is correct, you may change the SKU attributes such as title, product description and bullet points to better match HEALTH_PERSONAL_CARE.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 960.0,
+      "weekly_orders": 2,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+        "Having the most relevant product type for a product enhances both the seller and customer experience. Therefore, your product type has been updated from HEALTH_PERSONAL_CARE to HERBAL_SUPPLEMENT. If you believe the original product type you selected is correct, you may change the SKU attributes such as title, product description and bullet points to better match HEALTH_PERSONAL_CARE."
+      ]
+    },
+    {
+      "asin": "B0G4K23XMW",
+      "sku": "White_XenoprostActive_Cap30_P3",
+      "name": "Xenoprost Active Prostate Health Capsule",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 2,
+      "issues": [
+        {
+          "message": "Having the most relevant product type for a product enhances both the seller and customer experience. Therefore, your product type has been updated from HEALTH_PERSONAL_CARE to HERBAL_SUPPLEMENT. If you believe the original product type you selected is correct, you may change the SKU attributes such as title, product description and bullet points to better match HEALTH_PERSONAL_CARE.",
+          "severity": "WARNING"
+        },
+        {
+          "message": "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 952.38,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Having the most relevant product type for a product enhances both the seller and customer experience. Therefore, your product type has been updated from HEALTH_PERSONAL_CARE to HERBAL_SUPPLEMENT. If you believe the original product type you selected is correct, you may change the SKU attributes such as title, product description and bullet points to better match HEALTH_PERSONAL_CARE.",
+        "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing."
+      ]
+    },
+    {
+      "asin": "B0GNFSZ7CC",
+      "sku": "Gray_LibidexCartoon_1Another_Cap30",
+      "name": "Dual Action Libidex40+ & Get One Another",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 952.38,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0GQHT38RT",
+      "sku": "BlkGold_BigJack + SkyBlu_LibidexCrtn30",
+      "name": "Big Jack Gold Capsules with Libidex40+ H",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 2,
+      "issues": [
+        {
+          "message": "Copyright Infringement",
+          "severity": "ERROR"
+        },
+        {
+          "message": "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 951.43,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Copyright Infringement",
+        "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing."
+      ]
+    },
+    {
+      "asin": "B0GQGJKKJR",
+      "sku": "Vidyapith_SugarChurna_100gm_P2__V12",
+      "name": "Vidyapith Ayurved Sugar Support Churna 1",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "BUYABLE",
+        "DISCOVERABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 950.48,
+      "weekly_orders": 2,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing."
+      ]
+    },
+    {
+      "asin": "B0FJYHXGL8",
+      "sku": "BluWit_AcvMoringaCap30",
+      "name": "Organic ACV Moringa Capsules for Weight ",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "In order to sell this product on the Amazon store, you must provide documents related to fs_weightManagementSupplements_in. Failure to provide these documentations by 2026-06-16T05:54:59.511Z may result in suppression of this ASIN from the Amazon website.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 780.96,
+      "weekly_orders": 4,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "In order to sell this product on the Amazon store, you must provide documents related to fs_weightManagementSupplements_in. Failure to provide these documentations by 2026-06-16T05:54:59.511Z may result in suppression of this ASIN from the Amazon website."
+      ]
+    },
+    {
+      "asin": "B0FR44SSQH",
+      "sku": "Black_HorsePower With 1Another_Cap30",
+      "name": "Get Black Horse Power with One Another H",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "The media at https://drive.google.com/uc?export=download&id=18Uf_YLBJDXTKhUcRMaqu8y_rcBzkWIbJ is blocked by the hosting website due to policy/copyright restrictions or their terms of service may have changed regarding third-party links. Please upload your media to a different hosting website and try again with different URL.",
+          "severity": "ERROR"
+        }
+      ],
+      "weekly_sales": 652.38,
+      "weekly_orders": 2,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "The media at https://drive.google.com/uc?export=download&id=18Uf_YLBJDXTKhUcRMaqu8y_rcBzkWIbJ is blocked by the hosting website due to policy/copyright restrictions or their terms of service may have changed regarding third-party links. Please upload your media to a different hosting website and try again with different URL."
+      ]
+    },
+    {
+      "asin": "B0FSL7VPHY",
+      "sku": "NamakZaitun_Bottle_100gm_P2",
+      "name": "Jaitun Salt by Suleman | Original Zaitoo",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "Your image PT07 violates Amazon's image standards. Review image requirements mentioned in the 'Product image requirements' help page and upload a new image.",
+          "severity": "ERROR"
+        }
+      ],
+      "weekly_sales": 609.52,
+      "weekly_orders": 2,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Your image PT07 violates Amazon's image standards. Review image requirements mentioned in the 'Product image requirements' help page and upload a new image."
+      ]
+    },
+    {
+      "asin": "B0CXP5PNV4",
+      "sku": "DrRLX_RhodiolaRosea_30Cap",
+      "name": "Extra Powerful Rhodiola Rosea Capsules -",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 600.0,
+      "weekly_orders": 3,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0GQGJ38X8",
+      "sku": "Vidyapith_SugarChurna_100gm__V10",
+      "name": "Vidyapith Ayurved Herbal Sugar Care Chur",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 571.42,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0FZM5G3W7",
+      "sku": "I-H4 Cap30",
+      "name": "Original IH 4 Capsule for Men – Pure Ayu",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "Your submission is missing few key attributes: primary_supplement_type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 552.38,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Your submission is missing few key attributes: primary_supplement_type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing."
+      ]
+    },
+    {
+      "asin": "B0GNGK1W9N",
+      "sku": "Red_HorsePowerCap30_1AnotherCap",
+      "name": "Get Horse Power Capsule with One Another",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "The media at https://d1gevr1kq4ckjt.cloudfront.net/A2AC2AS9R9CBEA_fc82042771e0e7a15c40ebe029800efd_ProductImage_PT02 is blocked by the hosting website due to policy/copyright restrictions or their terms of service may have changed regarding third-party links. Please upload your media to a different hosting website and try again with different URL.",
+          "severity": "ERROR"
+        }
+      ],
+      "weekly_sales": 484.76,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "The media at https://d1gevr1kq4ckjt.cloudfront.net/A2AC2AS9R9CBEA_fc82042771e0e7a15c40ebe029800efd_ProductImage_PT02 is blocked by the hosting website due to policy/copyright restrictions or their terms of service may have changed regarding third-party links. Please upload your media to a different hosting website and try again with different URL."
+      ]
+    },
+    {
+      "asin": "B0GPKG7XCP",
+      "sku": "WhitBlu_BigJack + SkyBlu_LibidexCrtn30",
+      "name": "Use Big Jack Gold Capsules With Libidex4",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "Your submission is missing few key attributes: flavor, primary_supplement_type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 484.76,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Your submission is missing few key attributes: flavor, primary_supplement_type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing."
+      ]
+    },
+    {
+      "asin": "B0DSP4Y2SR",
+      "sku": "CoarseSeaSaltBluWhitePouch400GM",
+      "name": "Natural Organic Coarse Celtic Sea Salt –",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "BUYABLE",
+        "DISCOVERABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 476.0,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0DC1M4T6C",
+      "sku": "UsLabsVisionCareMax_30Caps",
+      "name": "Extra Special Vision Care Max Capsules -",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 429.52,
+      "weekly_orders": 2,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0CQPBZ7ZT",
+      "sku": "USLbsKeedaJadiCap60_v1",
+      "name": "Keeda Jadi Original Capsules - Cordyceps",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "BUYABLE",
+        "DISCOVERABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 400.0,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0GTW2W2MW",
+      "sku": "Black_TitanicK5 + 1Another_Cap30",
+      "name": "Use Titanic K5 Time Capsules with 1 Anot",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "BUYABLE",
+        "DISCOVERABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 386.66,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0DFVH7J4D",
+      "sku": "DrRelaxSerenoaRepens30_v8",
+      "name": "First Choice Serenoa Repens Extract Caps",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 386.66,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0GV82H7FZ",
+      "sku": "WhiteGold_SugarBati_Cap30_P2",
+      "name": "New Formula Sugar Bati Gold 30 Tablet, P",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 380.0,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Your submission is missing few key attributes: item_package_quantity, container.type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing."
+      ]
+    },
+    {
+      "asin": "B0DDJHT2Z2",
+      "sku": "CelticSaltWhite_250GM_PouchV2",
+      "name": "Shila Pak Premium Celtic Sea Salt White ",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 376.0,
+      "weekly_orders": 2,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0FVSCHQCK",
+      "sku": "NamakJaitunDiamond_Salt100gm",
+      "name": "Orginal Raw Namak Jaitun Diamond - 100 g",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 2,
+      "issues": [
+        {
+          "message": "Your image PT05 violates Amazon's image standards. Review image requirements mentioned in the 'Product image requirements' help page and upload a new image.",
+          "severity": "ERROR"
+        },
+        {
+          "message": "Your image PT06 violates Amazon's image standards. Review image requirements mentioned in the 'Product image requirements' help page and upload a new image.",
+          "severity": "ERROR"
+        }
+      ],
+      "weekly_sales": 338.0,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Your image PT05 violates Amazon's image standards. Review image requirements mentioned in the 'Product image requirements' help page and upload a new image.",
+        "Your image PT06 violates Amazon's image standards. Review image requirements mentioned in the 'Product image requirements' help page and upload a new image."
+      ]
+    },
+    {
+      "asin": "B0DTQ4C1JZ",
+      "sku": "CelticSaltBluWhite_500Gm",
+      "name": "Premium Celtic Sea Salt(500gm) - Pure, U",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "BUYABLE",
+        "DISCOVERABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 305.0,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0FBSXBHMV",
+      "sku": "LibidSafe_StressManagement_Cap30",
+      "name": "Premium Stress Management Ashwagandha Ca",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 300.0,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0DBKXY4JZ",
+      "sku": "DrRelaxKeedaJadiGold_30cps",
+      "name": "Keeda Jadi Original Capsules - Cordyceps",
+      "status": "NOT ACTIVE",
+      "buyable": false,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "Your submission is missing few key attributes: item_form, primary_supplement_type, diet_type, flavor. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 257.14,
+      "weekly_orders": 1,
+      "action_priority": "HIGH",
+      "recommendation": "Start listing recovery workflow",
+      "signals": [
+        "NOT ACTIVE",
+        "Your submission is missing few key attributes: item_form, primary_supplement_type, diet_type, flavor. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing."
+      ]
+    },
+    {
+      "asin": "B0DH4NY9X6",
+      "sku": "RebornNova_30Cap",
+      "name": "10x Better than Old Nova | The All New P",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "BUYABLE",
+        "DISCOVERABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 200.0,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0FF5B9GQT",
+      "sku": "BluWit_TongkatAliCap30",
+      "name": "Ayurvedic Tongkat Ali Capsules - Daily B",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE",
+        "BUYABLE"
+      ],
+      "issues_count": 0,
+      "issues": [],
+      "weekly_sales": 180.0,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE"
+      ]
+    },
+    {
+      "asin": "B0D2V26RB1",
+      "sku": "DrRelaxRoyalTentmaxCpsls30",
+      "name": "Extra Effective Royal Tentmax Capsule - ",
+      "status": "ACTIVE",
+      "buyable": true,
+      "discoverable": true,
+      "statuses": [
+        "BUYABLE",
+        "DISCOVERABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "Your submission is missing few key attributes: flavor, primary_supplement_type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 119.05,
+      "weekly_orders": 1,
+      "action_priority": "LOW",
+      "recommendation": "Healthy",
+      "signals": [
+        "ACTIVE",
+        "Your submission is missing few key attributes: flavor, primary_supplement_type. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing."
+      ]
+    }
+  ],
+  "inactive_details": [
+    {
+      "asin": "B0DBKXY4JZ",
+      "sku": "DrRelaxKeedaJadiGold_30cps",
+      "name": "Keeda Jadi Original Capsules - Cordyceps",
+      "status": "NOT ACTIVE",
+      "buyable": false,
+      "discoverable": true,
+      "statuses": [
+        "DISCOVERABLE"
+      ],
+      "issues_count": 1,
+      "issues": [
+        {
+          "message": "Your submission is missing few key attributes: item_form, primary_supplement_type, diet_type, flavor. Missing these attributes do not block your product from being displayed on Amazon. However it impacts the overall quality of your listing.",
+          "severity": "WARNING"
+        }
+      ],
+      "weekly_sales": 257.14,
+      "weekly_orders": 1
+    }
+  ],
+  "run_errors": [],
+  "action_routing": {
+    "status": "skipped",
+    "reason": "Backfill from existing top_listing_status.json before first routed live cycle.",
+    "request_count": 0,
+    "actions": [],
+    "files": [],
+    "routes": []
+  }
+}

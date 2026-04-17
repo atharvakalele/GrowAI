@@ -1,0 +1,20 @@
+{
+  "snapshots": [
+    {
+      "timestamp": "2026-04-14T18:27:37.904666",
+      "date": "2026-04-14",
+      "hour": 18,
+      "time_label": "06:27 PM",
+      "orders": 108,
+      "revenue": 66784.8
+    },
+    {
+      "timestamp": "2026-04-14T19:47:17.531393",
+      "date": "2026-04-14",
+      "hour": 19,
+      "time_label": "07:47 PM",
+      "orders": 122,
+      "revenue": 63282.26
+    }
+  ]
+}

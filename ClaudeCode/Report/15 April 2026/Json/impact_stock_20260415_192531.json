@@ -1,0 +1,157 @@
+{
+  "schema_type": "impact_summary",
+  "schema_version": "1.0",
+  "feature_id": "M04",
+  "feature_key": "stock",
+  "feature_name": "Stock Monitor",
+  "module_group": "inventory",
+  "generated_at": "2026-04-15T19:25:31.085697",
+  "period": "manual",
+  "status": "warning",
+  "impact_level": "high",
+  "business_areas": [
+    "inventory",
+    "availability",
+    "revenue_protection"
+  ],
+  "headline": "Stock risk detected on 45 ASIN(s).",
+  "summary_metrics": {
+    "profit_impact_rs": 0,
+    "loss_prevented_rs": 0,
+    "waste_blocked_rs": 0,
+    "revenue_protected_rs": 0,
+    "ai_action_sales_protected_rs": 0,
+    "ai_actions_executed_count": 0,
+    "ai_actions_identified_count": 38,
+    "tracked_asins_count": 50,
+    "risk_item_count": 45,
+    "zero_stock_count": 38,
+    "low_stock_count": 7,
+    "healthy_count": 5,
+    "revenue_at_risk_7d_rs": 2857.14
+  },
+  "positive_impacts": [
+    {
+      "type": "healthy_inventory",
+      "message": "5 ASIN(s) currently look healthy on stock.",
+      "estimated_sales7d_rs": 0
+    }
+  ],
+  "negative_impacts": [
+    {
+      "type": "stock_risk",
+      "message": "38 ASIN(s) are out of stock and 7 ASIN(s) are below threshold.",
+      "estimated_sales7d_at_risk_rs": 2857.14
+    }
+  ],
+  "top_risks": [
+    {
+      "asin": "B0DGQS8X8C",
+      "sku": "USLabsLibidex40Plus_30Cap",
+      "sales7d_rs": 2190.48,
+      "buy_box_status": "OUT OF STOCK",
+      "competitor_count": 0,
+      "price_gap_rs": 0,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0DG5T519Z",
+      "sku": "RED_HorsePowerCap30_v6",
+      "sales7d_rs": 666.66,
+      "buy_box_status": "OUT OF STOCK",
+      "competitor_count": 0,
+      "price_gap_rs": 0,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0D3CK886B",
+      "sku": "UsLabs_AddyiPlus_ForWomen",
+      "sales7d_rs": 0.0,
+      "buy_box_status": "OUT OF STOCK",
+      "competitor_count": 0,
+      "price_gap_rs": 0,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0DC4CZ3Z8",
+      "sku": "goldLibidex_oil",
+      "sales7d_rs": 0.0,
+      "buy_box_status": "OUT OF STOCK",
+      "competitor_count": 0,
+      "price_gap_rs": 0,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0DC48PQM7",
+      "sku": "goldLibidex",
+      "sales7d_rs": 0.0,
+      "buy_box_status": "OUT OF STOCK",
+      "competitor_count": 0,
+      "price_gap_rs": 0,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0D54MR138",
+      "sku": "NewBoldCareLibidexPlus30C",
+      "sales7d_rs": 0.0,
+      "buy_box_status": "OUT OF STOCK",
+      "competitor_count": 0,
+      "price_gap_rs": 0,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0DX7BWSKG",
+      "sku": "LibidSafe_iGainCpsl30_P2",
+      "sales7d_rs": 0.0,
+      "buy_box_status": "OUT OF STOCK",
+      "competitor_count": 0,
+      "price_gap_rs": 0,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0DG5SZMVR",
+      "sku": "BLKHorsePowerCap30_1Oil_v",
+      "sales7d_rs": 0.0,
+      "buy_box_status": "OUT OF STOCK",
+      "competitor_count": 0,
+      "price_gap_rs": 0,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0D3DB5P73",
+      "sku": "xhlthboostrLibidx30Cap_Ad",
+      "sales7d_rs": 0.0,
+      "buy_box_status": "OUT OF STOCK",
+      "competitor_count": 0,
+      "price_gap_rs": 0,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0D54G6W7K",
+      "sku": "XhlthBoosterLibidex_p2_v8",
+      "sales7d_rs": 0.0,
+      "buy_box_status": "OUT OF STOCK",
+      "competitor_count": 0,
+      "price_gap_rs": 0,
+      "recommendation": "Auto stock seller listing"
+    }
+  ],
+  "ai_action_summary": {
+    "headline": "AI found 45 risky ASIN(s), but seller auto stock is pending.",
+    "status": "pending",
+    "actions_identified": 38,
+    "actions_executed": 0,
+    "expected_sales_protected_rs": 0,
+    "items": []
+  },
+  "recommendations": [
+    "Seller listing stock is controlled from the stock control panel.",
+    "Excluded products remain visible in the panel but will not auto stock.",
+    "Action routing status: pending."
+  ],
+  "detail_ref": {
+    "raw_file": "ClaudeCode/Report/15 April 2026/Json/stock_status.json",
+    "detail_file": "ClaudeCode/Report/15 April 2026/Json/stock_status_20260415_192531.json",
+    "supporting_report": "ClaudeCode/Report/15 April 2026/Json/stock_status.json"
+  }
+}

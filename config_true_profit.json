@@ -1,0 +1,34 @@
+{
+  "version": "1.1",
+  "last_updated": "2026-04-13",
+  "account_default": {
+    "product_cost": 85,
+    "description": "Default product cost Rs.85 for ALL ASINs (Msir confirmed). Includes manufacturing + packing + everything."
+  },
+  "category_costs": {
+    "Sea Salt": 250,
+    "Capsules": 100,
+    "Powder": 80,
+    "Oil": 120,
+    "Combo": 200
+  },
+  "product_costs": {},
+  "asin_category": {},
+  "amazon_fees": {
+    "referral_fee_pct": 3.0,
+    "closing_fee": 5,
+    "description": "Referral Fee = 3% of sale price + Closing Fee Rs.5 fixed"
+  },
+  "shipping": {
+    "default": 95,
+    "description": "Shipping cost Rs.95 per order"
+  },
+  "return_rate": {
+    "default_percent": 5.0,
+    "description": "Average return rate. Cost of return = return_rate% of sale_price"
+  },
+  "fallback_order_value": 180,
+  "target_profit_retention": 60,
+  "description_target": "Keep 60% of true profit after ads. Ads can eat max 40%.",
+  "gst_rate": 0
+}

@@ -1,0 +1,692 @@
+{
+  "log_version": "1.0",
+  "timestamp": "2026-04-15T20:09:00.805425",
+  "file": "C:\\Users\\Clu\\Documents\\Be Extra Carefull Sonet Amazon Bussiness Grouth Automation AI\\ClaudeCode\\Python\\..\\Report\\15 April 2026\\GoAmrita_Action_Report_15 April 2026.xlsx",
+  "dry_run": true,
+  "summary": {
+    "total_approved": 43,
+    "executed_ok": 43,
+    "failed": 0
+  },
+  "undo_log": [
+    {
+      "action_type": "Reduce Bids ~25%",
+      "entity_type": "campaign",
+      "entity_id": "315669267872113",
+      "entity_name": "TL_EL_SPN_SG_Horse FR",
+      "action_taken": "Reduce Bid 25% on 9/9 keywords",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bids ~25%",
+      "entity_type": "campaign",
+      "entity_id": "202205970240118",
+      "entity_name": "Campaign - New sugar bati_LS",
+      "action_taken": "No keywords (auto-target) → Budget: 5000.0 -> 3750.0 (-25%)",
+      "timestamp": "2026-04-15T20:09:00.805425",
+      "before_budget": 5000.0,
+      "after_budget": 3750.0,
+      "undo_action": "Restore budget to 5000.0"
+    },
+    {
+      "action_type": "Reduce Bids ~15%",
+      "entity_type": "campaign",
+      "entity_id": "30153940545068",
+      "entity_name": "CelticSalt2kg_13Apr2026_AI_Bid",
+      "action_taken": "No keywords (auto-target) → Budget: 439.0 -> 373.15 (-15%)",
+      "timestamp": "2026-04-15T20:09:00.805425",
+      "before_budget": 439.0,
+      "after_budget": 373.15,
+      "undo_action": "Restore budget to 439.0"
+    },
+    {
+      "action_type": "Reduce Bids ~15%",
+      "entity_type": "campaign",
+      "entity_id": "407322014558764",
+      "entity_name": "Campaign - Libidexx",
+      "action_taken": "No keywords (auto-target) → Budget: 1013.0 -> 861.05 (-15%)",
+      "timestamp": "2026-04-15T20:09:00.805425",
+      "before_budget": 1013.0,
+      "after_budget": 861.05,
+      "undo_action": "Restore budget to 1013.0"
+    },
+    {
+      "action_type": "Reduce Bids ~15%",
+      "entity_type": "campaign",
+      "entity_id": "267834069910394",
+      "entity_name": "Campaign - Red Horse power",
+      "action_taken": "No keywords (auto-target) → Budget: 750.0 -> 637.5 (-15%)",
+      "timestamp": "2026-04-15T20:09:00.805425",
+      "before_budget": 750.0,
+      "after_budget": 637.5,
+      "undo_action": "Restore budget to 750.0"
+    },
+    {
+      "action_type": "Reduce Bids ~2% — ACOS 106%",
+      "entity_type": "campaign",
+      "entity_id": "214887246684827",
+      "entity_name": "Campaign -Blue Celtic sea salt",
+      "action_taken": "No keywords (auto-target) → Budget: 1875.0 -> 1837.5 (-2%)",
+      "timestamp": "2026-04-15T20:09:00.805425",
+      "before_budget": 1875.0,
+      "after_budget": 1837.5,
+      "undo_action": "Restore budget to 1875.0"
+    },
+    {
+      "action_type": "Reduce Bids ~1% — ACOS 68%",
+      "entity_type": "campaign",
+      "entity_id": "429878877190326",
+      "entity_name": "TL_EL_SPN_SG_FEB_Listed",
+      "action_taken": "Reduce Bid 1% on 16/16 keywords",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Scale Up ~1% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign - HorsePower_p2",
+      "action_taken": "Scale: Budget 750.0 -> 1125.0 (+50%)",
+      "timestamp": "2026-04-15T20:09:00.805425",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~1% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Red_Horse power",
+      "action_taken": "Scale: Budget 488.0 -> 732.0 (+50%)",
+      "timestamp": "2026-04-15T20:09:00.805425",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~1% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -xenoprostate active",
+      "action_taken": "Scale: Budget 1125.0 -> 1687.5 (+50%)",
+      "timestamp": "2026-04-15T20:09:00.805425",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~1% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "TL_EL_SPN_SG_Growz | SP Auto -",
+      "action_taken": "Scale: Budget 756.0 -> 1134.0 (+50%)",
+      "timestamp": "2026-04-15T20:09:00.805425",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~1% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Namak Jaitun olive salt",
+      "action_taken": "Scale: Budget 5250.0 -> 7875.0 (+50%)",
+      "timestamp": "2026-04-15T20:09:00.805425",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~2% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -vastu sea salt",
+      "action_taken": "Scale: Budget 750.0 -> 1125.0 (+50%)",
+      "timestamp": "2026-04-15T20:09:00.805425",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~0% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -Visiorax",
+      "action_taken": "Scale: Budget 450.0 -> 675.0 (+50%)",
+      "timestamp": "2026-04-15T20:09:00.805425",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~2% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "TL_EL_SPN_SG_Made in Heavens_S",
+      "action_taken": "Scale: Budget 2040.0 -> 3060.0 (+50%)",
+      "timestamp": "2026-04-15T20:09:00.805425",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~0% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign - Sugar churna",
+      "action_taken": "Scale: Budget 5000.0 -> 7500.0 (+50%)",
+      "timestamp": "2026-04-15T20:09:00.805425",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Reduce Bid ~25%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "celtics sea salt",
+      "action_taken": "Bid 9.04 -> 6.78 (-25%)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bid ~25%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "horse fire",
+      "action_taken": "Bid 15.46 -> 11.6 (-25%)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bid ~25%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "vidyapith ayurveda sugar churn",
+      "action_taken": "SKIP: Auto-target keyword (not in keyword list, budget managed at campaign level)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bid ~25%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "keyword-group=\"category\"",
+      "action_taken": "SKIP: Auto-target (Amazon managed, not editable)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bid ~25%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "celtic sea salt organic",
+      "action_taken": "Bid 7.28 -> 5.46 (-25%)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bid ~25%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "salt",
+      "action_taken": "Bid 15.25 -> 11.44 (-25%)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bid ~25%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "horse power tablets for men",
+      "action_taken": "Bid 4.51 -> 3.38 (-25%)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bid ~25%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "vidyapith ayurved sugar churna",
+      "action_taken": "SKIP: Auto-target keyword (not in keyword list, budget managed at campaign level)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bid ~25%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sugar bati 40",
+      "action_taken": "SKIP: Auto-target keyword (not in keyword list, budget managed at campaign level)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bid ~25%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "vidyapeeth sugar churna",
+      "action_taken": "SKIP: Auto-target keyword (not in keyword list, budget managed at campaign level)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bid ~15%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sugar churna",
+      "action_taken": "Bid 15.26 -> 12.97 (-15%)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bid ~15%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sugar bati",
+      "action_taken": "SKIP: Auto-target keyword (not in keyword list, budget managed at campaign level)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bid ~1%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "vidhyapith ayurved sugar churn",
+      "action_taken": "SKIP: Auto-target keyword (not in keyword list, budget managed at campaign level)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bid ~1%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "celtic sea salt",
+      "action_taken": "Bid 2.86 -> 2.83 (-1%)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bid ~1%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "libidex",
+      "action_taken": "Bid 5.48 -> 5.43 (-1%)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bid ~1%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "libidex capsule",
+      "action_taken": "Bid 2.21 -> 2.19 (-1%)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bid ~1%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "substitutes",
+      "action_taken": "SKIP: Auto-target (Amazon managed, not editable)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bid ~1%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ayurvedic sugar churna",
+      "action_taken": "Bid 15.26 -> 15.11 (-1%)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Increase Bid ~0%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "substitutes",
+      "action_taken": "SKIP: Auto-target (Amazon managed, not editable)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Reduce Bid ~1%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "libidex capsule men original",
+      "action_taken": "Bid 19.73 -> 19.53 (-1%)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Increase Bid ~2%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "visiorax eye capsules",
+      "action_taken": "SKIP: Auto-target keyword (not in keyword list, budget managed at campaign level)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Increase Bid ~3%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "close-match",
+      "action_taken": "SKIP: Auto-target (Amazon managed, not editable)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Fine-tune Bid",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "bidyapith ayurved sugar churna",
+      "action_taken": "Monitor only - no change needed",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Increase Bid ~1%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "visiorax",
+      "action_taken": "SKIP: Auto-target keyword (not in keyword list, budget managed at campaign level)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Increase Bid ~1%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "close-match",
+      "action_taken": "SKIP: Auto-target (Amazon managed, not editable)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Increase Bid ~3%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "loose-match",
+      "action_taken": "SKIP: Auto-target (Amazon managed, not editable)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    },
+    {
+      "action_type": "Increase Bid ~3%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "vidyapith ayurved sugar churna",
+      "action_taken": "SKIP: Auto-target keyword (not in keyword list, budget managed at campaign level)",
+      "timestamp": "2026-04-15T20:09:00.805425"
+    }
+  ],
+  "undo_instructions": "To undo: use undo_log entries. Each has before/after values + undo_action description. Phase 2 will have auto-rollback.",
+  "results": [
+    {
+      "status": "DRY_RUN",
+      "action": "Reduce Bid 25% on 9/9 keywords",
+      "campaignId": "315669267872113",
+      "row": 5,
+      "campaign": "TL_EL_SPN_SG_Horse FR",
+      "todo": "Reduce Bids ~25%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "No keywords (auto-target) → Budget: 5000.0 -> 3750.0 (-25%)",
+      "campaignId": "202205970240118",
+      "row": 6,
+      "campaign": "Campaign - New sugar bati_LS",
+      "todo": "Reduce Bids ~25%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "No keywords (auto-target) → Budget: 439.0 -> 373.15 (-15%)",
+      "campaignId": "30153940545068",
+      "row": 7,
+      "campaign": "CelticSalt2kg_13Apr2026_AI_Bid",
+      "todo": "Reduce Bids ~15%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "No keywords (auto-target) → Budget: 1013.0 -> 861.05 (-15%)",
+      "campaignId": "407322014558764",
+      "row": 8,
+      "campaign": "Campaign - Libidexx",
+      "todo": "Reduce Bids ~15%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "No keywords (auto-target) → Budget: 750.0 -> 637.5 (-15%)",
+      "campaignId": "267834069910394",
+      "row": 9,
+      "campaign": "Campaign - Red Horse power",
+      "todo": "Reduce Bids ~15%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "No keywords (auto-target) → Budget: 1875.0 -> 1837.5 (-2%)",
+      "campaignId": "214887246684827",
+      "row": 10,
+      "campaign": "Campaign -Blue Celtic sea salt",
+      "todo": "Reduce Bids ~2% — ACOS 106%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Reduce Bid 1% on 16/16 keywords",
+      "campaignId": "429878877190326",
+      "row": 27,
+      "campaign": "TL_EL_SPN_SG_FEB_Listed",
+      "todo": "Reduce Bids ~1% — ACOS 68%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 750.0 -> 1125.0 (+50%)",
+      "row": 28,
+      "campaign": "Campaign - HorsePower_p2",
+      "todo": "Scale Up ~1% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 488.0 -> 732.0 (+50%)",
+      "row": 29,
+      "campaign": "Red_Horse power",
+      "todo": "Scale Up ~1% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 1125.0 -> 1687.5 (+50%)",
+      "row": 30,
+      "campaign": "Campaign -xenoprostate active",
+      "todo": "Scale Up ~1% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 756.0 -> 1134.0 (+50%)",
+      "row": 31,
+      "campaign": "TL_EL_SPN_SG_Growz | SP Auto -",
+      "todo": "Scale Up ~1% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 5250.0 -> 7875.0 (+50%)",
+      "row": 32,
+      "campaign": "Namak Jaitun olive salt",
+      "todo": "Scale Up ~1% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 750.0 -> 1125.0 (+50%)",
+      "row": 33,
+      "campaign": "Campaign -vastu sea salt",
+      "todo": "Scale Up ~2% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 450.0 -> 675.0 (+50%)",
+      "row": 35,
+      "campaign": "Campaign -Visiorax",
+      "todo": "Scale Up ~0% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 2040.0 -> 3060.0 (+50%)",
+      "row": 36,
+      "campaign": "TL_EL_SPN_SG_Made in Heavens_S",
+      "todo": "Scale Up ~2% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 5000.0 -> 7500.0 (+50%)",
+      "row": 37,
+      "campaign": "Campaign - Sugar churna",
+      "todo": "Scale Up ~0% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Bid 9.04 -> 6.78 (-25%)",
+      "row": 5,
+      "keyword": "celtics sea salt",
+      "todo": "Reduce Bid ~25%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Bid 15.46 -> 11.6 (-25%)",
+      "row": 6,
+      "keyword": "horse fire",
+      "todo": "Reduce Bid ~25%"
+    },
+    {
+      "status": "OK",
+      "action": "SKIP: Auto-target keyword (not in keyword list, budget managed at campaign level)",
+      "keyword": "vidyapith ayurveda sugar churn",
+      "row": 7,
+      "todo": "Reduce Bid ~25%"
+    },
+    {
+      "row": 8,
+      "status": "OK",
+      "keyword": "keyword-group=\"category\"",
+      "todo": "Reduce Bid ~25%",
+      "action": "SKIP: Auto-target (Amazon managed, not editable)"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Bid 7.28 -> 5.46 (-25%)",
+      "row": 9,
+      "keyword": "celtic sea salt organic",
+      "todo": "Reduce Bid ~25%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Bid 15.25 -> 11.44 (-25%)",
+      "row": 10,
+      "keyword": "salt",
+      "todo": "Reduce Bid ~25%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Bid 4.51 -> 3.38 (-25%)",
+      "row": 11,
+      "keyword": "horse power tablets for men",
+      "todo": "Reduce Bid ~25%"
+    },
+    {
+      "status": "OK",
+      "action": "SKIP: Auto-target keyword (not in keyword list, budget managed at campaign level)",
+      "keyword": "vidyapith ayurved sugar churna",
+      "row": 12,
+      "todo": "Reduce Bid ~25%"
+    },
+    {
+      "status": "OK",
+      "action": "SKIP: Auto-target keyword (not in keyword list, budget managed at campaign level)",
+      "keyword": "sugar bati 40",
+      "row": 13,
+      "todo": "Reduce Bid ~25%"
+    },
+    {
+      "status": "OK",
+      "action": "SKIP: Auto-target keyword (not in keyword list, budget managed at campaign level)",
+      "keyword": "vidyapeeth sugar churna",
+      "row": 14,
+      "todo": "Reduce Bid ~25%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Bid 15.26 -> 12.97 (-15%)",
+      "row": 15,
+      "keyword": "sugar churna",
+      "todo": "Reduce Bid ~15%"
+    },
+    {
+      "status": "OK",
+      "action": "SKIP: Auto-target keyword (not in keyword list, budget managed at campaign level)",
+      "keyword": "sugar bati",
+      "row": 16,
+      "todo": "Reduce Bid ~15%"
+    },
+    {
+      "status": "OK",
+      "action": "SKIP: Auto-target keyword (not in keyword list, budget managed at campaign level)",
+      "keyword": "vidhyapith ayurved sugar churn",
+      "row": 17,
+      "todo": "Reduce Bid ~1%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Bid 2.86 -> 2.83 (-1%)",
+      "row": 18,
+      "keyword": "celtic sea salt",
+      "todo": "Reduce Bid ~1%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Bid 5.48 -> 5.43 (-1%)",
+      "row": 19,
+      "keyword": "libidex",
+      "todo": "Reduce Bid ~1%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Bid 2.21 -> 2.19 (-1%)",
+      "row": 20,
+      "keyword": "libidex capsule",
+      "todo": "Reduce Bid ~1%"
+    },
+    {
+      "row": 21,
+      "status": "OK",
+      "keyword": "substitutes",
+      "todo": "Reduce Bid ~1%",
+      "action": "SKIP: Auto-target (Amazon managed, not editable)"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Bid 15.26 -> 15.11 (-1%)",
+      "row": 208,
+      "keyword": "ayurvedic sugar churna",
+      "todo": "Reduce Bid ~1%"
+    },
+    {
+      "row": 209,
+      "status": "OK",
+      "keyword": "substitutes",
+      "todo": "Increase Bid ~0%",
+      "action": "SKIP: Auto-target (Amazon managed, not editable)"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Bid 19.73 -> 19.53 (-1%)",
+      "row": 210,
+      "keyword": "libidex capsule men original",
+      "todo": "Reduce Bid ~1%"
+    },
+    {
+      "status": "OK",
+      "action": "SKIP: Auto-target keyword (not in keyword list, budget managed at campaign level)",
+      "keyword": "visiorax eye capsules",
+      "row": 213,
+      "todo": "Increase Bid ~2%"
+    },
+    {
+      "row": 221,
+      "status": "OK",
+      "keyword": "close-match",
+      "todo": "Increase Bid ~3%",
+      "action": "SKIP: Auto-target (Amazon managed, not editable)"
+    },
+    {
+      "status": "OK",
+      "action": "Monitor only - no change needed",
+      "row": 223,
+      "keyword": "bidyapith ayurved sugar churna",
+      "todo": "Fine-tune Bid"
+    },
+    {
+      "status": "OK",
+      "action": "SKIP: Auto-target keyword (not in keyword list, budget managed at campaign level)",
+      "keyword": "visiorax",
+      "row": 224,
+      "todo": "Increase Bid ~1%"
+    },
+    {
+      "row": 225,
+      "status": "OK",
+      "keyword": "close-match",
+      "todo": "Increase Bid ~1%",
+      "action": "SKIP: Auto-target (Amazon managed, not editable)"
+    },
+    {
+      "row": 228,
+      "status": "OK",
+      "keyword": "loose-match",
+      "todo": "Increase Bid ~3%",
+      "action": "SKIP: Auto-target (Amazon managed, not editable)"
+    },
+    {
+      "status": "OK",
+      "action": "SKIP: Auto-target keyword (not in keyword list, budget managed at campaign level)",
+      "keyword": "vidyapith ayurved sugar churna",
+      "row": 229,
+      "todo": "Increase Bid ~3%"
+    }
+  ]
+}

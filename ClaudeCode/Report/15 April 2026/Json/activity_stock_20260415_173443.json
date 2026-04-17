@@ -1,0 +1,72 @@
+{
+  "schema_type": "activity_summary",
+  "schema_version": "1.0",
+  "feature_id": "M04",
+  "feature_key": "stock",
+  "feature_name": "Stock Monitor",
+  "module_group": "inventory",
+  "run_id": "stock_20260415_173443",
+  "generated_at": "2026-04-15T17:34:43.323804",
+  "status": "warning",
+  "run_mode": "manual",
+  "duration_sec": 0.38,
+  "freshness_hours": 2,
+  "needs_review": true,
+  "input_sources": [
+    "ClaudeCode/Report/15 April 2026/Json/sp_advertisedproduct_daily.json",
+    "ClaudeCode/Report/15 April 2026/Json/sp_advertisedproduct_daily.json"
+  ],
+  "output_files": [
+    "ClaudeCode/Report/15 April 2026/Json/stock_status.json",
+    "ClaudeCode/Report/15 April 2026/Json/stock_status_20260415_173443.json",
+    "ClaudeCode/Report/15 April 2026/Json/impact_stock_20260415_173443.json",
+    "ClaudeCode/Report/15 April 2026/Json/activity_stock_latest.json",
+    "ClaudeCode/Report/15 April 2026/Json/report_registry_latest.json",
+    "ClaudeCode/Report/15 April 2026/Json/stock_restock_route_latest.json",
+    "ClaudeCode/Report/15 April 2026/Json/stock_restock_route_20260415_173443.json",
+    "ClaudeCode/Report/15 April 2026/Json/stock_restock_route_result_latest.json",
+    "ClaudeCode/Report/15 April 2026/Json/stock_restock_route_result_20260415_173443.json"
+  ],
+  "counts": {
+    "items_scanned": 50,
+    "items_processed": 50,
+    "alerts_generated": 2,
+    "approvals_needed": 45,
+    "warnings": 2,
+    "errors": 0,
+    "action_routes_created": 45,
+    "action_routes_executed": 0
+  },
+  "run_events": [
+    "Loaded combined stock position from live APIs or source status file.",
+    "Saved legacy stock_status.json for compatibility.",
+    "Published stock impact summary, activity summary, and report registry entry.",
+    "Restock approval routing status: failed."
+  ],
+  "warnings_list": [
+    "38 ASIN(s) are out of stock.",
+    "7 ASIN(s) are below stock threshold."
+  ],
+  "errors_list": [],
+  "review_items": {
+    "user_review": [
+      "38 ASIN(s) are out of stock.",
+      "7 ASIN(s) are below stock threshold.",
+      "Could not generate restock approval workbook."
+    ],
+    "developer_review": [],
+    "blocked_items": []
+  },
+  "action_history": [
+    {
+      "route_type": "stock_restock_approval",
+      "engine": "stock_restock",
+      "status": "failed",
+      "request_count": 45,
+      "actions_executed": 0,
+      "reason": "Could not generate restock approval workbook."
+    }
+  ],
+  "source_report_folder": "15 April 2026",
+  "notes": "Compatibility migration: legacy stock_status.json remains the operational stock source for older flows."
+}

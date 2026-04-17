@@ -1,0 +1,914 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-04-15T14:08:34.630836",
+  "marketplace_id": "A21TJRUUN4KGV",
+  "tracked_asins": 30,
+  "failed_asins": [],
+  "run_errors": [],
+  "summary": {
+    "lost_buy_box": 0,
+    "no_buy_box": 1,
+    "high_pressure": 0,
+    "low_pressure_opportunities": 29
+  },
+  "results": [
+    {
+      "asin": "B0GQGHZH1B",
+      "buy_box_status": "NO_BUYBOX",
+      "buy_box_owner": "",
+      "buy_box_price": 0.0,
+      "our_price": 0.0,
+      "our_fulfillment": "",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 444.0
+      },
+      "action_priority": "HIGH",
+      "recommendation": "Check listing suppression, pricing, and availability",
+      "signals": [
+        "No Buy Box available"
+      ],
+      "sku": "Vidyapith_SugarChurna_100gm_P3__V14",
+      "sales7d": 1691.44,
+      "orders7d": 4,
+      "clicks7d": 18,
+      "impressions7d": 2040,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0FBWXQ9JL",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 99.0,
+      "our_price": 99.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 99.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "LS_SkyBlu_CelticSeaSalt_250gm",
+      "sales7d": 17189.0,
+      "orders7d": 87,
+      "clicks7d": 621,
+      "impressions7d": 27429,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0DX7J5ZXT",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 711.0,
+      "our_price": 711.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 440.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "JoshBoosterLibidex30_p2",
+      "sales7d": 6347.62,
+      "orders7d": 6,
+      "clicks7d": 68,
+      "impressions7d": 7878,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0GQGN44GP",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 300.0,
+      "our_price": 300.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 300.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "Vidyapith_SugarChurna_100gm__V9",
+      "sales7d": 5999.93,
+      "orders7d": 16,
+      "clicks7d": 205,
+      "impressions7d": 18101,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0CXP6ZJZF",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 382.0,
+      "our_price": 382.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 210.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "DrRLXManasamitraVatakamCaps30_v1",
+      "sales7d": 5961.9,
+      "orders7d": 11,
+      "clicks7d": 157,
+      "impressions7d": 7054,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0GQGF94TF",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 439.0,
+      "our_price": 439.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 444.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "Vidyapith_SugarChurna_100gm_P5_V17",
+      "sales7d": 5645.75,
+      "orders7d": 11,
+      "clicks7d": 72,
+      "impressions7d": 7644,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0GT4T9JKB",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 760.0,
+      "our_price": 760.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 760.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "Blue_CelticSalt_250GM_V1",
+      "sales7d": 4962.14,
+      "orders7d": 6,
+      "clicks7d": 61,
+      "impressions7d": 2417,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0DGQS8X8C",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 805.0,
+      "our_price": 805.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 504.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "USLabsLibidex40Plus_30Cap",
+      "sales7d": 4069.5,
+      "orders7d": 3,
+      "clicks7d": 49,
+      "impressions7d": 6333,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0GT1MTW5R",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 1310.0,
+      "our_price": 1310.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 1310.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "Blue_CelticSalt_920GM_V3",
+      "sales7d": 3695.05,
+      "orders7d": 4,
+      "clicks7d": 27,
+      "impressions7d": 881,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0GNG7TF5Z",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 699.0,
+      "our_price": 699.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 699.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "White_XenoprostCap30_1AnotherCap",
+      "sales7d": 3644.76,
+      "orders7d": 5,
+      "clicks7d": 33,
+      "impressions7d": 2138,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0GQJ7P2H9",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 1510.0,
+      "our_price": 1510.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 1500.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "WhitGold_BigJack + SkyBlu_LibidexCrtn30",
+      "sales7d": 3499.06,
+      "orders7d": 3,
+      "clicks7d": 71,
+      "impressions7d": 4355,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0DBVQKNV8",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 350.0,
+      "our_price": 350.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 255.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "DrRelaxVisiorax_30cps_v3_FBA",
+      "sales7d": 3442.9,
+      "orders7d": 12,
+      "clicks7d": 93,
+      "impressions7d": 917,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0DG5T519Z",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 380.0,
+      "our_price": 380.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 350.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "RED_HorsePowerCap30_v6",
+      "sales7d": 3140.92,
+      "orders7d": 6,
+      "clicks7d": 166,
+      "impressions7d": 6918,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0GQGLM31G",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 449.0,
+      "our_price": 449.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 475.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "Vidyapith_SugarChurna_100gm_P2__V11",
+      "sales7d": 2714.28,
+      "orders7d": 5,
+      "clicks7d": 52,
+      "impressions7d": 8181,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0DTPR8QPM",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 576.0,
+      "our_price": 576.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 399.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "DrRlxLibidexGold30cap_Oil",
+      "sales7d": 2419.99,
+      "orders7d": 4,
+      "clicks7d": 20,
+      "impressions7d": 978,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0FMRNM72Q",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 1829.0,
+      "our_price": 1829.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 1819.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "HorseGold_Cap30",
+      "sales7d": 1942.86,
+      "orders7d": 1,
+      "clicks7d": 74,
+      "impressions7d": 10129,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0FRYJ26TJ",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 2040.0,
+      "our_price": 2040.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 2030.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "HorseGold_OneAnother",
+      "sales7d": 1942.86,
+      "orders7d": 1,
+      "clicks7d": 118,
+      "impressions7d": 16151,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0GQGG3Q1X",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 600.0,
+      "our_price": 600.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 600.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "Vidyapith_SugarChurna_100gm_P3__V13",
+      "sales7d": 1851.43,
+      "orders7d": 4,
+      "clicks7d": 105,
+      "impressions7d": 17932,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0FT3WRZYW",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 209.0,
+      "our_price": 209.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 199.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "Black_VastuSeaSalt_920gm",
+      "sales7d": 1734.33,
+      "orders7d": 4,
+      "clicks7d": 48,
+      "impressions7d": 3728,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0G4K1ZYZ3",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 809.0,
+      "our_price": 809.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 799.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "White_XenoprostActive_Cap30_P2",
+      "sales7d": 1722.86,
+      "orders7d": 2,
+      "clicks7d": 11,
+      "impressions7d": 1133,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0FVS9YQ7W",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 169.0,
+      "our_price": 169.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 149.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "NamakJaitunSilver_Salt100gm_FBA",
+      "sales7d": 1612.0,
+      "orders7d": 5,
+      "clicks7d": 12,
+      "impressions7d": 883,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0GNG4GQVH",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 509.0,
+      "our_price": 509.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {},
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "Black_HorsePowerCap30_1AnotherCap",
+      "sales7d": 1454.28,
+      "orders7d": 3,
+      "clicks7d": 16,
+      "impressions7d": 2175,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0GT1PHQ66",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 960.0,
+      "our_price": 960.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 960.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "Blue_CelticSalt_420GM_V2",
+      "sales7d": 1112.29,
+      "orders7d": 2,
+      "clicks7d": 30,
+      "impressions7d": 1478,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0G39Y3TWS",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 509.0,
+      "our_price": 509.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 509.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "SkyBlu_LibidexCartoon_Cap30_V7",
+      "sales7d": 969.52,
+      "orders7d": 2,
+      "clicks7d": 50,
+      "impressions7d": 2296,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0G4JZ91FW",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 409.0,
+      "our_price": 409.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 399.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "BlueWhite_XenoprostActive_Cap30",
+      "sales7d": 960.0,
+      "orders7d": 2,
+      "clicks7d": 15,
+      "impressions7d": 1929,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0G4K23XMW",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 1000.0,
+      "our_price": 1000.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 899.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "White_XenoprostActive_Cap30_P3",
+      "sales7d": 952.38,
+      "orders7d": 1,
+      "clicks7d": 16,
+      "impressions7d": 2526,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0GNFSZ7CC",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 1000.0,
+      "our_price": 1000.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 990.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "Gray_LibidexCartoon_1Another_Cap30",
+      "sales7d": 952.38,
+      "orders7d": 1,
+      "clicks7d": 30,
+      "impressions7d": 637,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0GQHT38RT",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 999.0,
+      "our_price": 999.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 999.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "BlkGold_BigJack + SkyBlu_LibidexCrtn30",
+      "sales7d": 951.43,
+      "orders7d": 1,
+      "clicks7d": 93,
+      "impressions7d": 7367,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0GQGJKKJR",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 499.0,
+      "our_price": 499.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 499.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "Vidyapith_SugarChurna_100gm_P2__V12",
+      "sales7d": 950.48,
+      "orders7d": 2,
+      "clicks7d": 25,
+      "impressions7d": 9583,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    },
+    {
+      "asin": "B0FJYHXGL8",
+      "buy_box_status": "WON",
+      "buy_box_owner": "A2AC2AS9R9CBEA",
+      "buy_box_price": 199.0,
+      "our_price": 199.0,
+      "our_fulfillment": "MFN",
+      "lowest_competitor_price": 0.0,
+      "lowest_competitor_seller": "",
+      "lowest_competitor_fulfillment": "",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "price_gap_pct": 0.0,
+      "reference_prices": {
+        "WasPrice": 205.0
+      },
+      "action_priority": "LOW",
+      "recommendation": "Low pressure; maintain price discipline",
+      "signals": [
+        "No direct offer competition"
+      ],
+      "sku": "BluWit_AcvMoringaCap30",
+      "sales7d": 780.96,
+      "orders7d": 4,
+      "clicks7d": 148,
+      "impressions7d": 26259,
+      "campaign_name": "",
+      "ad_group_name": "",
+      "change": "NEW"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-04-13T19:35:07.716501",
+  "dry_run": true,
+  "rules_run": 3,
+  "total_actions": 1,
+  "ok": 1,
+  "failed": 0,
+  "results": [
+    {
+      "entity": "Campaign -Lycopene",
+      "entity_id": "135541900371924",
+      "action": "pause_campaign",
+      "value": 0,
+      "rule": "Pause High Loss Campaigns",
+      "status": "DRY_RUN",
+      "detail": "Would pause_campaign (0%) on Campaign -Lycopene",
+      "rule_id": "rule_001",
+      "rule_name": "Pause High Loss Campaigns",
+      "timestamp": "2026-04-13T19:35:07.713500"
+    }
+  ]
+}

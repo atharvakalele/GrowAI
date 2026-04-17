@@ -1,0 +1,7397 @@
+Skip navigationAmazon Advertising logo
+Advanced tools center
+Sign in
+Search
+Search documentation
+Home
+Developer guides
+API reference
+Knowledge Hub
+Betas
+Support
+Release notes
+Github
+feedback
+API reference
+
+Resources
+
+Sponsored Products
+
+Older Resources
+
+Sponsored Products campaign management
+Create and manage Sponsored Products campaigns.
+
+To learn more about Sponsored Products campaigns, see:
+
+Sponsored Products overview
+Sponsored Products campaign structure
+Get started with manual campaigns
+Get started with auto campaigns
+Version 3
+OAS 3.0.1
+Download OpenAPI spec
+Server details
+Version 3
+Ad groups
+post
+CreateSponsoredProductsAdGroups
+put
+UpdateSponsoredProductsAdGroups
+post
+DeleteSponsoredProductsAdGroups
+post
+ListSponsoredProductsAdGroups
+Budget Recommendation New Campaigns
+Budget recommendations and missed opportunities
+Budget Usage
+BudgetRules
+BudgetRulesRecommendation
+Campaign negative keywords
+Campaign negative targeting clauses
+Campaign Optimization Rules
+Campaigns
+Consolidated Recommendations
+Keyword Group Targeting Recommendations
+Keyword Targets
+Keywords
+Multi Country Theme-based bid recommendations
+Negative keywords
+Negative targeting clauses
+Optimization Rules
+Product ads
+Product Recommendation Service
+Product Targeting
+Targeting clauses
+TargetPromotionGroups
+Theme-based bid recommendations
+Ad groups
+CreateSponsoredProductsAdGroups
+
+post
+/sp/adGroups
+Create ad groups
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Prefer	
+string
+The "Prefer" header, as defined in [RFC7240], allows clients to request certain behavior from the service. The service ignores preference values that are either not supported or not known by the service. Either multiple Prefer headers are passed or single one with comma separated values, both forms are equivalent Supported preferences: return=representation - return the full object when doing create/update/delete operations instead of ids. Please note that the extendedData field will be part of the full object for /list endpoints only.
+
+Request Body schema: application/vnd.spAdGroup.v3+json
+required
+adGroups
+required
+Array of objects (SponsoredProductsCreateAdGroup) [ 0 .. 1000 ] items
+An array of adGroups.
+
+Responses
+207
+CreateSponsoredProductsAdGroups 207 response
+
+Response Headers
+Preference-Applied	
+string
+Header containing preferences applied while processing API call
+
+Response Schema: application/vnd.spAdGroup.v3+json
+adGroups
+required
+object (SponsoredProductsBulkAdGroupOperationResponse)
+400
+AdGroupMutationException 400 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsInvalidArgumentErrorCode)
+Value: "INVALID_ARGUMENT"
+errors	
+Array of objects (SponsoredProductsAdGroupMutationError)
+message
+required
+string
+Human readable error message
+
+401
+UnauthorizedException 401 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsUnauthorizedErrorCode)
+Value: "UNAUTHORIZED"
+message
+required
+string
+Human readable error message
+
+403
+AccessDeniedException 403 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsAccessDeniedErrorCode)
+Value: "ACCESS_DENIED"
+message
+required
+string
+Human readable error message
+
+415
+UnsupportedMediaTypeException 415 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsUnsupportedMediaTypeErrorCode)
+Value: "UNSUPPORTED_MEDIA_TYPE"
+message
+required
+string
+Human readable error message
+
+429
+ThrottlingException 429 response
+
+Response Headers
+Retry-After	
+integer <int32>
+Delay in seconds, before the next re-try attempt to the operation is recommended
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsThrottledErrorCode)
+Value: "THROTTLED"
+message
+required
+string
+Human readable error message
+
+500
+InternalServerException 500 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsInternalErrorErrorCode)
+Value: "INTERNAL_ERROR"
+message
+required
+string
+Human readable error message
+
+Request samples
+Payload
+Content type
+application/vnd.spAdGroup.v3+json
+
+Copy
+Expand allCollapse all
+{
+"adGroups": [
+{}
+]
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spAdGroup.v3+json
+
+Copy
+Expand allCollapse all
+{
+"adGroups": {
+"error": [],
+"success": []
+}
+}
+UpdateSponsoredProductsAdGroups
+
+put
+/sp/adGroups
+Update ad groups
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Prefer	
+string
+The "Prefer" header, as defined in [RFC7240], allows clients to request certain behavior from the service. The service ignores preference values that are either not supported or not known by the service. Either multiple Prefer headers are passed or single one with comma separated values, both forms are equivalent Supported preferences: return=representation - return the full object when doing create/update/delete operations instead of ids. Please note that the extendedData field will be part of the full object for /list endpoints only.
+
+Request Body schema: application/vnd.spAdGroup.v3+json
+required
+adGroups
+required
+Array of objects (SponsoredProductsUpdateAdGroup) [ 0 .. 1000 ] items
+An array of adGroups with updated values.
+
+Responses
+207
+UpdateSponsoredProductsAdGroups 207 response
+
+Response Headers
+Preference-Applied	
+string
+Header containing preferences applied while processing API call
+
+Response Schema: application/vnd.spAdGroup.v3+json
+adGroups
+required
+object (SponsoredProductsBulkAdGroupOperationResponse)
+400
+AdGroupMutationException 400 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsInvalidArgumentErrorCode)
+Value: "INVALID_ARGUMENT"
+errors	
+Array of objects (SponsoredProductsAdGroupMutationError)
+message
+required
+string
+Human readable error message
+
+401
+UnauthorizedException 401 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsUnauthorizedErrorCode)
+Value: "UNAUTHORIZED"
+message
+required
+string
+Human readable error message
+
+403
+AccessDeniedException 403 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsAccessDeniedErrorCode)
+Value: "ACCESS_DENIED"
+message
+required
+string
+Human readable error message
+
+415
+UnsupportedMediaTypeException 415 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsUnsupportedMediaTypeErrorCode)
+Value: "UNSUPPORTED_MEDIA_TYPE"
+message
+required
+string
+Human readable error message
+
+429
+ThrottlingException 429 response
+
+Response Headers
+Retry-After	
+integer <int32>
+Delay in seconds, before the next re-try attempt to the operation is recommended
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsThrottledErrorCode)
+Value: "THROTTLED"
+message
+required
+string
+Human readable error message
+
+500
+InternalServerException 500 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsInternalErrorErrorCode)
+Value: "INTERNAL_ERROR"
+message
+required
+string
+Human readable error message
+
+Request samples
+Payload
+Content type
+application/vnd.spAdGroup.v3+json
+
+Copy
+Expand allCollapse all
+{
+"adGroups": [
+{}
+]
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spAdGroup.v3+json
+
+Copy
+Expand allCollapse all
+{
+"adGroups": {
+"error": [],
+"success": []
+}
+}
+DeleteSponsoredProductsAdGroups
+
+post
+/sp/adGroups/delete
+Delete ad groups
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spAdGroup.v3+json
+required
+adGroupIdFilter
+required
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+Responses
+207
+DeleteSponsoredProductsAdGroups 207 response
+
+Response Schema: application/vnd.spAdGroup.v3+json
+adGroups
+required
+object (SponsoredProductsBulkAdGroupOperationResponse)
+400
+AdGroupMutationException 400 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsInvalidArgumentErrorCode)
+Value: "INVALID_ARGUMENT"
+errors	
+Array of objects (SponsoredProductsAdGroupMutationError)
+message
+required
+string
+Human readable error message
+
+401
+UnauthorizedException 401 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsUnauthorizedErrorCode)
+Value: "UNAUTHORIZED"
+message
+required
+string
+Human readable error message
+
+403
+AccessDeniedException 403 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsAccessDeniedErrorCode)
+Value: "ACCESS_DENIED"
+message
+required
+string
+Human readable error message
+
+415
+UnsupportedMediaTypeException 415 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsUnsupportedMediaTypeErrorCode)
+Value: "UNSUPPORTED_MEDIA_TYPE"
+message
+required
+string
+Human readable error message
+
+429
+ThrottlingException 429 response
+
+Response Headers
+Retry-After	
+integer <int32>
+Delay in seconds, before the next re-try attempt to the operation is recommended
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsThrottledErrorCode)
+Value: "THROTTLED"
+message
+required
+string
+Human readable error message
+
+500
+InternalServerException 500 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsInternalErrorErrorCode)
+Value: "INTERNAL_ERROR"
+message
+required
+string
+Human readable error message
+
+Request samples
+Payload
+Content type
+application/vnd.spAdGroup.v3+json
+
+Copy
+Expand allCollapse all
+{
+"adGroupIdFilter": {
+"include": []
+}
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spAdGroup.v3+json
+
+Copy
+Expand allCollapse all
+{
+"adGroups": {
+"error": [],
+"success": []
+}
+}
+ListSponsoredProductsAdGroups
+
+post
+/sp/adGroups/list
+List ad groups
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spAdGroup.v3+json
+adGroupIdFilter	
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+campaignIdFilter	
+object (SponsoredProductsReducedObjectIdFilter)
+Filter entities by the list of objectIds
+
+campaignTargetingTypeFilter	
+string (SponsoredProductsTargetingType)
+Enum: "AUTO" "MANUAL"
+includeExtendedDataFields	
+boolean
+Whether to get entity with extended data fields such as creationDate, lastUpdateDate, servingStatus
+
+maxResults	
+integer <int32>
+Number of records to include in the paginated response. Defaults to max page size for given API
+
+nameFilter	
+object (SponsoredProductsNameFilter)
+Filter entities by name
+
+nextToken	
+string
+token value allowing to navigate to the next response page
+
+stateFilter	
+object (SponsoredProductsEntityStateFilter)
+Filter entities by state. To filter live entities, only 'ENABLED', 'PAUSED' and 'ARCHIVED' can be used
+
+Responses
+200
+ListSponsoredProductsAdGroups 200 response
+
+Response Schema: application/vnd.spAdGroup.v3+json
+adGroups	
+Array of objects (SponsoredProductsAdGroup) [ 0 .. 1000 ] items
+nextToken	
+string
+token value allowing to navigate to the next response page
+
+totalResults	
+integer <int64>
+The total number of entities
+
+400
+AdGroupAccessException 400 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsInvalidArgumentErrorCode)
+Value: "INVALID_ARGUMENT"
+errors	
+Array of objects (SponsoredProductsAdGroupAccessError)
+message
+required
+string
+Human readable error message
+
+401
+UnauthorizedException 401 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsUnauthorizedErrorCode)
+Value: "UNAUTHORIZED"
+message
+required
+string
+Human readable error message
+
+403
+AccessDeniedException 403 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsAccessDeniedErrorCode)
+Value: "ACCESS_DENIED"
+message
+required
+string
+Human readable error message
+
+415
+UnsupportedMediaTypeException 415 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsUnsupportedMediaTypeErrorCode)
+Value: "UNSUPPORTED_MEDIA_TYPE"
+message
+required
+string
+Human readable error message
+
+429
+ThrottlingException 429 response
+
+Response Headers
+Retry-After	
+integer <int32>
+Delay in seconds, before the next re-try attempt to the operation is recommended
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsThrottledErrorCode)
+Value: "THROTTLED"
+message
+required
+string
+Human readable error message
+
+500
+InternalServerException 500 response
+
+Response Schema: application/json
+code
+required
+string (SponsoredProductsInternalErrorErrorCode)
+Value: "INTERNAL_ERROR"
+message
+required
+string
+Human readable error message
+
+Request samples
+Payload
+Content type
+application/vnd.spAdGroup.v3+json
+
+Copy
+Expand allCollapse all
+{
+"adGroupIdFilter": {
+"include": []
+},
+"campaignIdFilter": {
+"include": []
+},
+"campaignTargetingTypeFilter": "AUTO",
+"includeExtendedDataFields": true,
+"maxResults": 0,
+"nameFilter": {
+"include": [],
+"queryTermMatchType": "BROAD_MATCH"
+},
+"nextToken": "string",
+"stateFilter": {
+"include": []
+}
+}
+Response samples
+200400401403415429500
+Content type
+application/vnd.spAdGroup.v3+json
+
+Copy
+Expand allCollapse all
+{
+"adGroups": [
+{}
+],
+"nextToken": "string",
+"totalResults": 0
+}
+Budget Recommendation New Campaigns
+getBudgetRecommendation
+
+post
+/sp/campaigns/initialBudgetRecommendation
+Creates daily budget recommendation along with benchmark metrics when creating a new campaign.
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header and choose profile id profileId from the response to pass it as input.
+
+Request Body schema: application/vnd.spinitialbudgetrecommendation.v3.4+json
+adGroups
+required
+Array of objects (AdGroup) = 1 items
+The ad group information for this new campaign.
+
+bidding
+required
+object (Bidding)
+The bidding control configuration for the new campaign.
+
+endDate	
+string
+The end date of the campaign in YYYYMMDD format.
+
+startDate	
+string
+The start date of the campaign in YYYYMMDD format.
+
+targetingType
+required
+string
+Enum: "auto" "manual"
+Specifies the targeting type.
+
+Responses
+200
+200 response.
+
+Response Schema: application/vnd.spinitialbudgetrecommendation.v3.4+json
+benchmark
+required
+object (Benchmark)
+Forecasted impact metrics for next 7 days or during special days.
+
+dailyBudget
+required
+number
+Recommended daily budget for the new campaign. Note: value -1 means we don’t have enough information to provide a recommendation.
+
+recommendationId	
+string
+Unique identifier for each recommendation.
+
+specialEvents
+required
+Array of objects (SpecialEvent) [ 0 .. 5 ] items
+A list of special events around the start and end date of the campaign.
+
+400
+400 response.
+
+Response Schema: application/vnd.spinitialbudgetrecommendation.v3.4+json
+message	
+string (BudgetRecommendationNewCampaignsErrorMessage)
+401
+401 response.
+
+Response Schema: application/vnd.spinitialbudgetrecommendation.v3.4+json
+message	
+string (BudgetRecommendationNewCampaignsErrorMessage)
+403
+403 response.
+
+Response Schema: application/vnd.spinitialbudgetrecommendation.v3.4+json
+message	
+string (BudgetRecommendationNewCampaignsErrorMessage)
+415
+415 response.
+
+Response Schema: application/vnd.spinitialbudgetrecommendation.v3.4+json
+message	
+string (BudgetRecommendationNewCampaignsErrorMessage)
+429
+429 response.
+
+Response Schema: application/vnd.spinitialbudgetrecommendation.v3.4+json
+message	
+string (BudgetRecommendationNewCampaignsErrorMessage)
+500
+500 response.
+
+Response Schema: application/vnd.spinitialbudgetrecommendation.v3.4+json
+message	
+string (BudgetRecommendationNewCampaignsErrorMessage)
+Request samples
+Payload
+Content type
+application/vnd.spinitialbudgetrecommendation.v3.4+json
+
+Copy
+Expand allCollapse all
+{
+"adGroups": [
+{}
+],
+"bidding": {
+"adjustments": [],
+"strategy": "AUTO_FOR_SALES"
+},
+"endDate": "string",
+"startDate": "string",
+"targetingType": "auto"
+}
+Response samples
+200400401403415429500
+Content type
+application/vnd.spinitialbudgetrecommendation.v3.4+json
+
+Copy
+Expand allCollapse all
+{
+"benchmark": {
+"benchmarkStatus": "failed",
+"values": {}
+},
+"dailyBudget": 0,
+"recommendationId": "string",
+"specialEvents": [
+{}
+]
+}
+Budget recommendations and missed opportunities
+Get recommended daily budget and estimated missed opportunities for campaigns.
+
+post
+/sp/campaigns/budgetRecommendations
+Given a list of campaigns as input, this API provides the following metrics -
+1. Recommended daily budget - Estimated daily budget needed to keep the campaign in budget for the full 24-hour period in a day. Consider this daily budget to minimize your campaign's chances of running out of budget.
+2. Percent time in budget - Actual average percentage of time the campaign was in budget between the start and end date specified in the response. Note: value -1 means we don’t have enough information to compute the campaign’s percent time in budget.
+3. Estimated missed impressions, clicks and sales - These are the estimated range of additional impressions, clicks and sales the campaign might have generated between the start and end date specified in the response had it been in budget 100% of the time. These are estimates based on historical traffic and the campaign's past performance (e.g. impressions & clicks generated) but not guaranteed.
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.budgetrecommendation.v3+json
+required
+campaignIds
+required
+Array of strings [ 1 .. 100 ] items
+List of campaigns.
+
+Responses
+200
+Successful Operation.
+
+400
+Bad Request.
+
+401
+Unauthorized - Request failed because user is not authenticated or is not allowed to invoke the operation.
+
+403
+Forbidden - access to the requested resource is forbidden
+
+Response Schema: application/vnd.budgetrecommendation.v3+json
+code	
+string
+The HTTP status code of the response.
+
+details	
+string
+A human-readable description of the response.
+
+415
+Unsupported Media Type - the payload is in a format not supported by this method.
+
+Response Schema: application/vnd.budgetrecommendation.v3+json
+code	
+string
+The HTTP status code of the response.
+
+details	
+string
+A human-readable description of the response.
+
+422
+Unprocessable Entity - Failed due to invalid parameters.
+
+Response Schema: application/vnd.budgetrecommendation.v3+json
+code	
+string
+The HTTP status code of the response.
+
+details	
+string
+A human-readable description of the response.
+
+429
+Too Many Requests - request was rate-limited. Retry later.
+
+500
+Internal Server DBCError - something went wrong on the server. Retry later and report a DBCError if unresolved.
+
+Response Schema: application/vnd.budgetrecommendation.v3+json
+code	
+string
+The HTTP status code of the response.
+
+details	
+string
+A human-readable description of the response.
+
+Request samples
+Payload
+Content type
+application/vnd.budgetrecommendation.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaignIds": [
+"string"
+]
+}
+Response samples
+200400401403415422429500
+Content type
+application/vnd.budgetrecommendation.v3+json
+
+Copy
+Expand allCollapse all
+{
+"budgetRecommendationsErrorResults": [
+{}
+],
+"budgetRecommendationsSuccessResults": [
+{},
+{}
+]
+}
+Budget Usage
+Budget usage API for SP campaigns
+
+post
+/sp/campaigns/budget/usage
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+any
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+any
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: application/vnd.spcampaignbudgetusage.v1+json
+required
+campaignIds	
+Array of strings [ 1 .. 100 ] items
+A list of campaign IDs
+
+Responses
+207
+Multi-status. An object containing a list of budget usage response objects reflecting the same order as the input.
+
+400
+Bad Request.
+
+401
+Unauthorized. The request failed because the user is not authenticated or is not allowed to invoke the operation.
+
+403
+Forbidden. The request failed because user does not have access to a specified resource.
+
+422
+Unprocessable entity. The server understood the request, but was unable to process the instruction.
+
+Response Schema: application/json
+code	
+string
+An enumerated error code for machine use.
+
+details	
+string
+A human-readable description of the response.
+
+429
+Too Many Requests. The request was rate-limited. Retry later.
+
+500
+Internal Server BudgetUsageError - Something went wrong on the server. Retry later and report an BudgetUsageError if unresolved.
+
+Request samples
+Payload
+Content type
+application/vnd.spcampaignbudgetusage.v1+json
+
+Copy
+Expand allCollapse all
+{
+"campaignIds": [
+"string"
+]
+}
+Response samples
+207400401403422429500
+Content type
+application/vnd.spcampaignbudgetusage.v1+json
+
+Copy
+Expand allCollapse all
+{
+"error": [
+{}
+],
+"success": [
+{}
+]
+}
+BudgetRules
+Get all budget rules created by an advertiser
+
+get
+/sp/budgetRules
+query Parameters
+nextToken	
+string
+To retrieve the next page of results, call the same operation and specify this token in the request. If the nextToken field is empty, there are no further results.
+
+pageSize
+required
+number
+Sets a limit on the number of results returned. Maximum limit of pageSize is 30.
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Responses
+200
+Successful operation.
+
+400
+Bad Request.
+
+401
+Unauthorized. The request failed because the user is not authenticated or is not allowed to invoke the operation.
+
+403
+Forbidden. The request failed because user does not have access to a specified resource.
+
+422
+Unprocessable entity. The server understood the request, but was unable to process the instruction.
+
+429
+Too Many Requests. The request was rate-limited. Retry later.
+
+500
+Internal Server Error. Something went wrong on the server. Retry later and report an error if unresolved.
+
+Response samples
+200400401403422429500
+Content type
+application/json
+
+Copy
+Expand allCollapse all
+{
+"budgetRulesForAdvertiserResponse": [
+{}
+],
+"nextToken": "string"
+}
+Creates one or more budget rules.
+
+post
+/sp/budgetRules
+Requires one of these permissions: ["advertiser_campaign_edit"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: application/json
+required
+budgetRulesDetails	
+Array of objects (SPBudgetRuleDetails) <= 25 items
+A list of budget rule details.
+
+Responses
+207
+Multi-status. An object containing a list of budget rule response objects reflecting the same order as the input.
+
+400
+Bad Request.
+
+401
+Unauthorized. The request failed because the user is not authenticated or is not allowed to invoke the operation.
+
+403
+Forbidden. The request failed because user does not have access to a specified resource.
+
+422
+Unprocessable entity. The server understood the request, but was unable to process the instruction.
+
+429
+Too Many Requests. The request was rate-limited. Retry later.
+
+500
+Internal Server Error. Something went wrong on the server. Retry later and report an error if unresolved.
+
+Request samples
+Payload
+Content type
+application/json
+
+Copy
+Expand allCollapse all
+{
+"budgetRulesDetails": [
+{}
+]
+}
+Response samples
+207400401403422429500
+Content type
+application/json
+
+Copy
+Expand allCollapse all
+{
+"responses": [
+{}
+]
+}
+Updates one or more budget rules.
+
+put
+/sp/budgetRules
+Requires one of these permissions: ["advertiser_campaign_edit"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: application/json
+required
+budgetRulesDetails	
+Array of objects (SPBudgetRule) <= 25 items
+A list of budget rule details.
+
+Responses
+207
+Multi-status. An object containing a list of budget rule response objects reflecting the same order as the input.
+
+400
+Bad Request.
+
+401
+Unauthorized. The request failed because the user is not authenticated or is not allowed to invoke the operation.
+
+403
+Forbidden. The request failed because user does not have access to a specified resource.
+
+422
+Unprocessable entity. The server understood the request, but was unable to process the instruction.
+
+429
+Too Many Requests. The request was rate-limited. Retry later.
+
+500
+Internal Server Error. Something went wrong on the server. Retry later and report an error if unresolved.
+
+Request samples
+Payload
+Content type
+application/json
+
+Copy
+Expand allCollapse all
+{
+"budgetRulesDetails": [
+{}
+]
+}
+Response samples
+207400401403422429500
+Content type
+application/json
+
+Copy
+Expand allCollapse all
+{
+"responses": [
+{}
+]
+}
+Gets a budget rule specified by identifier.
+
+get
+/sp/budgetRules/{budgetRuleId}
+Authorized resource type: Global Ad Account ID, Profile ID
+
+Parameter name: Amazon-Ads-AccountId
+
+Parameter in: header
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+path Parameters
+budgetRuleId
+required
+string
+The budget rule identifier.
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Responses
+200
+Successful operation.
+
+400
+Bad Request.
+
+401
+Unauthorized. The request failed because the user is not authenticated or is not allowed to invoke the operation.
+
+403
+Forbidden. The request failed because user does not have access to a specified resource.
+
+422
+Unprocessable entity. The server understood the request, but was unable to process the instruction.
+
+429
+Too Many Requests. The request was rate-limited. Retry later.
+
+500
+Internal Server Error. Something went wrong on the server. Retry later and report an error if unresolved.
+
+Response samples
+200400401403422429500
+Content type
+application/json
+
+Copy
+Expand allCollapse all
+{
+"budgetRule": {
+"createdDate": 0,
+"lastUpdatedDate": 0,
+"ruleDetails": {},
+"ruleId": "string",
+"ruleState": "ACTIVE",
+"ruleStatus": "string"
+}
+}
+Gets all the campaigns associated with a budget rule
+
+get
+/sp/budgetRules/{budgetRuleId}/campaigns
+path Parameters
+budgetRuleId
+required
+string
+The budget rule identifier.
+
+query Parameters
+nextToken	
+string
+To retrieve the next page of results, call the same operation and specify this token in the request. If the nextToken field is empty, there are no further results.
+
+pageSize
+required
+number
+Sets a limit on the number of results returned. Maximum limit of pageSize is 30.
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Responses
+200
+Successful operation.
+
+400
+Bad Request.
+
+401
+Unauthorized. The request failed because the user is not authenticated or is not allowed to invoke the operation.
+
+403
+Forbidden. The request failed because user does not have access to a specified resource.
+
+422
+Unprocessable entity. The server understood the request, but was unable to process the instruction.
+
+429
+Too Many Requests. The request was rate-limited. Retry later.
+
+500
+Internal Server Error. Something went wrong on the server. Retry later and report an error if unresolved.
+
+Response samples
+200400401403422429500
+Content type
+application/json
+
+Copy
+Expand allCollapse all
+{
+"associatedCampaigns": [
+{}
+],
+"nextToken": "string"
+}
+Associates budget rules to one or more campaigns.
+
+post
+/sp/budgetRulesAssociation
+A maximum of 250 rules can be associated to a campaign. Note that the name of each rule associated to a campaign is required to be unique.
+
+Requires one of these permissions: ["advertiser_campaign_edit"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a Login with Amazon account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: application/json
+required
+budgetRulesAssociations	
+Array of objects (BudgetRulesRelations) <= 50 items
+A list of budget rule campaign details.
+
+Responses
+207
+Multi-status. An object containing a list of associated budget rule response objects reflecting the same order as the input.
+
+400
+Bad Request.
+
+401
+Unauthorized. The request failed because the user is not authenticated or is not allowed to invoke the operation.
+
+403
+Forbidden. The request failed because user does not have access to a specified resource.
+
+422
+Unprocessable entity. The server understood the request, but was unable to process the instruction.
+
+Response Schema: application/json
+code	
+string
+An enumerated error code for machine use.
+
+details	
+string
+A human-readable description of the response.
+
+429
+Too Many Requests. The request was rate-limited. Retry later.
+
+Response Schema: application/json
+code	
+string
+An enumerated error code for machine use.
+
+details	
+string
+A human-readable description of the response.
+
+500
+Internal Server Error. Something went wrong on the server. Retry later and report an error if unresolved.
+
+Request samples
+Payload
+Content type
+application/json
+
+Copy
+Expand allCollapse all
+{
+"budgetRulesAssociations": [
+{}
+]
+}
+Response samples
+207400401403422429500
+Content type
+application/json
+
+Copy
+Expand allCollapse all
+{
+"budgetRulesAssociations": {
+"errorList": [],
+"successList": []
+}
+}
+DisAssociates budget rules from one or more campaigns
+
+post
+/sp/budgetRulesAssociation/delete
+Requires one of these permissions: ["advertiser_campaign_edit"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a Login with Amazon account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: application/json
+required
+budgetRulesDisAssociations	
+Array of objects (BudgetRulesRelations) <= 50 items
+A list of budget rule campaign details.
+
+Responses
+207
+Multi-status. An object containing a list of dissociated budget rule response objects reflecting the same order as the input.
+
+400
+Bad Request.
+
+401
+Unauthorized. The request failed because the user is not authenticated or is not allowed to invoke the operation.
+
+403
+Forbidden. The request failed because user does not have access to a specified resource.
+
+422
+Unprocessable entity. The server understood the request, but was unable to process the instruction.
+
+Response Schema: application/json
+code	
+string
+An enumerated error code for machine use.
+
+details	
+string
+A human-readable description of the response.
+
+429
+Too Many Requests. The request was rate-limited. Retry later.
+
+Response Schema: application/json
+code	
+string
+An enumerated error code for machine use.
+
+details	
+string
+A human-readable description of the response.
+
+500
+Internal Server Error. Something went wrong on the server. Retry later and report an error if unresolved.
+
+Request samples
+Payload
+Content type
+application/json
+
+Copy
+Expand allCollapse all
+{
+"budgetRulesDisAssociations": [
+{}
+]
+}
+Response samples
+207400401403422429500
+Content type
+application/json
+
+Copy
+Expand allCollapse all
+{
+"budgetRulesDisAssociations": {
+"errorList": [],
+"successList": []
+}
+}
+Gets a list of budget rules associated to a campaign specified by identifier.
+
+get
+/sp/campaigns/{campaignId}/budgetRules
+Authorized resource type: Global Ad Account ID, Profile ID
+
+Parameter name: Amazon-Ads-AccountId
+
+Parameter in: header
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+path Parameters
+campaignId
+required
+number <int64>
+The campaign identifier.
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Responses
+200
+Successful operation.
+
+400
+Bad Request
+
+401
+Unauthorized. The request failed because the user is not authenticated or is not allowed to invoke the operation.
+
+403
+Forbidden. The request failed because user does not have access to a specified resource.
+
+422
+Unprocessable entity. The server understood the request, but was unable to process the instruction.
+
+429
+Too Many Requests. The request was rate-limited. Retry later.
+
+500
+Internal Server Error. Something went wrong on the server. Retry later and report an error if unresolved.
+
+Response Schema: application/json
+code	
+string
+An enumerated error code for machine use.
+
+details	
+string
+A human-readable description of the response.
+
+Response samples
+200400401403422429500
+Content type
+application/json
+
+Copy
+Expand allCollapse all
+{
+"associatedRules": [
+{}
+]
+}
+Associates one or more budget rules to a campaign specified by identifer.
+
+post
+/sp/campaigns/{campaignId}/budgetRules
+A maximum of 250 rules can be associated to a campaign. Note that the name of each rule associated to a campaign is required to be unique.
+
+Requires one of these permissions: ["advertiser_campaign_edit"]
+
+path Parameters
+campaignId
+required
+number <int64>
+The campaign identifier.
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a Login with Amazon account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: application/json
+required
+budgetRuleIds	
+Array of strings <= 25 items
+A list of budget rule identifiers.
+
+Responses
+207
+Multi-status. An object containing a list of associated budget rule response objects reflecting the same order as the input.
+
+400
+Bad Request.
+
+401
+Unauthorized. The request failed because the user is not authenticated or is not allowed to invoke the operation.
+
+403
+Forbidden. The request failed because user does not have access to a specified resource.
+
+422
+Unprocessable entity. The server understood the request, but was unable to process the instruction.
+
+429
+Too Many Requests. The request was rate-limited. Retry later.
+
+500
+Internal Server Error. Something went wrong on the server. Retry later and report an error if unresolved.
+
+Request samples
+Payload
+Content type
+application/json
+
+Copy
+Expand allCollapse all
+{
+"budgetRuleIds": [
+"string"
+]
+}
+Response samples
+207400401403422429500
+Content type
+application/json
+
+Copy
+Expand allCollapse all
+{
+"responses": [
+{}
+]
+}
+Disassociates a budget rule specified by identifier from a campaign specified by identifier.
+
+delete
+/sp/campaigns/{campaignId}/budgetRules/{budgetRuleId}
+Requires one of these permissions: ["advertiser_campaign_edit"]
+
+path Parameters
+campaignId
+required
+number <int64>
+The campaign identifier.
+
+budgetRuleId
+required
+string
+The budget rule identifier.
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Responses
+200
+Successful operation.
+
+400
+Bad Request
+
+401
+Unauthorized. The request failed because user is not authenticated or is not allowed to invoke the operation.
+
+403
+Forbidden. The request failed because user does not have access to a specified resource.
+
+422
+Unprocessable entity. The server understood the request, but was unable to process the instruction.
+
+429
+Too Many Requests. The request was rate-limited. Retry later.
+
+500
+Internal Server Error. Something went wrong on the server. Retry later and report an error if unresolved.
+
+Response samples
+200400401403422429500
+Content type
+application/json
+
+Copy
+{ }
+BudgetRulesRecommendation
+Gets a list of special events with suggested date range and suggested budget increase for a campaign specified by identifier.
+
+post
+/sp/campaigns/budgetRules/recommendations
+A rule enables an automatic budget increase for a specified date range or for a special event. The response also includes a suggested budget increase for each special event.
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spbudgetrulesrecommendation.v3+json
+campaignId
+required
+string
+The campaign identifier.
+
+Responses
+200
+Successful Operation.
+
+400
+Bad Request.
+
+Response Schema: application/vnd.spbudgetrulesrecommendation.v3+json
+code	
+string
+The HTTP status code of the response.
+
+details	
+string
+A human-readable description of the response.
+
+429
+Too Many Requests. Request was rate-limited. Retry later.
+
+Response Schema: application/vnd.spbudgetrulesrecommendation.v3+json
+code	
+string
+The HTTP status code of the response.
+
+details	
+string
+A human-readable description of the response.
+
+500
+Internal Server Error. Something went wrong on the server.
+
+Response Schema: application/vnd.spbudgetrulesrecommendation.v3+json
+code	
+string
+The HTTP status code of the response.
+
+details	
+string
+A human-readable description of the response.
+
+Request samples
+Payload
+Content type
+application/vnd.spbudgetrulesrecommendation.v3+json
+
+Copy
+{
+"campaignId": "string",
+"recommendationType": "EVENTS_FOR_EXISTING_CAMPAIGN"
+}
+Response samples
+200400429500
+Content type
+application/vnd.spbudgetrulesrecommendation.v3+json
+
+Copy
+Expand allCollapse all
+{
+"recommendedBudgetRuleEvents": [
+{}
+]
+}
+Gets all special individual and grouped events with suggested date range in advertiser's marketplace.
+
+post
+/sp/v1/events
+A rule enables an automatic budget increase for a specified date range or for a special event. The response includes the suggested date range for each special event.
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/json
+object (SPGetAllRuleEventRequest)
+Responses
+200
+Successful Operation.
+
+400
+Bad Request.
+
+429
+Too Many Requests. Request was rate-limited. Retry later.
+
+500
+Internal Server Error. Something went wrong on the server.
+
+Request samples
+Payload
+Content type
+application/json
+
+Copy
+{ }
+Response samples
+200400429500
+Content type
+application/json
+
+Copy
+Expand allCollapse all
+{
+"events": [
+{}
+],
+"groupedEvents": [
+{}
+]
+}
+Campaign negative keywords
+CreateSponsoredProductsCampaignNegativeKeywords
+
+post
+/sp/campaignNegativeKeywords
+Create campaign negative keywords
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Prefer	
+string
+The "Prefer" header, as defined in [RFC7240], allows clients to request certain behavior from the service. The service ignores preference values that are either not supported or not known by the service. Either multiple Prefer headers are passed or single one with comma separated values, both forms are equivalent Supported preferences: return=representation - return the full object when doing create/update/delete operations instead of ids. Please note that the extendedData field will be part of the full object for /list endpoints only.
+
+Request Body schema: application/vnd.spCampaignNegativeKeyword.v3+json
+required
+campaignNegativeKeywords
+required
+Array of objects (SponsoredProductsCreateCampaignNegativeKeyword) [ 0 .. 1000 ] items
+An array of campaignNegativeKeywords.
+
+Responses
+207
+CreateSponsoredProductsCampaignNegativeKeywords 207 response
+
+400
+CampaignNegativeKeywordMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spCampaignNegativeKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaignNegativeKeywords": [
+{}
+]
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spCampaignNegativeKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaignNegativeKeywords": {
+"error": [],
+"success": []
+}
+}
+UpdateSponsoredProductsCampaignNegativeKeywords
+
+put
+/sp/campaignNegativeKeywords
+Update campaign negative keywords
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Prefer	
+string
+The "Prefer" header, as defined in [RFC7240], allows clients to request certain behavior from the service. The service ignores preference values that are either not supported or not known by the service. Either multiple Prefer headers are passed or single one with comma separated values, both forms are equivalent Supported preferences: return=representation - return the full object when doing create/update/delete operations instead of ids. Please note that the extendedData field will be part of the full object for /list endpoints only.
+
+Request Body schema: application/vnd.spCampaignNegativeKeyword.v3+json
+required
+campaignNegativeKeywords
+required
+Array of objects (SponsoredProductsUpdateCampaignNegativeKeyword) [ 0 .. 1000 ] items
+An array of campaignNegativeKeywords with updated values.
+
+Responses
+207
+UpdateSponsoredProductsCampaignNegativeKeywords 207 response
+
+400
+CampaignNegativeKeywordMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spCampaignNegativeKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaignNegativeKeywords": [
+{}
+]
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spCampaignNegativeKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaignNegativeKeywords": {
+"error": [],
+"success": []
+}
+}
+DeleteSponsoredProductsCampaignNegativeKeywords
+
+post
+/sp/campaignNegativeKeywords/delete
+Delete campaign negative keywords
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spCampaignNegativeKeyword.v3+json
+required
+campaignNegativeKeywordIdFilter
+required
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+Responses
+207
+DeleteSponsoredProductsCampaignNegativeKeywords 207 response
+
+400
+CampaignNegativeKeywordMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spCampaignNegativeKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaignNegativeKeywordIdFilter": {
+"include": []
+}
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spCampaignNegativeKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaignNegativeKeywords": {
+"error": [],
+"success": []
+}
+}
+ListSponsoredProductsCampaignNegativeKeywords
+
+post
+/sp/campaignNegativeKeywords/list
+List campaign negative keywords
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spCampaignNegativeKeyword.v3+json
+campaignIdFilter	
+object (SponsoredProductsReducedObjectIdFilter)
+Filter entities by the list of objectIds
+
+campaignNegativeKeywordIdFilter	
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+campaignNegativeKeywordTextFilter	
+object (SponsoredProductsKeywordTextFilter)
+Filter by keywordText
+
+includeExtendedDataFields	
+boolean
+Whether to get entity with extended data fields such as creationDate, lastUpdateDate, servingStatus
+
+matchTypeFilter	
+Array of strings (SponsoredProductsNegativeMatchType)
+Items Enum: "NEGATIVE_BROAD" "NEGATIVE_EXACT" "NEGATIVE_PHRASE" "OTHER"
+Restricts results to resources with the selected matchType
+
+maxResults	
+integer <int32>
+Number of records to include in the paginated response. Defaults to max page size for given API
+
+nextToken	
+string
+token value allowing to navigate to the next response page
+
+stateFilter	
+object (SponsoredProductsEntityStateFilter)
+Filter entities by state. To filter live entities, only 'ENABLED', 'PAUSED' and 'ARCHIVED' can be used
+
+Responses
+200
+ListSponsoredProductsCampaignNegativeKeywords 200 response
+
+400
+CampaignNegativeKeywordAccessException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spCampaignNegativeKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaignIdFilter": {
+"include": []
+},
+"campaignNegativeKeywordIdFilter": {
+"include": []
+},
+"campaignNegativeKeywordTextFilter": {
+"include": [],
+"queryTermMatchType": "BROAD_MATCH"
+},
+"includeExtendedDataFields": true,
+"matchTypeFilter": [
+"NEGATIVE_BROAD"
+],
+"maxResults": 0,
+"nextToken": "string",
+"stateFilter": {
+"include": []
+}
+}
+Response samples
+200400401403415429500
+Content type
+application/vnd.spCampaignNegativeKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaignNegativeKeywords": [
+{}
+],
+"nextToken": "string",
+"totalResults": 0
+}
+Campaign negative targeting clauses
+CreateSponsoredProductsCampaignNegativeTargetingClauses
+
+post
+/sp/campaignNegativeTargets
+Create campaign negative targeting clauses
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Prefer	
+string
+The "Prefer" header, as defined in [RFC7240], allows clients to request certain behavior from the service. The service ignores preference values that are either not supported or not known by the service. Either multiple Prefer headers are passed or single one with comma separated values, both forms are equivalent Supported preferences: return=representation - return the full object when doing create/update/delete operations instead of ids. Please note that the extendedData field will be part of the full object for /list endpoints only.
+
+Request Body schema: application/vnd.spCampaignNegativeTargetingClause.v3+json
+required
+campaignNegativeTargetingClauses
+required
+Array of objects (SponsoredProductsCreateCampaignNegativeTargetingClause) [ 0 .. 1000 ] items
+An array of Campaign Negative TargetingClauses.
+
+Responses
+207
+CreateSponsoredProductsCampaignNegativeTargetingClauses 207 response
+
+400
+CampaignNegativeTargetsMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spCampaignNegativeTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaignNegativeTargetingClauses": [
+{}
+]
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spCampaignNegativeTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaignNegativeTargetingClauses": {
+"error": [],
+"success": []
+}
+}
+UpdateSponsoredProductsCampaignNegativeTargetingClauses
+
+put
+/sp/campaignNegativeTargets
+Update campaign negative targeting clauses
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Prefer	
+string
+The "Prefer" header, as defined in [RFC7240], allows clients to request certain behavior from the service. The service ignores preference values that are either not supported or not known by the service. Either multiple Prefer headers are passed or single one with comma separated values, both forms are equivalent Supported preferences: return=representation - return the full object when doing create/update/delete operations instead of ids. Please note that the extendedData field will be part of the full object for /list endpoints only.
+
+Request Body schema: application/vnd.spCampaignNegativeTargetingClause.v3+json
+required
+campaignNegativeTargetingClauses
+required
+Array of objects (SponsoredProductsUpdateCampaignNegativeTargetingClause) [ 0 .. 1000 ] items
+An array of Campaign Negative TargetingClauses with updated values.
+
+Responses
+207
+UpdateSponsoredProductsCampaignNegativeTargetingClauses 207 response
+
+400
+CampaignNegativeTargetsMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spCampaignNegativeTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaignNegativeTargetingClauses": [
+{}
+]
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spCampaignNegativeTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaignNegativeTargetingClauses": {
+"error": [],
+"success": []
+}
+}
+DeleteSponsoredProductsCampaignNegativeTargetingClauses
+
+post
+/sp/campaignNegativeTargets/delete
+Delete campaign negative targeting clauses
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spCampaignNegativeTargetingClause.v3+json
+required
+campaignNegativeTargetIdFilter
+required
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+Responses
+207
+DeleteSponsoredProductsCampaignNegativeTargetingClauses 207 response
+
+400
+CampaignNegativeTargetsMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spCampaignNegativeTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaignNegativeTargetIdFilter": {
+"include": []
+}
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spCampaignNegativeTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaignNegativeTargetingClauses": {
+"error": [],
+"success": []
+}
+}
+ListSponsoredProductsCampaignNegativeTargetingClauses
+
+post
+/sp/campaignNegativeTargets/list
+List campaign negative targeting clauses
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spCampaignNegativeTargetingClause.v3+json
+asinFilter	
+object (SponsoredProductsAsinFilter)
+campaignIdFilter	
+object (SponsoredProductsReducedObjectIdFilter)
+Filter entities by the list of objectIds
+
+campaignNegativeTargetIdFilter	
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+includeExtendedDataFields	
+boolean
+Whether to get entity with extended data fields such as creationDate, lastUpdateDate, servingStatus
+
+maxResults	
+integer <int32>
+Number of records to include in the paginated response. Defaults to max page size for given API
+
+nextToken	
+string
+token value allowing to navigate to the next response page
+
+stateFilter	
+object (SponsoredProductsEntityStateFilter)
+Filter entities by state. To filter live entities, only 'ENABLED', 'PAUSED' and 'ARCHIVED' can be used
+
+Responses
+200
+ListSponsoredProductsCampaignNegativeTargetingClauses 200 response
+
+400
+CampaignNegativeTargetsAccessException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spCampaignNegativeTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"asinFilter": {
+"include": [],
+"queryTermMatchType": "BROAD_MATCH"
+},
+"campaignIdFilter": {
+"include": []
+},
+"campaignNegativeTargetIdFilter": {
+"include": []
+},
+"includeExtendedDataFields": true,
+"maxResults": 0,
+"nextToken": "string",
+"stateFilter": {
+"include": []
+}
+}
+Response samples
+200400401403415429500
+Content type
+application/vnd.spCampaignNegativeTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaignNegativeTargetingClauses": [
+{}
+],
+"nextToken": "string",
+"totalResults": 0
+}
+Campaign Optimization Rules
+Creates a campaign optimization rule.
+
+post
+/sp/rules/campaignOptimization
+Requires one of these permissions: ["advertiser_campaign_edit"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope	
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: application/vnd.optimizationrules.v1+json
+required
+campaignIds
+required
+Array of strings (RuleCampaignId) <= 20 items
+A list of campaign ids
+
+recurrence
+required
+string (RecurrenceType)
+Value: "DAILY"
+The frequency of the rule application.
+
+ruleAction
+required
+string (RuleAction)
+Value: "ADOPT"
+The action taken when the campaign optimization rule is enabled. Defaults to adopt
+
+ruleCondition	
+Array of objects (RuleConditionList) <= 3 items
+ruleName	
+string (RuleName) <= 355 characters
+The campaign optimization rule name.
+
+ruleType
+required
+string (RuleType)
+Enum: "BID" "KEYWORD" "PRODUCT"
+The type of the campaign optimization rule. Only Support BID as of now
+
+Responses
+200
+Successful Operation.
+
+400
+Bad Request.
+
+401
+Unauthorized. The request failed because the user is not authenticated or is not allowed to invoke the operation.
+
+403
+Forbidden. The request failed because user does not have access to a specified resource.
+
+422
+Unprocessable entity. The server understood the request, but was unable to process the instruction.
+
+429
+Too Many Requests. The request was rate-limited. Retry later.
+
+500
+Internal Server Error. Something went wrong on the server. Retry later and report an error if unresolved.
+
+Request samples
+Payload
+Content type
+application/vnd.optimizationrules.v1+json
+
+Copy
+Expand allCollapse all
+{
+"campaignIds": [
+"1223785",
+"123784"
+],
+"recurrence": "DAILY",
+"ruleAction": "ADOPT",
+"ruleCondition": [
+{}
+],
+"ruleName": "RuleROAS4",
+"ruleType": "BID"
+}
+Response samples
+200400401403422429500
+Content type
+application/vnd.optimizationrules.v1+json
+
+Copy
+{
+"campaignOptimizationId": "string",
+"code": "string",
+"details": "string"
+}
+Updates a campaign optimization rule.
+
+put
+/sp/rules/campaignOptimization
+Requires one of these permissions: ["advertiser_campaign_edit"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope	
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: application/vnd.optimizationrules.v1+json
+required
+campaignIds
+required
+Array of strings (RuleCampaignId) <= 20 items
+A list of campaign ids
+
+campaignOptimizationId
+required
+string (campaignOptimizationId) <= 355 characters
+The persistent rule identifier.
+
+recurrence
+required
+string (RecurrenceType)
+Value: "DAILY"
+The frequency of the rule application.
+
+ruleAction
+required
+string (RuleAction)
+Value: "ADOPT"
+The action taken when the campaign optimization rule is enabled. Defaults to adopt
+
+ruleCondition	
+Array of objects (RuleConditionList) <= 3 items
+Array (<= 3 items)
+comparisonOperator
+required
+string (ComparisonOperator)
+Enum: "EQUAL_TO" "GREATER_THAN" "GREATER_THAN_OR_EQUAL_TO" "LESS_THAN" "LESS_THAN_OR_EQUAL_TO"
+The comparison operator.
+
+metricName
+required
+string (RuleConditionMetric)
+Enum: "AVERAGE_BID" "ROAS"
+The advertising performance metric. ROAS is the only supported metric.
+
+threshold
+required
+number <double>
+The performance threshold value.
+
+ruleName	
+string (RuleName) <= 355 characters
+The campaign optimization rule name.
+
+ruleType
+required
+string (RuleType)
+Enum: "BID" "KEYWORD" "PRODUCT"
+The type of the campaign optimization rule. Only Support BID as of now
+
+Responses
+200
+Successfully updated
+
+400
+Bad Request.
+
+401
+Unauthorized. The request failed because the user is not authenticated or is not allowed to invoke the operation.
+
+403
+Forbidden. The request failed because user does not have access to a specified resource.
+
+422
+Unprocessable entity. The server understood the request, but was unable to process the instruction.
+
+429
+Too Many Requests. The request was rate-limited. Retry later.
+
+500
+Internal Server Error.
+
+Request samples
+Payload
+Content type
+application/vnd.optimizationrules.v1+json
+
+Copy
+Expand allCollapse all
+{
+"campaignIds": [
+"1223785",
+"123784"
+],
+"campaignOptimizationId": "10001",
+"recurrence": "DAILY",
+"ruleAction": "ADOPT",
+"ruleCondition": [
+{}
+],
+"ruleName": "RuleROAS4",
+"ruleType": "BID"
+}
+Response samples
+200400401403422429500
+Content type
+application/vnd.optimizationrules.v1+json
+
+Copy
+{
+"campaignOptimizationId": "string",
+"code": "string",
+"details": "string"
+}
+Gets a campaign optimization rule eligibility for SP campaigns.
+
+post
+/sp/rules/campaignOptimization/eligibility
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope	
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: application/vnd.optimizationrules.v1+json
+required
+campaignIds
+required
+Array of strings (RuleCampaignId) <= 100 items
+A list of campaign ids
+
+requirePerformanceMetrics	
+boolean
+Default: "true"
+If set to false, eligible campaigns without a recommendation for performanceMetrics are also provided in response.Check performanceMetricsExists response field to know if performanceMetrics is available for eligible campaign.
+
+Responses
+200
+Successful Operation.
+
+400
+Bad Request.
+
+401
+Unauthorized. The request failed because the user is not authenticated or is not allowed to invoke the operation.
+
+403
+Forbidden. The request failed because user does not have access to a specified resource.
+
+422
+Unprocessable Entity. The server understood the request, but was unable to process the instruction.
+
+429
+Too Many Requests. The request was rate-limited. Retry later.
+
+500
+Internal Server Error.
+
+Request samples
+Payload
+Content type
+application/vnd.optimizationrules.v1+json
+
+Copy
+Expand allCollapse all
+{
+"campaignIds": [
+"string"
+],
+"requirePerformanceMetrics": "true"
+}
+Response samples
+200400401403422429500
+Content type
+application/vnd.optimizationrules.v1+json
+
+Copy
+Expand allCollapse all
+{
+"CampaignOptimizationRecommendations": [
+{}
+],
+"CampaignOptimizationRecommendationsError": [
+{}
+]
+}
+Gets campaign optimization rule state. Recommended refresh frequency is once a day.
+
+post
+/sp/rules/campaignOptimization/state
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope	
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: application/vnd.optimizationrules.v1+json
+required
+campaignIds
+required
+Array of strings (RuleCampaignId) <= 100 items
+A list of campaign ids
+
+Responses
+200
+Successful Operation.
+
+400
+Bad Request.
+
+401
+Unauthorized. The request failed because the user is not authenticated or is not allowed to invoke the operation.
+
+403
+Forbidden. The request failed because user does not have access to a specified resource.
+
+422
+Unprocessable entity. The server understood the request, but was unable to process the instruction.
+
+429
+Too Many Requests. The request was rate-limited. Retry later.
+
+500
+Internal Server Error.
+
+Request samples
+Payload
+Content type
+application/vnd.optimizationrules.v1+json
+
+Copy
+Expand allCollapse all
+{
+"campaignIds": [
+"string"
+]
+}
+Response samples
+200400401403422429500
+Content type
+application/vnd.optimizationrules.v1+json
+
+Copy
+Expand allCollapse all
+{
+"CampaignOptimizationNotifications": [
+{}
+],
+"CampaignOptimizationRecommendationsError": [
+{}
+]
+}
+Deletes a campaign optimization rule specified by identifier.
+
+delete
+/sp/rules/campaignOptimization/{campaignOptimizationId}
+Requires one of these permissions: ["advertiser_campaign_edit"]
+
+path Parameters
+campaignOptimizationId
+required
+string
+The sp campaign optimization rule identifier.
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope	
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Responses
+200
+Successful operation.
+
+400
+Bad Request.
+
+401
+Unauthorized. The request failed because the user is not authenticated or is not allowed to invoke the operation.
+
+403
+Forbidden. The request failed because user does not have access to a specified resource.
+
+404
+Resource not found
+
+422
+Unprocessable entity. The server understood the request, but was unable to process the instruction.
+
+429
+Too Many Requests. The request was rate-limited. Retry later.
+
+500
+Internal Server Error.
+
+Response samples
+200400401403404422429500
+Content type
+application/vnd.optimizationrules.v1+json
+
+Copy
+{
+"campaignOptimizationId": "string",
+"code": "string",
+"details": "string"
+}
+Gets a campaign optimization rule specified by identifier.
+
+get
+/sp/rules/campaignOptimization/{campaignOptimizationId}
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+path Parameters
+campaignOptimizationId
+required
+string
+The sp campaign optimization rule identifier.
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope	
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Responses
+200
+Successful operation.
+
+400
+Bad Request.
+
+401
+Unauthorized. The request failed because the user is not authenticated or is not allowed to invoke the operation.
+
+403
+Forbidden. The request failed because user does not have access to a specified resource.
+
+404
+Resource not found
+
+422
+Unprocessable entity. The server understood the request, but was unable to process the instruction.
+
+429
+Too Many Requests. The request was rate-limited. Retry later.
+
+500
+Internal Server Error. Something went wrong on the server. Retry later and report an error if unresolved.
+
+Response samples
+200400401403404422429500
+Content type
+application/vnd.optimizationrules.v1+json
+
+Copy
+Expand allCollapse all
+{
+"CampaignOptimizationRule": {
+"campaignIds": [],
+"campaignOptimizationId": "string",
+"createdDate": "string",
+"recurrence": "DAILY",
+"ruleAction": "ADOPT",
+"ruleCondition": [],
+"ruleName": "string",
+"ruleStatus": "ACTIVE",
+"ruleType": "BID"
+}
+}
+Campaigns
+CreateSponsoredProductsCampaigns
+
+post
+/sp/campaigns
+Create campaigns
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Prefer	
+string
+The "Prefer" header, as defined in [RFC7240], allows clients to request certain behavior from the service. The service ignores preference values that are either not supported or not known by the service. Either multiple Prefer headers are passed or single one with comma separated values, both forms are equivalent Supported preferences: return=representation - return the full object when doing create/update/delete operations instead of ids. Please note that the extendedData field will be part of the full object for /list endpoints only.
+
+Request Body schema: application/vnd.spCampaign.v3+json
+required
+campaigns
+required
+Array of objects (SponsoredProductsCreateCampaign) [ 0 .. 1000 ] items
+An array of campaigns.
+
+Responses
+207
+CreateSponsoredProductsCampaigns 207 response
+
+400
+CampaignMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spCampaign.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaigns": [
+{}
+]
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spCampaign.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaigns": {
+"error": [],
+"success": []
+}
+}
+UpdateSponsoredProductsCampaigns
+
+put
+/sp/campaigns
+Update campaigns
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Prefer	
+string
+The "Prefer" header, as defined in [RFC7240], allows clients to request certain behavior from the service. The service ignores preference values that are either not supported or not known by the service. Either multiple Prefer headers are passed or single one with comma separated values, both forms are equivalent Supported preferences: return=representation - return the full object when doing create/update/delete operations instead of ids. Please note that the extendedData field will be part of the full object for /list endpoints only.
+
+Request Body schema: application/vnd.spCampaign.v3+json
+required
+campaigns
+required
+Array of objects (SponsoredProductsUpdateCampaign) [ 0 .. 1000 ] items
+An array of campaigns with updated values. Note: targetingType cannot be updated
+
+Responses
+207
+UpdateSponsoredProductsCampaigns 207 response
+
+400
+CampaignMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spCampaign.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaigns": [
+{}
+]
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spCampaign.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaigns": {
+"error": [],
+"success": []
+}
+}
+DeleteSponsoredProductsCampaigns
+
+post
+/sp/campaigns/delete
+Delete campaigns
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spCampaign.v3+json
+required
+campaignIdFilter
+required
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+Responses
+207
+DeleteSponsoredProductsCampaigns 207 response
+
+400
+CampaignMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spCampaign.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaignIdFilter": {
+"include": []
+}
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spCampaign.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaigns": {
+"error": [],
+"success": []
+}
+}
+ListSponsoredProductsCampaigns
+
+post
+/sp/campaigns/list
+List campaigns
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spCampaign.v3+json
+campaignIdFilter	
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+includeExtendedDataFields	
+boolean
+Whether to get entity with extended data fields such as creationDate, lastUpdateDate, servingStatus
+
+marketplaceBudgetAllocationFilter	
+object (SponsoredProductsMarketplaceBudgetAllocationFilter)
+Filter campaigns by MarketplaceBudgetAllocation setting. By default, only MANUAL campaigns are returned. This filter is not functional yet, will be functional soon.
+
+maxResults	
+integer <int32>
+Number of records to include in the paginated response. Defaults to max page size for given API
+
+nameFilter	
+object (SponsoredProductsNameFilter)
+Filter entities by name
+
+nextToken	
+string
+token value allowing to navigate to the next response page
+
+portfolioIdFilter	
+object (SponsoredProductsReducedObjectIdFilter)
+Filter entities by the list of objectIds
+
+stateFilter	
+object (SponsoredProductsEntityStateFilter)
+Filter entities by state. To filter live entities, only 'ENABLED', 'PAUSED' and 'ARCHIVED' can be used
+
+Responses
+200
+ListSponsoredProductsCampaigns 200 response
+
+400
+CampaignAccessException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spCampaign.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaignIdFilter": {
+"include": []
+},
+"includeExtendedDataFields": true,
+"marketplaceBudgetAllocationFilter": {
+"include": []
+},
+"maxResults": 0,
+"nameFilter": {
+"include": [],
+"queryTermMatchType": "BROAD_MATCH"
+},
+"nextToken": "string",
+"portfolioIdFilter": {
+"include": []
+},
+"stateFilter": {
+"include": []
+}
+}
+Response samples
+200400401403415429500
+Content type
+application/vnd.spCampaign.v3+json
+
+Copy
+Expand allCollapse all
+{
+"campaigns": [
+{}
+],
+"nextToken": "string",
+"totalResults": 0
+}
+Consolidated Recommendations
+getCampaignRecommendations
+
+get
+/sp/campaign/recommendations
+Gets the top consolidated recommendations across bid, budget, targeting for SP campaigns given an advertiser profile id. The recommendations are refreshed everyday.
+
+Requires one of these permissions: ["advertiser_campaign_view","advertiser_campaign_edit"]
+
+query Parameters
+campaignIds	
+Array of strings
+Optional. Returns or generates recommendations only for the specified campaignIds.
+
+nextToken	
+string
+Optional. Token to retrieve subsequent page of results.
+
+maxResults	
+string
+Optional. Limits the number of items to return in the response.
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header and choose profile id profileId from the response to pass it as input.
+
+Responses
+200
+Success.
+
+400
+Invalid Request - The input fails to satisfy the constraints of the API.
+
+401
+Unauthorized - Request failed because user is not authenticated.
+
+403
+Access Denied - Request failed because the user is not allowed to invoke the operation.
+
+422
+Unprocessable entity - Failed due to invalid parameters.
+
+429
+Too Many Requests - Request was rate-limited. Retry later.
+
+500
+Internal Server Error - Something went wrong on the server. Retry later and report an error if unresolved.
+
+Response samples
+200400401403422429500
+Content type
+application/vnd.spgetcampaignrecommendationsresponse.v1+json
+
+Copy
+Expand allCollapse all
+{
+"nextToken": "MTAxNTExtY5NDE=",
+"recommendations": [
+{}
+]
+}
+fetchCampaignRecommendations
+
+post
+/sp/campaign/recommendations
+Gets the top consolidated recommendations across bid, budget, targeting for SP campaigns given an advertiser profile id. The recommendations are refreshed everyday.
+
+Requires one of these permissions: ["advertiser_campaign_view","advertiser_campaign_edit"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header and choose profile id profileId from the response to pass it as input.
+
+Request Body schema: application/vnd.spgetcampaignrecommendationsrequest.v2+json
+campaigns
+required
+Array of objects (Campaign) [ 1 .. 10 ] items
+List of campaigns with specific recommendation types requested.
+
+maxResults	
+integer [ 1 .. 5 ]
+Default: "1"
+Optional. Limits the number of items to return in the response.
+
+nextToken	
+string
+Optional. Token to retrieve subsequent page of results.
+
+Responses
+200
+Success.
+
+400
+Invalid Request - The input fails to satisfy the constraints of the API.
+
+401
+Unauthorized - Request failed because user is not authenticated.
+
+403
+Access Denied - Request failed because the user is not allowed to invoke the operation.
+
+422
+Unprocessable entity - Failed due to invalid parameters.
+
+429
+Too Many Requests - Request was rate-limited. Retry later.
+
+500
+Internal Server Error - Something went wrong on the server. Retry later and report an error if unresolved.
+
+Request samples
+Payload
+Content type
+application/vnd.spgetcampaignrecommendationsrequest.v2+json
+
+Copy
+Expand allCollapse all
+{
+"campaigns": [
+{}
+],
+"maxResults": "1",
+"nextToken": "string"
+}
+Response samples
+200400401403422429500
+Content type
+application/vnd.spgetcampaignrecommendationsresponse.v2+json
+
+Copy
+Expand allCollapse all
+{
+"nextToken": "MTAxNTExtY5NDE=",
+"recommendations": [
+{}
+]
+}
+Keyword Group Targeting Recommendations
+getKeywordGroupRecommendations
+
+post
+/sp/targeting/recommendations/keywordGroups
+This API (currently beta) recommends Keyword Group targets for a given list of Ad ASINs. Keyword Groups is a new control for Amazon Ads Sponsored Products keyword-based campaigns that enables advertisers to reach relevant audiences through a collection of keywords.
+
+Once a Keyword Group specification is created, the performance of Keyword Groups will be available in the search terms report. Keyword Groups improves campaign performance by dynamically updating the keywords within a group through the campaign lifecycle and eliminates the need for advertisers to constantly curate new keywords. Additionally, Keyword Groups can be used alongside keywords within the same ad group.
+
+Authorized resource type: Global Ad Account ID, Profile ID
+
+Parameter name: Amazon-Ads-AccountId
+
+Parameter in: header
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Ads-AccountId	
+string
+The identifier of an account. Account can be a global advertising account. This will be a required header for the global calls.
+
+Amazon-Advertising-API-Scope	
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header and choose profile id profileId from the response to pass it as input.
+
+locale	
+string
+User specified locale. If nothing is passed the default for the marketplace will be used. The value should confirm to the IETF BCP 47 standard, using language tags composed of language- and optionally region specific sub-tags (e.g., 'en-us' for American English and 'fr-CA' for Canadian French).
+
+Request Body schema: application/vnd.spkeywordgroupsrecommendations.v1.0+json
+asins
+required
+Array of strings [ 1 .. 1000 ] items [ items <= 32 characters ]
+List of ASINs.
+
+countryCode	
+string
+The country code representing the origin country of the input ASIN list, it will be used for generating keyword group recommendations.
+
+nextToken	
+string
+If the last response included this field then there are more items to retrieve.
+
+Responses
+200
+Success.
+
+400
+Bad Request.
+
+401
+Unauthorized.
+
+403
+Not Authenticated.
+
+404
+Not Found.
+
+415
+Unsupported Media.
+
+424
+Dependency Failure.
+
+429
+Too Many Requests - Request was rate-limited. Retry later.
+
+500
+Internal Server Error.
+
+503
+Service Unavailable
+
+Request samples
+Payload
+Content type
+application/vnd.spkeywordgroupsrecommendations.v1.0+json
+
+Copy
+Expand allCollapse all
+{
+"asins": [
+"string"
+],
+"countryCode": "string",
+"nextToken": "string"
+}
+Response samples
+200400401403404415424429500503
+Content type
+application/vnd.spkeywordgroupsrecommendations.v1.0+json
+
+Copy
+Expand allCollapse all
+{
+"countryCode": "string",
+"keywordGroups": [
+{}
+],
+"nextToken": "string"
+}
+Keyword Targets
+Get global keyword recommendations
+
+post
+/sp/global/targets/keywords/recommendations/list
+The POST /sp/global/targets/keywords/recommendations/list endpoint returns recommended keyword targets for a list of countries given either A) a list of ad ASINs per target country or B) a global campaign ID and ad group ID. Please use the recommendationType field to specify if you want to use option A or option B. This endpoint will also return recommended bids along with each recommendation keyword target.
+
+Asins
+Global API endpoint accepts asins array. Item is a country asin map Key is the 2-letter country code. Value is an asin.
+
+Targets
+Global API endpoint accepts targets array. Item is a country target object Object has two fields: matchType and countryKeywords. CountryKeywords is a map with a key as the 2-letter country code and value as a keyword object.
+
+Each country will be processed in parallel according to rules of version 5 recommendation API.
+
+Availability
+Global keyword recommendation API is available in all the marketplaces.
+Authorized resource type: Global Ad Account ID, Profile ID
+
+Parameter name: Amazon-Ads-AccountId
+
+Parameter in: header
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-MarketplaceId	
+string
+The advertiser's Marketplace ID associated with the advertiser account to support single marketplace request. Will not be used if global account id is provided.
+
+Amazon-Advertising-API-AdvertiserId	
+string
+The advertiser's ID associated with the advertiser account to support single marketplace request. Will not be used if global account id is provided.
+
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Ads-AccountId
+required
+string
+The identifier of a profile associated with the advertiser account. Used for authentication of Global Account.
+
+Request Body schema: application/vnd.spkeywordsrecommendation.v5+json
+targets	
+Array of objects (CountryTarget) [ 0 .. 100 ] items
+A list of targets that need to be ranked
+
+adGroupId
+required
+string
+The identifier of the ad group
+
+bidsEnabled	
+boolean
+Default: "true"
+Set this parameter to false if you do not want to retrieve bid suggestions for your keyword targets. Defaults to true.
+
+campaignId
+required
+string
+The identifier of the campaign
+
+recommendationType
+required
+string
+The recommendationType to retrieve recommended keyword targets for an existing ad group.
+
+
+KEYWORDS_FOR_ADGROUP
+KEYWORDS_FOR_ADGROUP
+locale	
+string
+Enum: "ar_EG" "de_DE" "en_AE" "en_AU" "en_CA" "en_GB" "en_IN" "en_SA" "en_SG" "en_US" "es_ES" "es_MX" "fr_FR" "it_IT" "ja_JP" "nl_NL" "pl_PL" "pt_BR" "sv_SE" "tr_TR" "zh_CN"
+Translations are for readability and do not affect the targeting of ads. Supported marketplace to locale mappings can be found at the POST /keywords/localize endpoint. Note: Translations will be null if locale is unsupported.
+
+maxRecommendations	
+number [ 0 .. 200 ]
+Default: "200"
+The max size of recommended target. Set it to 0 if you only want to rank user-defined keywords.
+
+sortDimension	
+string
+Enum: "CLICKS" "CONVERSIONS" "DEFAULT"
+The ranking metric value. Supported values: CLICKS, CONVERSIONS, DEFAULT. DEFAULT will be applied if no value passed in.
+
+Responses
+200
+success
+
+400
+Bad Request
+
+401
+Unauthorized - Request failed because user is not authenticated in any of requested marketplaces or is not allowed to invoke the operation.
+
+415
+Unsupported Media Type Exception.
+
+422
+Unprocessable entity - Failed due to invalid parameters.
+
+429
+Too Many Requests - Request was rate-limited. Retry later.
+
+500
+Internal Server Error - Something went wrong on the server. Retry later and report an error if unresolved.
+
+503
+Service Unavailable due to transient error or dependent service failure - Something went wrong on the server. Retry later and report an error if unresolved.
+
+Request samples
+Payload
+Content type
+application/vnd.spkeywordsrecommendation.v5+json
+Example
+
+KEYWORDS_FOR_ADGROUP
+KEYWORDS_FOR_ADGROUP
+
+Copy
+Expand allCollapse all
+{
+"targets": [
+{}
+],
+"adGroupId": "string",
+"bidsEnabled": "true",
+"campaignId": "string",
+"recommendationType": "KEYWORDS_FOR_ADGROUP",
+"locale": "ar_EG",
+"maxRecommendations": "200",
+"sortDimension": "CLICKS"
+}
+Response samples
+200400401415422429500503
+Content type
+application/vnd.spkeywordsrecommendation.v5+json
+
+Copy
+Expand allCollapse all
+{
+"countryCodes": {
+"property1": {},
+"property2": {}
+}
+}
+Get keyword recommendations
+
+post
+/sp/targets/keywords/recommendations
+The POST /sp/targets/keywords/recommendations endpoint returns recommended keyword targets given either A) a list of ad ASINs or B) a campaign ID and ad group ID. Please use the recommendationType field to specify if you want to use option A or option B. This endpoint will also return recommended bids along with each recommendation keyword target.
+
+Ranking
+The keyword recommendations will be ranked in descending order of clicks or impressions, depending on the sortDimension field provided by the user. You may also input your own keyword targets to be ranked alongside the keyword recommendations by using the targets array.
+
+Localization
+Use the locale field to get keywords in your specified locale. Supported marketplace to locale mappings can be found at the POST /keywords/localize endpoint.
+
+Version 5.0
+New Features
+Version 5.0 utilizes the new theme-based bid recommendations, which can be retrieved at the endpoint /sp/targets/bid/recommendations, to return improved bid recommendations for each keyword. Theme-based bid recommendations provide \"themes\" and \"impact metrics\" along with each bid suggestion to help you choose the right bid for your keyword target.
+
+Themes
+We now may return multiple bid suggestions for each keyword target. Each suggestion will have a theme to express the business objective of the bid. Available themes are:
+CONVERSION_OPPORTUNITIES - The default theme which aims to maximize number of conversions.
+SPECIAL_DAYS - A theme available during high sales events such as Prime Day, to anticipate an increase in sales and competition.
+Impact Metrics
+We have added impact metrics which provide insight on the number of clicks and conversions you will receive for targeting a keyword at a certain bid.
+
+Bidding Strategy
+You may now specify your bidding strategy in the KEYWORDS_BY_ASINS request to get bid suggestions tailored to your bidding strategy. For KEYWORDS_BY_ADGROUP requests, you will not specify a bidding strategy, because the bidding strategy of the ad group is used. The three bidding strategies are:
+LEGACY_FOR_SALES - Dynamic bids (down only)
+AUTO_FOR_SALES - Dynamic bids (up and down)
+MANUAL - Fixed bids
+Availability
+Version 5.0 is only available in the following marketplaces: US, CA, BR, MX, UK, DE, FR, ES, IN, IT, NL, AE, SA, TR, EG, BE, SE, PL, JP, AU, SG.
+Version 4.0
+New features
+Version 4.0 allows users to retrieve recommended keyword targets which are sorted in descending order of clicks or conversions. The default sort dimension, if not specified, ranks recommendations by our interal ranking mechanism. We have also added search term metrics. Search term impression share indicates the percentage share of all ad-attributed impressions you received on that keyword in the last 30 days. This metric helps advertisers identify potential opportunities based on their share on relevant keywords. Search term impression rank indicates your ranking among all advertisers for the keyword by ad impressions in a marketplace. It tells an advertiser how many advertisers had higher share of ad impressions. Search term information is only available for keywords the advertiser targeted with ad impressions.
+Availability
+Version 4.0 is available in all marketplaces.
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-MarketplaceId	
+string
+The advertiser's Marketplace ID associated with the advertiser. account.
+
+Amazon-Advertising-API-AdvertiserId	
+string
+The advertiser's ID associated with the advertiser account.
+
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: 
+application/vnd.spkeywordsrecommendation.v3+json
+application/vnd.spkeywordsrecommendation.v3+json
+adGroupId
+required
+string
+The identifier of the ad group
+
+campaignId
+required
+string
+The identifier of the campaign
+
+recommendationType
+required
+string
+The recommendationType to retrieve recommended keyword targets for an existing ad group.
+
+
+KEYWORDS_FOR_ADGROUP
+KEYWORDS_FOR_ADGROUP
+targets	
+Array of objects [ 0 .. 100 ] items
+A list of targets that need to be ranked
+
+locale	
+string
+Enum: "ar_EG" "de_DE" "en_AE" "en_AU" "en_CA" "en_GB" "en_IN" "en_SA" "en_SG" "en_US" "es_ES" "es_MX" "fr_FR" "it_IT" "ja_JP" "nl_NL" "pl_PL" "pt_BR" "sv_SE" "tr_TR" "zh_CN"
+Translations are for readability and do not affect the targeting of ads. Supported marketplace to locale mappings can be found at the POST /keywords/localize endpoint. Note: Translations will be null if locale is unsupported.
+
+maxRecommendations	
+number [ 0 .. 200 ]
+Default: "200"
+The max size of recommended target. Set it to 0 if you only want to rank user-defined keywords.
+
+sortDimension	
+string
+Enum: "CLICKS" "CONVERSIONS" "DEFAULT"
+The ranking metric value. Supported values: CLICKS, CONVERSIONS, DEFAULT. DEFAULT will be applied if no value passed in.
+
+Responses
+200
+success
+
+400
+Bad Request
+
+401
+Unauthorized - Request failed because user is not authenticated or is not allowed to invoke the operation.
+
+415
+Unsupported Media Type Exception.
+
+422
+Unprocessable entity - Failed due to invalid parameters.
+
+429
+Too Many Requests - Request was rate-limited. Retry later.
+
+500
+Internal Server Error - Something went wrong on the server. Retry later and report an error if unresolved.
+
+503
+Service Unavailable due to transient error or dependent service failure - Something went wrong on the server. Retry later and report an error if unresolved.
+
+Request samples
+Payload
+Content type
+
+application/vnd.spkeywordsrecommendation.v3+json
+application/vnd.spkeywordsrecommendation.v3+json
+Example
+
+KEYWORDS_FOR_ADGROUP
+KEYWORDS_FOR_ADGROUP
+
+Copy
+Expand allCollapse all
+{
+"adGroupId": "string",
+"campaignId": "string",
+"recommendationType": "KEYWORDS_FOR_ADGROUP",
+"targets": [
+{}
+],
+"locale": "ar_EG",
+"maxRecommendations": "200",
+"sortDimension": "CLICKS"
+}
+Response samples
+200400401415422429500503
+Content type
+
+application/vnd.spkeywordsrecommendation.v3+json
+application/vnd.spkeywordsrecommendation.v3+json
+
+Copy
+Expand allCollapse all
+{
+"rank": 0,
+"suggestedBid": {
+"bidRecId": "string",
+"rangeEnd": 0.1,
+"rangeStart": 0.1,
+"suggested": 0.1
+},
+"translation": "string",
+"bid": 0.1,
+"keyword": "string",
+"matchType": "BROAD",
+"userSelectedKeyword": true
+}
+Keywords
+CreateSponsoredProductsKeywords
+
+post
+/sp/keywords
+Create keywords
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Prefer	
+string
+The "Prefer" header, as defined in [RFC7240], allows clients to request certain behavior from the service. The service ignores preference values that are either not supported or not known by the service. Either multiple Prefer headers are passed or single one with comma separated values, both forms are equivalent Supported preferences: return=representation - return the full object when doing create/update/delete operations instead of ids. Please note that the extendedData field will be part of the full object for /list endpoints only.
+
+Request Body schema: application/vnd.spKeyword.v3+json
+required
+keywords
+required
+Array of objects (SponsoredProductsCreateKeyword) [ 0 .. 1000 ] items
+An array of keywords.
+
+Responses
+207
+CreateSponsoredProductsKeywords 207 response
+
+400
+KeywordMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"keywords": [
+{}
+]
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"keywords": {
+"error": [],
+"success": []
+}
+}
+UpdateSponsoredProductsKeywords
+
+put
+/sp/keywords
+Update keywords
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Prefer	
+string
+The "Prefer" header, as defined in [RFC7240], allows clients to request certain behavior from the service. The service ignores preference values that are either not supported or not known by the service. Either multiple Prefer headers are passed or single one with comma separated values, both forms are equivalent Supported preferences: return=representation - return the full object when doing create/update/delete operations instead of ids. Please note that the extendedData field will be part of the full object for /list endpoints only.
+
+Request Body schema: application/vnd.spKeyword.v3+json
+required
+keywords
+required
+Array of objects (SponsoredProductsUpdateKeyword) [ 0 .. 1000 ] items
+An array of keywords with updated values.
+
+Responses
+207
+UpdateSponsoredProductsKeywords 207 response
+
+400
+KeywordMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"keywords": [
+{}
+]
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"keywords": {
+"error": [],
+"success": []
+}
+}
+DeleteSponsoredProductsKeywords
+
+post
+/sp/keywords/delete
+Delete keywords
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spKeyword.v3+json
+required
+keywordIdFilter
+required
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+Responses
+207
+DeleteSponsoredProductsKeywords 207 response
+
+400
+KeywordMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"keywordIdFilter": {
+"include": []
+}
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"keywords": {
+"error": [],
+"success": []
+}
+}
+ListSponsoredProductsKeywords
+
+post
+/sp/keywords/list
+List keywords
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spKeyword.v3+json
+adGroupIdFilter	
+object (SponsoredProductsReducedObjectIdFilter)
+Filter entities by the list of objectIds
+
+campaignIdFilter	
+object (SponsoredProductsReducedObjectIdFilter)
+Filter entities by the list of objectIds
+
+includeExtendedDataFields	
+boolean
+Whether to get entity with extended data fields such as creationDate, lastUpdateDate, servingStatus
+
+keywordIdFilter	
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+keywordTextFilter	
+object (SponsoredProductsKeywordTextFilter)
+Filter by keywordText
+
+locale	
+string
+Restricts results to keywords associated with locale
+
+matchTypeFilter	
+Array of strings (SponsoredProductsMatchType)
+Items Enum: "BROAD" "EXACT" "OTHER" "PHRASE"
+Only the keyword with match type that is in this list will be listed
+
+maxResults	
+integer <int32>
+Number of records to include in the paginated response. Defaults to max page size for given API
+
+nextToken	
+string
+token value allowing to navigate to the next response page
+
+stateFilter	
+object (SponsoredProductsEntityStateFilter)
+Filter entities by state. To filter live entities, only 'ENABLED', 'PAUSED' and 'ARCHIVED' can be used
+
+Responses
+200
+ListSponsoredProductsKeywords 200 response
+
+400
+KeywordAccessException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"adGroupIdFilter": {
+"include": []
+},
+"campaignIdFilter": {
+"include": []
+},
+"includeExtendedDataFields": true,
+"keywordIdFilter": {
+"include": []
+},
+"keywordTextFilter": {
+"include": [],
+"queryTermMatchType": "BROAD_MATCH"
+},
+"locale": "string",
+"matchTypeFilter": [
+"BROAD"
+],
+"maxResults": 0,
+"nextToken": "string",
+"stateFilter": {
+"include": []
+}
+}
+Response samples
+200400401403415429500
+Content type
+application/vnd.spKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"keywords": [
+{}
+],
+"nextToken": "string",
+"totalResults": 0
+}
+Multi Country Theme-based bid recommendations
+Get bid recommendations for multi-country ad groups
+
+post
+/sp/global/targets/bid/recommendations
+The POST /sp/targets/bid/recommendations endpoint returns recommended bids for each target given either A) new ad group (a list of ad ASINs) or B) existing ad group (a campaign ID and ad group ID). Please use the recommendationType field to specify if you want to use option A or option B. This API is currently available at marketplaces where SP is available. The API supports keyword, auto and product targets. The API will return a 422 response when an unsupported marketplace or target is provided.
+
+Version 5.0
+New Features
+Version 5.0 introduces two new capabilities. First, advertisers will receive the estimated impressions for the suggested bid to help them understand the potential impact of adopting them. Second, advertisers will get a view of the estimated impressions for a range of bids (8 bids) for each target.
+The second feature is default to be disabled. To enable it, user needs to set includeAnalysis as True in request body.
+New features are currently available only for existing ad group requests in US marketplace.
+Version 4.0
+New Features
+Version 4.0 allows users to get theme-based bid recommendations for product targeting expressions, including PAT_ASIN, PAT_CATEGORY and PAT_CATEGORY_REFINEMENT.
+Version 4.0 supports keyword, auto and product targets in all marketplaces.
+Version 4.0 removes "impact metrics" when returning each bid suggestion.
+Version 4.0 also allows users to get theme-based bid recommendations for keyword group targeting expressions with the type KEYWORD_GROUP. This new type is only available in US marketplace.
+
+Authorized resource type: Global Ad Account ID
+
+Parameter name: Amazon-Ads-AccountId
+
+Parameter in: header
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Ads-AccountId
+required
+string
+Global Account Id Identifier.
+
+Request Body schema: application/json
+adGroupId
+required
+string
+The ad group identifier.
+
+campaignId
+required
+string
+The campaign identifier.
+
+countryCodes	
+Array of strings (CountryCodes) [ 0 .. 50 ] items unique
+A list of country codes. Supported country codes:
+
+Country Code	Country
+US	United States
+CA	Canada
+MX	Mexico
+BR	Brazil
+UK	United Kingdom
+DE	Germany
+FR	France
+ES	Spain
+IT	Italy
+IN	India
+AE	United Arab Emirates
+SA	Saudi Arabia
+NL	Netherlands
+PL	Poland
+BE	Belgium
+SE	Sweden
+TR	Turkey
+EG	Egypt
+JP	Japan
+AU	Australia
+SG	Singapore
+includeAnalysis	
+boolean
+Default: "false"
+Flag to include new bid analyzer data.
+
+recommendationType
+required
+string
+The bid recommendation type.
+
+
+BIDS_FOR_EXISTING_AD_GROUP
+BIDS_FOR_EXISTING_AD_GROUP
+targetingExpressions
+required
+Array of objects (MultiCountryTargetingExpressionList) <= 100 items
+The list of targeting expressions. Maximum of 100 per request per country, use pagination for more if needed.
+
+Responses
+200
+Successful Operation.
+
+400
+Bad Request.
+
+401
+Unauthorized. Request failed because user is not authenticated or is not allowed to invoke the operation.
+
+405
+Method Not Allowed. Request failed because the request HTTP method is not supported.
+
+406
+Not Acceptable. Request failed because the service cannot produce a response in a format matching the media types provided in the Accept header.
+
+415
+Unsupported Media Type. Request failed because the payload format is not supported.
+
+422
+Unprocessable entity. Failed due to invalid parameters. If you receive an error like “Invalid Advertiser and ASINs combination in the request”, please make sure the ad group has at least one ASIN in it.
+
+429
+Too Many Requests. Request was rate-limited. Retry later.
+
+500
+Internal Server Error. Something went wrong on the server.
+
+Request samples
+Payload
+Content type
+application/json
+Example
+
+BIDS_FOR_EXISTING_AD_GROUP
+BIDS_FOR_EXISTING_AD_GROUP
+
+Copy
+Expand allCollapse all
+{
+"adGroupId": "EFGH5678",
+"campaignId": "ABCD1234",
+"countryCodes": [
+"UK",
+"US"
+],
+"includeAnalysis": "true",
+"recommendationType": "BIDS_FOR_EXISTING_AD_GROUP",
+"targetingExpressions": [
+{}
+]
+}
+Response samples
+200400401405406415422429500
+Content type
+application/vnd.spthemebasedglobalbidrecommendation.v1+json
+
+Copy
+Expand allCollapse all
+{
+"bidRecommendations": [
+{},
+{}
+]
+}
+Negative keywords
+CreateSponsoredProductsNegativeKeywords
+
+post
+/sp/negativeKeywords
+Create negative keywords
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Prefer	
+string
+The "Prefer" header, as defined in [RFC7240], allows clients to request certain behavior from the service. The service ignores preference values that are either not supported or not known by the service. Either multiple Prefer headers are passed or single one with comma separated values, both forms are equivalent Supported preferences: return=representation - return the full object when doing create/update/delete operations instead of ids. Please note that the extendedData field will be part of the full object for /list endpoints only.
+
+Request Body schema: application/vnd.spNegativeKeyword.v3+json
+required
+negativeKeywords
+required
+Array of objects (SponsoredProductsCreateNegativeKeyword) [ 0 .. 1000 ] items
+An array of negativeKeywords.
+
+Responses
+207
+CreateSponsoredProductsNegativeKeywords 207 response
+
+400
+NegativeKeywordMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spNegativeKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"negativeKeywords": [
+{}
+]
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spNegativeKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"negativeKeywords": {
+"error": [],
+"success": []
+}
+}
+UpdateSponsoredProductsNegativeKeywords
+
+put
+/sp/negativeKeywords
+Update negative keywords
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Prefer	
+string
+The "Prefer" header, as defined in [RFC7240], allows clients to request certain behavior from the service. The service ignores preference values that are either not supported or not known by the service. Either multiple Prefer headers are passed or single one with comma separated values, both forms are equivalent Supported preferences: return=representation - return the full object when doing create/update/delete operations instead of ids. Please note that the extendedData field will be part of the full object for /list endpoints only.
+
+Request Body schema: application/vnd.spNegativeKeyword.v3+json
+required
+negativeKeywords
+required
+Array of objects (SponsoredProductsUpdateNegativeKeyword) [ 0 .. 1000 ] items
+An array of negativeKeywords with updated values.
+
+Responses
+207
+UpdateSponsoredProductsNegativeKeywords 207 response
+
+400
+NegativeKeywordMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spNegativeKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"negativeKeywords": [
+{}
+]
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spNegativeKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"negativeKeywords": {
+"error": [],
+"success": []
+}
+}
+DeleteSponsoredProductsNegativeKeywords
+
+post
+/sp/negativeKeywords/delete
+Delete negative keywords
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spNegativeKeyword.v3+json
+required
+negativeKeywordIdFilter
+required
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+Responses
+207
+DeleteSponsoredProductsNegativeKeywords 207 response
+
+400
+NegativeKeywordMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spNegativeKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"negativeKeywordIdFilter": {
+"include": []
+}
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spNegativeKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"negativeKeywords": {
+"error": [],
+"success": []
+}
+}
+ListSponsoredProductsNegativeKeywords
+
+post
+/sp/negativeKeywords/list
+List negative keywords
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spNegativeKeyword.v3+json
+adGroupIdFilter	
+object (SponsoredProductsReducedObjectIdFilter)
+Filter entities by the list of objectIds
+
+campaignIdFilter	
+object (SponsoredProductsReducedObjectIdFilter)
+Filter entities by the list of objectIds
+
+includeExtendedDataFields	
+boolean
+Whether to get entity with extended data fields such as creationDate, lastUpdateDate, servingStatus
+
+locale	
+string
+Restricts results to negativeKeywords that match the specified locale.
+
+matchTypeFilter	
+Array of strings (SponsoredProductsNegativeMatchType)
+Items Enum: "NEGATIVE_BROAD" "NEGATIVE_EXACT" "NEGATIVE_PHRASE" "OTHER"
+Only the negativeKeyword with the match type that is in this list will be listed
+
+maxResults	
+integer <int32>
+Number of records to include in the paginated response. Defaults to max page size for given API
+
+negativeKeywordIdFilter	
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+negativeKeywordTextFilter	
+object (SponsoredProductsKeywordTextFilter)
+Filter by keywordText
+
+nextToken	
+string
+token value allowing to navigate to the next response page
+
+stateFilter	
+object (SponsoredProductsEntityStateFilter)
+Filter entities by state. To filter live entities, only 'ENABLED', 'PAUSED' and 'ARCHIVED' can be used
+
+Responses
+200
+ListSponsoredProductsNegativeKeywords 200 response
+
+400
+NegativeKeywordAccessException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spNegativeKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"adGroupIdFilter": {
+"include": []
+},
+"campaignIdFilter": {
+"include": []
+},
+"includeExtendedDataFields": true,
+"locale": "string",
+"matchTypeFilter": [
+"NEGATIVE_BROAD"
+],
+"maxResults": 0,
+"negativeKeywordIdFilter": {
+"include": []
+},
+"negativeKeywordTextFilter": {
+"include": [],
+"queryTermMatchType": "BROAD_MATCH"
+},
+"nextToken": "string",
+"stateFilter": {
+"include": []
+}
+}
+Response samples
+200400401403415429500
+Content type
+application/vnd.spNegativeKeyword.v3+json
+
+Copy
+Expand allCollapse all
+{
+"negativeKeywords": [
+{}
+],
+"nextToken": "string",
+"totalResults": 0
+}
+Negative targeting clauses
+CreateSponsoredProductsNegativeTargetingClauses
+
+post
+/sp/negativeTargets
+Create negative targeting clauses
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Prefer	
+string
+The "Prefer" header, as defined in [RFC7240], allows clients to request certain behavior from the service. The service ignores preference values that are either not supported or not known by the service. Either multiple Prefer headers are passed or single one with comma separated values, both forms are equivalent Supported preferences: return=representation - return the full object when doing create/update/delete operations instead of ids. Please note that the extendedData field will be part of the full object for /list endpoints only.
+
+Request Body schema: application/vnd.spNegativeTargetingClause.v3+json
+required
+negativeTargetingClauses
+required
+Array of objects (SponsoredProductsCreateNegativeTargetingClause) [ 0 .. 1000 ] items
+An array of negativeTargeting.
+
+Responses
+207
+CreateSponsoredProductsNegativeTargetingClauses 207 response
+
+400
+NegativeTargetMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spNegativeTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"negativeTargetingClauses": [
+{}
+]
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spNegativeTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"negativeTargetingClauses": {
+"error": [],
+"success": []
+}
+}
+UpdateSponsoredProductsNegativeTargetingClauses
+
+put
+/sp/negativeTargets
+Update negative targeting clauses
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Prefer	
+string
+The "Prefer" header, as defined in [RFC7240], allows clients to request certain behavior from the service. The service ignores preference values that are either not supported or not known by the service. Either multiple Prefer headers are passed or single one with comma separated values, both forms are equivalent Supported preferences: return=representation - return the full object when doing create/update/delete operations instead of ids. Please note that the extendedData field will be part of the full object for /list endpoints only.
+
+Request Body schema: application/vnd.spNegativeTargetingClause.v3+json
+required
+negativeTargetingClauses
+required
+Array of objects (SponsoredProductsUpdateNegativeTargetingClause) [ 0 .. 1000 ] items
+An array of negativeTargeting with updated values.
+
+Responses
+207
+UpdateSponsoredProductsNegativeTargetingClauses 207 response
+
+400
+NegativeTargetMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spNegativeTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"negativeTargetingClauses": [
+{}
+]
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spNegativeTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"negativeTargetingClauses": {
+"error": [],
+"success": []
+}
+}
+DeleteSponsoredProductsNegativeTargetingClauses
+
+post
+/sp/negativeTargets/delete
+Delete negative targeting clauses
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spNegativeTargetingClause.v3+json
+required
+negativeTargetIdFilter
+required
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+Responses
+207
+DeleteSponsoredProductsNegativeTargetingClauses 207 response
+
+400
+NegativeTargetMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spNegativeTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"negativeTargetIdFilter": {
+"include": []
+}
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spNegativeTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"negativeTargetingClauses": {
+"error": [],
+"success": []
+}
+}
+ListSponsoredProductsNegativeTargetingClauses
+
+post
+/sp/negativeTargets/list
+List negative targeting clauses
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spNegativeTargetingClause.v3+json
+adGroupIdFilter	
+object (SponsoredProductsReducedObjectIdFilter)
+Filter entities by the list of objectIds
+
+asinFilter	
+object (SponsoredProductsAsinFilter)
+campaignIdFilter	
+object (SponsoredProductsReducedObjectIdFilter)
+Filter entities by the list of objectIds
+
+includeExtendedDataFields	
+boolean
+Whether to get entity with extended data fields such as creationDate, lastUpdateDate, servingStatus
+
+maxResults	
+integer <int32>
+Number of records to include in the paginated response. Defaults to max page size for given API
+
+negativeTargetIdFilter	
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+nextToken	
+string
+token value allowing to navigate to the next response page
+
+stateFilter	
+object (SponsoredProductsEntityStateFilter)
+Filter entities by state. To filter live entities, only 'ENABLED', 'PAUSED' and 'ARCHIVED' can be used
+
+Responses
+200
+ListSponsoredProductsNegativeTargetingClauses 200 response
+
+400
+NegativeTargetAccessException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spNegativeTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"adGroupIdFilter": {
+"include": []
+},
+"asinFilter": {
+"include": [],
+"queryTermMatchType": "BROAD_MATCH"
+},
+"campaignIdFilter": {
+"include": []
+},
+"includeExtendedDataFields": true,
+"maxResults": 0,
+"negativeTargetIdFilter": {
+"include": []
+},
+"nextToken": "string",
+"stateFilter": {
+"include": []
+}
+}
+Response samples
+200400401403415429500
+Content type
+application/vnd.spNegativeTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"negativeTargetingClauses": [
+{}
+],
+"nextToken": "string",
+"totalResults": 0
+}
+Optimization Rules
+Associates one or multiple optimization rules with a campaign.
+
+post
+/sp/campaigns/{campaignId}/optimizationRules
+Requires one of these permissions: ["advertiser_campaign_edit"]
+
+path Parameters
+campaignId
+required
+string
+The sp campaign identifier.
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope	
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: application/vnd.spoptimizationrules.v1+json
+optimizationRuleIds
+required
+Array of strings [ 1 .. 25 ] items
+An array of rule identifiers.
+
+Responses
+207
+Multi-status. An object containing a list of optimization rule response objects reflecting the same order as the input.
+
+400
+Bad request caused by invalid input.
+
+401
+Unauthenticated. Request failed because user is not authenticated.
+
+403
+Forbidden. Request failed because user does not have access to a specified resource.
+
+500
+Internal Server Error. Something went wrong on the server.
+
+Request samples
+Payload
+Content type
+application/vnd.spoptimizationrules.v1+json
+Example
+
+associateASingleRule
+associateASingleRule
+
+Copy
+Expand allCollapse all
+{
+"optimizationRuleIds": [
+"7bf484ff-381c-4703-82ec-66b9eb732705"
+]
+}
+Response samples
+207400401403500
+Content type
+application/vnd.spoptimizationrules.v1+json
+
+Copy
+Expand allCollapse all
+{
+"code": "string",
+"responses": [
+{}
+]
+}
+Creates one or more optimization rules.
+
+post
+/sp/rules/optimization
+Requires one of these permissions: ["advertiser_campaign_edit"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope	
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: 
+application/vnd.spoptimizationrules.v1+json
+application/vnd.spoptimizationrules.v1+json
+optimizationRules
+required
+Array of objects (OptimizationRulesAPISwaggerOptimizationRuleWithoutRuleId) = 1 items
+Responses
+207
+Multi-status. An object containing a list of optimization rule response objects reflecting the same order as the input.
+
+400
+Bad request caused by invalid input.
+
+401
+Unauthenticated. Request failed because user is not authenticated.
+
+403
+Forbidden. Request failed because user does not have access to a specified resource.
+
+500
+Internal Server Error. Something went wrong on the server.
+
+Request samples
+Payload
+Content type
+
+application/vnd.spoptimizationrules.v1+json
+application/vnd.spoptimizationrules.v1+json
+Example
+
+singleRuleForEveryMorning
+singleRuleForEveryMorning
+
+Copy
+Expand allCollapse all
+{
+"optimizationRules": [
+{}
+]
+}
+Response samples
+207400401403500
+Content type
+
+application/vnd.spoptimizationrules.v1+json
+application/vnd.spoptimizationrules.v1+json
+
+Copy
+Expand allCollapse all
+{
+"code": "string",
+"responses": [
+{}
+]
+}
+Updates one or more optimization rules.
+
+put
+/sp/rules/optimization
+Requires one of these permissions: ["advertiser_campaign_edit"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope	
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: 
+application/vnd.spoptimizationrules.v1+json
+application/vnd.spoptimizationrules.v1+json
+optimizationRules
+required
+Array of objects (OptimizationRulesAPISwaggerOptimizationRule) [ 1 .. 25 ] items
+Responses
+207
+Successful Operation.
+
+400
+Bad request caused by invalid input.
+
+401
+Unauthenticated. Request failed because user is not authenticated.
+
+403
+Forbidden. Request failed because user does not have access to a specified resource.
+
+500
+Internal Server Error. Something went wrong on the server.
+
+Request samples
+Payload
+Content type
+
+application/vnd.spoptimizationrules.v1+json
+application/vnd.spoptimizationrules.v1+json
+
+Copy
+Expand allCollapse all
+{
+"optimizationRules": [
+{}
+]
+}
+Response samples
+207400401403500
+Content type
+
+application/vnd.spoptimizationrules.v1+json
+application/vnd.spoptimizationrules.v1+json
+
+Copy
+Expand allCollapse all
+{
+"code": "string",
+"responses": [
+{}
+]
+}
+Searches optimization rules based on optional filters.
+
+post
+/sp/rules/optimization/search
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope	
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: 
+application/vnd.spoptimizationrules.v1+json
+application/vnd.spoptimizationrules.v1+json
+campaignFilter	
+object (OptimizationRulesAPISwaggerCampaignFilter)
+Filter on campaigns. This filter only returns associated Bid and Targeting rules, and it does not return budget rules.
+
+nextToken	
+string
+optimizationRuleFilter	
+object (OptimizationRulesAPISwaggerOptimizationRuleFilter)
+Filter on optimization rules.
+
+pageSize	
+number
+Responses
+200
+Successful Operation.
+
+400
+Bad request caused by invalid input.
+
+401
+Unauthenticated. Request failed because user is not authenticated.
+
+403
+Forbidden. Request failed because user does not have access to a specified resource.
+
+500
+Internal Server Error. Something went wrong on the server.
+
+Request samples
+Payload
+Content type
+
+application/vnd.spoptimizationrules.v1+json
+application/vnd.spoptimizationrules.v1+json
+Example
+
+getIntradayBiddingRulesByMultipleCampaignIds
+getIntradayBiddingRulesByMultipleCampaignIds
+
+Copy
+Expand allCollapse all
+{
+"campaignFilter": {
+"campaignId": {}
+},
+"optimizationRuleFilter": {
+"ruleCategory": {},
+"ruleSubCategory": {}
+}
+}
+Response samples
+200400401403500
+Content type
+
+application/vnd.spoptimizationrules.v1+json
+application/vnd.spoptimizationrules.v1+json
+
+Copy
+Expand allCollapse all
+{
+"code": "string",
+"nextToken": "string",
+"optimizationRules": [
+{}
+]
+}
+Product ads
+CreateSponsoredProductsProductAds
+
+post
+/sp/productAds
+Create product ads
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Prefer	
+string
+The "Prefer" header, as defined in [RFC7240], allows clients to request certain behavior from the service. The service ignores preference values that are either not supported or not known by the service. Either multiple Prefer headers are passed or single one with comma separated values, both forms are equivalent Supported preferences: return=representation - return the full object when doing create/update/delete operations instead of ids. Please note that the extendedData field will be part of the full object for /list endpoints only.
+
+Request Body schema: application/vnd.spProductAd.v3+json
+required
+productAds
+required
+Array of objects (SponsoredProductsCreateProductAd) [ 0 .. 1000 ] items
+An array of ads.
+
+Responses
+207
+CreateSponsoredProductsProductAds 207 response
+
+400
+ProductAdMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spProductAd.v3+json
+
+Copy
+Expand allCollapse all
+{
+"productAds": [
+{}
+]
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spProductAd.v3+json
+
+Copy
+Expand allCollapse all
+{
+"productAds": {
+"error": [],
+"success": []
+}
+}
+UpdateSponsoredProductsProductAds
+
+put
+/sp/productAds
+Update product ads
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Prefer	
+string
+The "Prefer" header, as defined in [RFC7240], allows clients to request certain behavior from the service. The service ignores preference values that are either not supported or not known by the service. Either multiple Prefer headers are passed or single one with comma separated values, both forms are equivalent Supported preferences: return=representation - return the full object when doing create/update/delete operations instead of ids. Please note that the extendedData field will be part of the full object for /list endpoints only.
+
+Request Body schema: application/vnd.spProductAd.v3+json
+required
+productAds
+required
+Array of objects (SponsoredProductsUpdateProductAd) [ 0 .. 1000 ] items
+An array of ads with updated values.
+
+Responses
+207
+UpdateSponsoredProductsProductAds 207 response
+
+400
+ProductAdMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spProductAd.v3+json
+
+Copy
+Expand allCollapse all
+{
+"productAds": [
+{}
+]
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spProductAd.v3+json
+
+Copy
+Expand allCollapse all
+{
+"productAds": {
+"error": [],
+"success": []
+}
+}
+DeleteSponsoredProductsProductAds
+
+post
+/sp/productAds/delete
+Delete product ads
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spProductAd.v3+json
+required
+adIdFilter
+required
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+Responses
+207
+DeleteSponsoredProductsProductAds 207 response
+
+400
+ProductAdMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spProductAd.v3+json
+
+Copy
+Expand allCollapse all
+{
+"adIdFilter": {
+"include": []
+}
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spProductAd.v3+json
+
+Copy
+Expand allCollapse all
+{
+"productAds": {
+"error": [],
+"success": []
+}
+}
+ListSponsoredProductsProductAds
+
+post
+/sp/productAds/list
+List product ads
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spProductAd.v3+json
+adGroupIdFilter	
+object (SponsoredProductsReducedObjectIdFilter)
+Filter entities by the list of objectIds
+
+adIdFilter	
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+campaignIdFilter	
+object (SponsoredProductsReducedObjectIdFilter)
+Filter entities by the list of objectIds
+
+includeExtendedDataFields	
+boolean
+Whether to get entity with extended data fields such as creationDate, lastUpdateDate, servingStatus
+
+maxResults	
+integer <int32>
+Number of records to include in the paginated response. Defaults to max page size for given API
+
+nextToken	
+string
+token value allowing to navigate to the next response page
+
+stateFilter	
+object (SponsoredProductsEntityStateFilter)
+Filter entities by state. To filter live entities, only 'ENABLED', 'PAUSED' and 'ARCHIVED' can be used
+
+Responses
+200
+ListSponsoredProductsProductAds 200 response
+
+400
+ProductAdAccessException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spProductAd.v3+json
+
+Copy
+Expand allCollapse all
+{
+"adGroupIdFilter": {
+"include": []
+},
+"adIdFilter": {
+"include": []
+},
+"campaignIdFilter": {
+"include": []
+},
+"includeExtendedDataFields": true,
+"maxResults": 0,
+"nextToken": "string",
+"stateFilter": {
+"include": []
+}
+}
+Response samples
+200400401403415429500
+Content type
+application/vnd.spProductAd.v3+json
+
+Copy
+Expand allCollapse all
+{
+"nextToken": "string",
+"productAds": [
+{}
+],
+"totalResults": 0
+}
+Product Recommendation Service
+Suggested target ASINs for your advertised product
+
+post
+/sp/targets/products/recommendations
+Given an advertised ASIN as input, this API returns suggested ASINs to target in a product targeting campaign. We use various methods to generate these suggestions. These include using historical performance of your ad, items that shoppers they frequently view and purchase together, etc. The suggested targets can be retrieved either as a single list, or grouped by ‘theme' – i.e. an accompanying context for why we recommend the items. You can pick the desired format using the Accepts header, please see the response mediaTypes for more information.
+
+Pagination Behavior
+The API supports cursor based pagination using encoded cursor values to return next set of records or previously served records. The count parameter in the request body will be used to determine the size of results when requesting the previous page or next page. If no value for count is passed in the request, a default value is assumed. Please refer the range and defaults for these values in the request schema under GetProductRecommendationsRequest.
+Note: The clients should never cache pagination cursor values locally as these values will expire after a certain time period. However a cursor value can be reused to perform retries in case of failures as long as the value has not expired.
+
+Themes
+Themes provide additional context for why we are recommending a product as a target. See below for an overall list of themes currently available –
+- Top converting targets – These ASINs generated conversions for the input ASIN in the past 30 days (e.g. your product appeared as an ad on the detail page of these items, and a shopper clicked and purchased your item). The suggested ASINs under this theme are sorted in decreasing order of sales generated for your promoted item.
+- Similar items (frequently viewed together) – Items that shoppers frequently view and click along with your advertised item during a shopping session.
+- Complements – Items that are frequently purchased together as complements. For example, if you are promoting a tennis racquet, you may see tennis balls recommended under this theme.
+- Similar items with low ratings and reviews – Subset of the ‘similar items’ theme containing items that are rated lower than 3 stars and/or with fewer than 5 reviews.
+- Other books read by your readers – Items that shoppers frequently view and click along with your advertised item during a shopping session.
+
+Note: Availability of themes differs by input ASIN - some ASINs may not have all above themes available
+header Parameters
+Amazon-Advertising-API-AdvertiserId	
+string
+The Advertiser ID associated with the advertiser account.
+
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: application/vnd.spproductrecommendation.v3+json
+adAsins
+required
+Array of strings[ items = 10 characters ]
+List of input ASINs.
+
+count	
+integer >= 1
+Count of objects requested in the response. The count will be applied on the objects returned under recommendations array in response body.
+
+Requesting application/vnd.spproductrecommendationresponse.themes.v3+json mediatype applies the count on ThemeRecommendation objects.If no count value is passed a default of 5 is assumed. The API will return a maximum of 10 themes irrespective of how large the count is set.
+Requesting application/vnd.spproductrecommendationresponse.asins.v3+json mediatype applies count on the ProductRecommendation objects in response body.If no count value is passed a default of 100 is assumed. The API will return a maximum of 1000 recommendations irrespective of how large the count is set.
+Please refer the response Schemas for more info.
+cursor	
+string
+A optional cursor value that can be used to fetch next or previous set of records.
+
+locale	
+string
+Theme names and descriptions will be provided in the language for your supported locale. Available options are en_US (U.S. English), en_GB (UK English), zh_CN (Chinese), es_ES (Spanish), jp_JP (Japanese), de_DE (German), fr_FR (French), it_IT(Italian). If locale is not provided or unsupported, the theme names and descriptions will be returned in U.S. English (en_US).
+
+Responses
+200
+success
+
+400
+Bad Request
+
+422
+Unprocessable entity - Failed due to invalid parameters.
+
+429
+Too Many Requests - Request was rate-limited. Retry later.
+
+500
+Internal Server Error - Something went wrong on the server. Retry later and report an error if unresolved.
+
+Request samples
+Payload
+Content type
+application/vnd.spproductrecommendation.v3+json
+
+Copy
+Expand allCollapse all
+{
+"adAsins": [
+"BX20002121"
+],
+"count": "5",
+"cursor": "MTAxNTwNzI5NDE=",
+"locale": "en_US"
+}
+Response samples
+200400422429500
+Content type
+
+application/vnd.spproductrecommendationresponse.asins.v3+json
+application/vnd.spproductrecommendationresponse.asins.v3+json
+
+Copy
+Expand allCollapse all
+{
+"nextCursor": "MTAxNTExOTQ1MjAwNzI5NDE=",
+"previousCursor": "TQ1MjAwNzI5NDE=",
+"recommendations": [
+{}
+]
+}
+Product Targeting
+Returns brands recommended for negative targeting.
+
+get
+/sp/negativeTargets/brands/recommendations
+Returns brands recommended for negative targeting. Only available for Sellers and Vendors. These recommendations include your own brands because targeting your own brands usually results in lower performance than targeting competitors' brands.
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Prefer	
+string
+Used to indicate the behavior preferred by the client but is not required for successful completion of the request. Supported values will be updated in the future.
+
+Responses
+200
+success
+
+400
+Bad Request - The input fails to satisfy the constraints of the API.
+
+401
+Unauthorized - Request failed because user is not authenticated.
+
+403
+Access Denied - Request failed because the user is not allowed to invoke the operation.
+
+429
+Too Many Requests - Request was rate-limited. Retry later.
+
+500
+Internal Server Error - Something went wrong on the server. Retry later and report an error if unresolved.
+
+Response samples
+200400401403429500
+Content type
+application/vnd.spproducttargetingresponse.v3+json
+
+Copy
+Expand allCollapse all
+[
+{
+"id": "string",
+"name": "string"
+}
+]
+Returns brands related to keyword input for negative targeting.
+
+post
+/sp/negativeTargets/brands/search
+Returns up to 100 brands related to keyword input for negative targeting.
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Prefer	
+string
+Used to indicate the behavior preferred by the client but is not required for successful completion of the request. Supported values will be updated in the future.
+
+Request Body schema: application/vnd.spproducttargeting.v3+json
+keyword
+required
+string
+Responses
+200
+success
+
+400
+Bad Request - The input fails to satisfy the constraints of the API.
+
+401
+Unauthorized - Request failed because user is not authenticated.
+
+429
+Too Many Requests - Request was rate-limited. Retry later.
+
+500
+Internal Server Error - Something went wrong on the server. Retry later and report an error if unresolved.
+
+Request samples
+Payload
+Content type
+application/vnd.spproducttargeting.v3+json
+
+Copy
+{
+"keyword": "string"
+}
+Response samples
+200400401429500
+Content type
+application/vnd.spproducttargetingresponse.v3+json
+
+Copy
+Expand allCollapse all
+[
+{
+"id": "string",
+"name": "string"
+}
+]
+Returns all targetable categories.
+
+get
+/sp/targets/categories
+Returns all targetable categories. This API returns a large JSON string containing a tree of category nodes. Each category node has the fields - category id, category name, and child categories.
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+query Parameters
+locale	
+string
+Enum: "ar_AE" "de_DE" "en_AE" "en_AU" "en_CA" "en_GB" "en_IN" "en_SG" "en_US" "es_ES" "es_MX" "fr_CA" "fr_FR" "hi_IN" "it_IT" "ja_JP" "ko_KR" "nl_NL" "pl_PL" "pt_BR" "sv_SE" "ta_IN" "th_TH" "tr_TR" "vi_VN" "zh_CN"
+The locale to which the caller wishes to translate the targetable categories to. For example, if the caller wishes to receive the targetable categories in Simplified Chinese, the locale parameter should be set to zh_CN. If no locale is provided, the returned targetable categories will be in the default language of the marketplace.
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Prefer	
+string
+Used to indicate the behavior preferred by the client but is not required for successful completion of the request. Supported values will be updated in the future.
+
+Responses
+200
+success
+
+400
+Bad Request
+
+401
+Unauthorized - Request failed because user is not authenticated.
+
+429
+Too Many Requests - Request was rate-limited. Retry later.
+
+500
+Internal Server Error - Something went wrong on the server. Retry later and report an error if unresolved.
+
+Response samples
+200400401429500
+Content type
+
+application/vnd.spproducttargetingresponse.v3+json
+application/vnd.spproducttargetingresponse.v3+json
+
+Copy
+"[{\"id\":2748212011,\"na\":\"Art Paper\",\"ch\":[{\"id\":8090742011,\"na\":\"Palette Paper\",\"ch\":[],\"ta\":true, \"asinCountRange\":{\"min\":11,\"max\":19}},{\"id\":8090734011,\"na\":\"Sketchbooks & Notebooks\",\"ch\":[],\"ta\":true, \"asinCountRange\":{\"min\":3,\"max\":5}}],\"ta\":true,\"asinCountRange\":{\"min\":57,\"max\":84}},{\"id\":12898291,\"na\":\"Tracing Paper\",\"ch\":[],\"ta\":true, \"asinCountRange\":{\"min\":24,\"max\":40}}]"
+Returns a list of category recommendations for the input list of ASINs.
+
+post
+/sp/targets/categories/recommendations
+Returns a list of category recommendations for the input list of ASINs. Use this API to discover relevant categories to target. To find ASINs, either use the Product Metadata API or browse the Amazon Retail Website.
+
+Response can be requested in different versions with the help of accept header. Please review the response mediaTypes for more information.
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+query Parameters
+locale	
+string
+Enum: "ar_AE" "de_DE" "en_AE" "en_AU" "en_CA" "en_GB" "en_IN" "en_SG" "en_US" "es_ES" "es_MX" "fr_CA" "fr_FR" "hi_IN" "it_IT" "ja_JP" "ko_KR" "nl_NL" "pl_PL" "pt_BR" "sv_SE" "ta_IN" "th_TH" "tr_TR" "vi_VN" "zh_CN"
+The locale to which the caller wishes to translate the list of category recommendations to. For example, if the caller wishes to receive a list of category recommendations in Simplified Chinese, the locale parameter should be set to zh_CN. If no locale is provided, the returned list of category recommendations will be in the default language of the marketplace.
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Prefer	
+string
+Used to indicate the behavior preferred by the client but is not required for successful completion of the request. Supported values will be updated in the future.
+
+Request Body schema: application/vnd.spproducttargeting.v3+json
+asins	
+Array of strings <= 10000 items
+List of input ASINs. This API does not check if the ASINs are valid ASINs.
+
+includeAncestor	
+boolean
+Enable this if you would like to retrieve categories which are ancestor nodes of the original recommended categories. This may increase the number of categories returned, but decrease the relevancy of those categories.
+
+Responses
+200
+success
+
+400
+Bad Request
+
+401
+Unauthorized - Request failed because user is not authenticated.
+
+422
+Unprocessable entity - Failed due to invalid parameters.
+
+429
+Too Many Requests - Request was rate-limited. Retry later.
+
+500
+Internal Server Error - Something went wrong on the server. Retry later and report an error if unresolved.
+
+Request samples
+Payload
+Content type
+application/vnd.spproducttargeting.v3+json
+
+Copy
+Expand allCollapse all
+{
+"asins": [
+"string"
+],
+"includeAncestor": true
+}
+Response samples
+200400401422429500
+Content type
+
+application/vnd.spproducttargetingresponse.v3+json
+application/vnd.spproducttargetingresponse.v3+json
+
+Copy
+Expand allCollapse all
+{
+"categories": [
+{}
+]
+}
+Returns refinements according to category input.
+
+get
+/sp/targets/category/{categoryId}/refinements
+Returns refinements according to category input.
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+path Parameters
+categoryId
+required
+string
+The category ID. Please use the GetTargetableCategories API or the GetCategoriesForASINs API to retrieve categories IDs. This API does not check if the category is a valid category.
+
+query Parameters
+locale	
+string
+Enum: "ar_AE" "de_DE" "en_AE" "en_AU" "en_CA" "en_GB" "en_IN" "en_SG" "en_US" "es_ES" "es_MX" "fr_CA" "fr_FR" "hi_IN" "it_IT" "ja_JP" "ko_KR" "nl_NL" "pl_PL" "pt_BR" "sv_SE" "ta_IN" "th_TH" "tr_TR" "vi_VN" "zh_CN"
+The locale to which the caller wishes to translate the refinements to. For example, if the caller wishes to receive the refinements in Simplified Chinese, the locale parameter should be set to zh_CN. If no locale is provided, the refinements will be in the default language of the marketplace.
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Prefer	
+string
+Used to indicate the behavior preferred by the client but is not required for successful completion of the request. Supported values will be updated in the future.
+
+Responses
+200
+success
+
+400
+Bad Request
+
+401
+Unauthorized - Request failed because user is not authenticated.
+
+422
+Unprocessable entity - Failed due to invalid parameters.
+
+429
+Too Many Requests - Request was rate-limited. Retry later.
+
+500
+Internal Server Error - Something went wrong on the server. Retry later and report an error if unresolved.
+
+Response samples
+200400401422429500
+Content type
+
+application/vnd.spproducttargetingresponse.v3+json
+application/vnd.spproducttargetingresponse.v3+json
+
+Copy
+Expand allCollapse all
+{
+"ageRanges": [
+{}
+],
+"brands": [
+{}
+],
+"genres": [
+{}
+]
+}
+Get number of targetable asins based on refinements provided by the user.
+
+post
+/sp/targets/products/count
+Get number of targetable asins based on refinements provided by the user. Please use the GetTargetableCategories API or the GetCategoryRecommendationsForASINs API to retrieve the category ID. Please use the GetRefinementsByCategory API to retrieve refinements data for a category.
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Prefer	
+string
+Used to indicate the behavior preferred by the client but is not required for successful completion of the request. Supported values will be updated in the future.
+
+Request Body schema: application/vnd.spproducttargeting.v3+json
+ageRanges	
+Array of objects (AgeRanges)
+List of Age Ranges. Use the GetRefinementsForCategory to retrieve Age Ranges. Age Ranges are only available for categories related to children's toys and games.
+
+brands	
+Array of objects (Brands)
+List of Brands.
+
+category
+required
+string
+The category node id. Please use the GetTargetableCategories API or GetCategoryRecommendationsForASINs API to retrieve category IDs.
+
+genres	
+Array of objects (Genres)
+List of Genres. Use the GetRefinementsForCategory to retrieve Genre Node IDs. Genres are only available for categories related to books.
+
+isPrimeShipping	
+boolean
+Indicates if products have prime shipping
+
+priceRange	
+object (PriceRange)
+A range of prices. We use this to retrieve the number of targetable ASINs that falls within this price range.
+
+ratingRange	
+object (RatingRange)
+Rating range is restricted to integers between 0 and 5, inclusive. Min must be less than or equal to max. We use this to retrieve the number of targetable ASINs that falls within this rating range.
+
+Responses
+200
+success
+
+400
+Bad Request - The input fails to satisfy the constraints of the API.
+
+401
+Unauthorized - Request failed because user is not authenticated.
+
+422
+Unprocessable entity - Failed due to invalid parameters.
+
+429
+Too Many Requests - Request was rate-limited. Retry later.
+
+500
+Internal Server Error - Something went wrong on the server. Retry later and report an error if unresolved.
+
+Request samples
+Payload
+Content type
+application/vnd.spproducttargeting.v3+json
+
+Copy
+Expand allCollapse all
+{
+"ageRanges": [
+{}
+],
+"brands": [
+{}
+],
+"category": "string",
+"genres": [
+{}
+],
+"isPrimeShipping": true,
+"priceRange": {
+"max": 0.1,
+"min": 0.1
+},
+"ratingRange": {
+"max": 0,
+"min": 0
+}
+}
+Response samples
+200400401422429500
+Content type
+application/vnd.spproducttargetingresponse.v3+json
+
+Copy
+Expand allCollapse all
+{
+"asinCounts": {
+"max": 0,
+"min": 0
+}
+}
+Targeting clauses
+CreateSponsoredProductsTargetingClauses
+
+post
+/sp/targets
+Create targeting clauses
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Prefer	
+string
+The "Prefer" header, as defined in [RFC7240], allows clients to request certain behavior from the service. The service ignores preference values that are either not supported or not known by the service. Either multiple Prefer headers are passed or single one with comma separated values, both forms are equivalent Supported preferences: return=representation - return the full object when doing create/update/delete operations instead of ids. Please note that the extendedData field will be part of the full object for /list endpoints only.
+
+Request Body schema: application/vnd.spTargetingClause.v3+json
+required
+targetingClauses
+required
+Array of objects (SponsoredProductsCreateTargetingClause) [ 0 .. 1000 ] items
+An array of targetingClauses.
+
+Responses
+207
+CreateSponsoredProductsTargetingClauses 207 response
+
+400
+TargetMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"targetingClauses": [
+{}
+]
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"targetingClauses": {
+"error": [],
+"success": []
+}
+}
+UpdateSponsoredProductsTargetingClauses
+
+put
+/sp/targets
+Update targeting clauses
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Prefer	
+string
+The "Prefer" header, as defined in [RFC7240], allows clients to request certain behavior from the service. The service ignores preference values that are either not supported or not known by the service. Either multiple Prefer headers are passed or single one with comma separated values, both forms are equivalent Supported preferences: return=representation - return the full object when doing create/update/delete operations instead of ids. Please note that the extendedData field will be part of the full object for /list endpoints only.
+
+Request Body schema: application/vnd.spTargetingClause.v3+json
+required
+targetingClauses
+required
+Array of objects (SponsoredProductsUpdateTargetingClause) [ 0 .. 1000 ] items
+An array of targetingClauses with updated values.
+
+Responses
+207
+UpdateSponsoredProductsTargetingClauses 207 response
+
+400
+TargetMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"targetingClauses": [
+{}
+]
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"targetingClauses": {
+"error": [],
+"success": []
+}
+}
+DeleteSponsoredProductsTargetingClauses
+
+post
+/sp/targets/delete
+Delete targeting clauses
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spTargetingClause.v3+json
+required
+targetIdFilter
+required
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+Responses
+207
+DeleteSponsoredProductsTargetingClauses 207 response
+
+400
+TargetMutationException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"targetIdFilter": {
+"include": []
+}
+}
+Response samples
+207400401403415429500
+Content type
+application/vnd.spTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"targetingClauses": {
+"error": [],
+"success": []
+}
+}
+ListSponsoredProductsTargetingClauses
+
+post
+/sp/targets/list
+List targeting clauses
+
+Requires one of these permissions: ["advertiser_campaign_edit","campaign_proposed"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spTargetingClause.v3+json
+adGroupIdFilter	
+object (SponsoredProductsReducedObjectIdFilter)
+Filter entities by the list of objectIds
+
+asinFilter	
+object (SponsoredProductsAsinFilter)
+campaignIdFilter	
+object (SponsoredProductsReducedObjectIdFilter)
+Filter entities by the list of objectIds
+
+expressionTypeFilter	
+object (SponsoredProductsExpressionTypeFilter)
+Filter entities by ExpressionType
+
+includeExtendedDataFields	
+boolean
+Whether to get entity with extended data fields such as creationDate, lastUpdateDate, servingStatus
+
+maxResults	
+integer <int32>
+Number of records to include in the paginated response. Defaults to max page size for given API
+
+nextToken	
+string
+token value allowing to navigate to the next response page
+
+stateFilter	
+object (SponsoredProductsEntityStateFilter)
+Filter entities by state. To filter live entities, only 'ENABLED', 'PAUSED' and 'ARCHIVED' can be used
+
+targetIdFilter	
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+Responses
+200
+ListSponsoredProductsTargetingClauses 200 response
+
+400
+TargetAccessException 400 response
+
+401
+UnauthorizedException 401 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+Request samples
+Payload
+Content type
+application/vnd.spTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"adGroupIdFilter": {
+"include": []
+},
+"asinFilter": {
+"include": [],
+"queryTermMatchType": "BROAD_MATCH"
+},
+"campaignIdFilter": {
+"include": []
+},
+"expressionTypeFilter": {
+"include": []
+},
+"includeExtendedDataFields": true,
+"maxResults": 0,
+"nextToken": "string",
+"stateFilter": {
+"include": []
+},
+"targetIdFilter": {
+"include": []
+}
+}
+Response samples
+200400401403415429500
+Content type
+application/vnd.spTargetingClause.v3+json
+
+Copy
+Expand allCollapse all
+{
+"nextToken": "string",
+"targetingClauses": [
+{}
+],
+"totalResults": 0
+}
+TargetPromotionGroups
+CreateTargetPromotionGroups
+
+post
+/sp/targetPromotionGroups
+Creates a target promotion group, by grouping the auto-targeting adGroupId and manual-targeting adGroups, divided by keyword targeting adGroups, and product targeting adGroups.
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a 'Login with Amazon' account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: 
+application/vnd.sptargetpromotiongroup.v1+json
+application/vnd.sptargetpromotiongroup.v1+json
+required
+adGroupId
+required
+string
+The adGroupId of the Ad Group of an Auto-Targeting campaign that will be part of the Target Promotion Group.
+
+adIds	
+Array of strings [ 1 .. 1000 ] items
+The list of adIds (optional) of the Ad Group of the Auto-Targeting campaign, that will be part of the Target Promotion Group. If this list is empty, all the Product Ads under the Ad Group will be part of the Target Promotion Group.
+
+existingCampaignDetails	
+object (SponsoredProductsExistingCampaignDetails)
+The request object for creating a new target promotion group with existing campaigns. Please note that the adGroupIds provided need to contain the same Ad ASINs/SKUs combination as the Auto-Targeting adGroup for the target promotion group.
+
+newCampaignDetails	
+object (SponsoredProductsNewCampaignDetails)
+The request object for creating a new target promotion group with new campaigns.
+
+Responses
+200
+CreateTargetPromotionGroups 200 response
+
+400
+SchemaValidationException 400 response
+
+401
+UnauthenticatedException 401 response
+
+403
+AccessDeniedException 403 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+501
+NotImplementedException 501 response
+
+503
+ServiceUnavailableException 503 response
+
+Request samples
+Payload
+Content type
+
+application/vnd.sptargetpromotiongroup.v1+json
+application/vnd.sptargetpromotiongroup.v1+json
+
+Copy
+Expand allCollapse all
+{
+"adGroupId": "string",
+"adIds": [
+"string"
+],
+"existingCampaignDetails": {
+"keywordCampaignAdGroupIds": [],
+"productCampaignAdGroupIds": []
+},
+"newCampaignDetails": {
+"budget": {},
+"defaultBid": 0.1,
+"dynamicBidding": {},
+"endDate": "2019-08-24",
+"namePrefix": "string",
+"startDate": "2019-08-24",
+"tags": {}
+}
+}
+Response samples
+200400401403429500501503
+Content type
+
+application/vnd.sptargetpromotiongroup.v1+json
+application/vnd.sptargetpromotiongroup.v1+json
+
+Copy
+Expand allCollapse all
+{
+"targetPromotionGroup": {
+"autoTargetingCampaignAdGroupId": "string",
+"autoTargetingCampaignAdIds": [],
+"keywordCampaignAdGroupIds": [],
+"productCampaignAdGroupIds": [],
+"state": "string",
+"targetPromotionGroupId": "string",
+"targetPromotionGroupName": "string"
+}
+}
+ListTargetPromotionGroups
+
+post
+/sp/targetPromotionGroups/list
+Returns the target promotion groups for an advertiser and / or adGroupId, and / or target promotion group id.
+
+Requires one of these permissions: ["advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a 'Login with Amazon' account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: 
+application/vnd.sptargetpromotiongroup.v1+json
+application/vnd.sptargetpromotiongroup.v1+json
+adGroupIdFilter	
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+maxResults	
+integer <int32> [ 1 .. 1000 ]
+Default: 1000
+The maximum number of results requested.
+
+nextToken	
+string
+Token value allowing to navigate to the next or previous response page
+
+targetPromotionGroupIdFilter	
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+Responses
+200
+ListTargetPromotionGroups 200 response
+
+400
+SchemaValidationException 400 response
+
+401
+UnauthenticatedException 401 response
+
+403
+AccessDeniedException 403 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+501
+NotImplementedException 501 response
+
+503
+ServiceUnavailableException 503 response
+
+Request samples
+Payload
+Content type
+
+application/vnd.sptargetpromotiongroup.v1+json
+application/vnd.sptargetpromotiongroup.v1+json
+
+Copy
+Expand allCollapse all
+{
+"adGroupIdFilter": {
+"include": []
+},
+"maxResults": 1000,
+"nextToken": "string",
+"targetPromotionGroupIdFilter": {
+"include": []
+}
+}
+Response samples
+200400401403429500501503
+Content type
+
+application/vnd.sptargetpromotiongroup.v1+json
+application/vnd.sptargetpromotiongroup.v1+json
+
+Copy
+Expand allCollapse all
+{
+"nextToken": "string",
+"targetPromotionGroups": [
+{}
+],
+"totalResults": 0
+}
+GetTargetPromotionGroupsRecommendations
+
+post
+/sp/targetPromotionGroups/recommendations
+Retrieves keyword and product targets of an auto-targeting campaign as recommendations for promoting to a manual-targeting campaign. The recommendations are based on performance heuristics of the targets.
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a 'Login with Amazon' account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header.
+
+Request Body schema: application/vnd.spTargetPromotionGroupsRecommendations.v1+json
+adGroupIdFilter	
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+adIdFilter	
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+campaignIdFilter	
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+maxResults	
+integer [ 1 .. 1000 ]
+Number of records to include in the paginated response. Defaults to 1000.
+
+nextToken	
+string
+Token for fetching the next page
+
+Responses
+200
+GetTargetPromotionGroupsRecommendations 200 response
+
+400
+SchemaValidationException 400 response
+
+403
+AccessDeniedException 403 response
+
+415
+UnsupportedMediaTypeException 415 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+503
+ServiceUnavailableException 503 response
+
+Request samples
+Payload
+Content type
+application/vnd.spTargetPromotionGroupsRecommendations.v1+json
+
+Copy
+Expand allCollapse all
+{
+"adGroupIdFilter": {
+"include": []
+},
+"adIdFilter": {
+"include": []
+},
+"campaignIdFilter": {
+"include": []
+},
+"maxResults": 1,
+"nextToken": "string"
+}
+Response samples
+200400403415429500503
+Content type
+application/vnd.spTargetPromotionGroupsRecommendations.v1+json
+
+Copy
+Expand allCollapse all
+{
+"nextToken": "string",
+"targets": [
+{}
+],
+"totalResults": 0
+}
+CreateTargetPromotionGroupTargets
+
+post
+/sp/targetPromotionGroups/targets
+Creates keyword and/or product targets in the manual adGroup that are part of the target promotion group
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a 'Login with Amazon' account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: 
+application/vnd.sptargetpromotiongrouptarget.v1+json
+application/vnd.sptargetpromotiongrouptarget.v1+json
+required
+targetPromotionGroupId
+required
+string
+The id of the target promotion group where the targets are being added.
+
+targets	
+Array of objects (SponsoredProductsCreateTargetRequest) [ 0 .. 1000 ] items
+List of targets to be added to the target promotion group.
+
+Responses
+207
+CreateTargetPromotionGroupTargets 207 response
+
+400
+SchemaValidationException 400 response
+
+401
+UnauthenticatedException 401 response
+
+403
+AccessDeniedException 403 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+501
+NotImplementedException 501 response
+
+503
+ServiceUnavailableException 503 response
+
+Request samples
+Payload
+Content type
+
+application/vnd.sptargetpromotiongrouptarget.v1+json
+application/vnd.sptargetpromotiongrouptarget.v1+json
+
+Copy
+Expand allCollapse all
+{
+"targetPromotionGroupId": "string",
+"targets": [
+{}
+]
+}
+Response samples
+207400401403429500501503
+Content type
+
+application/vnd.sptargetpromotiongrouptarget.v1+json
+application/vnd.sptargetpromotiongrouptarget.v1+json
+
+Copy
+Expand allCollapse all
+{
+"errors": [
+{}
+],
+"success": [
+{}
+]
+}
+ListTargetPromotionGroupTargets
+
+post
+/sp/targetPromotionGroups/targets/list
+Returns the targets created through target promotion groups for an advertiser and / or given target promotion group.
+
+Requires one of these permissions: ["advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a 'Login with Amazon' account. This is a required header for advertisers and integrators using the Advertising API.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header. This is a required header for advertisers and integrators using the Advertising API.
+
+Request Body schema: 
+application/vnd.sptargetpromotiongrouptarget.v1+json
+application/vnd.sptargetpromotiongrouptarget.v1+json
+adGroupIdFilter	
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+maxResults	
+integer <int32> [ 1 .. 1000 ]
+Default: 1000
+The maximum number of results requested.
+
+nextToken	
+string
+Token value allowing to navigate to the next or previous response page
+
+targetPromotionGroupIdFilter	
+object (SponsoredProductsObjectIdFilter)
+Filter entities by the list of objectIds
+
+Responses
+200
+ListTargetPromotionGroupTargets 200 response
+
+400
+SchemaValidationException 400 response
+
+401
+UnauthenticatedException 401 response
+
+403
+AccessDeniedException 403 response
+
+429
+ThrottlingException 429 response
+
+500
+InternalServerException 500 response
+
+501
+NotImplementedException 501 response
+
+503
+ServiceUnavailableException 503 response
+
+Request samples
+Payload
+Content type
+
+application/vnd.sptargetpromotiongrouptarget.v1+json
+application/vnd.sptargetpromotiongrouptarget.v1+json
+
+Copy
+Expand allCollapse all
+{
+"adGroupIdFilter": {
+"include": []
+},
+"maxResults": 1000,
+"nextToken": "string",
+"targetPromotionGroupIdFilter": {
+"include": []
+}
+}
+Response samples
+200400401403429500501503
+Content type
+
+application/vnd.sptargetpromotiongrouptarget.v1+json
+application/vnd.sptargetpromotiongrouptarget.v1+json
+
+Copy
+Expand allCollapse all
+{
+"nextToken": "string",
+"targets": [
+{}
+],
+"totalResults": 0
+}
+Theme-based bid recommendations
+Get bid recommendations for ad groups
+
+post
+/sp/targets/bid/recommendations
+The POST /sp/targets/bid/recommendations endpoint returns recommended bids for each target given either A) new ad group (a list of ad ASINs) or B) existing ad group (a campaign ID and ad group ID). Please use the recommendationType field to specify if you want to use option A or option B. This API is currently available at marketplaces where SP is available. The API supports keyword, auto and product targets. The API will return a 422 response when an unsupported marketplace or target is provided.
+
+Version 5.0
+New Features
+Version 5.0 introduces two new capabilities. First, advertisers will receive the estimated impressions for the suggested bid to help them understand the potential impact of adopting them. Second, advertisers will get a view of the estimated impressions for a range of bids (8 bids) for each target.
+The second feature is default to be disabled. To enable it, user needs to set includeAnalysis as True in request body.
+New features are currently available only for existing ad group requests in US marketplace.
+Version 4.0
+New Features
+Version 4.0 allows users to get theme-based bid recommendations for product targeting expressions, including PAT_ASIN, PAT_CATEGORY and PAT_CATEGORY_REFINEMENT.
+Version 4.0 supports keyword, auto and product targets in all marketplaces.
+Version 4.0 removes "impact metrics" when returning each bid suggestion.
+Version 4.0 also allows users to get theme-based bid recommendations for keyword group targeting expressions with the type KEYWORD_GROUP. This new type is only available in US marketplace.
+
+Requires one of these permissions: ["advertiser_campaign_edit","advertiser_campaign_view"]
+
+header Parameters
+Amazon-Advertising-API-ClientId
+required
+string
+The identifier of a client associated with a "Login with Amazon" account.
+
+Amazon-Advertising-API-Scope
+required
+string
+The identifier of a profile associated with the advertiser account. Use GET method on Profiles resource to list profiles associated with the access token passed in the HTTP Authorization header and choose profile id profileId from the response to pass it as input.
+
+Request Body schema: 
+application/vnd.spthemebasedbidrecommendation.v3+json
+application/vnd.spthemebasedbidrecommendation.v3+json
+adGroupId
+required
+string
+The ad group identifier.
+
+campaignId
+required
+string
+The campaign identifier.
+
+recommendationType
+required
+string
+The bid recommendation type.
+
+
+BIDS_FOR_EXISTING_AD_GROUP
+BIDS_FOR_EXISTING_AD_GROUP
+targetingExpressions
+required
+Array of objects (TargetingExpressionList) <= 100 items
+The list of targeting expressions. Maximum of 100 per request, use pagination for more if needed.
+
+Responses
+200
+Successful Operation.
+
+400
+Bad Request.
+
+401
+Unauthorized. Request failed because user is not authenticated or is not allowed to invoke the operation.
+
+405
+Method Not Allowed. Request failed because the request HTTP method is not supported.
+
+406
+Not Acceptable. Request failed because the service cannot produce a response in a format matching the media types provided in the Accept header.
+
+415
+Unsupported Media Type. Request failed because the payload format is not supported.
+
+422
+Unprocessable entity. Failed due to invalid parameters. If you receive an error like “Invalid Advertiser and ASINs combination in the request”, please make sure the ad group has at least one ASIN in it.
+
+429
+Too Many Requests. Request was rate-limited. Retry later.
+
+500
+Internal Server Error. Something went wrong on the server.
+
+Request samples
+Payload
+Content type
+
+application/vnd.spthemebasedbidrecommendation.v3+json
+application/vnd.spthemebasedbidrecommendation.v3+json
+Example
+
+BIDS_FOR_EXISTING_AD_GROUP
+BIDS_FOR_EXISTING_AD_GROUP
+
+Copy
+Expand allCollapse all
+{
+"adGroupId": "EFGH5678",
+"campaignId": "ABCD1234",
+"recommendationType": "BIDS_FOR_EXISTING_AD_GROUP",
+"targetingExpressions": [
+{},
+{},
+{},
+{}
+]
+}
+Response samples
+200400401405406415422429500
+Content type
+
+application/vnd.spthemebasedbidrecommendation.v3+json
+application/vnd.spthemebasedbidrecommendation.v3+json
+
+Copy
+Expand allCollapse all
+{
+"bidRecommendations": [
+{}
+]
+}
+Was this page helpful?
+
+Yes
+No
+GitHub logo
+GitHub
+RSS logo
+RSS release notes
+Amazon Advertising logo
+© 2023 Amazon.com, Inc. or its affiliates.
+Conditions of Use
+Privacy Notice
+License Agreement
+Data Policies

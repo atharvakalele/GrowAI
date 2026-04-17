@@ -1,0 +1,11 @@
+{
+  "runs": {
+    "import": {
+      "last_run": "2026-04-14T10:51:29.209776",
+      "last_success": null,
+      "success": false,
+      "duration_sec": 90,
+      "return_code": 1
+    }
+  }
+}

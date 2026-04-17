@@ -1,0 +1,72 @@
+{
+  "schema_type": "impact_summary",
+  "schema_version": "1.0",
+  "feature_id": "M01",
+  "feature_key": "competitor_tracker",
+  "feature_name": "Competitor Tracker",
+  "module_group": "market_intelligence",
+  "generated_at": "2026-04-15T08:30:16.207570",
+  "period": "manual",
+  "status": "success",
+  "impact_level": "low",
+  "business_areas": [
+    "buy_box",
+    "pricing",
+    "competitor_pressure",
+    "revenue_protection"
+  ],
+  "headline": "Competitor scan completed: 1 ASIN(s) currently show low direct offer pressure.",
+  "summary_metrics": {
+    "profit_impact_rs": 0,
+    "loss_prevented_rs": 0,
+    "waste_blocked_rs": 0,
+    "revenue_protected_rs": 17189.0,
+    "rank_up_count": 0,
+    "rank_down_count": 0,
+    "buy_box_won_count": 1,
+    "buy_box_lost_count": 0,
+    "conversion_up_count": 0,
+    "conversion_down_count": 0,
+    "organic_gain_count": 0,
+    "organic_decline_count": 0,
+    "tracked_asins_count": 1,
+    "no_buy_box_count": 0,
+    "high_pressure_count": 0,
+    "revenue_at_risk_7d_rs": 0,
+    "low_pressure_opportunities_count": 1
+  },
+  "positive_impacts": [
+    {
+      "type": "low_competitor_pressure",
+      "message": "1 ASIN(s) currently have Buy Box and no direct offer competition.",
+      "estimated_sales7d_rs": 17189.0
+    }
+  ],
+  "negative_impacts": [],
+  "top_winners": [
+    {
+      "asin": "B0FBWXQ9JL",
+      "sku": "LS_SkyBlu_CelticSeaSalt_250gm",
+      "sales7d_rs": 17189.0,
+      "buy_box_status": "WON",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "Low pressure; maintain price discipline"
+    }
+  ],
+  "top_risks": [],
+  "ai_learning": {
+    "new_rule_learned": false,
+    "rule_promoted_count": 0,
+    "confidence": 0.78,
+    "notes": "New-standard wrapper created from competitor tracker raw output."
+  },
+  "recommendations": [
+    "Maintain price discipline on low-pressure ASINs and continue daily monitoring."
+  ],
+  "detail_ref": {
+    "raw_file": "ClaudeCode/Report/14 April 2026/Json/competitor_tracker_latest.json",
+    "detail_file": "ClaudeCode/Report/14 April 2026/Json/competitor_tracker_20260415_083016.json",
+    "supporting_report": "ClaudeCode/Report/14 April 2026/Json/competitor_tracker_latest.json"
+  }
+}

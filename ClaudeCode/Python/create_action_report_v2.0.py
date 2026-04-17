@@ -1,0 +1,1537 @@
+"""
+GoAmrita Bhandar / Made in Heavens - Amazon Ads Action Report Generator v2.0
+PCSE Engine (Profit-Classification-Score-Execute) — Backend Only
+
+Frontend = Sweet Pot (clean, simple, user-friendly)
+Backend = Nuclear Reactor (full PCSE calculations invisible to user)
+
+User sees: ToDo + AI Reason + Approval — nothing else technical.
+
+Generates professional Excel report with 6 sheets:
+  1. Campaign Actions
+  2. Search Term Actions
+  3. Keyword Actions
+  4. Product Performance
+  5. Summary Dashboard
+  6. Legend & Help
+
+Version: 2.0  (Clean UX Rebuild)
+Date: 13 April 2026
+"""
+
+import json
+import os
+import sys
+import argparse
+from collections import defaultdict
+from datetime import datetime
+from pathlib import Path
+
+try:
+    from openpyxl import Workbook
+    from openpyxl.styles import (
+        Font, PatternFill, Alignment, Border, Side, numbers
+    )
+    from openpyxl.utils import get_column_letter
+    from openpyxl.worksheet.datavalidation import DataValidation
+except ImportError:
+    print("ERROR: openpyxl not installed. Run: pip install openpyxl")
+    sys.exit(1)
+
+# ============================================================================
+# CONFIGURATION
+# ============================================================================
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+BASE_DIR = SCRIPT_DIR.parent.parent  # ClaudeCode/Python → ClaudeCode → Project root
+REPORT_BASE = SCRIPT_DIR.parent / "Report"
+
+# Parse CLI args
+_parser = argparse.ArgumentParser(add_help=False)
+_parser.add_argument('--period', choices=['daily', 'weekly'], default='daily')
+_parser.add_argument('--days', type=int, default=1)
+_args, _ = _parser.parse_known_args()
+
+# Period divider: daily=7 (1/7th action), weekly=1 (full action)
+PERIOD_DIVIDER = 7 if _args.period == 'daily' else 1
+DATA_DAYS = _args.days
+
+SELLER_NAME = "GoAmrita Bhandar / Made in Heavens"
+ENTITY_ID = "ENTITY1TVPGA5B1GOJW"
+
+# PCSE Thresholds — loaded from config_pcse.json (fallback to safe defaults)
+_pcse_config_path = BASE_DIR / "config_pcse.json"  # Project root / config_pcse.json
+try:
+    with open(_pcse_config_path, "r", encoding="utf-8") as _f:
+        _pcse = json.load(_f)
+    print(f"[INFO] PCSE config     : loaded from config_pcse.json")
+except Exception as _e:
+    print(f"[WARN] config_pcse.json not found — using hardcoded defaults ({_e})")
+    _pcse = {}
+
+ACOS_TARGET     = _pcse.get("foundation", {}).get("acos_target_pct", 25.0)
+SCALE_THRESHOLD = _pcse.get("entity_classification", {}).get("scale_acr_max", 40.0)
+OPTIMIZE_LOW    = _pcse.get("entity_classification", {}).get("optimize_acr_min", 40.0)
+OPTIMIZE_HIGH   = _pcse.get("entity_classification", {}).get("optimize_acr_max", 60.0)
+FIX_HIGH        = _pcse.get("entity_classification", {}).get("fix_acr_max", 120.0)
+
+# ============================================================================
+# AUTO-DETECT LATEST REPORT FOLDER
+# ============================================================================
+
+def find_latest_report_folder():
+    folders = [f for f in REPORT_BASE.iterdir() if f.is_dir()]
+    if not folders:
+        print("ERROR: No report folders found in", REPORT_BASE)
+        sys.exit(1)
+    folders.sort(key=lambda f: f.stat().st_mtime, reverse=True)
+    return folders[0]
+
+REPORT_FOLDER = find_latest_report_folder()
+JSON_DIR = REPORT_FOLDER / "Json"
+REPORT_DATE = REPORT_FOLDER.name  # folder name = generation date (e.g. "15 April 2026")
+
+# Read actual data date from import metadata
+_import_meta_path = JSON_DIR / "_import_metadata.json"
+if _import_meta_path.exists():
+    with open(_import_meta_path) as _mf:
+        _import_meta = json.load(_mf)
+    _period = _import_meta.get("period", {})
+    DATA_DATE_START = _period.get("start", "")
+    DATA_DATE_END = _period.get("end", "")
+    DATA_DAYS = _import_meta.get("period", {}).get("days", DATA_DAYS)  # override from metadata
+    DATA_DATE_LABEL = DATA_DATE_START if DATA_DATE_START == DATA_DATE_END else f"{DATA_DATE_START} to {DATA_DATE_END}"
+else:
+    DATA_DATE_LABEL = REPORT_DATE
+    DATA_DATE_START = ""
+    DATA_DATE_END = ""
+
+OUTPUT_FILENAME = f"GoAmrita_Action_Report_{REPORT_DATE}.xlsx"
+
+def get_output_path():
+    path = REPORT_FOLDER / OUTPUT_FILENAME
+    try:
+        if path.exists():
+            with open(path, "a"):
+                pass
+        return path
+    except PermissionError:
+        ts = datetime.now().strftime("%H%M%S")
+        alt = REPORT_FOLDER / f"GoAmrita_Action_Report_{REPORT_DATE}_{ts}.xlsx"
+        print(f"  [WARN] Original file locked. Saving as: {alt.name}")
+        return alt
+
+OUTPUT_PATH = get_output_path()
+
+print(f"[INFO] Report folder : {REPORT_FOLDER.name}")
+print(f"[INFO] JSON directory : {JSON_DIR}")
+print(f"[INFO] Output file    : {OUTPUT_PATH}")
+
+# ============================================================================
+# STYLE CONSTANTS
+# ============================================================================
+
+FONT_TITLE = Font(name="Calibri", bold=True, size=16, color="1F4E79")
+FONT_SUBTITLE = Font(name="Calibri", bold=True, size=11, color="4472C4")
+FONT_STATS_BAR = Font(name="Calibri", bold=True, size=10, color="FFFFFF")
+FONT_HEADER = Font(name="Calibri", bold=True, size=10, color="FFFFFF")
+FONT_DATA = Font(name="Calibri", size=10)
+FONT_DATA_BOLD = Font(name="Calibri", bold=True, size=10)
+FONT_SECTION_WHITE = Font(name="Calibri", bold=True, size=12, color="FFFFFF")
+FONT_LABEL = Font(name="Calibri", bold=True, size=10, color="333333")
+FONT_VALUE = Font(name="Calibri", size=11, color="000000")
+FONT_VALUE_BOLD = Font(name="Calibri", bold=True, size=11)
+FONT_STAR = Font(name="Calibri", bold=True, size=11, color="006600")
+FONT_WASTE = Font(name="Calibri", bold=True, size=11, color="CC0000")
+
+FILL_HEADER = PatternFill(start_color="1F4E79", end_color="1F4E79", fill_type="solid")
+FILL_HEADER_TODO = PatternFill(start_color="E67E22", end_color="E67E22", fill_type="solid")
+FILL_HEADER_AI = PatternFill(start_color="8E44AD", end_color="8E44AD", fill_type="solid")
+FILL_HEADER_APPROVAL = PatternFill(start_color="27AE60", end_color="27AE60", fill_type="solid")
+FILL_STATS_BAR = PatternFill(start_color="2C3E50", end_color="2C3E50", fill_type="solid")
+
+FILL_RED = PatternFill(start_color="FF6666", end_color="FF6666", fill_type="solid")
+FILL_PINK = PatternFill(start_color="FF99CC", end_color="FF99CC", fill_type="solid")
+FILL_YELLOW = PatternFill(start_color="FFD966", end_color="FFD966", fill_type="solid")
+FILL_BLUE = PatternFill(start_color="9DC3E6", end_color="9DC3E6", fill_type="solid")
+FILL_GREEN = PatternFill(start_color="92D050", end_color="92D050", fill_type="solid")
+
+FILL_ROW_ALT = PatternFill(start_color="DAEEF3", end_color="DAEEF3", fill_type="solid")
+FILL_ROW_WHITE = PatternFill(start_color="FFFFFF", end_color="FFFFFF", fill_type="solid")
+FILL_TODO = PatternFill(start_color="FFF2CC", end_color="FFF2CC", fill_type="solid")
+FILL_AI_REASON = PatternFill(start_color="E8D5F5", end_color="E8D5F5", fill_type="solid")
+FILL_APPROVAL = PatternFill(start_color="D5F5D5", end_color="D5F5D5", fill_type="solid")
+FILL_SECTION_HDR = PatternFill(start_color="1F4E79", end_color="1F4E79", fill_type="solid")
+FILL_LIGHT_BLUE = PatternFill(start_color="DAEEF3", end_color="DAEEF3", fill_type="solid")
+FILL_LIGHT_GREEN = PatternFill(start_color="E2EFDA", end_color="E2EFDA", fill_type="solid")
+FILL_LIGHT_RED = PatternFill(start_color="FCE4EC", end_color="FCE4EC", fill_type="solid")
+FILL_LIGHT_YELLOW = PatternFill(start_color="FFF9E6", end_color="FFF9E6", fill_type="solid")
+
+ALIGN_CENTER = Alignment(horizontal="center", vertical="center", wrap_text=True)
+ALIGN_LEFT = Alignment(horizontal="left", vertical="center", wrap_text=True)
+ALIGN_RIGHT = Alignment(horizontal="right", vertical="center", wrap_text=True)
+
+THIN_BORDER = Border(
+    left=Side(style="thin", color="D9D9D9"),
+    right=Side(style="thin", color="D9D9D9"),
+    top=Side(style="thin", color="D9D9D9"),
+    bottom=Side(style="thin", color="D9D9D9"),
+)
+
+# ============================================================================
+# DATA LOADING
+# ============================================================================
+
+def load_json(filename):
+    filepath = JSON_DIR / filename
+    if not filepath.exists():
+        print(f"  [WARN] File not found: {filename}")
+        return []
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        tag = f"{len(data)} records" if isinstance(data, list) else f"{len(data)} keys"
+        print(f"  [OK] Loaded {filename} ({tag})")
+        return data
+    except Exception as e:
+        print(f"  [ERROR] Failed to load {filename}: {e}")
+        return []
+
+print("\n--- Loading data files ---")
+
+campaigns_summary = load_json("sp_campaigns_summary.json")
+if not campaigns_summary:
+    campaigns_summary = load_json("report_7day_summary.json")
+
+campaigns_daily = load_json("sp_campaigns_daily.json")
+if not campaigns_daily:
+    campaigns_daily = load_json("report_7day_daily.json")
+
+campaign_list = load_json("sp_campaign_list.json")
+searchterm_daily = load_json("sp_searchterm_daily.json")
+targeting_daily = load_json("sp_targeting_daily.json")
+product_daily = load_json("sp_advertisedproduct_daily.json")
+true_profit_data = load_json("true_profit_per_asin.json")
+pricing_data = load_json("sp_pricing_data.json")
+
+# Build lookup maps
+campaign_info = {}
+for c in campaign_list:
+    cid = str(c.get("campaignId", ""))
+    campaign_info[cid] = {
+        "name": c.get("name", ""),
+        "state": c.get("state", ""),
+        "targeting_type": c.get("targetingType", ""),
+        "budget": c.get("budget", {}).get("budget", 0),
+        "strategy": c.get("dynamicBidding", {}).get("strategy", ""),
+    }
+
+price_map = {}
+if isinstance(pricing_data, dict):
+    for asin, pdata in pricing_data.items():
+        price_map[asin] = pdata.get("your_price", 0)
+elif isinstance(pricing_data, list):
+    for p in pricing_data:
+        price_map[p.get("asin", "")] = p.get("your_price", 0)
+
+buybox_map = {}
+if isinstance(pricing_data, dict):
+    for asin, pdata in pricing_data.items():
+        buybox_map[asin] = "Yes" if pdata.get("buy_box_winner", False) else "No"
+elif isinstance(pricing_data, list):
+    for p in pricing_data:
+        buybox_map[p.get("asin", "")] = "Yes" if p.get("buy_box_winner", False) else "No"
+
+profit_map = {}
+if isinstance(true_profit_data, list):
+    for p in true_profit_data:
+        profit_map[p.get("asin", "")] = p
+elif isinstance(true_profit_data, dict):
+    profit_map = true_profit_data
+
+# ============================================================================
+# PCSE ENGINE — Backend Only (user never sees this)
+# ============================================================================
+
+def safe_div(a, b, default=0):
+    try:
+        if b == 0 or b is None:
+            return default
+        return a / b
+    except:
+        return default
+
+def clamp(value, min_val, max_val):
+    return max(min_val, min(max_val, value))
+
+def calc_acos(spend, sales):
+    if not sales or sales == 0:
+        return 999.0 if spend > 0 else 0.0
+    return (spend / sales) * 100.0
+
+def calc_roas(sales, spend):
+    if not spend or spend == 0:
+        return 0.0
+    return sales / spend
+
+def classify_entity(acos, sales, spend, price=0):
+    """PCSE Classification (internal only — never shown to user)."""
+    if sales == 0 and spend > 0:
+        if price > 0 and spend > (2 * price):
+            return "KILL"
+        if spend > 50:
+            return "KILL"
+        return "FIX"
+    if acos <= 0:
+        return "SCALE"
+    if acos > FIX_HIGH:
+        return "KILL"
+    if acos > OPTIMIZE_HIGH:
+        return "FIX"
+    if acos >= OPTIMIZE_LOW:
+        return "OPTIMIZE"
+    return "SCALE"
+
+def get_confidence_base(clicks):
+    if clicks <= 5: return 0.1
+    elif clicks <= 15: return 0.3
+    elif clicks <= 30: return 0.5
+    elif clicks <= 50: return 0.6
+    elif clicks <= 100: return 0.7
+    elif clicks <= 300: return 0.8
+    elif clicks <= 1000: return 0.9
+    else: return 1.0
+
+def get_confidence(clicks, orders, cvr, avg_cvr):
+    base = get_confidence_base(clicks)
+    adjustment = 1.0
+    if orders == 0 and clicks > 20:
+        adjustment = 0.5
+    elif orders >= 3 and cvr > avg_cvr:
+        adjustment = 1.1
+    elif orders == 1:
+        adjustment = 0.7
+    return clamp(base * adjustment, 0.1, 1.0)
+
+def get_trend_factor(daily_data):
+    if not daily_data or len(daily_data) < 3:
+        return 1.0
+    mid = len(daily_data) // 2
+    first_half = daily_data[:mid]
+    second_half = daily_data[mid:]
+    first_spend = sum(d.get("cost", 0) for d in first_half)
+    first_sales = sum(d.get("sales7d", 0) for d in first_half)
+    second_spend = sum(d.get("cost", 0) for d in second_half)
+    second_sales = sum(d.get("sales7d", 0) for d in second_half)
+    first_acos = calc_acos(first_spend, first_sales)
+    second_acos = calc_acos(second_spend, second_sales)
+    if first_acos == 0 and second_acos == 0:
+        return 1.0
+    if second_acos < first_acos * 0.85:
+        return 0.5
+    elif second_acos > first_acos * 1.15:
+        return 1.4
+    return 1.0
+
+def get_dynamic_cap(confidence):
+    if confidence < 0.3: return 0.10
+    elif confidence <= 0.5: return 0.25
+    elif confidence <= 0.8: return 0.40
+    else: return 0.50
+
+def pcse_bid_recommendation(current_acos, target_acos, clicks, orders, cvr,
+                             avg_cvr, daily_data, impressions, ctr, margin_pct,
+                             current_bid=None, period_divider=1):
+    classification = classify_entity(current_acos, 0 if orders == 0 else 1, 1)
+    target_acr = target_acos if target_acos > 0 else ACOS_TARGET
+
+    if classification in ("SCALE",):
+        gap = safe_div(target_acr - current_acos, target_acr, 0) * 0.5
+    else:
+        gap = safe_div(current_acos - target_acr, current_acos, 0) * 0.5
+
+    confidence = get_confidence(clicks, orders, cvr, avg_cvr)
+    trend = get_trend_factor(daily_data)
+
+    cvr_ratio = safe_div(cvr, avg_cvr, 1.0) * 100 if avg_cvr > 0 else 100
+    if cvr_ratio > 120: cvr_factor = 1.2
+    elif cvr_ratio < 80: cvr_factor = 0.7
+    else: cvr_factor = 1.0
+
+    avg_ctr = 1.5
+    if impressions > 1000 and ctr < avg_ctr * 0.5: volume_factor = 0.7
+    elif impressions < 100: volume_factor = 1.2
+    else: volume_factor = 1.0
+
+    if margin_pct > 50: margin_factor = 1.2
+    elif margin_pct < 20: margin_factor = 0.7
+    else: margin_factor = 1.0
+
+    quality_score = clamp(cvr_factor * volume_factor * margin_factor, 0.3, 1.8)
+    raw_change = gap * confidence * trend * quality_score
+
+    # Daily mode: divide action by period (7 for daily = 1/7th of weekly action)
+    if period_divider > 1:
+        raw_change = raw_change / period_divider
+
+    cap = get_dynamic_cap(confidence)
+    bid_change_pct = clamp(raw_change, -cap, cap)
+
+    return {
+        "bid_change_pct": bid_change_pct,
+        "confidence": confidence,
+        "quality_score": quality_score,
+        "gap": gap,
+        "trend": trend,
+        "cap": cap,
+    }
+
+def get_approval_status(confidence, classification, clicks, orders, spend, price=0):
+    """Auto-fill Approval (backend logic)."""
+    if classification == "KILL":
+        return "Approve"
+    if orders == 0 and spend > 100:
+        return "Approve"
+    if clicks < 3:
+        return "Reject"
+    if confidence >= 0.2:
+        return "Approve"
+    elif confidence >= 0.1:
+        return ""
+    else:
+        return "Manual Review"
+
+
+# ============================================================================
+# AGGREGATE DATA
+# ============================================================================
+
+print("\n--- Aggregating data ---")
+
+campaign_agg = {}
+for c in campaigns_summary:
+    cid = str(c.get("campaignId", ""))
+    campaign_agg[cid] = {
+        "campaign_id": cid,
+        "campaign_name": c.get("campaignName", ""),
+        "status": c.get("campaignStatus", ""),
+        "budget_type": c.get("campaignBudgetType", ""),
+        "budget": c.get("campaignBudgetAmount", 0),
+        "impressions": c.get("impressions", 0),
+        "clicks": c.get("clicks", 0),
+        "ctr": c.get("clickThroughRate", 0),
+        "cpc": c.get("costPerClick", 0),
+        "spend": c.get("cost", 0),
+        "orders": c.get("purchases7d", 0),
+        "sales": c.get("sales7d", 0),
+    }
+
+for cid, info in campaign_info.items():
+    if cid in campaign_agg:
+        campaign_agg[cid]["type"] = info.get("targeting_type", "")
+        campaign_agg[cid]["strategy"] = info.get("strategy", "")
+        if info.get("state"):
+            campaign_agg[cid]["status"] = info["state"]
+
+campaign_daily_map = defaultdict(list)
+for d in campaigns_daily:
+    cid = str(d.get("campaignId", ""))
+    campaign_daily_map[cid].append(d)
+
+searchterm_agg = {}
+for st in searchterm_daily:
+    key = (str(st.get("campaignId", "")), st.get("searchTerm", ""), str(st.get("keywordId", "")))
+    if key not in searchterm_agg:
+        searchterm_agg[key] = {
+            "search_term": st.get("searchTerm", ""),
+            "campaign_name": st.get("campaignName", ""),
+            "campaign_id": str(st.get("campaignId", "")),
+            "keyword": st.get("keyword", ""),
+            "match_type": st.get("keywordType", ""),
+            "ad_group": st.get("adGroupName", ""),
+            "impressions": 0, "clicks": 0, "spend": 0, "orders": 0, "sales": 0,
+        }
+    agg = searchterm_agg[key]
+    agg["impressions"] += st.get("impressions", 0)
+    agg["clicks"] += st.get("clicks", 0)
+    agg["spend"] += st.get("cost", 0)
+    agg["orders"] += st.get("purchases7d", 0)
+    agg["sales"] += st.get("sales7d", 0)
+
+keyword_agg = {}
+for kw in targeting_daily:
+    key = (str(kw.get("campaignId", "")), str(kw.get("keywordId", "")), kw.get("matchType", ""))
+    if key not in keyword_agg:
+        keyword_agg[key] = {
+            "keyword": kw.get("keyword", ""),
+            "match_type": kw.get("matchType", ""),
+            "campaign_name": kw.get("campaignName", ""),
+            "campaign_id": str(kw.get("campaignId", "")),
+            "ad_group": kw.get("adGroupName", ""),
+            "impressions": 0, "clicks": 0, "spend": 0, "orders": 0, "sales": 0,
+        }
+    agg = keyword_agg[key]
+    agg["impressions"] += kw.get("impressions", 0)
+    agg["clicks"] += kw.get("clicks", 0)
+    agg["spend"] += kw.get("cost", 0)
+    agg["orders"] += kw.get("purchases7d", 0)
+    agg["sales"] += kw.get("sales7d", 0)
+
+product_agg = {}
+for p in product_daily:
+    asin = p.get("advertisedAsin", "")
+    sku = p.get("advertisedSku", "")
+    key = (asin, sku, str(p.get("campaignId", "")))
+    if key not in product_agg:
+        product_agg[key] = {
+            "asin": asin,
+            "sku": sku,
+            "campaign_name": p.get("campaignName", ""),
+            "campaign_id": str(p.get("campaignId", "")),
+            "ad_group": p.get("adGroupName", ""),
+            "impressions": 0, "clicks": 0, "spend": 0, "orders": 0, "sales": 0,
+        }
+    agg = product_agg[key]
+    agg["impressions"] += p.get("impressions", 0)
+    agg["clicks"] += p.get("clicks", 0)
+    agg["spend"] += p.get("cost", 0)
+    agg["orders"] += p.get("purchases7d", 0)
+    agg["sales"] += p.get("sales7d", 0)
+
+# ============================================================================
+# ACCOUNT-LEVEL AVERAGES
+# ============================================================================
+
+total_clicks = sum(c.get("clicks", 0) for c in campaign_agg.values())
+total_orders = sum(c.get("orders", 0) for c in campaign_agg.values())
+total_spend = sum(c.get("spend", 0) for c in campaign_agg.values())
+total_sales = sum(c.get("sales", 0) for c in campaign_agg.values())
+total_impressions = sum(c.get("impressions", 0) for c in campaign_agg.values())
+
+account_avg_cvr = safe_div(total_orders, total_clicks, 0.02) * 100
+account_avg_acos = calc_acos(total_spend, total_sales)
+account_avg_ctr = safe_div(total_clicks, total_impressions, 0.01) * 100
+
+print(f"\n--- Account Averages ---")
+print(f"  Total Spend : Rs.{total_spend:,.2f}")
+print(f"  Total Sales : Rs.{total_sales:,.2f}")
+print(f"  Account ACOS: {account_avg_acos:.1f}%")
+print(f"  Account CVR : {account_avg_cvr:.2f}%")
+print(f"  Account CTR : {account_avg_ctr:.2f}%")
+
+# ============================================================================
+# PCSE ANALYSIS (backend — generates ToDo + AI Reason + Approval)
+# ============================================================================
+
+print("\n--- Running PCSE Analysis ---")
+
+def analyze_campaign(cid, data):
+    spend = data.get("spend", 0)
+    sales = data.get("sales", 0)
+    clicks = data.get("clicks", 0)
+    orders = data.get("orders", 0)
+    impressions = data.get("impressions", 0)
+    ctr = data.get("ctr", 0)
+    cpc = data.get("cpc", 0)
+    budget = data.get("budget", 0)
+
+    acos = calc_acos(spend, sales)
+    roas = calc_roas(sales, spend)
+    profit = sales - spend
+    cvr = safe_div(orders, clicks, 0) * 100
+
+    # INACTIVE campaign: zero spend + zero sales + zero clicks = nothing happened
+    if spend == 0 and sales == 0 and clicks == 0 and impressions == 0:
+        data.update({
+            "acos": 0, "roas": 0, "profit": 0, "health": "INACTIVE",
+            "_classification": "INACTIVE", "_confidence": 0,
+            "todo": "Inactive — No Data",
+            "ai_reason": "Campaign has zero spend, zero impressions, zero clicks. Either paused, no budget, or no active keywords. Check campaign settings.",
+            "approval": "",
+        })
+        return data
+
+    # Very low activity: has impressions but nothing else
+    if spend == 0 and clicks == 0 and impressions > 0:
+        data.update({
+            "acos": 0, "roas": 0, "profit": 0, "health": "LOW",
+            "_classification": "MONITOR", "_confidence": 0,
+            "todo": "Monitor — Low Activity",
+            "ai_reason": f"{impressions} impressions but 0 clicks. Bids may be too low or listing not attractive.",
+            "approval": "",
+        })
+        return data
+
+    classification = classify_entity(acos, sales, spend, budget)
+
+    daily = campaign_daily_map.get(cid, [])
+    margin_pct = 30
+
+    pcse = pcse_bid_recommendation(
+        current_acos=acos, target_acos=ACOS_TARGET,
+        clicks=clicks, orders=orders, cvr=cvr,
+        avg_cvr=account_avg_cvr, daily_data=daily,
+        impressions=impressions, ctr=ctr, margin_pct=margin_pct,
+        period_divider=PERIOD_DIVIDER,
+    )
+
+    confidence = pcse["confidence"]
+    bid_change = pcse["bid_change_pct"]
+
+    # Generate user-visible ToDo and AI Reason
+    if classification == "KILL":
+        if orders == 0 and spend > 0:
+            todo = "PAUSE Campaign — Zero Sales"
+            reason = f"Rs.{spend:.0f} spent, 0 orders in {DATA_DAYS}d. Immediate pause recommended."
+        else:
+            todo = f"PAUSE Campaign — ACOS {acos:.0f}%"
+            reason = f"ACOS {acos:.0f}% vs target {ACOS_TARGET}%. Losing Rs.{spend-sales:.0f}. Pause to stop losses."
+    elif classification == "FIX":
+        change_pct = abs(bid_change * 100)
+        todo = f"Reduce Bids ~{change_pct:.0f}% — ACOS {acos:.0f}%"
+        reason = f"ACOS {acos:.0f}% above target. Reduce bids to bring costs down."
+    elif classification == "OPTIMIZE":
+        if bid_change > 0.02:
+            todo = f"Fine-tune Up ~{abs(bid_change*100):.0f}%"
+        elif bid_change < -0.02:
+            todo = f"Fine-tune Down ~{abs(bid_change*100):.0f}%"
+        else:
+            todo = "Monitor — Near Optimal"
+        reason = f"ACOS {acos:.0f}% in good zone. CVR={cvr:.1f}%, ROAS={roas:.1f}x. Light adjustments only."
+    else:  # SCALE
+        change_pct = abs(bid_change * 100)
+        todo = f"Scale Up ~{change_pct:.0f}% — Profitable"
+        reason = f"ACOS {acos:.0f}% below target. ROAS={roas:.1f}x. Room to increase bids/budget."
+
+    approval = get_approval_status(confidence, classification, clicks, orders, spend)
+
+    # Health indicator (user-friendly)
+    if classification == "KILL":
+        health = "Critical"
+    elif classification == "FIX":
+        health = "Needs Fix"
+    elif classification == "OPTIMIZE":
+        health = "OK"
+    else:
+        health = "Healthy"
+
+    data.update({
+        "acos": acos, "roas": roas, "profit": profit, "cvr": cvr,
+        "_classification": classification,
+        "_confidence": confidence,
+        "todo": todo, "ai_reason": reason, "approval": approval, "health": health,
+    })
+    return data
+
+# Calculate true_profit_pool per campaign for TPSR
+# Use: campaign profit (sales - spend) as proxy, or avg true profit from account
+avg_true_profit_per_unit = 0
+total_tp_units = 0
+for p in profit_map.values():
+    tp = p.get("true_profit", 0)
+    if isinstance(tp, dict):
+        tp = tp.get("true_profit", 0)
+    if tp > 0:
+        avg_true_profit_per_unit += tp
+        total_tp_units += 1
+if total_tp_units > 0:
+    avg_true_profit_per_unit = avg_true_profit_per_unit / total_tp_units
+
+for cid, camp in campaign_agg.items():
+    orders = camp.get("orders", 0)
+    camp["true_profit_pool"] = avg_true_profit_per_unit * orders if orders > 0 else 0
+
+for cid in campaign_agg:
+    campaign_agg[cid] = analyze_campaign(cid, campaign_agg[cid])
+
+def analyze_searchterm(key, data):
+    spend = data.get("spend", 0)
+    sales = data.get("sales", 0)
+    clicks = data.get("clicks", 0)
+    orders = data.get("orders", 0)
+
+    acos = calc_acos(spend, sales)
+    cvr = safe_div(orders, clicks, 0) * 100
+    classification = classify_entity(acos, sales, spend)
+    confidence = get_confidence(clicks, orders, cvr, account_avg_cvr)
+
+    if classification == "KILL":
+        if orders == 0 and spend > 30:
+            todo = "Add as Negative"
+            reason = f"Rs.{spend:.0f} wasted, 0 sales. Negative match immediately."
+        else:
+            todo = f"Negative — ACOS {acos:.0f}%"
+            reason = f"ACOS {acos:.0f}% too high. Losing money on this search term."
+    elif classification == "FIX":
+        todo = f"Monitor/Reduce — ACOS {acos:.0f}%"
+        reason = f"ACOS {acos:.0f}% above target. Watch or add negative."
+    elif classification == "OPTIMIZE":
+        todo = "Optimize Match Type"
+        reason = f"ACOS {acos:.0f}% near target. Consider exact match for better control."
+    else:
+        if orders > 0:
+            todo = "Move to Exact Match + Scale"
+            reason = f"ACOS {acos:.0f}% profitable. Create exact match campaign for this term."
+        else:
+            todo = "Monitor"
+            reason = "Low spend, keep watching."
+
+    approval = get_approval_status(confidence, classification, clicks, orders, spend)
+    data.update({
+        "acos": acos, "_classification": classification, "_confidence": confidence,
+        "todo": todo, "ai_reason": reason, "approval": approval,
+    })
+    return data
+
+for key in searchterm_agg:
+    searchterm_agg[key] = analyze_searchterm(key, searchterm_agg[key])
+
+def analyze_keyword(key, data):
+    spend = data.get("spend", 0)
+    sales = data.get("sales", 0)
+    clicks = data.get("clicks", 0)
+    orders = data.get("orders", 0)
+    impressions = data.get("impressions", 0)
+
+    acos = calc_acos(spend, sales)
+    roas = calc_roas(sales, spend)
+    cvr = safe_div(orders, clicks, 0) * 100
+    classification = classify_entity(acos, sales, spend)
+    confidence = get_confidence(clicks, orders, cvr, account_avg_cvr)
+
+    pcse = pcse_bid_recommendation(
+        current_acos=acos, target_acos=ACOS_TARGET,
+        clicks=clicks, orders=orders, cvr=cvr,
+        avg_cvr=account_avg_cvr, daily_data=[],
+        impressions=impressions,
+        ctr=safe_div(clicks, impressions, 0) * 100,
+        margin_pct=30,
+        period_divider=PERIOD_DIVIDER,
+    )
+    bid_change = pcse["bid_change_pct"]
+
+    if classification == "KILL":
+        todo = f"PAUSE Keyword — ACOS {acos:.0f}%"
+        reason = f"Rs.{spend:.0f} spent, ACOS {acos:.0f}%. Pause or reduce bid."
+    elif classification == "FIX":
+        todo = f"Reduce Bid ~{abs(bid_change*100):.0f}%"
+        reason = f"ACOS {acos:.0f}% above target. Reduce bid."
+    elif classification == "OPTIMIZE":
+        todo = "Fine-tune Bid"
+        reason = f"ACOS {acos:.0f}% near target. Minor bid adjustment."
+    else:
+        todo = f"Increase Bid ~{abs(bid_change*100):.0f}%"
+        reason = f"ACOS {acos:.0f}% profitable. ROAS={roas:.1f}x. Scale this keyword."
+
+    approval = get_approval_status(confidence, classification, clicks, orders, spend)
+    data.update({
+        "acos": acos, "roas": roas,
+        "_classification": classification, "_confidence": confidence,
+        "todo": todo, "ai_reason": reason, "approval": approval,
+    })
+    return data
+
+for key in keyword_agg:
+    keyword_agg[key] = analyze_keyword(key, keyword_agg[key])
+
+def analyze_product(key, data):
+    asin = data.get("asin", "")
+    spend = data.get("spend", 0)
+    sales = data.get("sales", 0)
+    clicks = data.get("clicks", 0)
+    orders = data.get("orders", 0)
+    impressions = data.get("impressions", 0)
+
+    price = price_map.get(asin, 0)
+    tp = profit_map.get(asin, {})
+    true_profit_unit = tp.get("true_profit", 0) if isinstance(tp, dict) else 0
+    target_acr = tp.get("target_acr", ACOS_TARGET) if isinstance(tp, dict) else ACOS_TARGET
+
+    acos = calc_acos(spend, sales)
+    roas = calc_roas(sales, spend)
+    profit = sales - spend
+    ctr = safe_div(clicks, impressions, 0) * 100
+    cvr = safe_div(orders, clicks, 0) * 100
+    margin_pct = safe_div(true_profit_unit, price, 0.3) * 100 if price > 0 else 30
+
+    classification = classify_entity(acos, sales, spend, price)
+    confidence = get_confidence(clicks, orders, cvr, account_avg_cvr)
+
+    if price == 0 or price is None:
+        todo = "No Price — Cannot Optimize"
+        reason = "Cannot calculate profitability without price data."
+        classification = "N/A"
+        approval = ""
+    elif classification == "KILL":
+        todo = f"PAUSE Ads for {asin}"
+        reason = f"ACOS {acos:.0f}%, losing Rs.{abs(profit):.0f}."
+    elif classification == "FIX":
+        todo = f"Reduce Ad Spend — ACOS {acos:.0f}%"
+        reason = f"ACOS {acos:.0f}% above target {target_acr:.0f}%."
+    elif classification == "OPTIMIZE":
+        todo = "Optimize Bids"
+        reason = f"ACOS {acos:.0f}% in optimization zone."
+    else:
+        todo = f"Scale — ROAS {roas:.1f}x"
+        reason = f"Profitable! ACOS {acos:.0f}% below target. Scale up."
+
+    if price > 0:
+        approval = get_approval_status(confidence, classification, clicks, orders, spend, price)
+    else:
+        approval = ""
+
+    data.update({
+        "price": price, "acos": acos, "roas": roas, "profit": profit,
+        "ctr": ctr, "cvr": cvr,
+        "_classification": classification, "_confidence": confidence,
+        "todo": todo, "ai_reason": reason, "approval": approval,
+    })
+    return data
+
+for key in product_agg:
+    product_agg[key] = analyze_product(key, product_agg[key])
+
+print(f"  Campaigns   : {len(campaign_agg)}")
+print(f"  Search Terms: {len(searchterm_agg)}")
+print(f"  Keywords    : {len(keyword_agg)}")
+print(f"  Products    : {len(product_agg)}")
+
+# ============================================================================
+# SORTING (worst first)
+# ============================================================================
+
+def sort_key_loss_first(item):
+    profit = item.get("profit", item.get("sales", 0) - item.get("spend", 0))
+    acos = item.get("acos", 0)
+    return (profit, -acos)
+
+campaigns_sorted = sorted(campaign_agg.values(), key=sort_key_loss_first)
+searchterms_sorted = sorted(searchterm_agg.values(), key=lambda x: (x.get("sales", 0) - x.get("spend", 0), -x.get("acos", 0)))
+keywords_sorted = sorted(keyword_agg.values(), key=lambda x: (x.get("sales", 0) - x.get("spend", 0), -x.get("acos", 0)))
+products_sorted = sorted(product_agg.values(), key=sort_key_loss_first)
+
+# ============================================================================
+# EXCEL GENERATION — Clean User Experience
+# ============================================================================
+
+print("\n--- Generating Excel report ---")
+
+wb = Workbook()
+
+def get_acos_fill(acos, orders=None, spend=None):
+    if (orders is not None and orders == 0 and spend is not None and spend > 0) or acos > 100:
+        return FILL_RED
+    if acos > 60:
+        return FILL_PINK
+    if acos > 40:
+        return FILL_YELLOW
+    if acos > 25:
+        return FILL_BLUE
+    return FILL_GREEN
+
+def write_title_block(ws, title, subtitle, stats_text, col_count):
+    """Write title (row 1), subtitle (row 2), stats bar (row 3)."""
+    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=col_count)
+    cell = ws.cell(row=1, column=1, value=title)
+    cell.font = FONT_TITLE
+    cell.alignment = ALIGN_CENTER
+    ws.row_dimensions[1].height = 40
+
+    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=col_count)
+    cell = ws.cell(row=2, column=1, value=subtitle)
+    cell.font = FONT_SUBTITLE
+    cell.alignment = ALIGN_CENTER
+    ws.row_dimensions[2].height = 26
+
+    ws.merge_cells(start_row=3, start_column=1, end_row=3, end_column=col_count)
+    cell = ws.cell(row=3, column=1, value=stats_text)
+    cell.font = FONT_STATS_BAR
+    cell.fill = FILL_STATS_BAR
+    cell.alignment = ALIGN_CENTER
+    cell.border = THIN_BORDER
+    ws.row_dimensions[3].height = 28
+
+def write_header_row(ws, headers, row):
+    """Write header row with colored columns for ToDo/AI Reason/Approval."""
+    for col_idx, header in enumerate(headers, 1):
+        cell = ws.cell(row=row, column=col_idx, value=header)
+        cell.font = FONT_HEADER
+        cell.alignment = ALIGN_CENTER
+        cell.border = THIN_BORDER
+
+        hdr_lower = header.lower()
+        if "todo" in hdr_lower or "to do" in hdr_lower:
+            cell.fill = FILL_HEADER_TODO
+        elif "ai reason" in hdr_lower:
+            cell.fill = FILL_HEADER_AI
+        elif "approval" in hdr_lower:
+            cell.fill = FILL_HEADER_APPROVAL
+        else:
+            cell.fill = FILL_HEADER
+    ws.row_dimensions[row].height = 34
+
+def apply_row_style(ws, row_num, col_count, is_alt=False):
+    fill = FILL_ROW_ALT if is_alt else FILL_ROW_WHITE
+    for col in range(1, col_count + 1):
+        cell = ws.cell(row=row_num, column=col)
+        if cell.fill == PatternFill() or cell.fill == FILL_ROW_WHITE or cell.fill == FILL_ROW_ALT:
+            cell.fill = fill
+        cell.border = THIN_BORDER
+        cell.font = FONT_DATA
+        cell.alignment = ALIGN_CENTER
+
+def add_dropdown(ws, col_letter, start_row, end_row):
+    """Approval column dropdown — original 3 options"""
+    dv = DataValidation(
+        type="list",
+        formula1='"Approve,Reject,Manual Review"',
+        allow_blank=True,
+    )
+    dv.error = "Please select: Approve, Reject, or Manual Review"
+    dv.errorTitle = "Invalid Selection"
+    dv.prompt = "Select action (empty = Skip)"
+    dv.promptTitle = "Approval Status"
+    ws.add_data_validation(dv)
+    dv.add(f"{col_letter}{start_row}:{col_letter}{end_row}")
+
+
+def add_todo_dropdown(ws, col_letter, start_row, end_row, sheet_type="campaign"):
+    """Todo column dropdown — user can override AI recommendation with own action.
+    Options match exactly what execute_approvals parse_action() can handle."""
+
+    # Only actions that execute_approvals.py ACTUALLY executes via API
+    todo_options = {
+        "campaign": (
+            "PAUSE Campaign,"              # → state=PAUSED
+            "Reduce Bids ~15%,"            # → all keywords bid -15%
+            "Reduce Bids ~25%,"            # → all keywords bid -25%
+            "Increase Bids ~15%,"          # → all keywords bid +15%
+            "Reduce Budget ~20%,"          # → campaign budget -20%
+            "Increase Budget ~30%,"        # → campaign budget +30%
+            "Scale Up,"                    # → budget +50%, bids +20%
+            "Fine-tune Bid ~5%,"           # → small bid reduction
+            "Monitor"                      # → no API action, logged only
+        ),
+        "searchterm": (
+            "Add as Negative Exact,"       # → POST negative keyword (exact)
+            "Add as Negative Phrase,"      # → POST negative keyword (phrase)
+            "Add as Exact Match Keyword,"  # → (logged, manual follow-up)
+            "Monitor"                      # → no action
+        ),
+        "keyword": (
+            "PAUSE Keyword,"               # → state=PAUSED
+            "Reduce Bid ~15%,"             # → bid -15%
+            "Reduce Bid ~25%,"             # → bid -25%
+            "Increase Bid ~15%,"           # → bid +15%
+            "Increase Bid ~25%,"           # → bid +25%
+            "Scale Up,"                    # → bid +20%
+            "Monitor"                      # → no action
+        ),
+        "product": (
+            "PAUSE Ads,"                   # → pause campaign for this product
+            "Reduce Bids ~15%,"            # → reduce bids
+            "Reduce Bids ~25%,"            # → reduce bids
+            "Scale Up,"                    # → increase bids/budget
+            "Monitor"                      # → no action
+        ),
+    }
+
+    formula = f'"{todo_options.get(sheet_type, "Monitor")}"'
+
+    dv = DataValidation(
+        type="list",
+        formula1=formula,
+        allow_blank=True,
+    )
+    dv.error = "Pick an action or leave AI recommendation as-is"
+    dv.errorTitle = "Invalid Action"
+    dv.prompt = "AI pre-filled this. Override from dropdown if you disagree."
+    dv.promptTitle = "Todo Action"
+    ws.add_data_validation(dv)
+    dv.add(f"{col_letter}{start_row}:{col_letter}{end_row}")
+
+def auto_fit_columns(ws, headers, start_row=5, min_width=12, max_width=45):
+    for col_idx, header in enumerate(headers, 1):
+        col_letter = get_column_letter(col_idx)
+        max_len = len(str(header)) + 2
+        for row in range(start_row, min(ws.max_row + 1, start_row + 50)):
+            cell_val = ws.cell(row=row, column=col_idx).value
+            if cell_val is not None:
+                cell_len = len(str(cell_val))
+                max_len = max(max_len, cell_len)
+        width = max(min_width, min(max_len + 2, max_width))
+        ws.column_dimensions[col_letter].width = width
+
+def fmt_pct(val):
+    if val is None or val == 0:
+        return "0.0%"
+    if val >= 999:
+        return "---"
+    return f"{val:.1f}%"
+
+def fmt_rs(val):
+    if val is None:
+        return "Rs.0"
+    return f"Rs.{val:,.2f}"
+
+# Compute summary values for stats bar
+net_pl = total_sales - total_spend
+active_count = sum(1 for c in campaigns_sorted if str(c.get("status", "")).lower() in ("enabled", "active"))
+paused_count = sum(1 for c in campaigns_sorted if str(c.get("status", "")).lower() in ("paused",))
+
+stats_text = (
+    f"Spend: Rs.{total_spend:,.0f}  |  Sales: Rs.{total_sales:,.0f}  |  "
+    f"ACOS: {account_avg_acos:.1f}%  |  Orders: {total_orders}  |  "
+    f"Net P/L: Rs.{net_pl:,.0f}  |  Active: {active_count} / Paused: {paused_count}"
+)
+
+title_text = f"Ad Action Report — {SELLER_NAME}"
+subtitle_text = f"Data: {DATA_DATE_LABEL} ({DATA_DAYS}d)  |  Generated: {datetime.now().strftime('%d %b %Y %H:%M')}  |  Account: {ENTITY_ID}"
+
+# ============================================================================
+# SHEET 1: Campaign Actions
+# ============================================================================
+
+ws1 = wb.active
+ws1.title = "Campaign Actions"
+ws1.sheet_properties.tabColor = "1F4E79"
+
+campaign_headers = [
+    "#", "Profit/Loss(Rs.)", "ACOS%", "Ad Cost vs Real Profit%", "ToDo", "AI Reason", "Approval Status",
+    "Campaign Name", "Status", "Type", "Budget(Rs.)", "Impressions", "Clicks",
+    "CTR%", "CPC(Rs.)", "Spend(Rs.)", "Orders", "Sales(Rs.)", "ROAS", "Health"
+]
+HEADER_ROW = 4
+DATA_START = 5
+
+write_title_block(ws1, title_text, subtitle_text, stats_text, len(campaign_headers))
+write_header_row(ws1, campaign_headers, HEADER_ROW)
+ws1.freeze_panes = f"H{DATA_START}"
+
+COL_TPSR_C = 4
+COL_TODO_C = 5
+COL_AI_C = 6
+COL_APPR_C = 7
+
+for idx, camp in enumerate(campaigns_sorted, 1):
+    row = idx + HEADER_ROW
+    is_alt = idx % 2 == 0
+
+    acos = camp.get("acos", 0)
+    profit = camp.get("profit", 0)
+    orders = camp.get("orders", 0)
+    spend = camp.get("spend", 0)
+
+    # TPSR = Ad Spend / True Profit pool × 100
+    true_profit_pool = camp.get("true_profit_pool", 0)
+    tpsr = (spend / true_profit_pool * 100) if true_profit_pool > 0 and orders > 0 else ("NO SALE" if orders == 0 and spend > 0 else "N/A")
+    tpsr_str = f"{tpsr:.0f}%" if isinstance(tpsr, (int, float)) else tpsr
+
+    values = [
+        idx,
+        fmt_rs(profit),
+        fmt_pct(acos),
+        tpsr_str,
+        camp.get("todo", ""),
+        camp.get("ai_reason", ""),
+        camp.get("approval", ""),
+        camp.get("campaign_name", ""),
+        camp.get("status", ""),
+        camp.get("type", ""),
+        fmt_rs(camp.get("budget", 0)),
+        camp.get("impressions", 0),
+        camp.get("clicks", 0),
+        fmt_pct(camp.get("ctr", 0)),
+        fmt_rs(camp.get("cpc", 0)),
+        fmt_rs(spend),
+        orders,
+        fmt_rs(camp.get("sales", 0)),
+        f"{camp.get('roas', 0):.1f}x",
+        camp.get("health", ""),
+    ]
+
+    for col_idx, val in enumerate(values, 1):
+        ws1.cell(row=row, column=col_idx, value=val)
+
+    apply_row_style(ws1, row, len(campaign_headers), is_alt)
+    ws1.row_dimensions[row].height = 34
+
+    ws1.cell(row=row, column=3).fill = get_acos_fill(acos, orders, spend)
+
+    profit_cell = ws1.cell(row=row, column=2)
+    if profit < 0:
+        profit_cell.font = Font(name="Calibri", bold=True, size=10, color="CC0000")
+    else:
+        profit_cell.font = Font(name="Calibri", bold=True, size=10, color="006600")
+
+    ws1.cell(row=row, column=COL_TODO_C).fill = FILL_TODO
+    ws1.cell(row=row, column=COL_TODO_C).alignment = ALIGN_LEFT
+    ws1.cell(row=row, column=COL_AI_C).fill = FILL_AI_REASON
+    ws1.cell(row=row, column=COL_AI_C).alignment = ALIGN_LEFT
+    ws1.cell(row=row, column=COL_APPR_C).fill = FILL_APPROVAL
+
+if len(campaigns_sorted) > 0:
+    add_dropdown(ws1, "G", DATA_START, DATA_START + len(campaigns_sorted) - 1)
+    add_todo_dropdown(ws1, "E", DATA_START, DATA_START + len(campaigns_sorted) - 1, sheet_type="campaign")
+
+auto_fit_columns(ws1, campaign_headers, DATA_START)
+ws1.column_dimensions["D"].width = 32
+ws1.column_dimensions["E"].width = 45
+ws1.column_dimensions["G"].width = 40
+
+print(f"  Sheet 1: Campaign Actions — {len(campaigns_sorted)} rows")
+
+# ============================================================================
+# SHEET 2: Search Term Actions
+# ============================================================================
+
+ws2 = wb.create_sheet("Search Term Actions")
+ws2.sheet_properties.tabColor = "4472C4"
+
+st_headers = [
+    "#", "Spend(Rs.)", "ACOS%", "ToDo", "AI Reason", "Approval",
+    "Search Term", "Campaign", "Keyword", "Match", "Impressions",
+    "Clicks", "Orders", "Sales(Rs.)"
+]
+
+write_title_block(ws2, title_text, "Search Term Analysis  |  " + subtitle_text.split("|", 1)[1].strip(), stats_text, len(st_headers))
+write_header_row(ws2, st_headers, HEADER_ROW)
+ws2.freeze_panes = f"G{DATA_START}"
+
+for idx, st in enumerate(searchterms_sorted, 1):
+    row = idx + HEADER_ROW
+    is_alt = idx % 2 == 0
+    acos = st.get("acos", 0)
+    spend = st.get("spend", 0)
+    orders = st.get("orders", 0)
+
+    values = [
+        idx,
+        fmt_rs(spend),
+        fmt_pct(acos),
+        st.get("todo", ""),
+        st.get("ai_reason", ""),
+        st.get("approval", ""),
+        st.get("search_term", ""),
+        st.get("campaign_name", ""),
+        st.get("keyword", ""),
+        st.get("match_type", ""),
+        st.get("impressions", 0),
+        st.get("clicks", 0),
+        orders,
+        fmt_rs(st.get("sales", 0)),
+    ]
+
+    for col_idx, val in enumerate(values, 1):
+        ws2.cell(row=row, column=col_idx, value=val)
+
+    apply_row_style(ws2, row, len(st_headers), is_alt)
+    ws2.row_dimensions[row].height = 32
+
+    ws2.cell(row=row, column=3).fill = get_acos_fill(acos, orders, spend)
+    ws2.cell(row=row, column=4).fill = FILL_TODO
+    ws2.cell(row=row, column=4).alignment = ALIGN_LEFT
+    ws2.cell(row=row, column=5).fill = FILL_AI_REASON
+    ws2.cell(row=row, column=5).alignment = ALIGN_LEFT
+    ws2.cell(row=row, column=6).fill = FILL_APPROVAL
+
+if len(searchterms_sorted) > 0:
+    add_dropdown(ws2, "F", DATA_START, DATA_START + len(searchterms_sorted) - 1)
+    add_todo_dropdown(ws2, "D", DATA_START, DATA_START + len(searchterms_sorted) - 1, sheet_type="searchterm")
+
+auto_fit_columns(ws2, st_headers, DATA_START)
+ws2.column_dimensions["D"].width = 30
+ws2.column_dimensions["E"].width = 45
+ws2.column_dimensions["G"].width = 35
+
+print(f"  Sheet 2: Search Term Actions — {len(searchterms_sorted)} rows")
+
+# ============================================================================
+# SHEET 3: Keyword Actions
+# ============================================================================
+
+ws3 = wb.create_sheet("Keyword Actions")
+ws3.sheet_properties.tabColor = "70AD47"
+
+kw_headers = [
+    "#", "Spend(Rs.)", "ACOS%", "ToDo", "AI Reason", "Approval",
+    "Keyword", "Match Type", "Campaign", "Impressions", "Clicks",
+    "Orders", "Sales(Rs.)", "ROAS"
+]
+
+write_title_block(ws3, title_text, "Keyword Analysis  |  " + subtitle_text.split("|", 1)[1].strip(), stats_text, len(kw_headers))
+write_header_row(ws3, kw_headers, HEADER_ROW)
+ws3.freeze_panes = f"G{DATA_START}"
+
+for idx, kw in enumerate(keywords_sorted, 1):
+    row = idx + HEADER_ROW
+    is_alt = idx % 2 == 0
+    acos = kw.get("acos", 0)
+    spend = kw.get("spend", 0)
+    orders = kw.get("orders", 0)
+    roas = kw.get("roas", 0)
+
+    values = [
+        idx,
+        fmt_rs(spend),
+        fmt_pct(acos),
+        kw.get("todo", ""),
+        kw.get("ai_reason", ""),
+        kw.get("approval", ""),
+        kw.get("keyword", ""),
+        kw.get("match_type", ""),
+        kw.get("campaign_name", ""),
+        kw.get("impressions", 0),
+        kw.get("clicks", 0),
+        orders,
+        fmt_rs(kw.get("sales", 0)),
+        f"{roas:.1f}x",
+    ]
+
+    for col_idx, val in enumerate(values, 1):
+        ws3.cell(row=row, column=col_idx, value=val)
+
+    apply_row_style(ws3, row, len(kw_headers), is_alt)
+    ws3.row_dimensions[row].height = 32
+
+    ws3.cell(row=row, column=3).fill = get_acos_fill(acos, orders, spend)
+    ws3.cell(row=row, column=4).fill = FILL_TODO
+    ws3.cell(row=row, column=4).alignment = ALIGN_LEFT
+    ws3.cell(row=row, column=5).fill = FILL_AI_REASON
+    ws3.cell(row=row, column=5).alignment = ALIGN_LEFT
+    ws3.cell(row=row, column=6).fill = FILL_APPROVAL
+
+if len(keywords_sorted) > 0:
+    add_dropdown(ws3, "F", DATA_START, DATA_START + len(keywords_sorted) - 1)
+    add_todo_dropdown(ws3, "D", DATA_START, DATA_START + len(keywords_sorted) - 1, sheet_type="keyword")
+
+auto_fit_columns(ws3, kw_headers, DATA_START)
+ws3.column_dimensions["D"].width = 30
+ws3.column_dimensions["E"].width = 45
+ws3.column_dimensions["G"].width = 30
+
+print(f"  Sheet 3: Keyword Actions — {len(keywords_sorted)} rows")
+
+# ============================================================================
+# SHEET 4: Product Performance
+# ============================================================================
+
+ws4 = wb.create_sheet("Product Performance")
+ws4.sheet_properties.tabColor = "FFC000"
+
+prod_headers = [
+    "#", "Profit/Loss(Rs.)", "ACOS%", "Ad Cost vs Real Profit%", "ToDo", "AI Reason", "Approval",
+    "ASIN", "SKU", "Price(Rs.)", "Impressions", "Clicks", "CTR%",
+    "Spend(Rs.)", "Orders", "Sales(Rs.)", "ROAS"
+]
+
+write_title_block(ws4, title_text, "Product Performance  |  " + subtitle_text.split("|", 1)[1].strip(), stats_text, len(prod_headers))
+write_header_row(ws4, prod_headers, HEADER_ROW)
+ws4.freeze_panes = f"H{DATA_START}"
+
+for idx, prod in enumerate(products_sorted, 1):
+    row = idx + HEADER_ROW
+    is_alt = idx % 2 == 0
+    acos = prod.get("acos", 0)
+    profit = prod.get("profit", 0)
+    spend = prod.get("spend", 0)
+    orders = prod.get("orders", 0)
+    price = prod.get("price", 0)
+
+    # TPSR for product — get true profit from profit_map
+    asin_key = prod.get("asin", "")
+    tp_data = profit_map.get(asin_key, {})
+    tp_unit = tp_data.get("true_profit", 0) if isinstance(tp_data, dict) else 0
+    tpsr_p = (spend / (tp_unit * orders) * 100) if tp_unit > 0 and orders > 0 else ("NO SALE" if orders == 0 and spend > 0 else "N/A")
+    tpsr_p_str = f"{tpsr_p:.0f}%" if isinstance(tpsr_p, (int, float)) else tpsr_p
+
+    values = [
+        idx,
+        fmt_rs(profit),
+        fmt_pct(acos),
+        tpsr_p_str,
+        prod.get("todo", ""),
+        prod.get("ai_reason", ""),
+        prod.get("approval", ""),
+        prod.get("asin", ""),
+        prod.get("sku", ""),
+        fmt_rs(price) if price > 0 else "N/A",
+        prod.get("impressions", 0),
+        prod.get("clicks", 0),
+        fmt_pct(prod.get("ctr", 0)),
+        fmt_rs(spend),
+        orders,
+        fmt_rs(prod.get("sales", 0)),
+        f"{prod.get('roas', 0):.1f}x",
+    ]
+
+    for col_idx, val in enumerate(values, 1):
+        ws4.cell(row=row, column=col_idx, value=val)
+
+    apply_row_style(ws4, row, len(prod_headers), is_alt)
+    ws4.row_dimensions[row].height = 34
+
+    ws4.cell(row=row, column=3).fill = get_acos_fill(acos, orders, spend)
+
+    profit_cell = ws4.cell(row=row, column=2)
+    if profit < 0:
+        profit_cell.font = Font(name="Calibri", bold=True, size=10, color="CC0000")
+    else:
+        profit_cell.font = Font(name="Calibri", bold=True, size=10, color="006600")
+
+    # Col 4=TPSR, Col 5=ToDo, Col 6=AI Reason, Col 7=Approval (shifted by TPSR)
+    ws4.cell(row=row, column=5).fill = FILL_TODO
+    ws4.cell(row=row, column=5).alignment = ALIGN_LEFT
+    ws4.cell(row=row, column=6).fill = FILL_AI_REASON
+    ws4.cell(row=row, column=6).alignment = ALIGN_LEFT
+    ws4.cell(row=row, column=7).fill = FILL_APPROVAL
+
+if len(products_sorted) > 0:
+    add_dropdown(ws4, "G", DATA_START, DATA_START + len(products_sorted) - 1)
+    add_todo_dropdown(ws4, "E", DATA_START, DATA_START + len(products_sorted) - 1, sheet_type="product")
+
+auto_fit_columns(ws4, prod_headers, DATA_START)
+ws4.column_dimensions["E"].width = 30
+ws4.column_dimensions["F"].width = 40
+ws4.column_dimensions["G"].width = 18
+
+print(f"  Sheet 4: Product Performance — {len(products_sorted)} rows")
+
+# ============================================================================
+# SHEET 5: Summary Dashboard
+# ============================================================================
+
+ws5 = wb.create_sheet("Summary Dashboard")
+ws5.sheet_properties.tabColor = "FF0000"
+
+for col in range(1, 8):
+    ws5.column_dimensions[get_column_letter(col)].width = 22
+ws5.column_dimensions["A"].width = 30
+ws5.column_dimensions["B"].width = 70
+
+ws5.merge_cells("A1:G1")
+ws5.cell(row=1, column=1, value=f"Ad Action Report — {SELLER_NAME}").font = FONT_TITLE
+ws5.cell(row=1, column=1).alignment = ALIGN_CENTER
+ws5.row_dimensions[1].height = 40
+
+ws5.merge_cells("A2:G2")
+ws5.cell(row=2, column=1, value=subtitle_text).font = FONT_SUBTITLE
+ws5.cell(row=2, column=1).alignment = ALIGN_CENTER
+ws5.row_dimensions[2].height = 28
+
+row = 4
+
+def write_section_header(ws, row, title, col_span=7):
+    ws.merge_cells(start_row=row, start_column=1, end_row=row, end_column=col_span)
+    cell = ws.cell(row=row, column=1, value=title)
+    cell.font = FONT_SECTION_WHITE
+    cell.fill = FILL_SECTION_HDR
+    cell.alignment = Alignment(horizontal="left", vertical="center")
+    cell.border = THIN_BORDER
+    ws.row_dimensions[row].height = 32
+    return row + 1
+
+def write_kv_row(ws, row, label, value, fill=None, value_font=None):
+    lcell = ws.cell(row=row, column=1, value=label)
+    lcell.font = FONT_LABEL
+    lcell.alignment = ALIGN_LEFT
+    lcell.border = THIN_BORDER
+    if fill:
+        lcell.fill = fill
+
+    vcell = ws.cell(row=row, column=2, value=value)
+    vcell.font = value_font or FONT_VALUE
+    vcell.alignment = ALIGN_LEFT
+    vcell.border = THIN_BORDER
+    if fill:
+        vcell.fill = fill
+
+    ws.row_dimensions[row].height = 30
+    return row + 1
+
+profitable_campaigns = [c for c in campaigns_sorted if c.get("profit", 0) > 0]
+loss_campaigns = [c for c in campaigns_sorted if c.get("profit", 0) < 0]
+
+total_profit_sum = sum(c.get("profit", 0) for c in profitable_campaigns)
+total_loss_sum = sum(c.get("profit", 0) for c in loss_campaigns)
+
+avg_acos_profitable = safe_div(
+    sum(c.get("spend", 0) for c in profitable_campaigns),
+    sum(c.get("sales", 0) for c in profitable_campaigns), 0
+) * 100
+avg_acos_loss = safe_div(
+    sum(c.get("spend", 0) for c in loss_campaigns),
+    sum(c.get("sales", 0) for c in loss_campaigns), 0
+) * 100
+
+best3 = sorted(profitable_campaigns, key=lambda x: x.get("profit", 0), reverse=True)[:3]
+worst3 = sorted(loss_campaigns, key=lambda x: x.get("profit", 0))[:3]
+
+# --- PROFITABLE CAMPAIGNS ---
+row = write_section_header(ws5, row, "PROFITABLE CAMPAIGNS")
+row = write_kv_row(ws5, row, "Count", f"{len(profitable_campaigns)} campaigns", FILL_LIGHT_GREEN)
+row = write_kv_row(ws5, row, "Total Profit", fmt_rs(total_profit_sum), FILL_LIGHT_GREEN, FONT_STAR)
+row = write_kv_row(ws5, row, "Avg ACOS", fmt_pct(avg_acos_profitable), FILL_LIGHT_GREEN)
+for i, camp in enumerate(best3, 1):
+    row = write_kv_row(ws5, row, f"  Best #{i}",
+        f"{camp.get('campaign_name','')} — Profit {fmt_rs(camp.get('profit',0))} | ACOS {fmt_pct(camp.get('acos',0))}",
+        FILL_LIGHT_GREEN, FONT_STAR)
+row += 1
+
+# --- LOSS-MAKING CAMPAIGNS ---
+row = write_section_header(ws5, row, "LOSS-MAKING CAMPAIGNS")
+row = write_kv_row(ws5, row, "Count", f"{len(loss_campaigns)} campaigns", FILL_LIGHT_RED)
+row = write_kv_row(ws5, row, "Total Loss", fmt_rs(total_loss_sum), FILL_LIGHT_RED, FONT_WASTE)
+row = write_kv_row(ws5, row, "Avg ACOS", fmt_pct(avg_acos_loss), FILL_LIGHT_RED)
+for i, camp in enumerate(worst3, 1):
+    row = write_kv_row(ws5, row, f"  Worst #{i}",
+        f"{camp.get('campaign_name','')} — Loss {fmt_rs(camp.get('profit',0))} | ACOS {fmt_pct(camp.get('acos',0))}",
+        FILL_LIGHT_RED, FONT_WASTE)
+row += 1
+
+# --- OVERALL ---
+row = write_section_header(ws5, row, "OVERALL")
+row = write_kv_row(ws5, row, "Net P/L", fmt_rs(net_pl), FILL_LIGHT_BLUE,
+                    FONT_STAR if net_pl >= 0 else FONT_WASTE)
+row = write_kv_row(ws5, row, "Account ACOS", fmt_pct(account_avg_acos), FILL_LIGHT_BLUE)
+row = write_kv_row(ws5, row, "Account ROAS", f"{calc_roas(total_sales, total_spend):.2f}x", FILL_LIGHT_BLUE)
+row = write_kv_row(ws5, row, "Total Orders", str(total_orders), FILL_LIGHT_BLUE)
+row = write_kv_row(ws5, row, "Total Spend", fmt_rs(total_spend), FILL_LIGHT_BLUE)
+row = write_kv_row(ws5, row, "Total Sales", fmt_rs(total_sales), FILL_LIGHT_BLUE)
+row = write_kv_row(ws5, row, "Active Campaigns", str(active_count), FILL_LIGHT_BLUE)
+row = write_kv_row(ws5, row, "Paused Campaigns", str(paused_count), FILL_LIGHT_BLUE)
+row += 1
+
+# --- TOP 3 STARS ---
+row = write_section_header(ws5, row, "TOP 3 STARS")
+for i, camp in enumerate(best3, 1):
+    row = write_kv_row(ws5, row, f"  #{i} {camp.get('campaign_name','')[:40]}",
+        f"Profit: {fmt_rs(camp.get('profit',0))}",
+        FILL_LIGHT_GREEN, FONT_STAR)
+row += 1
+
+# --- TOP 3 WASTE ---
+row = write_section_header(ws5, row, "TOP 3 WASTE")
+for i, camp in enumerate(worst3, 1):
+    row = write_kv_row(ws5, row, f"  #{i} {camp.get('campaign_name','')[:40]}",
+        f"Wasted: {fmt_rs(abs(camp.get('profit',0)))} | Spend: {fmt_rs(camp.get('spend',0))}",
+        FILL_LIGHT_RED, FONT_WASTE)
+row += 1
+
+# --- BIGGEST OPPORTUNITY ---
+row = write_section_header(ws5, row, "BIGGEST OPPORTUNITY")
+scale_campaigns = [c for c in campaigns_sorted if c.get("_classification") == "SCALE" and c.get("sales", 0) > 0]
+if scale_campaigns:
+    opp = sorted(scale_campaigns, key=lambda x: x.get("profit", 0), reverse=True)[0]
+    row = write_kv_row(ws5, row, "Campaign", opp.get("campaign_name", ""), FILL_LIGHT_YELLOW, FONT_VALUE_BOLD)
+    row = write_kv_row(ws5, row, "Current ACOS", fmt_pct(opp.get("acos", 0)), FILL_LIGHT_YELLOW)
+    row = write_kv_row(ws5, row, "ROAS", f"{opp.get('roas', 0):.1f}x", FILL_LIGHT_YELLOW)
+    row = write_kv_row(ws5, row, "Profit", fmt_rs(opp.get("profit", 0)), FILL_LIGHT_YELLOW, FONT_STAR)
+    row = write_kv_row(ws5, row, "Action", "Scale bids & budget — profitable with room to grow", FILL_LIGHT_YELLOW)
+else:
+    row = write_kv_row(ws5, row, "Status", "No scale opportunities yet — optimize existing campaigns first", FILL_LIGHT_YELLOW)
+
+print(f"  Sheet 5: Summary Dashboard")
+
+# ============================================================================
+# SHEET 6: Legend & Help
+# ============================================================================
+
+ws6 = wb.create_sheet("Legend & Help")
+ws6.sheet_properties.tabColor = "808080"
+
+ws6.column_dimensions["A"].width = 28
+ws6.column_dimensions["B"].width = 60
+
+ws6.merge_cells("A1:B1")
+ws6.cell(row=1, column=1, value="Legend & Help").font = FONT_TITLE
+ws6.cell(row=1, column=1).alignment = ALIGN_CENTER
+ws6.row_dimensions[1].height = 36
+
+row = 3
+
+row = write_section_header(ws6, row, "ACOS Color Bands", col_span=2)
+color_bands = [
+    ("Green (0-25%)", "Profitable — ACOS below target. Great performance."),
+    ("Blue (25-40%)", "Acceptable — Near break-even or slightly profitable."),
+    ("Yellow (40-60%)", "Warning — Needs optimization. ACOS above comfortable range."),
+    ("Pink (60-100%)", "Danger — Fix urgently. Significant overspend."),
+    ("Red (>100% or No Sale)", "Critical — Pause recommended. Spending more than earning."),
+]
+for label, desc in color_bands:
+    row = write_kv_row(ws6, row, label, desc)
+
+row += 1
+
+row = write_section_header(ws6, row, "ToDo Actions Guide (Dropdown in ToDo column)", col_span=2)
+todo_guide = [
+    ("--- AI pre-fills ToDo ---", "You can override by picking from dropdown if you disagree."),
+    ("PAUSE Campaign", "Stop spending on this campaign immediately."),
+    ("PAUSE Keyword / PAUSE Ads", "Pause specific keyword or product ads."),
+    ("Reduce Bids ~15% / ~25%", "Lower bids by given %. Applies to all keywords in campaign."),
+    ("Increase Bids ~15% / ~25%", "Raise bids by given %. More aggressive bidding."),
+    ("Reduce Budget ~20%", "Cut campaign daily budget by 20%."),
+    ("Increase Budget ~30%", "Raise campaign daily budget by 30%."),
+    ("Scale Up", "Budget +50% and Bids +20%. For profitable campaigns."),
+    ("Fine-tune Bid ~5%", "Small bid tweak. Near optimal performance."),
+    ("Add as Negative Exact", "Block this search term (exact match)."),
+    ("Add as Negative Phrase", "Block this search term (phrase match)."),
+    ("Add as Exact Match Keyword", "Graduate profitable search term to exact keyword."),
+    ("Monitor", "No action — just keep watching. Logged only."),
+]
+for label, desc in todo_guide:
+    row = write_kv_row(ws6, row, label, desc)
+
+row += 1
+
+row = write_section_header(ws6, row, "Approval Status", col_span=2)
+approval_info = [
+    ("Approve", "Accept AI recommendation in ToDo column. Execute it."),
+    ("Reject", "Reject — do nothing for this item."),
+    ("Manual Review", "Needs your analysis before deciding."),
+    ("(Empty/Skip)", "AI is unsure — your call."),
+]
+for label, desc in approval_info:
+    row = write_kv_row(ws6, row, label, desc)
+
+row += 1
+
+row = write_section_header(ws6, row, "Health Status", col_span=2)
+health_info = [
+    ("Healthy", "Campaign performing well. ACOS below target."),
+    ("OK", "Acceptable but room for improvement."),
+    ("Needs Fix", "Overspending. Requires bid reduction."),
+    ("Critical", "Losing money. Immediate action needed."),
+]
+for label, desc in health_info:
+    row = write_kv_row(ws6, row, label, desc)
+
+row += 1
+
+row = write_section_header(ws6, row, "About", col_span=2)
+row = write_kv_row(ws6, row, "Seller", SELLER_NAME)
+row = write_kv_row(ws6, row, "Entity ID", ENTITY_ID)
+row = write_kv_row(ws6, row, "Data Period", f"{DATA_DATE_LABEL} ({DATA_DAYS} day{'s' if DATA_DAYS > 1 else ''})")
+row = write_kv_row(ws6, row, "Target ACOS", f"{ACOS_TARGET}%")
+row = write_kv_row(ws6, row, "How it works", f"AI analyzes {DATA_DAYS}-day data, calculates optimal actions, and pre-fills approval.")
+
+print(f"  Sheet 6: Legend & Help")
+
+# ============================================================================
+# SAVE
+# ============================================================================
+
+print(f"\n--- Saving to: {OUTPUT_PATH} ---")
+try:
+    wb.save(str(OUTPUT_PATH))
+    print(f"SUCCESS — Report saved!")
+    print(f"   File: {OUTPUT_PATH}")
+    print(f"   Sheets: 6")
+    print(f"   Campaigns: {len(campaigns_sorted)}")
+    print(f"   Search Terms: {len(searchterms_sorted)}")
+    print(f"   Keywords: {len(keywords_sorted)}")
+    print(f"   Products: {len(products_sorted)}")
+    print(f"   Net P/L: {fmt_rs(net_pl)}")
+except Exception as e:
+    print(f"SAVE ERROR: {e}")
+    sys.exit(1)

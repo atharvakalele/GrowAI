@@ -1,0 +1,3738 @@
+[
+  {
+    "adGroupId": "448483975362602",
+    "adId": "344613073990305",
+    "asin": "B0CV4FSM3C",
+    "campaignId": "302164316622266",
+    "sku": "UsLabsAddyiPlusForWomen_30cps",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "448483975362602",
+    "adId": "392362871552219",
+    "asin": "B0CRLCZ253",
+    "campaignId": "302164316622266",
+    "sku": "DrRlxAddyiForWomen_30cps",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "448483975362602",
+    "adId": "539275824805081",
+    "asin": "B0D3CK886B",
+    "campaignId": "302164316622266",
+    "sku": "UsLabs_AddyiPlus_ForWomen_30cps",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "561503821095027",
+    "adId": "291341351141390",
+    "asin": "B0DC4CZ3Z8",
+    "campaignId": "320291965075611",
+    "sku": "goldLibidex_oil",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "561503821095027",
+    "adId": "552207081961090",
+    "asin": "B0DC48PQM7",
+    "campaignId": "320291965075611",
+    "sku": "goldLibidex",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "486395656914572",
+    "adId": "361271714370040",
+    "asin": "B0D54K1YZ1",
+    "campaignId": "468190873386723",
+    "sku": "JoshBoosterLibidixCap30_P2",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "486395656914572",
+    "adId": "558789354975570",
+    "asin": "B0D54HP1CB",
+    "campaignId": "468190873386723",
+    "sku": "JoshBoosterLibidixCap30_P2_Advance",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "486395656914572",
+    "adId": "332914546230117",
+    "asin": "B0D54MR138",
+    "campaignId": "468190873386723",
+    "sku": "NewBoldCareLibidexPlus30Cpsl_P2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "522433628722584",
+    "adId": "447007708560864",
+    "asin": "B0DC48PQM7",
+    "campaignId": "551726471501812",
+    "sku": "Libidex_Gold",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "522433628722584",
+    "adId": "328388995786840",
+    "asin": "B0DC4CZ3Z8",
+    "campaignId": "551726471501812",
+    "sku": "goldLibidex_oil",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "478046471315020",
+    "adId": "536905774166066",
+    "asin": "B0DTHSX5DQ",
+    "campaignId": "441257269521367",
+    "sku": "BlackGoldHorsePower_cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "297574255948083",
+    "adId": "305740698702840",
+    "asin": "B0DPDK2MQH",
+    "campaignId": "429878877190326",
+    "sku": "BlackGoldKeedaJadi_30Capsl",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "297574255948083",
+    "adId": "549623424856258",
+    "asin": "B0DX9QMGDB",
+    "campaignId": "429878877190326",
+    "sku": "XhealthBoosterLibidexMultivitamin",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "297574255948083",
+    "adId": "521801473408046",
+    "asin": "B0DX9MRKYN",
+    "campaignId": "429878877190326",
+    "sku": "JoshBoosterLibidex_Caps30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "297574255948083",
+    "adId": "428258087218149",
+    "asin": "B0DX7J5ZXT",
+    "campaignId": "429878877190326",
+    "sku": "JoshBoosterLibidex30_p2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "297574255948083",
+    "adId": "296069977854827",
+    "asin": "B0DX7BWSKG",
+    "campaignId": "429878877190326",
+    "sku": "LibidSafe_iGainCpsl30_P2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "297574255948083",
+    "adId": "320021917510078",
+    "asin": "B0DVQ7NR67",
+    "campaignId": "429878877190326",
+    "sku": "HorsePowerCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "297574255948083",
+    "adId": "371735004712033",
+    "asin": "B0DVLY9N6F",
+    "campaignId": "429878877190326",
+    "sku": "VidyapithAyrvedSugarChurnSpecial_100gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "297574255948083",
+    "adId": "529115260670298",
+    "asin": "B0DG5T519Z",
+    "campaignId": "429878877190326",
+    "sku": "RED_HorsePowerCap30_v6",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "297574255948083",
+    "adId": "286334023418581",
+    "asin": "B0DG5SZMVR",
+    "campaignId": "429878877190326",
+    "sku": "BLKHorsePowerCap30_1Oil_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "297574255948083",
+    "adId": "487014123456776",
+    "asin": "B0CV4FSM3C",
+    "campaignId": "429878877190326",
+    "sku": "USLabCapsAddyiPlus_ForWomen_v8",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "478046471315020",
+    "adId": "356789381090406",
+    "asin": "B0D3DB5P73",
+    "campaignId": "441257269521367",
+    "sku": "xhlthboostrLibidx30Cap_Advan_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "478046471315020",
+    "adId": "332139138034252",
+    "asin": "B0DG5TF1X6",
+    "campaignId": "441257269521367",
+    "sku": "RED_HorsePowerCap30_1Oil_V6",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "478046471315020",
+    "adId": "392631931165927",
+    "asin": "B0D54G6W7K",
+    "campaignId": "441257269521367",
+    "sku": "XhlthBoosterLibidex_p2_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "478046471315020",
+    "adId": "519646624796046",
+    "asin": "B0DBL4MYWK",
+    "campaignId": "441257269521367",
+    "sku": "BoldCareLibidexPlus_30Cap_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "478046471315020",
+    "adId": "402445602408203",
+    "asin": "B0CRLCZ253",
+    "campaignId": "441257269521367",
+    "sku": "DrRLXAddyiCap30_v6",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "478046471315020",
+    "adId": "381486689653687",
+    "asin": "B0CP47TNPY",
+    "campaignId": "441257269521367",
+    "sku": "DrRelaxKeedaJadi_cap30_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "478046471315020",
+    "adId": "378077938152833",
+    "asin": "B0DJFXK1PG",
+    "campaignId": "441257269521367",
+    "sku": "DrRlxPinkAddyiForWomen_cps30_v5_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "478046471315020",
+    "adId": "304880482626335",
+    "asin": "B0D54K1YZ1",
+    "campaignId": "441257269521367",
+    "sku": "JoshBoosterLibidex_UK",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "297574255948083",
+    "adId": "498020723795328",
+    "asin": "B0DLCKR3CB",
+    "campaignId": "429878877190326",
+    "sku": "RED_HorsePowerCpls30_P2_V2_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "297574255948083",
+    "adId": "401750483032296",
+    "asin": "B0D5N246BY",
+    "campaignId": "429878877190326",
+    "sku": "DrRlxLibidexGold30Cpsl_LibidexOil_v8",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "297574255948083",
+    "adId": "485596264558169",
+    "asin": "B0D3CCZ93C",
+    "campaignId": "429878877190326",
+    "sku": "USLbsLibidxCaps30_AdvanceLoaded_v8",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "297574255948083",
+    "adId": "313626426134225",
+    "asin": "B0CXQ8TVMZ",
+    "campaignId": "429878877190326",
+    "sku": "DrRLXKeedaJadiGoldCaps30_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "482120584323962",
+    "adId": "479535499792774",
+    "asin": "B0F1TX2R7B",
+    "campaignId": "300416064382389",
+    "sku": "Blk_Organic_CelticSallt",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "482120584323962",
+    "adId": "489758853585670",
+    "asin": "B0DH2NKXD7",
+    "campaignId": "300416064382389",
+    "sku": "BluWhiteVastuSalt400_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "482120584323962",
+    "adId": "432345314535117",
+    "asin": "B0DCTRKV5Q",
+    "campaignId": "300416064382389",
+    "sku": "CelticSaltGold_1kg_PouchV2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "482120584323962",
+    "adId": "281942641811889",
+    "asin": "B0DP473Q5L",
+    "campaignId": "300416064382389",
+    "sku": "CelticSaltWhite_1Kg_V2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "482120584323962",
+    "adId": "527935632748097",
+    "asin": "B0DDJHT2Z2",
+    "campaignId": "300416064382389",
+    "sku": "CelticSaltWhite_250GM_PouchV2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "482120584323962",
+    "adId": "375243260467090",
+    "asin": "B0DJKXWF93",
+    "campaignId": "300416064382389",
+    "sku": "Pure Amrit French Celtic Sea Salt (920GM",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "482120584323962",
+    "adId": "544652471339860",
+    "asin": "B0DJ9MHF9M",
+    "campaignId": "300416064382389",
+    "sku": "PureAmritCeltiicSalt450gm_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "482120584323962",
+    "adId": "417145901224327",
+    "asin": "B0DF7B78FZ",
+    "campaignId": "300416064382389",
+    "sku": "RegularPackCeltiSalt100GM",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "367665279266172",
+    "adId": "396227409670437",
+    "asin": "B0F1TX2R7B",
+    "campaignId": "559706969987718",
+    "sku": "Blk_Organic_CelticSallt",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "367665279266172",
+    "adId": "385842540696533",
+    "asin": "B0DH2NKXD7",
+    "campaignId": "559706969987718",
+    "sku": "BluWhiteVastuSalt400_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "367665279266172",
+    "adId": "378929208192908",
+    "asin": "B0DCTRKV5Q",
+    "campaignId": "559706969987718",
+    "sku": "CelticSaltGold_1kg_PouchV2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "367665279266172",
+    "adId": "473479275319217",
+    "asin": "B0DP473Q5L",
+    "campaignId": "559706969987718",
+    "sku": "CelticSaltWhite_1Kg_V2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "367665279266172",
+    "adId": "562766557849644",
+    "asin": "B0DDJHT2Z2",
+    "campaignId": "559706969987718",
+    "sku": "CelticSaltWhite_250GM_PouchV2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "367665279266172",
+    "adId": "407547754625662",
+    "asin": "B0DJKXWF93",
+    "campaignId": "559706969987718",
+    "sku": "Pure Amrit French Celtic Sea Salt (920GM",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "367665279266172",
+    "adId": "488847103667629",
+    "asin": "B0DJ9MHF9M",
+    "campaignId": "559706969987718",
+    "sku": "PureAmritCeltiicSalt450gm_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "367665279266172",
+    "adId": "412707638497070",
+    "asin": "B0DF7B78FZ",
+    "campaignId": "559706969987718",
+    "sku": "RegularPackCeltiSalt100GM",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "326009426719258",
+    "adId": "392025427750595",
+    "asin": "B0DJK582NX",
+    "campaignId": "401325736018627",
+    "sku": "DrRelaxLibidex+LibidexWomen_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "326009426719258",
+    "adId": "294828675221844",
+    "asin": "B0DJMZSMPS",
+    "campaignId": "401325736018627",
+    "sku": "DrRelaxLibidexWomenCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "326009426719258",
+    "adId": "428504883778099",
+    "asin": "B0F79BMZL3",
+    "campaignId": "401325736018627",
+    "sku": "CartoonLibidex_V1",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "326009426719258",
+    "adId": "293856492784515",
+    "asin": "B0FF39TGY5",
+    "campaignId": "401325736018627",
+    "sku": "PureAmrit_Libidex_Cap30_P2",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "326009426719258",
+    "adId": "308263907159765",
+    "asin": "B0FF3G2VNX",
+    "campaignId": "401325736018627",
+    "sku": "Old_LibidexPlus_Cap30_1Oil",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "326009426719258",
+    "adId": "296110011193044",
+    "asin": "B0FF3GD7DW",
+    "campaignId": "401325736018627",
+    "sku": "WhiteGold_Libidex  P2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "326009426719258",
+    "adId": "428099955202260",
+    "asin": "B0FF3GRXXF",
+    "campaignId": "401325736018627",
+    "sku": "CartoonLibidex_V3",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "393878241004365",
+    "adId": "540773001495824",
+    "asin": "B0F1TX2R7B",
+    "campaignId": "343332567834643",
+    "sku": "Blk_Organic_CelticSallt",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "393878241004365",
+    "adId": "470435894896484",
+    "asin": "B0DH2NKXD7",
+    "campaignId": "343332567834643",
+    "sku": "BluWhiteVastuSalt400_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "393878241004365",
+    "adId": "420891683387822",
+    "asin": "B0DCTRKV5Q",
+    "campaignId": "343332567834643",
+    "sku": "CelticSaltGold_1kg_PouchV2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "393878241004365",
+    "adId": "423708725670094",
+    "asin": "B0DP473Q5L",
+    "campaignId": "343332567834643",
+    "sku": "CelticSaltWhite_1Kg_V2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "393878241004365",
+    "adId": "425544966203231",
+    "asin": "B0DDJHT2Z2",
+    "campaignId": "343332567834643",
+    "sku": "CelticSaltWhite_250GM_PouchV2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "393878241004365",
+    "adId": "456749662369660",
+    "asin": "B0DJKXWF93",
+    "campaignId": "343332567834643",
+    "sku": "Pure Amrit French Celtic Sea Salt (920GM",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "393878241004365",
+    "adId": "351511036886068",
+    "asin": "B0DJ9MHF9M",
+    "campaignId": "343332567834643",
+    "sku": "PureAmritCeltiicSalt450gm_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "393878241004365",
+    "adId": "346361758984263",
+    "asin": "B0DF7B78FZ",
+    "campaignId": "343332567834643",
+    "sku": "RegularPackCeltiSalt100GM",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "436868433210776",
+    "adId": "307246025584801",
+    "asin": "B0CXP6ZJZF",
+    "campaignId": "284053803409071",
+    "sku": "DrRLXManasamitraVatakamCaps30_v1",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "436868433210776",
+    "adId": "364014389047387",
+    "asin": "B0CXP6ZJZF",
+    "campaignId": "284053803409071",
+    "sku": "DrRelaxManasamitraVatakamCap30_v6",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "475162781784964",
+    "adId": "445853309834001",
+    "asin": "B0DJFXK1PG",
+    "campaignId": "284053803409071",
+    "sku": "DrRlxPinkAddyiForWomen_cps30_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "475162781784964",
+    "adId": "374284212123756",
+    "asin": "B0DJFXK1PG",
+    "campaignId": "284053803409071",
+    "sku": "DrRlxPinkAddyiForWomen_cps30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "436585574794479",
+    "adId": "397389917597224",
+    "asin": "B0FDLD6WCH",
+    "campaignId": "284053803409071",
+    "sku": "BluWit_PartysmartCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "524722155702380",
+    "adId": "299218937027695",
+    "asin": "B0CQPBZ7ZT",
+    "campaignId": "284053803409071",
+    "sku": "USLbsKeedaJadiCap60_v1",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "520535402166520",
+    "adId": "428401824402374",
+    "asin": "B0D3CJJHXJ",
+    "campaignId": "284053803409071",
+    "sku": "LibidxMultivitaCap30_AdvanceLoaded_v1",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "520535402166520",
+    "adId": "525477814731290",
+    "asin": "B0D54K1YZ1",
+    "campaignId": "284053803409071",
+    "sku": "JoshBoosterLibidixCap30_P2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "520535402166520",
+    "adId": "497197769885996",
+    "asin": "B0D54K1YZ1",
+    "campaignId": "284053803409071",
+    "sku": "JoshBoosterLibidixCap30_P2_v6",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "300103137101708",
+    "adId": "440184368186829",
+    "asin": "B0D5N246BY",
+    "campaignId": "284053803409071",
+    "sku": "DrRlxLibidexGold30Cpsl_LibidexOil",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "546914106319483",
+    "adId": "389230829170941",
+    "asin": "B0CV4FSM3C",
+    "campaignId": "284053803409071",
+    "sku": "USLabCapsAddyiPlus_ForWomen",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "546914106319483",
+    "adId": "363449385924304",
+    "asin": "B0CV4FSM3C",
+    "campaignId": "284053803409071",
+    "sku": "USLabCapsAddyiPlus_ForWomen_v6",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "544380862697404",
+    "adId": "540688863435548",
+    "asin": "B0DGLB8C65",
+    "campaignId": "284053803409071",
+    "sku": "DrRelaxBigBoomsProCaps_v8-FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "544380862697404",
+    "adId": "403943780493917",
+    "asin": "B0DGLB8C65",
+    "campaignId": "284053803409071",
+    "sku": "DrRelaxBigBoomsProCaps_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "337206957263833",
+    "adId": "442633777806025",
+    "asin": "B0DG2P9M8D",
+    "campaignId": "284053803409071",
+    "sku": "DrRelaxEDSolve_30Cap_v1_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "337206957263833",
+    "adId": "550867739831861",
+    "asin": "B0DG2P9M8D",
+    "campaignId": "284053803409071",
+    "sku": "DrRelaxEDSolve_30Cap_v1",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "350117891493600",
+    "adId": "458487015760775",
+    "asin": "B0DL79WT93",
+    "campaignId": "489636437383210",
+    "sku": "DrRlxGlutathione_FaceGlowCap30_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "555374719308464",
+    "adId": "463439963079608",
+    "asin": "B0FBLC98WH",
+    "campaignId": "489636437383210",
+    "sku": "Blck_SehatCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "555374719308464",
+    "adId": "485957733193284",
+    "asin": "B0FBLC98WH",
+    "campaignId": "489636437383210",
+    "sku": "Blck_SehatCap30-FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "316670354231990",
+    "adId": "459376558414096",
+    "asin": "B0DRS8JT8Z",
+    "campaignId": "489636437383210",
+    "sku": "DrRelaxGoldLibidexCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "316670354231990",
+    "adId": "370436195302916",
+    "asin": "B0DRS8JT8Z",
+    "campaignId": "489636437383210",
+    "sku": "DrRelaxGoldLibidexCap30_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "316670354231990",
+    "adId": "458917879220234",
+    "asin": "B0DTPR8QPM",
+    "campaignId": "489636437383210",
+    "sku": "DrRlxLibidexGold30cap_Oil",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "316670354231990",
+    "adId": "422590692347384",
+    "asin": "B0DTPR8QPM",
+    "campaignId": "489636437383210",
+    "sku": "DrRlxLibidexGold30cap_Oil_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "403029518309797",
+    "adId": "482940027906165",
+    "asin": "B0FBWQLQ8T",
+    "campaignId": "489636437383210",
+    "sku": "QM-QCKY-U4ZY",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "403029518309797",
+    "adId": "387167565074001",
+    "asin": "B0FBWQLQ8T",
+    "campaignId": "489636437383210",
+    "sku": "Red_SehatCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "545657235500425",
+    "adId": "313333841366835",
+    "asin": "B0DBKXY4JZ",
+    "campaignId": "489636437383210",
+    "sku": "DrRelaxKeedaJadiGold_30cps",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "545657235500425",
+    "adId": "441234406320864",
+    "asin": "B0DBKXY4JZ",
+    "campaignId": "489636437383210",
+    "sku": "DrRelaxKeedaJadiGold_30cps_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "545657235500425",
+    "adId": "401353794835865",
+    "asin": "B0DPDK2MQH",
+    "campaignId": "489636437383210",
+    "sku": "BlackGoldKeedaJadi_30Capsl_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "545657235500425",
+    "adId": "290950652847585",
+    "asin": "B0DPDK2MQH",
+    "campaignId": "489636437383210",
+    "sku": "BlackGoldKeedaJadi_30cpsl_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "549978347852063",
+    "adId": "314218544093995",
+    "asin": "B0DSP4Y2SR",
+    "campaignId": "513974424104456",
+    "sku": "CoarseSeaSaltBluWhitePouch400GM",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "284614643447552",
+    "adId": "490802810701165",
+    "asin": "B0DBKXY4JZ",
+    "campaignId": "513974424104456",
+    "sku": "DrRelaxKeedaJadiGold_30cps",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "284614643447552",
+    "adId": "519243043538613",
+    "asin": "B0DBKXY4JZ",
+    "campaignId": "513974424104456",
+    "sku": "DrRelaxKeedaJadiGold_30cps_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "359551071615673",
+    "adId": "303598338175961",
+    "asin": "B0DBL4MYWK",
+    "campaignId": "513974424104456",
+    "sku": "BoldCareLibidexPlus_30Cap_v6",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "359551071615673",
+    "adId": "555646064493376",
+    "asin": "B0DBL4MYWK",
+    "campaignId": "513974424104456",
+    "sku": "BoldCareLibidexPlus_30Cap",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "402792191683664",
+    "adId": "283001042358780",
+    "asin": "B0FBMF69WS",
+    "campaignId": "489636437383210",
+    "sku": "vedLab_libidex_cartoon_V1",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "367040195160229",
+    "adId": "403952677195214",
+    "asin": "B0DBVQKNV8",
+    "campaignId": "513974424104456",
+    "sku": "DrRelaxVisiorax_30cps_v3_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "367040195160229",
+    "adId": "301743584035188",
+    "asin": "B0DBVQKNV8",
+    "campaignId": "513974424104456",
+    "sku": "4N-1WBT-MO4L",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "367040195160229",
+    "adId": "542203489325619",
+    "asin": "B0DBVQKNV8",
+    "campaignId": "513974424104456",
+    "sku": "4N-1WBT-MO4L_v5_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "367040195160229",
+    "adId": "465082857223304",
+    "asin": "B0DBVQKNV8",
+    "campaignId": "513974424104456",
+    "sku": "DrRlxVisorax_30cps_v5",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "535749041611273",
+    "adId": "282949225883737",
+    "asin": "B0FMRNM72Q",
+    "campaignId": "315669267872113",
+    "sku": "HorseGold_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "466978091684880",
+    "adId": "449085130613158",
+    "asin": "B0FMRMJBGZ",
+    "campaignId": "504530411330718",
+    "sku": "Combo_Orange500gm_ Blue500gm_CelticSalt",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "358646332897774",
+    "adId": "389631783625667",
+    "asin": "B0FN4CQJCN",
+    "campaignId": "447632091052179",
+    "sku": "Jaitunsalt_100gmBox",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "516063046884960",
+    "adId": "497641607655033",
+    "asin": "B0FK4PK4HK",
+    "campaignId": "380421310418471",
+    "sku": "Vedalabs LiBiDEXX30-Capsule_v2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "460799182259230",
+    "adId": "458431641993449",
+    "asin": "B0FNDT8F9J",
+    "campaignId": "302014829439837",
+    "sku": "BluWhite_EpsomsaltGold_920gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "425808348508782",
+    "adId": "398094508986149",
+    "asin": "B0FK3PCKSJ",
+    "campaignId": "432465171189876",
+    "sku": "BluWit_TitanicK2Cap30_V2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "460799182259230",
+    "adId": "558081168294653",
+    "asin": "B0FNRXGLVS",
+    "campaignId": "302014829439837",
+    "sku": "BluWhite_EpsomsaltGold_420gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "535749041611273",
+    "adId": "441635750518420",
+    "asin": "B0FP5717VL",
+    "campaignId": "315669267872113",
+    "sku": "HerbalFire_Cap30_v1",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "512247189529576",
+    "adId": "506932926056152",
+    "asin": "B0FP5717VL",
+    "campaignId": "501032265023977",
+    "sku": "HerbalFire_Cap30_v1_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "512247189529576",
+    "adId": "334413061174742",
+    "asin": "B0FP5717VL",
+    "campaignId": "501032265023977",
+    "sku": "HerbalFire_Cap30_v1",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "538521454242140",
+    "adId": "544505694451106",
+    "asin": "B0FQ2VQK9D",
+    "campaignId": "469149478693708",
+    "sku": "Orange_CelticSalt_500gm_for Hard Food",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "538521454242140",
+    "adId": "413309322796066",
+    "asin": "B0FQ2RVK4B",
+    "campaignId": "469149478693708",
+    "sku": "Blue_CelticSalt_500gm_for Liquid Food",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "556141013963680",
+    "adId": "334124064774496",
+    "asin": "B0DGLB8C65",
+    "campaignId": "475036044119581",
+    "sku": "DrRelaxBigBoomsProCaps_v8-FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "429094583545492",
+    "adId": "372915028059533",
+    "asin": "B0FG19CFSM",
+    "campaignId": "447106679560995",
+    "sku": "Vedalabs LiBiDEXX30-Capsule",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "379977056315451",
+    "adId": "513424996708191",
+    "asin": "B0FQ4938RT",
+    "campaignId": "480640809086221",
+    "sku": "GrayBottle_Libidex_Cap30_V2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "460799182259230",
+    "adId": "321222180280493",
+    "asin": "B0FQ5T5FC8",
+    "campaignId": "302014829439837",
+    "sku": "PremimumGold_Epom_920gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "458044496009877",
+    "adId": "324882632699008",
+    "asin": "B0FQ5T5FC8",
+    "campaignId": "302014829439837",
+    "sku": "PremimumGold_Epom_920gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "294857365384832",
+    "adId": "454505102223677",
+    "asin": "B0FDLFVMH5",
+    "campaignId": "482942485380023",
+    "sku": "BluWit_MagnesiumGlycinateCap30_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "341324661758359",
+    "adId": "393054972918511",
+    "asin": "B0FH2HRPT6",
+    "campaignId": "480221430005566",
+    "sku": "LibidSafe_HorseLongPower_Cap30_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "341324661758359",
+    "adId": "364935392781501",
+    "asin": "B0FH2HRPT6",
+    "campaignId": "480221430005566",
+    "sku": "LibidSafe_HorseLongPower_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "459602360152887",
+    "adId": "355248138518713",
+    "asin": "B0FH2H6RT4",
+    "campaignId": "561029410150389",
+    "sku": "LibidSafe_HorsePower_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "545384913794413",
+    "adId": "520685727356451",
+    "asin": "B0DFVJC4DL",
+    "campaignId": "423222776774400",
+    "sku": "DR Relax_ Man Power _ 30 Caps_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "410896908255329",
+    "adId": "469199975554074",
+    "asin": "B0FF39TVM2",
+    "campaignId": "527997018244401",
+    "sku": "USLabs_Libidex_Cap30_1Oil",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "410896908255329",
+    "adId": "502745901231259",
+    "asin": "B0FF3F7HZY",
+    "campaignId": "527997018244401",
+    "sku": "LibidexPower_Cap30_P2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "410896908255329",
+    "adId": "553239779250968",
+    "asin": "B0FF3FZNQ3",
+    "campaignId": "527997018244401",
+    "sku": "USLabs_Libidex40+_Cap30_P2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "410896908255329",
+    "adId": "414686001865655",
+    "asin": "B0FF39TG5M",
+    "campaignId": "527997018244401",
+    "sku": "LibidexPower_Cap30_1Qil",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "410896908255329",
+    "adId": "293489690428819",
+    "asin": "B0D3CCZ93C",
+    "campaignId": "527997018244401",
+    "sku": "USLbsLibidxCaps30_AdvanceLoaded_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "410896908255329",
+    "adId": "396541319447287",
+    "asin": "B0D3CCZ93C",
+    "campaignId": "527997018244401",
+    "sku": "USLbsLibidxCaps30_AdvanceLoaded_v1",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "524311016410074",
+    "adId": "471660457254948",
+    "asin": "B0FR4VV6N6",
+    "campaignId": "458864027194721",
+    "sku": "UsLabs_Cordyceps_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "524311016410074",
+    "adId": "354971438653360",
+    "asin": "B0FR4NZF5T",
+    "campaignId": "458864027194721",
+    "sku": "WhiteBlue_Cordyceps_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "409448888466896",
+    "adId": "364148256309511",
+    "asin": "B0FR4NXBNH",
+    "campaignId": "403766708756459",
+    "sku": "Red_HorsePower With OneAnother_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "340074741100859",
+    "adId": "460785049743481",
+    "asin": "B0FR44SSQH",
+    "campaignId": "495609431015415",
+    "sku": "Black_HorsePower With 1Another_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "462288208413564",
+    "adId": "429067342572841",
+    "asin": "B0FR4TQ93L",
+    "campaignId": "511295141952515",
+    "sku": "WhiteBlue_ManPower_P2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "536501551656551",
+    "adId": "288974885244643",
+    "asin": "B0FR47CCH6",
+    "campaignId": "370818528707617",
+    "sku": "RedBlack_BigJack_Cap with oil",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "536501551656551",
+    "adId": "495395317477424",
+    "asin": "B0FR4TH5SF",
+    "campaignId": "370818528707617",
+    "sku": "WhtieBlue_BigJack_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "536501551656551",
+    "adId": "344459974982660",
+    "asin": "B0FR47BM69",
+    "campaignId": "370818528707617",
+    "sku": "WhtieBlue_BigJack_Cap30 With Oil",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "536501551656551",
+    "adId": "374539275784020",
+    "asin": "B0FR4XVN4G",
+    "campaignId": "370818528707617",
+    "sku": "RedBlack_BigJack_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "283554667809542",
+    "adId": "515437123747296",
+    "asin": "B0FR47CPSW",
+    "campaignId": "550976884268337",
+    "sku": "WhiteBlue_HeightGain_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "433425033896304",
+    "adId": "383058196104171",
+    "asin": "B0FR47C6N9",
+    "campaignId": "423735423809730",
+    "sku": "BlackGold_StayExtraLong_Cpsls30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "458044496009877",
+    "adId": "364312729983213",
+    "asin": "B0FNRXGLVS",
+    "campaignId": "302014829439837",
+    "sku": "BluWhite_EpsomsaltGold_420gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "535749041611273",
+    "adId": "489248513432128",
+    "asin": "B0FMRNM72Q",
+    "campaignId": "315669267872113",
+    "sku": "HorseGold_Cap30_MN",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "535749041611273",
+    "adId": "355763939023060",
+    "asin": "B0FRYJ26TJ",
+    "campaignId": "315669267872113",
+    "sku": "HorseGold_OneAnother",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "313133794541389",
+    "adId": "530779290142774",
+    "asin": "B0FRZ8DB6Z",
+    "campaignId": "440305192013930",
+    "sku": "Blk_HorsePwr+WhitBlu_HorseLongPwr_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "313133794541389",
+    "adId": "392084367152193",
+    "asin": "B0FRZDZC83",
+    "campaignId": "440305192013930",
+    "sku": "Red_HorsePwr+WhitBlu_HorseLongPwr_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "313133794541389",
+    "adId": "545821010467753",
+    "asin": "B0FRZ2D5VH",
+    "campaignId": "440305192013930",
+    "sku": "Black_HorsePwr + WhitBlu_HorsePwr_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "313133794541389",
+    "adId": "544350445188278",
+    "asin": "B0FRZ36FTH",
+    "campaignId": "440305192013930",
+    "sku": "Red_HorsePwr + WhitBlu_HorsePwr_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "313133794541389",
+    "adId": "494507034797811",
+    "asin": "B0FRYTYV46",
+    "campaignId": "440305192013930",
+    "sku": "WhitBlu_HorseLongPower_Cap30 + HorseOil",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "358646332897774",
+    "adId": "286109373270814",
+    "asin": "B0FSFD8NDV",
+    "campaignId": "447632091052179",
+    "sku": "PT-MGEU-S4MJ",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "366847309217143",
+    "adId": "316973188000792",
+    "asin": "B0DCW3BRM4",
+    "campaignId": "450680753070157",
+    "sku": "CelticSaltWhite1kg",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "366847309217143",
+    "adId": "325782301994615",
+    "asin": "B0DCW4B332",
+    "campaignId": "450680753070157",
+    "sku": "CelticSaltWhite_500GM_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "366847309217143",
+    "adId": "520231592989086",
+    "asin": "B0DCTQ7MP7",
+    "campaignId": "450680753070157",
+    "sku": "CelticSaltGold_500gm",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "452209410576064",
+    "adId": "457715970937453",
+    "asin": "B0DFMV5LWM",
+    "campaignId": "450680753070157",
+    "sku": "ShilajitResinRed_p2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "452209410576064",
+    "adId": "312415268475437",
+    "asin": "B0DFGSKBC5",
+    "campaignId": "450680753070157",
+    "sku": "DrRlxMadanMnjari30Cap",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "452209410576064",
+    "adId": "389685141958750",
+    "asin": "B0DC1M4T6C",
+    "campaignId": "450680753070157",
+    "sku": "UsLabsVisionCareMax_30Caps",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "452209410576064",
+    "adId": "351106737685702",
+    "asin": "B0DFMSTXFJ",
+    "campaignId": "450680753070157",
+    "sku": "ShilajitResinRed_p1_v2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "452209410576064",
+    "adId": "446657162319855",
+    "asin": "B0DCSY651M",
+    "campaignId": "450680753070157",
+    "sku": "JoshBoosterLibidex30Cap_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "485967428486941",
+    "adId": "413269887869366",
+    "asin": "B0F79BS14F",
+    "campaignId": "450680753070157",
+    "sku": "BLK_FrenchCelticSalt_920gm",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "485967428486941",
+    "adId": "389765348922457",
+    "asin": "B0F6F88HBB",
+    "campaignId": "450680753070157",
+    "sku": "SafeGreen_CelticSalt_250gm",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "485967428486941",
+    "adId": "539179222602841",
+    "asin": "B0DSSBRCNT",
+    "campaignId": "450680753070157",
+    "sku": "HimalyanSaltBluWhite_400Gm",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "485967428486941",
+    "adId": "547431631004555",
+    "asin": "B0DSSV947M",
+    "campaignId": "450680753070157",
+    "sku": "AmazingCelticSalt_2Kg",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "485967428486941",
+    "adId": "350229389981734",
+    "asin": "B0FBWXQ9JL",
+    "campaignId": "450680753070157",
+    "sku": "LS_SkyBlu_CelticSeaSalt_250gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "485967428486941",
+    "adId": "432664074998440",
+    "asin": "B0F78XGQP4",
+    "campaignId": "450680753070157",
+    "sku": "BLK_FrenchCelticSalt_250gm_P2",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "485967428486941",
+    "adId": "410054061900115",
+    "asin": "B0F78S1M9R",
+    "campaignId": "450680753070157",
+    "sku": "BLK_FrenchCelticSalt_250gm",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "485967428486941",
+    "adId": "413777423123296",
+    "asin": "B0DXGS75SD",
+    "campaignId": "450680753070157",
+    "sku": "CelticSaltWhite_5Kg",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "485967428486941",
+    "adId": "517572508055039",
+    "asin": "B0F6F6BCRN",
+    "campaignId": "450680753070157",
+    "sku": "SafeGreen_CelticSalt_920gm_P3",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "485967428486941",
+    "adId": "418953915718769",
+    "asin": "B0DGD7VS5P",
+    "campaignId": "450680753070157",
+    "sku": "CelticSaltWhitePouch500gm_P12",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "485967428486941",
+    "adId": "414884255286029",
+    "asin": "B0DSL78ZDM",
+    "campaignId": "450680753070157",
+    "sku": "BorceCelticSalt_1KG",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "485967428486941",
+    "adId": "348466755604041",
+    "asin": "B0DSSSFCWC",
+    "campaignId": "450680753070157",
+    "sku": "RegularCelticSalt500Gm",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "485967428486941",
+    "adId": "553015470242015",
+    "asin": "B0DTQ4C1JZ",
+    "campaignId": "450680753070157",
+    "sku": "CelticSaltBluWhite_500Gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "485967428486941",
+    "adId": "529010258894663",
+    "asin": "B0F79RPB5Z",
+    "campaignId": "450680753070157",
+    "sku": "BLK_FrenchCelticSalt_420gm",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "531605737484166",
+    "adId": "398616765596212",
+    "asin": "B0CXV2WV4W",
+    "campaignId": "450680753070157",
+    "sku": "DoubleGoldCapsules_v6",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "531605737484166",
+    "adId": "381532526544328",
+    "asin": "B0DFS4ZP5T",
+    "campaignId": "450680753070157",
+    "sku": "DrRelaxMuiraPuama30_v6",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "531605737484166",
+    "adId": "510947660713471",
+    "asin": "B0D2V7CFRG",
+    "campaignId": "450680753070157",
+    "sku": "DrRelaxMilkThistleCpsls30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "531605737484166",
+    "adId": "286749228568229",
+    "asin": "B0DH2NFJSQ",
+    "campaignId": "450680753070157",
+    "sku": "BluWhiteDeadSeaSalt400_FBA",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "531605737484166",
+    "adId": "477881789733652",
+    "asin": "B0DGQS8X8C",
+    "campaignId": "450680753070157",
+    "sku": "USLabsLibidex40Plus_30Cap",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "531605737484166",
+    "adId": "286000715445874",
+    "asin": "B0D3HYSBGV",
+    "campaignId": "450680753070157",
+    "sku": "XHlthBostrLibidx30Cap_SLJT_Advance",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "531605737484166",
+    "adId": "489043047663354",
+    "asin": "B0DGQR7GNZ",
+    "campaignId": "450680753070157",
+    "sku": "USLabsLibidex40Plus30Cap+Oil_v8",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "531605737484166",
+    "adId": "322760314557027",
+    "asin": "B0CXP5PNV4",
+    "campaignId": "450680753070157",
+    "sku": "DrRLX_RhodiolaRosea_30Cap",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "531605737484166",
+    "adId": "523695354160234",
+    "asin": "B0DG3N1KH1",
+    "campaignId": "450680753070157",
+    "sku": "DrRelaxGlucosamine30_v8",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "531605737484166",
+    "adId": "337117477158175",
+    "asin": "B0DGB2CJXC",
+    "campaignId": "450680753070157",
+    "sku": "DrRelaxSawPalmettoCaps30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "531605737484166",
+    "adId": "401973587251589",
+    "asin": "B0DGB8VX3J",
+    "campaignId": "450680753070157",
+    "sku": "DrRelaxGlowBuilderCaps30_v1",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "531605737484166",
+    "adId": "398030352680214",
+    "asin": "B0DGLBKNKR",
+    "campaignId": "450680753070157",
+    "sku": "DrRelaxFaceGlowMultivitaminCaps30_v1",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "531605737484166",
+    "adId": "433535246698504",
+    "asin": "B0DGB8CVHR",
+    "campaignId": "450680753070157",
+    "sku": "DrRelaxMacaRootCaps30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "531605737484166",
+    "adId": "364912421877448",
+    "asin": "B0DGB27VLG",
+    "campaignId": "450680753070157",
+    "sku": "DrRelaxNanoCurcuminCaps30_v8",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "390512547844339",
+    "adId": "346819684314406",
+    "asin": "B0DC1V1X5M",
+    "campaignId": "450680753070157",
+    "sku": "UsLabsVisiorazPlusCps_v3",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "353986771026279",
+    "adId": "290667552240365",
+    "asin": "B0DG3T4Y5V",
+    "campaignId": "450680753070157",
+    "sku": "USLabsKeedaJadi30_v8",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "353986771026279",
+    "adId": "422764846135566",
+    "asin": "B0D2V76N57",
+    "campaignId": "450680753070157",
+    "sku": "DrRelaxCardiotens30Cap_v1",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "353986771026279",
+    "adId": "463232690567573",
+    "asin": "B0CZM4DGD2",
+    "campaignId": "450680753070157",
+    "sku": "DrRelaxLMethionineCpsls30_v6",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "353986771026279",
+    "adId": "310295641452430",
+    "asin": "B0D2V26RB1",
+    "campaignId": "450680753070157",
+    "sku": "DrRelaxRoyalTentmaxCpsls30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "353986771026279",
+    "adId": "495268472102505",
+    "asin": "B0CVFYQR9P",
+    "campaignId": "450680753070157",
+    "sku": "BoldCareLibidex_30Cps_V4",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "353986771026279",
+    "adId": "535847813599552",
+    "asin": "B0D11KZDFF",
+    "campaignId": "450680753070157",
+    "sku": "DrRelaxKamchudamaniRasGoldCpsls30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "353986771026279",
+    "adId": "285656966965258",
+    "asin": "B0CZJPC3M5",
+    "campaignId": "450680753070157",
+    "sku": "DrRelaxLibidex_40up_v8",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "353986771026279",
+    "adId": "548726976740460",
+    "asin": "B0D54HP1CB",
+    "campaignId": "450680753070157",
+    "sku": "JoshBoosterLibidixCap30_P2_Advance",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "353986771026279",
+    "adId": "464846099531569",
+    "asin": "B0CQPBWVF1",
+    "campaignId": "450680753070157",
+    "sku": "USLbsCayennePepperCap60_v1",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "353986771026279",
+    "adId": "556392225167357",
+    "asin": "B0CY66TB6C",
+    "campaignId": "450680753070157",
+    "sku": "ShilajitGoldCaps_P2_v6",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "353986771026279",
+    "adId": "360781173380334",
+    "asin": "B0D2V5NWSG",
+    "campaignId": "450680753070157",
+    "sku": "DrRelaxStressGuardCap30_v1",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "353986771026279",
+    "adId": "397417717778378",
+    "asin": "B0D4215995",
+    "campaignId": "450680753070157",
+    "sku": "NewXhealthLibidxCaps30_v5",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "353986771026279",
+    "adId": "411795777675024",
+    "asin": "B0CQP9LTJ1",
+    "campaignId": "450680753070157",
+    "sku": "USLbsMadanManjariCaps30_v1",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "353986771026279",
+    "adId": "284943449184246",
+    "asin": "B0CXXYLFV6",
+    "campaignId": "450680753070157",
+    "sku": "LibidxOil30ml_v5",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "357791851065519",
+    "adId": "558430597813234",
+    "asin": "B0DC1YMY63",
+    "campaignId": "450680753070157",
+    "sku": "UsLabsLionsManeCaps30_v3",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "357791851065519",
+    "adId": "358040241783699",
+    "asin": "B0DC1YKQHS",
+    "campaignId": "450680753070157",
+    "sku": "DrRelaxLionsManeCps30_v3",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "357701990068928",
+    "adId": "496214932129194",
+    "asin": "B0CP47TNPY",
+    "campaignId": "450680753070157",
+    "sku": "DrRelaxKeedaJadi_cap30_v6",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "357701990068928",
+    "adId": "555763974138232",
+    "asin": "B0CTHXGWPC",
+    "campaignId": "450680753070157",
+    "sku": "DrRLXCayennePapperCap30_v1",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "502967459563183",
+    "adId": "488956145658131",
+    "asin": "B0F3CWZCFT",
+    "campaignId": "450680753070157",
+    "sku": "Brown_Organic_CelticSallt_v1",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "499695193600387",
+    "adId": "519725290905267",
+    "asin": "B0FS9MVC7H",
+    "campaignId": "450680753070157",
+    "sku": "BluWhite_EpsomSaltPremimum_420gm",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "499695193600387",
+    "adId": "391260825131266",
+    "asin": "B0FGY73YC5",
+    "campaignId": "450680753070157",
+    "sku": "Red_HorsePower_Cap30_1Oil_V8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "499695193600387",
+    "adId": "430432001421676",
+    "asin": "B0DSKQ2CKD",
+    "campaignId": "450680753070157",
+    "sku": "BathSaltBluWhitePouch_400GM",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "499695193600387",
+    "adId": "502452276960584",
+    "asin": "B0F6KH7BR6",
+    "campaignId": "450680753070157",
+    "sku": "SkyBlueEpsomSalt420gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "371085850599031",
+    "adId": "425669322805703",
+    "asin": "B0FBMF69WS",
+    "campaignId": "450680753070157",
+    "sku": "vedLab_libidex_cartoon_V1",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "511814063767651",
+    "adId": "308336823640219",
+    "asin": "B0F3XSJCH8",
+    "campaignId": "450680753070157",
+    "sku": "Vastu Sea Salt - 920 gram",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "306071916031375",
+    "adId": "479265337952324",
+    "asin": "B0DH2PT716",
+    "campaignId": "450680753070157",
+    "sku": "BluWhiteMaldonSeaSalt400",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "306071916031375",
+    "adId": "503822701727356",
+    "asin": "B0DH2ND7K5",
+    "campaignId": "450680753070157",
+    "sku": "BluWhiteCoarseSeaSalt400",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "306071916031375",
+    "adId": "352209631141861",
+    "asin": "B0DFM7TY5T",
+    "campaignId": "450680753070157",
+    "sku": "AmazingCelticSalt2kg",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "306071916031375",
+    "adId": "505374976476196",
+    "asin": "B0DF78C6YC",
+    "campaignId": "450680753070157",
+    "sku": "RegularPackCeltiSalt1KG",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "306071916031375",
+    "adId": "445605655636499",
+    "asin": "B0DH2QQZM4",
+    "campaignId": "450680753070157",
+    "sku": "BluWhiteKosherSalt400_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "306071916031375",
+    "adId": "462717261308436",
+    "asin": "B0DH2NR2H2",
+    "campaignId": "450680753070157",
+    "sku": "BluWhiteTruffleSalt400",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "306071916031375",
+    "adId": "559546466169280",
+    "asin": "B0DFM83K6Y",
+    "campaignId": "450680753070157",
+    "sku": "BorceCelticSalt2kg",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "306071916031375",
+    "adId": "555108267804162",
+    "asin": "B0DFTPDR3L",
+    "campaignId": "450680753070157",
+    "sku": "CelticSaltBox1KG",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "306071916031375",
+    "adId": "451864698241296",
+    "asin": "B0DF7859V2",
+    "campaignId": "450680753070157",
+    "sku": "RegularPackCeltiSalt5KG",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "306071916031375",
+    "adId": "430405925301086",
+    "asin": "B0D5LTLKSW",
+    "campaignId": "450680753070157",
+    "sku": "CeltricSaltGold250gm",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "306071916031375",
+    "adId": "412630046300769",
+    "asin": "B0D7TF54WV",
+    "campaignId": "450680753070157",
+    "sku": "CelticSaltBox_400GM_V2",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "394040585826219",
+    "adId": "560468749425761",
+    "asin": "B0FKHMTTZY",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_DiaTotalFreeCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "394040585826219",
+    "adId": "308133026517343",
+    "asin": "B0DX9MRKYN",
+    "campaignId": "450680753070157",
+    "sku": "JoshBoosterLibidex_Caps30_FBA",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "394040585826219",
+    "adId": "502579292948935",
+    "asin": "B0FKHPM4W3",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_KarelaJamunNeemCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "394040585826219",
+    "adId": "374958965427722",
+    "asin": "B0DT3PMW19",
+    "campaignId": "450680753070157",
+    "sku": "LibidSafePowerUp_30cap_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "394040585826219",
+    "adId": "491544164369308",
+    "asin": "B0FQ4JYQPB",
+    "campaignId": "450680753070157",
+    "sku": "RedHorsePower_CartoonCap30_v1",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "394040585826219",
+    "adId": "479489801724449",
+    "asin": "B0FKHJTJ8G",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_DiabexyREVERSOLCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "394040585826219",
+    "adId": "424347328021230",
+    "asin": "B0FRYJ26TJ",
+    "campaignId": "450680753070157",
+    "sku": "HorseGold_OneAnother",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "394040585826219",
+    "adId": "376349375727482",
+    "asin": "B0DVLY9N6F",
+    "campaignId": "450680753070157",
+    "sku": "VidyapithAyrvedSugarChurna_100gm_FBA",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "394040585826219",
+    "adId": "546536260840513",
+    "asin": "B0FKHPG7XH",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_GlycobalanceCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "394040585826219",
+    "adId": "365854158393233",
+    "asin": "B0DNRDZQRW",
+    "campaignId": "450680753070157",
+    "sku": "LibidexEffervescent_20Tab",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "394040585826219",
+    "adId": "496162986636412",
+    "asin": "B0DH4NY9X6",
+    "campaignId": "450680753070157",
+    "sku": "RebornNova_30Cap",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "394040585826219",
+    "adId": "480784187207924",
+    "asin": "B0DQLCYK3T",
+    "campaignId": "450680753070157",
+    "sku": "HotWaterBagGreen",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "394040585826219",
+    "adId": "309351385176151",
+    "asin": "B0FKHNXNK6",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_DiabetesControlProVaidbanCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "394040585826219",
+    "adId": "300885741819400",
+    "asin": "B0DJCDVQKK",
+    "campaignId": "450680753070157",
+    "sku": "PureAmritLibidexCpsl30_v2",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "466202465288706",
+    "asin": "B0FF5CQ7P7",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_Lung&LiverDetoxCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "535904861644938",
+    "asin": "B0FRZDZC83",
+    "campaignId": "450680753070157",
+    "sku": "Red_HorsePwr+WhitBlu_HorseLongPwr_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "319600789793540",
+    "asin": "B0FGYG8PR9",
+    "campaignId": "450680753070157",
+    "sku": "Black_HorsePower_Cap30_V8",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "405294839971201",
+    "asin": "B0FF5C7YRL",
+    "campaignId": "450680753070157",
+    "sku": "Magnesium Glycinate_30 Caps_FBA",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "332343951966657",
+    "asin": "B0FGY5XTR3",
+    "campaignId": "450680753070157",
+    "sku": "Black_HorsePower_Cap30_P3_V8_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "441977612839884",
+    "asin": "B0DGB1393T",
+    "campaignId": "450680753070157",
+    "sku": "DrRelaxGutArmyProbioticsCaps30_v1",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "509539463738181",
+    "asin": "B0DX7J5ZXT",
+    "campaignId": "450680753070157",
+    "sku": "JoshBoosterLibidex30_p2_FBA",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "300529177088174",
+    "asin": "B0DJ617Y4G",
+    "campaignId": "450680753070157",
+    "sku": "DrRlxGlutathione30cps_FaceGlow30cps",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "546696599636319",
+    "asin": "B0FKHPG2NN",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_LiverCareCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "501608148250067",
+    "asin": "B0FF9JT77F",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_XtraJoshCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "503457164710688",
+    "asin": "B0FQ3Y7WYN",
+    "campaignId": "450680753070157",
+    "sku": "RedHorsePower_CartoonCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "408140072121996",
+    "asin": "B0FFHCC6LV",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_SafedMusliCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "305323883787819",
+    "asin": "B0FF9JSV3N",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_Testo7XCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "451361660631483",
+    "asin": "B0FRZ8DB6Z",
+    "campaignId": "450680753070157",
+    "sku": "Blk_HorsePwr+WhitBlu_HorseLongPwr_Cap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "526384031159354",
+    "asin": "B0FF5DRKGW",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_SlimoCoffeeCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "382354174729905",
+    "asin": "B0FDLFTSWN",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_MancareProCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "424535324886777",
+    "asin": "B0FF6GS3F3",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_DailyBurnerCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "334390374919176",
+    "asin": "B0FH2J51XL",
+    "campaignId": "450680753070157",
+    "sku": "RedHorseForce & BlackHorseForce_Cap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "401518489517756",
+    "asin": "B0FG3FCXDM",
+    "campaignId": "450680753070157",
+    "sku": "vedaLab_Libidex_Cartoon_v1",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "434023335357589",
+    "asin": "B0FGYJDP14",
+    "campaignId": "450680753070157",
+    "sku": "Red_HorsePower_Cap30_P2_V8_FBA",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "559674989761043",
+    "asin": "B0FJX997LF",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_GojiBerriesCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "495934162675609",
+    "asin": "B0FGYHYDL7",
+    "campaignId": "450680753070157",
+    "sku": "Black_HorsePower_Cap30_P2_V8_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "391077707826194",
+    "asin": "B0FF39TSL1",
+    "campaignId": "450680753070157",
+    "sku": "CartoonLibidex_V2",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "281881529125730",
+    "asin": "B0FGYGDLBM",
+    "campaignId": "450680753070157",
+    "sku": "Red_HorsePower_Cap30_P3_V8_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "553991067595618",
+    "asin": "B0FH2GCNRP",
+    "campaignId": "450680753070157",
+    "sku": "Red_HorseForce_Cap30_P2_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "562097062898898",
+    "asin": "B0FGY9467N",
+    "campaignId": "450680753070157",
+    "sku": "Combo_RedHorse & BlkHorsePwr_Cap30_MN",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "437615925948948",
+    "asin": "B0FMNZV3FG",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_SpermidineCap30_v2",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "320831372661957",
+    "asin": "B0FJYNZVQX",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_VitaminAdkCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "380200774706705",
+    "asin": "B0FF5B9GQT",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_TongkatAliCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "530847559928222",
+    "asin": "B0FF3GCHM9",
+    "campaignId": "450680753070157",
+    "sku": "LeoLibidex_Cap30_P2",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "474452274233682",
+    "asin": "B0FF3H5YGF",
+    "campaignId": "450680753070157",
+    "sku": "LeoLibidex_Cap3_P2_1Oil",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "481037360762927",
+    "asin": "B0FDLG2T8R",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_MultivitaminPlusMenCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "416946100172149",
+    "asin": "B0FKHRZ57K",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_TCareCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "559540609946513",
+    "asin": "B0FRZ36FTH",
+    "campaignId": "450680753070157",
+    "sku": "Red_HorsePwr + WhitBlu_HorsePwr_Cap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "539587084448757",
+    "asin": "B0FKHJSK2X",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_SeaBuckthornBerryCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "282634863830112",
+    "asin": "B0FF3DLPCP",
+    "campaignId": "450680753070157",
+    "sku": "WhitBlu_libidex_Cap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "431368905811504",
+    "asin": "B0FH2JPPR1",
+    "campaignId": "450680753070157",
+    "sku": "Black_HorseForce_Cap30_P2_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "354491060006913",
+    "asin": "B0FRZ2D5VH",
+    "campaignId": "450680753070157",
+    "sku": "Black_HorsePwr + WhitBlu_HorsePwr_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "548019342508442",
+    "asin": "B0FJYHXGL8",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_AcvMoringaCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "517320522196028",
+    "asin": "B0FKHJS32M",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_SCareCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "354130882925990",
+    "asin": "B0FGYG5YN6",
+    "campaignId": "450680753070157",
+    "sku": "Black_HorsePower_Cap30_1Oil_V8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "300631846908444",
+    "asin": "B0FH2HR3TF",
+    "campaignId": "450680753070157",
+    "sku": "Black_HorseForce_Cap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "490042647910548",
+    "asin": "B0FDLHW9B8",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_CardiotonCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "471094730667605",
+    "asin": "B0FRYTYV46",
+    "campaignId": "450680753070157",
+    "sku": "WhitBlu_HorseLongPower_Cap30 + HorseOil",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "510952819362681",
+    "asin": "B0FK2VR2YG",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_AntiStressCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "388299377103318",
+    "asin": "B0DGB3M71M",
+    "campaignId": "450680753070157",
+    "sku": "DrRelaxHolisticBerberineCaps30_FBA",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "523451583086505",
+    "asin": "B0FJYM743L",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_PanchamHaldiCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "544345709943302",
+    "asin": "B0FF5DTY9R",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_Omega-3FishOilCap30_v1",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "496489596363803",
+    "asin": "B0FF9GM45G",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_TentexRoyalCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "360404588626389",
+    "asin": "B0FF3GXN3B",
+    "campaignId": "450680753070157",
+    "sku": "LibidexMultivitamin_Cap30_1Oil",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "447011481208554",
+    "asin": "B0FKHRB8VD",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_VinoMaxGrapeSeedExtractCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "322501799569235",
+    "asin": "B0FDLFD5TK",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_AromaSeatoneCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "540457423140178",
+    "asin": "B0DQQ24W25",
+    "campaignId": "450680753070157",
+    "sku": "LibidSafeAshwagandhaKSM66",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "555650776693516",
+    "asin": "B0FJXQRGC5",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_MiracleSilverCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "283210158477849",
+    "asin": "B0FKHJQCCG",
+    "campaignId": "450680753070157",
+    "sku": "BluWit_CholesterolCareCap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "329994848727566",
+    "asin": "B0FF3JDZ8V",
+    "campaignId": "450680753070157",
+    "sku": "PureAmrit_Libidex_Cap30_1Oil",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "294370122633588",
+    "asin": "B0FHH6S2NB",
+    "campaignId": "450680753070157",
+    "sku": "EROLABS_Libidex Cap(5*4)",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "480657425030218",
+    "asin": "B0FF39TVM2",
+    "campaignId": "450680753070157",
+    "sku": "USLabs_Libidex_Cap30_1Oil",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "376251532236719",
+    "asin": "B0FF3FXMXL",
+    "campaignId": "450680753070157",
+    "sku": "Xhealth_LibidexCap30_1Oil",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "305036399193326",
+    "asin": "B0FQ3RWDG3",
+    "campaignId": "450680753070157",
+    "sku": "GrayBottle_Libidex_Cap30_V1",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "554114654026924",
+    "asin": "B0FF3JQ9GH",
+    "campaignId": "450680753070157",
+    "sku": "BluWhit_Libidex40UP_Cap30_1Oil",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "362961782591784",
+    "asin": "B0FF3FSYHP",
+    "campaignId": "450680753070157",
+    "sku": "JoshBoosterLibidexCap30_1Oil_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "321037514572526",
+    "asin": "B0DR26NT8J",
+    "campaignId": "450680753070157",
+    "sku": "WhiteGoldShilajit_cps30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "409628560978035",
+    "asin": "B0FF3F7HZY",
+    "campaignId": "450680753070157",
+    "sku": "LibidexPower_Cap30_P2",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "333047618170084",
+    "asin": "B0FF3FM1JR",
+    "campaignId": "450680753070157",
+    "sku": "WhitBlu_libidex_Cap30_1Oil",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "414696429072632",
+    "asin": "B0FF39TG5M",
+    "campaignId": "450680753070157",
+    "sku": "LibidexPower_Cap30_1Qil",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "adId": "471990853801866",
+    "asin": "B0FF39TDZW",
+    "campaignId": "450680753070157",
+    "sku": "Old_LibidexPlus_Cap30_P2",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "358646332897774",
+    "adId": "555339599859060",
+    "asin": "B0FSL7VPHY",
+    "campaignId": "447632091052179",
+    "sku": "NamakZaitun_Bottle_100gm_P2",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "436081344896963",
+    "adId": "414358572579671",
+    "asin": "B0FSL7VPHY",
+    "campaignId": "435031720598753",
+    "sku": "NamakZaitun_Bottle_100gm_P2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "374119489955411",
+    "adId": "309222559644749",
+    "asin": "B0FF3F7HZY",
+    "campaignId": "363501903089685",
+    "sku": "LibidexPower_Cap30_P2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "374119489955411",
+    "adId": "555891185445670",
+    "asin": "B0FF39TG5M",
+    "campaignId": "363501903089685",
+    "sku": "LibidexPower_Cap30_1Qil",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "327224816246901",
+    "adId": "284593949613578",
+    "asin": "B0FSZD29LW",
+    "campaignId": "301800271201080",
+    "sku": "Red_SeaBuckthoronBerry_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "327224816246901",
+    "adId": "528709223003326",
+    "asin": "B0FSZJYW46",
+    "campaignId": "301800271201080",
+    "sku": "Red_SeaBuckthoronBerry_Cap30_P2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "406950055738811",
+    "adId": "507710492313927",
+    "asin": "B0FT19PTQ9",
+    "campaignId": "332106927193446",
+    "sku": "BlackSehat with AnotherHeight_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "406950055738811",
+    "adId": "503887788237220",
+    "asin": "B0FT16WLM9",
+    "campaignId": "332106927193446",
+    "sku": "OrangeSehat with AnotherHeight_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "369125621760245",
+    "adId": "430691254397468",
+    "asin": "B0FT3WBMCL",
+    "campaignId": "470882742702976",
+    "sku": "Black_EpsomBathSalt_920gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "380360854418997",
+    "adId": "553035842959325",
+    "asin": "B0FT3WRZYW",
+    "campaignId": "353409442988171",
+    "sku": "Black_VastuSeaSalt_920gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "436081344896963",
+    "adId": "285390178309692",
+    "asin": "B0FV8J7TWV",
+    "campaignId": "435031720598753",
+    "sku": "NamakZaitun_Bottle_100gm_V3",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "458044496009877",
+    "adId": "400885916654476",
+    "asin": "B0FT3WBMCL",
+    "campaignId": "302014829439837",
+    "sku": "Black_EpsomBathSalt_920gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "436081344896963",
+    "adId": "468812826487666",
+    "asin": "B0FVSCHQCK",
+    "campaignId": "435031720598753",
+    "sku": "NamakJaitunDiamond_Salt100gm_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "436081344896963",
+    "adId": "445986025539870",
+    "asin": "B0FVS9YQ7W",
+    "campaignId": "435031720598753",
+    "sku": "NamakJaitunSilver_Salt100gm_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "436081344896963",
+    "adId": "394723519044666",
+    "asin": "B0FVS9YQ7W",
+    "campaignId": "435031720598753",
+    "sku": "NamakJaitunSilver_Salt100gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "436081344896963",
+    "adId": "455813477550437",
+    "asin": "B0FVSCHQCK",
+    "campaignId": "435031720598753",
+    "sku": "NamakJaitunDiamond_Salt100gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "436081344896963",
+    "adId": "349771433277980",
+    "asin": "B0FVT44LHC",
+    "campaignId": "435031720598753",
+    "sku": "NamakJaitunGold_Salt100gm_MN",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "436081344896963",
+    "adId": "544473477577820",
+    "asin": "B0FVT44LHC",
+    "campaignId": "435031720598753",
+    "sku": "NamakJaitunGold_Salt100gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "503316884838314",
+    "adId": "435063125944527",
+    "asin": "B0FVWDSQ4D",
+    "campaignId": "485963092940732",
+    "sku": "IH-4 Oil_50ml",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "287214724070649",
+    "adId": "469005411626523",
+    "asin": "B0FVS9YQ7W",
+    "campaignId": "476478359412929",
+    "sku": "NamakJaitunSilver_Salt100gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "287214724070649",
+    "adId": "476849057680647",
+    "asin": "B0FVSCHQCK",
+    "campaignId": "476478359412929",
+    "sku": "NamakJaitunDiamond_Salt100gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "287214724070649",
+    "adId": "340251003971894",
+    "asin": "B0FVT44LHC",
+    "campaignId": "476478359412929",
+    "sku": "NamakJaitunGold_Salt100gm_MN",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "319001542239272",
+    "adId": "352203631318254",
+    "asin": "B0FW6P9WSB",
+    "campaignId": "391941528934592",
+    "sku": "SkyBlue_Proman_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "405386712412117",
+    "adId": "480747132576151",
+    "asin": "B0DLBSL86Y",
+    "campaignId": "452635064748939",
+    "sku": "DrRelaxManPowerCap30_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "440114072120161",
+    "adId": "524586569571092",
+    "asin": "B0DG3N1XWR",
+    "campaignId": "549731057321433",
+    "sku": "DrRelaxLungDetox30_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "427412797378663",
+    "asin": "B0FR47CCH6",
+    "campaignId": "512399078426319",
+    "sku": "RedBlack_BigJack_Cap with oil",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "301345894362291",
+    "asin": "B0FR4TH5SF",
+    "campaignId": "512399078426319",
+    "sku": "WhtieBlue_BigJack_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "388054466211027",
+    "asin": "B0FR4XVN4G",
+    "campaignId": "512399078426319",
+    "sku": "RedBlack_BigJack_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "500446166774772",
+    "asin": "B0DV37KW2B",
+    "campaignId": "512399078426319",
+    "sku": "BlackGoldBigJack30cap_1Oil",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "378030053983980",
+    "asin": "B0FT16WLM9",
+    "campaignId": "512399078426319",
+    "sku": "OrangeSehat with AnotherHeight_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "460925803420562",
+    "asin": "B0FY3V283P",
+    "campaignId": "512399078426319",
+    "sku": "Black_PremiumVastuSea_920gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "489544951376616",
+    "asin": "B0FY3R8BH6",
+    "campaignId": "512399078426319",
+    "sku": "SkyBlue_CelticSeaSalt_Bottle420gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "390640015803406",
+    "asin": "B0FY3VSY66",
+    "campaignId": "512399078426319",
+    "sku": "SkyBlue_DeadSeaSalt_420gm_Bottle",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "458671242375342",
+    "asin": "B0FY3XCSRN",
+    "campaignId": "512399078426319",
+    "sku": "SkyBlue_PremiumDeadSea salt_920 Gram",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "361750350347758",
+    "asin": "B0FXNFK4TJ",
+    "campaignId": "512399078426319",
+    "sku": "Blue_RawSeaSalt_920gm",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "406275510870341",
+    "asin": "B0DVLY9N6F",
+    "campaignId": "512399078426319",
+    "sku": "VidyapithAyrvedSugarChurna_100gm_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "329314117074552",
+    "asin": "B0DC1YMY63",
+    "campaignId": "512399078426319",
+    "sku": "UsLabsLionsManeCaps30_v3",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "353472348505140",
+    "asin": "B0FF3JQ9GH",
+    "campaignId": "512399078426319",
+    "sku": "BluWhit_Libidex40UP_Cap30_1Oil",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "342866748096784",
+    "asin": "B0CXP5PNV4",
+    "campaignId": "512399078426319",
+    "sku": "DrRLX_RhodiolaRosea_30Cap_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "302558208670476",
+    "asin": "B0DQQ24W25",
+    "campaignId": "512399078426319",
+    "sku": "LibidSafeAshwagandhaKSM66",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "426364371119045",
+    "asin": "B0DLBSL86Y",
+    "campaignId": "512399078426319",
+    "sku": "DrRelaxManPowerCap30_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "467258836085906",
+    "asin": "B0DFVJC4DL",
+    "campaignId": "512399078426319",
+    "sku": "DR Relax_ ManPower_ 30 Caps_MN",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "419432567648952",
+    "asin": "B0DR26NT8J",
+    "campaignId": "512399078426319",
+    "sku": "WhiteGoldShilajit_cps30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "387469745186563",
+    "asin": "B0FF39TVM2",
+    "campaignId": "512399078426319",
+    "sku": "USLabs_Libidex_Cap30_1Oil",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "433292188268191",
+    "asin": "B0DFGSKBC5",
+    "campaignId": "512399078426319",
+    "sku": "DrRlxMadanMnjari30Cap",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "363371442906456",
+    "asin": "B0DNRDZQRW",
+    "campaignId": "512399078426319",
+    "sku": "LibidexEffervescent_20Tab",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "498276299538472",
+    "asin": "B0DFVGWR9F",
+    "campaignId": "512399078426319",
+    "sku": "DrRelaxLycopene30_v6",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "508491512347152",
+    "asin": "B0D2V76N57",
+    "campaignId": "512399078426319",
+    "sku": "DrRelaxCardiotens30Cap_v1",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "adId": "539441279016658",
+    "asin": "B0DG5PR4DT",
+    "campaignId": "512399078426319",
+    "sku": "DrRelaxExtreamDoubleGold30_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "561677350818056",
+    "adId": "498073906212516",
+    "asin": "B0FZ4V6L6S",
+    "campaignId": "415263136235639",
+    "sku": "PromanGold_BlackGoldCartoon_Cap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "561677350818056",
+    "adId": "405743912022587",
+    "asin": "B0FZ4SDDXH",
+    "campaignId": "415263136235639",
+    "sku": "BlueCartoon_Proman+_Cap30",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "354799788146197",
+    "adId": "323229602027593",
+    "asin": "B0FZM5G3W7",
+    "campaignId": "295051997288316",
+    "sku": "IH 5 Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "356815034526087",
+    "adId": "301823731428640",
+    "asin": "B0DG5TF1X6",
+    "campaignId": "457502259773023",
+    "sku": "RED_HorsePowerCap30_1Oil_v1",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "356815034526087",
+    "adId": "405747513186153",
+    "asin": "B0DG5TF1X6",
+    "campaignId": "457502259773023",
+    "sku": "RED_HorsePowerCap30_1Oil_V6",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "487569590120892",
+    "adId": "383407198689397",
+    "asin": "B0G2CWQLLQ",
+    "campaignId": "536483623351199",
+    "sku": "White_XenoprostActive_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "487569590120892",
+    "adId": "494726957161018",
+    "asin": "B0G2CWXCRD",
+    "campaignId": "536483623351199",
+    "sku": "BlackBlue_Proman_Cap30_V5",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "487569590120892",
+    "adId": "358525819628455",
+    "asin": "B0G1NDQ4LG",
+    "campaignId": "536483623351199",
+    "sku": "Libidexx30Cap_30_cap",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "394910347173930",
+    "adId": "423461127586314",
+    "asin": "B0G2CWZWCD",
+    "campaignId": "347374395657911",
+    "sku": "WhiteBlue_Ashwagandha AF-43_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "394910347173930",
+    "adId": "356769875000916",
+    "asin": "B0G2CTC2L2",
+    "campaignId": "347374395657911",
+    "sku": "WhiteBlue_StressKam_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "394910347173930",
+    "adId": "509460384927761",
+    "asin": "B0G2CWZ1MX",
+    "campaignId": "347374395657911",
+    "sku": "Orange_HealthTone_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "394910347173930",
+    "adId": "557387530269036",
+    "asin": "B0G2CTJV3Q",
+    "campaignId": "347374395657911",
+    "sku": "WhiteRed_ManasmitraVatkam_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "327224816246901",
+    "adId": "550482326551822",
+    "asin": "B0FKHJSK2X",
+    "campaignId": "301800271201080",
+    "sku": "BluWit_SeaBuckthornBerryCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "414400344270762",
+    "adId": "296265543293658",
+    "asin": "B0G1TZ62JQ",
+    "campaignId": "322151813598362",
+    "sku": "Blk_Insugar Diabetes_30 Caps",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "429094583545492",
+    "adId": "538091619857423",
+    "asin": "B0G2YPBTSS",
+    "campaignId": "447106679560995",
+    "sku": "LibidexOil_50ml",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "561677350818056",
+    "adId": "402747740843313",
+    "asin": "B0G3LRDZS7",
+    "campaignId": "415263136235639",
+    "sku": "Proman_BLK_BTL_WhiteCap_P2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "425855815126380",
+    "adId": "522575404216449",
+    "asin": "B0G2XV9W71",
+    "campaignId": "401259983222777",
+    "sku": "Orange_HealthTone_Cap30_P2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "401662223758846",
+    "adId": "528623340253292",
+    "asin": "B0G1TZ62JQ",
+    "campaignId": "494992904904651",
+    "sku": "Blk_Insugar Diabetes_30 Caps",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "346969814119715",
+    "adId": "381567810558358",
+    "asin": "B0G43W7DC9",
+    "campaignId": "397729387742170",
+    "sku": "White_ProstaCare_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "414466891622281",
+    "adId": "423162541874726",
+    "asin": "B0DNRDZQRW",
+    "campaignId": "407322014558764",
+    "sku": "LibidexEffervescent_20Tab",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "387274349286327",
+    "adId": "398901115791402",
+    "asin": "B0G4K1ZYZ3",
+    "campaignId": "468295749469209",
+    "sku": "White_XenoprostActive_Cap30_P2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "387274349286327",
+    "adId": "448085811223815",
+    "asin": "B0G4K23XMW",
+    "campaignId": "468295749469209",
+    "sku": "White_XenoprostActive_Cap30_P3",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "387274349286327",
+    "adId": "333951189340104",
+    "asin": "B0G4JZ91FW",
+    "campaignId": "468295749469209",
+    "sku": "BlueWhite_XenoprostActive_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "387274349286327",
+    "adId": "469728699713875",
+    "asin": "B0G4JZ9QVC",
+    "campaignId": "468295749469209",
+    "sku": "USLabs_XenoprostActive_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "387274349286327",
+    "adId": "319194149423310",
+    "asin": "B0G4JXGK8N",
+    "campaignId": "468295749469209",
+    "sku": "WhiteGold_XenoprostActive_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "387274349286327",
+    "adId": "470204333421139",
+    "asin": "B0G4K2NL2X",
+    "campaignId": "468295749469209",
+    "sku": "BlackGold_XenoprostActive_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "451399547183340",
+    "adId": "356532805330235",
+    "asin": "B0G822TKNY",
+    "campaignId": "357128676273041",
+    "sku": "BluWit_HeightGainCap30_1AnotherHeightCap",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "451399547183340",
+    "adId": "397264039605548",
+    "asin": "B0G85XKMP6",
+    "campaignId": "357128676273041",
+    "sku": "BluWit_HeightGrowthCap_1AnotherHeightCap",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "451399547183340",
+    "adId": "522126614086976",
+    "asin": "B0G85G1VD7",
+    "campaignId": "357128676273041",
+    "sku": "BluWit_HeightIncreaseCap_1AnotherCap",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "301312817254896",
+    "adId": "487448633715275",
+    "asin": "B0DVQ7NR67",
+    "campaignId": "229914575004886",
+    "sku": "RedHorsePowerCap30_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "301312817254896",
+    "adId": "558972423635851",
+    "asin": "B0DG5T519Z",
+    "campaignId": "229914575004886",
+    "sku": "RED_HorsePowerCap30_v1",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "514723711067272",
+    "adId": "328581471589374",
+    "asin": "B0DVQ7NR67",
+    "campaignId": "267834069910394",
+    "sku": "RedHorsePowerCap30_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "514723711067272",
+    "adId": "463918396375155",
+    "asin": "B0DG5T519Z",
+    "campaignId": "267834069910394",
+    "sku": "RED_HorsePowerCap30_v1",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "302705967609222",
+    "adId": "472053276152627",
+    "asin": "B0DVQ7NR67",
+    "campaignId": "178967556818291",
+    "sku": "RedHorsePowerCap30_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "302705967609222",
+    "adId": "503510971199936",
+    "asin": "B0DG5T519Z",
+    "campaignId": "178967556818291",
+    "sku": "RED_HorsePowerCap30_v1",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "318758252111263",
+    "adId": "332377111384360",
+    "asin": "B0DVQ7NR67",
+    "campaignId": "29137304488031",
+    "sku": "RedHorsePowerCap30_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "318758252111263",
+    "adId": "531918962065200",
+    "asin": "B0DG5T519Z",
+    "campaignId": "29137304488031",
+    "sku": "RED_HorsePowerCap30_v1",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "510628161028289",
+    "adId": "309212858070908",
+    "asin": "B0DG5T519Z",
+    "campaignId": "210934865865971",
+    "sku": "RED_HorsePowerCap30_v1",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "327962915100998",
+    "adId": "410136534206064",
+    "asin": "B0DBVQKNV8",
+    "campaignId": "133458871245973",
+    "sku": "DrRelaxVisiorax_30cps_v3_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "514849097141018",
+    "adId": "550852546179769",
+    "asin": "B0FQ4938RT",
+    "campaignId": "74133162947877",
+    "sku": "GrayBottle_Libidex_Cap30_V2",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "545384913794413",
+    "adId": "469797240029129",
+    "asin": "B0FR4TQ93L",
+    "campaignId": "423222776774400",
+    "sku": "WhiteBlue_ManPower_P2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "514849097141018",
+    "adId": "331426885506504",
+    "asin": "B0GNFSZ7CC",
+    "campaignId": "74133162947877",
+    "sku": "Gray_LibidexCartoon_1Another_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "536462863368325",
+    "adId": "477648888597308",
+    "asin": "B0GNGK1W9N",
+    "campaignId": "139357691315524",
+    "sku": "Red_HorsePowerCap30_1AnotherCap",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "536462863368325",
+    "adId": "431698423230255",
+    "asin": "B0GNG4GQVH",
+    "campaignId": "139357691315524",
+    "sku": "Black_HorsePowerCap30_1AnotherCap",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "520992212485985",
+    "adId": "534326019167955",
+    "asin": "B0GNGHHWDR",
+    "campaignId": "24548112757383",
+    "sku": "BluWit_ShatavariCap30_1AnotherCap",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "515082949546423",
+    "adId": "400839191307063",
+    "asin": "B0GNG7TF5Z",
+    "campaignId": "49041941392843",
+    "sku": "White_XenoprostCap30_1AnotherCap",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "369747148097689",
+    "adId": "553347548377083",
+    "asin": "B0GQGLM31G",
+    "campaignId": "215967555668245",
+    "sku": "Vidyapith_SugarChurna_100gm_P2__V11",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "369747148097689",
+    "adId": "376434550138885",
+    "asin": "B0GQGG59V3",
+    "campaignId": "215967555668245",
+    "sku": "Vidyapith_SugarChurna_100gm_P5_V18",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "369747148097689",
+    "adId": "306656260551592",
+    "asin": "B0GQGF94TF",
+    "campaignId": "215967555668245",
+    "sku": "Vidyapith_SugarChurna_100gm_P5_V17",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "369747148097689",
+    "adId": "442352138689183",
+    "asin": "B0GQGJ38X8",
+    "campaignId": "215967555668245",
+    "sku": "Vidyapith_SugarChurna_100gm__V10",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "369747148097689",
+    "adId": "315038157342794",
+    "asin": "B0GQGF5RKF",
+    "campaignId": "215967555668245",
+    "sku": "Vidyapith_SugarChurna_100gm_P4_V16",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "369747148097689",
+    "adId": "499510463752427",
+    "asin": "B0GQGG3Q1X",
+    "campaignId": "215967555668245",
+    "sku": "Vidyapith_SugarChurna_100gm_P3__V13",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "369747148097689",
+    "adId": "358823598967137",
+    "asin": "B0GQGN44GP",
+    "campaignId": "215967555668245",
+    "sku": "Vidyapith_SugarChurna_100gm__V9",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "369747148097689",
+    "adId": "541124709581554",
+    "asin": "B0GQGHZH1B",
+    "campaignId": "215967555668245",
+    "sku": "Vidyapith_SugarChurna_100gm_P3__V14",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "369747148097689",
+    "adId": "347317572009805",
+    "asin": "B0GQGJKKJR",
+    "campaignId": "215967555668245",
+    "sku": "Vidyapith_SugarChurna_100gm_P2__V12",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "366329076052339",
+    "adId": "421965705697433",
+    "asin": "B0GQHYWM2H",
+    "campaignId": "93552709264142",
+    "sku": "UsLabs_BigJack + SkyBlu_LibidexCrtn30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "366329076052339",
+    "adId": "296730778178947",
+    "asin": "B0GQHZFF4X",
+    "campaignId": "93552709264142",
+    "sku": "RedBlk_BigJack + SkyBlu_LibidexCrtn30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "366329076052339",
+    "adId": "386303147958640",
+    "asin": "B0GQJ7P2H9",
+    "campaignId": "93552709264142",
+    "sku": "WhitGold_BigJack + SkyBlu_LibidexCrtn30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "366329076052339",
+    "adId": "352176097602686",
+    "asin": "B0GPKG7XCP",
+    "campaignId": "93552709264142",
+    "sku": "WhitBlu_BigJack + SkyBlu_LibidexCrtn30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "366329076052339",
+    "adId": "557002385923609",
+    "asin": "B0GQHT38RT",
+    "campaignId": "93552709264142",
+    "sku": "BlkGold_BigJack + SkyBlu_LibidexCrtn30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "293528377118572",
+    "adId": "345634327607395",
+    "asin": "B0FZM5G3W7",
+    "campaignId": "161565584236416",
+    "sku": "I-H4 Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "293528377118572",
+    "adId": "312525632056478",
+    "asin": "B0FVWDSQ4D",
+    "campaignId": "161565584236416",
+    "sku": "IH-4 Oil_50ml",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "414466891622281",
+    "adId": "458444770182197",
+    "asin": "B0G39Y3TWS",
+    "campaignId": "407322014558764",
+    "sku": "SkyBlu_LibidexCartoon_Cap30_V7",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "393660635390765",
+    "adId": "281749575828169",
+    "asin": "B0GQZJP5GJ",
+    "campaignId": "17810330944554",
+    "sku": "Gray_LibidexCap30_1Another",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "369747148097689",
+    "adId": "436026542151541",
+    "asin": "B0GQZGVFQM",
+    "campaignId": "215967555668245",
+    "sku": "Vidyapith_SugarChurna_1Another",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "379977056315451",
+    "adId": "524862279529134",
+    "asin": "B0GQZJP5GJ",
+    "campaignId": "480640809086221",
+    "sku": "Gray_LibidexCap30_1Another",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "185798354172254",
+    "adId": "450921398078778",
+    "asin": "B0GT4T9JKB",
+    "campaignId": "214887246684827",
+    "sku": "Blue_CelticSalt_250GM_V1",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "185798354172254",
+    "adId": "455744467241537",
+    "asin": "B0GT1MTW5R",
+    "campaignId": "214887246684827",
+    "sku": "Blue_CelticSalt_920GM_V3",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "185798354172254",
+    "adId": "293012769308110",
+    "asin": "B0GT1PHQ66",
+    "campaignId": "214887246684827",
+    "sku": "Blue_CelticSalt_420GM_V2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "80418743788661",
+    "adId": "333485932852431",
+    "asin": "B0GR1FKC9C",
+    "campaignId": "119097939907137",
+    "sku": "blackblue_metabondetoxcap30_1Another",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "97729356287747",
+    "adId": "470761072512785",
+    "asin": "B0DQNXRKDF",
+    "campaignId": "169950210732860",
+    "sku": "USLabsHeightMaxCaps30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "97729356287747",
+    "adId": "287120384981758",
+    "asin": "B0DQPCTBQQ",
+    "campaignId": "169950210732860",
+    "sku": "DrRelaxHeightGrowth_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "97729356287747",
+    "adId": "455911148335896",
+    "asin": "B0DQPYYBRZ",
+    "campaignId": "169950210732860",
+    "sku": "DrRelaxHeightDetoxcap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "97729356287747",
+    "adId": "516405227119485",
+    "asin": "B0G85G1VD7",
+    "campaignId": "169950210732860",
+    "sku": "BluWit_HeightIncreaseCap_1AnotherCap",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "97729356287747",
+    "adId": "554451376239324",
+    "asin": "B0G822TKNY",
+    "campaignId": "169950210732860",
+    "sku": "BluWit_HeightGainCap30_1AnotherHeightCap",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "97729356287747",
+    "adId": "368976923585793",
+    "asin": "B0FR47CPSW",
+    "campaignId": "169950210732860",
+    "sku": "WhiteBlue_HeightGain_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "203558380876019",
+    "adId": "402294226523811",
+    "asin": "B0FGYJDP14",
+    "campaignId": "219150225292743",
+    "sku": "Red_HorsePower_Cap30_P2_V8_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "66584908661850",
+    "adId": "462126444615462",
+    "asin": "B0GTW4LG92",
+    "campaignId": "59238665102526",
+    "sku": "BluWit_Insugar + 1AnotherCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "151269103995222",
+    "adId": "458162051894393",
+    "asin": "B0GTW2W2MW",
+    "campaignId": "13003423684327",
+    "sku": "Black_TitanicK5 + 1Another_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "240307358210401",
+    "adId": "420148397093478",
+    "asin": "B0GTWM2PFP",
+    "campaignId": "220269298438978",
+    "sku": "BluWit_Hawthorn + SeaBuckthorn_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "241311727596008",
+    "adId": "443503740184516",
+    "asin": "B0GTWMVSDR",
+    "campaignId": "155073957504277",
+    "sku": "BluWit_NaturalIron_Cap30 + 1 Another",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "101042512405039",
+    "adId": "522508979047534",
+    "asin": "B0GTWM33ZN",
+    "campaignId": "165062746487960",
+    "sku": "BluWit_PanchamHaldiCap30_P2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "101042512405039",
+    "adId": "493908587020281",
+    "asin": "B0GTWJKMTQ",
+    "campaignId": "165062746487960",
+    "sku": "BluWit_PanchamHaldi + 1Another_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "130639758431698",
+    "adId": "332363614403075",
+    "asin": "B0DGB2CJXC",
+    "campaignId": "210797728852395",
+    "sku": "DrRelaxSawPalmettoCaps30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "181096438686620",
+    "adId": "332212263107327",
+    "asin": "B0FF59D3JY",
+    "campaignId": "227200672725119",
+    "sku": "BluWit_TejasyaAshwagandhaCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "28871889033365",
+    "adId": "531947650139690",
+    "asin": "B0FJXQRGC5",
+    "campaignId": "255449741959758",
+    "sku": "BluWit_MiracleSilverCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "111333174984151",
+    "adId": "317994854528256",
+    "asin": "B0FF5CQ7P7",
+    "campaignId": "29196584297825",
+    "sku": "BluWit_Lung&LiverDetoxCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "49084901478812",
+    "adId": "419226361991254",
+    "asin": "B0GNGHHWDR",
+    "campaignId": "113927601645262",
+    "sku": "BluWit_ShatavariCap30_1AnotherCap",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "178374118973980",
+    "adId": "343836785928859",
+    "asin": "B0FFHCC6LV",
+    "campaignId": "160724507181475",
+    "sku": "BluWit_SafedMusliCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "71649297908285",
+    "adId": "502096875449486",
+    "asin": "B0FKHJTJ8G",
+    "campaignId": "216021605474290",
+    "sku": "BluWit_DiabexyREVERSOLCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "137887877786049",
+    "adId": "290708577709247",
+    "asin": "B0FJYHXGL8",
+    "campaignId": "179492337455839",
+    "sku": "BluWit_AcvMoringaCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "217769456061328",
+    "adId": "540738688026951",
+    "asin": "B0GV7SM326",
+    "campaignId": "18542467437587",
+    "sku": "WhiteGold_SugarBati_Cap30_P4",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "217769456061328",
+    "adId": "349841032169373",
+    "asin": "B0GV7Y1V4S",
+    "campaignId": "18542467437587",
+    "sku": "WhiteGold_SugarBati_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "217769456061328",
+    "adId": "373095158074046",
+    "asin": "B0GV7ZRPJX",
+    "campaignId": "18542467437587",
+    "sku": "WhiteGold_SugarBati_Cap30_P3",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "217769456061328",
+    "adId": "382474471830228",
+    "asin": "B0GV82H7FZ",
+    "campaignId": "18542467437587",
+    "sku": "WhiteGold_SugarBati_Cap30_P2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "217769456061328",
+    "adId": "525282366833016",
+    "asin": "B0GV7ZRSR1",
+    "campaignId": "18542467437587",
+    "sku": "WhiteGold_SugarBati_Cap30_1Another",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "3852819183707",
+    "adId": "502584414168510",
+    "asin": "B0FMNZV3FG",
+    "campaignId": "276232943293788",
+    "sku": "BluWit_SpermidineCap30_v2",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "272276290459111",
+    "adId": "312354603695673",
+    "asin": "B0FJYNZVQX",
+    "campaignId": "65916490897100",
+    "sku": "BluWit_VitaminAdkCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "87133774256219",
+    "adId": "398535456986389",
+    "asin": "B0FBSXBHMV",
+    "campaignId": "158897536088196",
+    "sku": "LibidSafe_StressManagement_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "95393657697874",
+    "adId": "310986281824984",
+    "asin": "B0DH4NY9X6",
+    "campaignId": "40076834923305",
+    "sku": "RebornNova_30Cap",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "197095626286834",
+    "adId": "394152782538036",
+    "asin": "B0FBTDHQ2Q",
+    "campaignId": "234849128487066",
+    "sku": "Stress Who_Ashwagandha KSM66_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "197095626286834",
+    "adId": "355841531342948",
+    "asin": "B0DQQ24W25",
+    "campaignId": "234849128487066",
+    "sku": "LibidSafeAshwagandhaKSM66",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "246878655258478",
+    "adId": "433815281151573",
+    "asin": "B0D2V26RB1",
+    "campaignId": "103239773381424",
+    "sku": "DrRelaxRoyalTentmaxCpsls30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "101042512405039",
+    "adId": "449157958030631",
+    "asin": "B0FJYM743L",
+    "campaignId": "165062746487960",
+    "sku": "BluWit_PanchamHaldiCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "101042512405039",
+    "adId": "539730097301287",
+    "asin": "B0FJYM743L",
+    "campaignId": "165062746487960",
+    "sku": "BluWit_PanchamHaldiCap30_FBA",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "173416242233137",
+    "adId": "473377476361329",
+    "asin": "B0DFVGWR9F",
+    "campaignId": "135541900371924",
+    "sku": "DrRelaxLycopene30_v6",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "67602468836161",
+    "adId": "392067054030667",
+    "asin": "B0FT19PTQ9",
+    "campaignId": "99231728158648",
+    "sku": "BlackSehat with AnotherHeight_Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "166269704798832",
+    "adId": "298028338819279",
+    "asin": "B0DFVHTN57",
+    "campaignId": "105822071750880",
+    "sku": "DrRelaxGoliWajidAliShah30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "101661052355548",
+    "adId": "552136381250662",
+    "asin": "B0FDLFD5TK",
+    "campaignId": "162070235239225",
+    "sku": "BluWit_AromaSeatoneCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "184250364390146",
+    "adId": "466220390151634",
+    "asin": "B0DFRJDXM6",
+    "campaignId": "62814182106362",
+    "sku": "DrRelaxTongkatAli30_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "184250364390146",
+    "adId": "301145403517744",
+    "asin": "B0FF5B9GQT",
+    "campaignId": "62814182106362",
+    "sku": "BluWit_TongkatAliCap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "448637470075843",
+    "adId": "403353652304661",
+    "asin": "B0DFVH7J4D",
+    "campaignId": "102962410383200",
+    "sku": "DrRelaxSerenoaRepens30_v8",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "201915425451586",
+    "adId": "556276892631754",
+    "asin": "B0GWVRYPZH",
+    "campaignId": "202205970240118",
+    "sku": "WhiteGold_SugarBati_Cap30_V1",
+    "state": "ENABLED"
+  }
+]

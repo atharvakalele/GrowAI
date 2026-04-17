@@ -1,0 +1,24 @@
+{
+  "B0FBWXQ9JL_LS_SkyBlu_CelticSeaSalt_250gm": [
+    {
+      "timestamp": "2026-04-15T14:54:15.627115",
+      "action": "DECREASE_COMPETITOR",
+      "old_price": 99.0,
+      "new_price": 98.0,
+      "change_pct": -1.01,
+      "reason": "Dry-run competitor routing test",
+      "status": "DRY_RUN",
+      "listing_status": "ERROR",
+      "safety_notes": [
+        "Profit margin -91.8% below min 10.0%"
+      ],
+      "snapshot_sales_7d": 0.0,
+      "snapshot_orders_7d": 0,
+      "snapshot_profit": 0.0,
+      "dry_run": true,
+      "route_run_id": "test_route_001",
+      "route_source": "competitor_tracker",
+      "route_issue_type": "buy_box_lost_price_gap"
+    }
+  ]
+}

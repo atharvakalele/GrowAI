@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "enabled": true,
+  "marketplace_id": "A21TJRUUN4KGV",
+  "our_seller_id": "A2AC2AS9R9CBEA",
+  "top_asins_limit": 30,
+  "min_orders_7d": 1,
+  "batch_size": 20,
+  "delay_between_batches_sec": 32,
+  "alert_thresholds": {
+    "price_gap_loss_rs": 10,
+    "price_gap_loss_pct": 3,
+    "competitor_count_high": 3
+  },
+  "watchlist_asins": []
+}

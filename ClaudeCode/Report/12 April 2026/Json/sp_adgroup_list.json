@@ -1,0 +1,982 @@
+[
+  {
+    "adGroupId": "185798354172254",
+    "campaignId": "214887246684827",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 20/3/2026 07:40:36.400",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "80418743788661",
+    "campaignId": "119097939907137",
+    "defaultBid": 50.1,
+    "name": "Ad Group - 20/3/2026 08:10:36.851",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "97729356287747",
+    "campaignId": "169950210732860",
+    "defaultBid": 50.1,
+    "name": "Ad Group - 24/3/2026 11:54:50.571",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "203558380876019",
+    "campaignId": "219150225292743",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 25/3/2026 10:15:09.852",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "66584908661850",
+    "campaignId": "59238665102526",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 26/3/2026 09:01:13.361",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "101042512405039",
+    "campaignId": "165062746487960",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 26/3/2026 08:56:35.339",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "240307358210401",
+    "campaignId": "220269298438978",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 26/3/2026 08:34:06.250",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "151269103995222",
+    "campaignId": "13003423684327",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 26/3/2026 08:53:15.628",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "241311727596008",
+    "campaignId": "155073957504277",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 26/3/2026 08:39:12.836",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "130639758431698",
+    "campaignId": "210797728852395",
+    "defaultBid": 49.87,
+    "name": "Ad Group - 26/3/2026 11:11:35.761",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "178374118973980",
+    "campaignId": "160724507181475",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 28/3/2026 08:18:18.031",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "197095626286834",
+    "campaignId": "234849128487066",
+    "defaultBid": 50.1,
+    "name": "Ad Group -Ashwagandha KSM",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "3852819183707",
+    "campaignId": "276232943293788",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 29/3/2026 07:13:38.082",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "181096438686620",
+    "campaignId": "227200672725119",
+    "defaultBid": 50.1,
+    "name": "Ad Group - 28/3/2026 08:13:47.181",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "217769456061328",
+    "campaignId": "18542467437587",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 28/3/2026 18:02:08.868",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "272276290459111",
+    "campaignId": "65916490897100",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 29/3/2026 07:00:59.468",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "246878655258478",
+    "campaignId": "103239773381424",
+    "defaultBid": 50.1,
+    "name": "Ad Group - 29/3/2026 06:54:18.705",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "111333174984151",
+    "campaignId": "29196584297825",
+    "defaultBid": 50.1,
+    "name": "Ad Group - 28/3/2026 08:11:33.310",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "95393657697874",
+    "campaignId": "40076834923305",
+    "defaultBid": 50.1,
+    "name": "Ad Group - 29/3/2026 06:36:33.753",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "28871889033365",
+    "campaignId": "255449741959758",
+    "defaultBid": 32.4,
+    "name": "Ad Group - 28/3/2026 08:16:07.672",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "137887877786049",
+    "campaignId": "179492337455839",
+    "defaultBid": 50.1,
+    "name": "Ad Group - 28/3/2026 08:38:44.324",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "49084901478812",
+    "campaignId": "113927601645262",
+    "defaultBid": 37.77,
+    "name": "Ad Group - 28/3/2026 08:31:13.196",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "71649297908285",
+    "campaignId": "216021605474290",
+    "defaultBid": 50.1,
+    "name": "Ad Group - 28/3/2026 08:09:03.982",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "87133774256219",
+    "campaignId": "158897536088196",
+    "defaultBid": 50.1,
+    "name": "Ad Group - 29/3/2026 07:17:24.942",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "101661052355548",
+    "campaignId": "162070235239225",
+    "defaultBid": 37.77,
+    "name": "Ad Group - 8/4/2026 05:22:04.142",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "67602468836161",
+    "campaignId": "99231728158648",
+    "defaultBid": 50.1,
+    "name": "Ad Group - 8/4/2026 05:44:08.473",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "184250364390146",
+    "campaignId": "62814182106362",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 8/4/2026 05:16:31.047",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "173416242233137",
+    "campaignId": "135541900371924",
+    "defaultBid": 14.16,
+    "name": "Ad Group - 8/4/2026 05:24:46.150",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "166269704798832",
+    "campaignId": "105822071750880",
+    "defaultBid": 14.16,
+    "name": "Ad Group - 8/4/2026 05:41:18.421",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "201915425451586",
+    "campaignId": "202205970240118",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 12/4/2026 08:42:07.869",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "448483975362602",
+    "campaignId": "302164316622266",
+    "defaultBid": 50.1,
+    "name": "Ad group - 6/7/2024 06:14:02.005",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "561503821095027",
+    "campaignId": "320291965075611",
+    "defaultBid": 3.0,
+    "name": "libidex campaign",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "486395656914572",
+    "campaignId": "468190873386723",
+    "defaultBid": 46.54,
+    "name": "libidex combo",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "522433628722584",
+    "campaignId": "551726471501812",
+    "defaultBid": 50.1,
+    "name": "Ad group - 5/10/2024 07:53:21.083",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "478046471315020",
+    "campaignId": "441257269521367",
+    "defaultBid": 3.0,
+    "name": "Ad group - 21/1/2025 10:31:29.135",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "297574255948083",
+    "campaignId": "429878877190326",
+    "defaultBid": 5.0,
+    "name": "Ad group - 18/2/2025 07:26:41.735",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "482120584323962",
+    "campaignId": "300416064382389",
+    "defaultBid": 1.0,
+    "name": "Growz | Adgroup | Growz - Defend ASINs... | SG-63667",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "367665279266172",
+    "campaignId": "559706969987718",
+    "defaultBid": 1.0,
+    "name": "Growz | Adgroup | Growz - Defend ASINs... | SG-81786",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "393878241004365",
+    "campaignId": "343332567834643",
+    "defaultBid": 1.0,
+    "name": "Growz | Adgroup | Growz - Defend ASINs... | SG-36672",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "326009426719258",
+    "campaignId": "401325736018627",
+    "defaultBid": 5.36,
+    "name": "Growz | SP - Auto - AdGroup - 95848 -  - 59739",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "546914106319483",
+    "campaignId": "284053803409071",
+    "defaultBid": 5.67,
+    "name": "Growz | SP - Auto - Addyi Plus Capsules - 55718 -  - 18800",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "544380862697404",
+    "campaignId": "284053803409071",
+    "defaultBid": 5.67,
+    "name": "Growz | SP - Auto - Big Booms Pro Capsules - 55437 -  - 18800",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "300103137101708",
+    "campaignId": "284053803409071",
+    "defaultBid": 5.67,
+    "name": "Growz | SP - Auto - 24K Gold LibideX40 UP Capsules - 55228 -  - 18800",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "337206957263833",
+    "campaignId": "284053803409071",
+    "defaultBid": 5.67,
+    "name": "Growz | SP - Auto - ED Solve Capsules - 38088 -  - 18800",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "436585574794479",
+    "campaignId": "284053803409071",
+    "defaultBid": 5.67,
+    "name": "Growz | SP - Auto - Party Long Capsules - 82424 -  - 18800",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "520535402166520",
+    "campaignId": "284053803409071",
+    "defaultBid": 5.67,
+    "name": "Growz | SP - Auto - Josh Booster Libidex40 UP Capsules - 22914 -  - 18800",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "436868433210776",
+    "campaignId": "284053803409071",
+    "defaultBid": 5.67,
+    "name": "Growz | SP - Auto - Manasamitra Vatakam Capsules - 60333 -  - 18800",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "524722155702380",
+    "campaignId": "284053803409071",
+    "defaultBid": 5.67,
+    "name": "Growz | SP - Auto - Cordyceps Capsules - 35224 -  - 18800",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "475162781784964",
+    "campaignId": "284053803409071",
+    "defaultBid": 5.67,
+    "name": "Growz | SP - Auto - LibidSafe Addyi Capsules - 75294 -  - 18800",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "359551071615673",
+    "campaignId": "513974424104456",
+    "defaultBid": 5.54,
+    "name": "Growz | SP - Auto - Libidex Capsules - 70609 -  - 76045",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "316670354231990",
+    "campaignId": "489636437383210",
+    "defaultBid": 5.54,
+    "name": "Growz | SP - Auto - Libidex40 UP Capsules - 23354 -  - 16365",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "284614643447552",
+    "campaignId": "513974424104456",
+    "defaultBid": 5.54,
+    "name": "Growz | SP - Auto - Cordyceps Capsules - 94885 -  - 76045",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "555374719308464",
+    "campaignId": "489636437383210",
+    "defaultBid": 5.54,
+    "name": "Growz | SP - Auto - Sehat Prash Capsules - 98907 -  - 16365",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "402792191683664",
+    "campaignId": "489636437383210",
+    "defaultBid": 5.54,
+    "name": "Growz | SP - Auto - Vedalabs INSUGAR DiabeticCare - 62026 -  - 16365",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "549978347852063",
+    "campaignId": "513974424104456",
+    "defaultBid": 5.54,
+    "name": "Growz | SP - Auto - Celtic Sea Salt - 18771 -  - 76045",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "350117891493600",
+    "campaignId": "489636437383210",
+    "defaultBid": 5.54,
+    "name": "Growz | SP - Auto - Effective Glutathione & FaceGlow - 41279 -  - 16365",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "545657235500425",
+    "campaignId": "489636437383210",
+    "defaultBid": 5.54,
+    "name": "Growz | SP - Auto - Keeda Jadi Capsules - 57658 -  - 16365",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "403029518309797",
+    "campaignId": "489636437383210",
+    "defaultBid": 5.54,
+    "name": "Growz | SP - Auto - Sehat Tablet for Weight Gain - 55750 -  - 16365",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "367040195160229",
+    "campaignId": "513974424104456",
+    "defaultBid": 5.54,
+    "name": "Growz | SP - Auto - Visiorax Eye Capsules - 67110 -  - 76045",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "535749041611273",
+    "campaignId": "315669267872113",
+    "defaultBid": 3.0,
+    "name": "Horse Gold",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "466978091684880",
+    "campaignId": "504530411330718",
+    "defaultBid": 3.0,
+    "name": "Celtic Salt",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "358646332897774",
+    "campaignId": "447632091052179",
+    "defaultBid": 3.0,
+    "name": "Namak Jeitun",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "516063046884960",
+    "campaignId": "380421310418471",
+    "defaultBid": 5.39,
+    "name": "Ad Group - 22/8/2025 19:08:56.781",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "460799182259230",
+    "campaignId": "302014829439837",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 24/8/2025 15:41:20.933",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "425808348508782",
+    "campaignId": "432465171189876",
+    "defaultBid": 12.96,
+    "name": "BluWit_TitanicK2Cap30",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "512247189529576",
+    "campaignId": "501032265023977",
+    "defaultBid": 50.1,
+    "name": "Ad Group - 3/9/2025 06:53:39.298",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "379977056315451",
+    "campaignId": "480640809086221",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 7/9/2025 20:34:16.844",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "538521454242140",
+    "campaignId": "469149478693708",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 6/9/2025 18:35:43.666",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "429094583545492",
+    "campaignId": "447106679560995",
+    "defaultBid": 10.1,
+    "name": "Ad Group - 7/9/2025 20:45:34.915",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "556141013963680",
+    "campaignId": "475036044119581",
+    "defaultBid": 50.1,
+    "name": "BrstPump",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "458044496009877",
+    "campaignId": "302014829439837",
+    "defaultBid": 3.0,
+    "name": "Gold High Bid",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "545384913794413",
+    "campaignId": "423222776774400",
+    "defaultBid": 5.0,
+    "name": "Ad Group - 15/9/2025 11:56:43.214",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "294857365384832",
+    "campaignId": "482942485380023",
+    "defaultBid": 5.0,
+    "name": "Ad Group - 13/9/2025 18:55:10.233",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "410896908255329",
+    "campaignId": "527997018244401",
+    "defaultBid": 10.0,
+    "name": "Ad Group - Libidex",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "459602360152887",
+    "campaignId": "561029410150389",
+    "defaultBid": 50.1,
+    "name": "Ad Group - 15/9/2025 11:36:02.438",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "341324661758359",
+    "campaignId": "480221430005566",
+    "defaultBid": 50.1,
+    "name": "Ad Group - 15/9/2025 11:30:58.518",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "536501551656551",
+    "campaignId": "370818528707617",
+    "defaultBid": 3.0,
+    "name": "Big jack",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "433425033896304",
+    "campaignId": "423735423809730",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 21/9/2025 12:27:35.910",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "462288208413564",
+    "campaignId": "511295141952515",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 21/9/2025 11:39:23.876",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "283554667809542",
+    "campaignId": "550976884268337",
+    "defaultBid": 3.0,
+    "name": "Ad Group -",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "340074741100859",
+    "campaignId": "495609431015415",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 21/9/2025 11:28:16.780",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "409448888466896",
+    "campaignId": "403766708756459",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 21/9/2025 10:46:36.948",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "524311016410074",
+    "campaignId": "458864027194721",
+    "defaultBid": 3.0,
+    "name": "Ad Group -Cordyceps",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "313133794541389",
+    "campaignId": "440305192013930",
+    "defaultBid": 12.96,
+    "name": "Ad Group - Horse Power",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "436081344896963",
+    "campaignId": "435031720598753",
+    "defaultBid": 3.0,
+    "name": "Namak Jeitun Olive Salt",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "485967428486941",
+    "campaignId": "450680753070157",
+    "defaultBid": 3.0,
+    "name": "LibidSafe-Condiments, Spreads & Cooking",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "366847309217143",
+    "campaignId": "450680753070157",
+    "defaultBid": 3.0,
+    "name": "Shila Pak-Condiments, Spreads & Cooking",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "371085850599031",
+    "campaignId": "450680753070157",
+    "defaultBid": 3.0,
+    "name": "Vedalabs-Livingroom",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "394040585826219",
+    "campaignId": "450680753070157",
+    "defaultBid": 3.0,
+    "name": "LibidSafe-Health Care",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "531605737484166",
+    "campaignId": "450680753070157",
+    "defaultBid": 3.0,
+    "name": "US Labs-Nutrition & Food",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "390512547844339",
+    "campaignId": "450680753070157",
+    "defaultBid": 3.0,
+    "name": "Shila Pak-Nutrition & Food",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "502967459563183",
+    "campaignId": "450680753070157",
+    "defaultBid": 3.0,
+    "name": "Organic One-Condiments, Spreads & Cooking",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "357791851065519",
+    "campaignId": "450680753070157",
+    "defaultBid": 3.0,
+    "name": "Lion's Mane-Nutrition & Food",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "511814063767651",
+    "campaignId": "450680753070157",
+    "defaultBid": 3.0,
+    "name": "Organic One-Unknown",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "357701990068928",
+    "campaignId": "450680753070157",
+    "defaultBid": 3.0,
+    "name": "Kalpananda-Health Care",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "499695193600387",
+    "campaignId": "450680753070157",
+    "defaultBid": 3.0,
+    "name": "LibidSafe-Unknown",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "452209410576064",
+    "campaignId": "450680753070157",
+    "defaultBid": 3.0,
+    "name": "Shila Pak-Health Care",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "342217991515464",
+    "campaignId": "450680753070157",
+    "defaultBid": 3.0,
+    "name": "LibidSafe-Nutrition & Food",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "306071916031375",
+    "campaignId": "450680753070157",
+    "defaultBid": 3.0,
+    "name": "US Labs-Condiments, Spreads & Cooking",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "353986771026279",
+    "campaignId": "450680753070157",
+    "defaultBid": 3.0,
+    "name": "US Labs-Health Care",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "382203372163663",
+    "campaignId": "450680753070157",
+    "defaultBid": 3.0,
+    "name": "Generic-Nutrition & Food",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "374119489955411",
+    "campaignId": "363501903089685",
+    "defaultBid": 10.1,
+    "name": "Ad Group - 5/10/2025 10:26:52.554",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "380360854418997",
+    "campaignId": "353409442988171",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 5/10/2025 19:16:04.387",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "327224816246901",
+    "campaignId": "301800271201080",
+    "defaultBid": 8.1,
+    "name": "Ad Group - 5/10/2025 10:45:58.110",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "406950055738811",
+    "campaignId": "332106927193446",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 5/10/2025 10:52:14.908",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "369125621760245",
+    "campaignId": "470882742702976",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 5/10/2025 19:07:24.986",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "503316884838314",
+    "campaignId": "485963092940732",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 13/10/2025 18:11:11.191",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "287214724070649",
+    "campaignId": "476478359412929",
+    "defaultBid": 3.0,
+    "name": "Ad Group - zaitoon salt silver,gold,diamond",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "319001542239272",
+    "campaignId": "391941528934592",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 14/10/2025 19:03:48.502",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "440114072120161",
+    "campaignId": "549731057321433",
+    "defaultBid": 5.0,
+    "name": "Ad Group - 25/10/2025 09:17:21.802",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "405386712412117",
+    "campaignId": "452635064748939",
+    "defaultBid": 5.0,
+    "name": "Ad Group - 25/10/2025 09:41:33.711",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "383590161992541",
+    "campaignId": "512399078426319",
+    "defaultBid": 50.1,
+    "name": "Ad Group - 30/10/2025 04:09:30.272",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "561677350818056",
+    "campaignId": "415263136235639",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 2/11/2025 19:01:31.885",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "354799788146197",
+    "campaignId": "295051997288316",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 6/11/2025 06:09:57.315",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "356815034526087",
+    "campaignId": "457502259773023",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 11/11/2025 07:16:02.845",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "487569590120892",
+    "campaignId": "536483623351199",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 15/11/2025 15:36:38.817",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "394910347173930",
+    "campaignId": "347374395657911",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 15/11/2025 15:14:06.503",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "483458658873456",
+    "campaignId": "430447293604849",
+    "defaultBid": 44.65,
+    "name": "Ad Group - 18/11/2025 17:44:04.288",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "414400344270762",
+    "campaignId": "322151813598362",
+    "defaultBid": 44.65,
+    "name": "Ad Group - 18/11/2025 18:01:01.916",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "401662223758846",
+    "campaignId": "494992904904651",
+    "defaultBid": 50.1,
+    "name": "Ad Group - 24/11/2025 13:16:23.791",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "425855815126380",
+    "campaignId": "401259983222777",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 24/11/2025 13:31:50.791",
+    "state": "PAUSED"
+  },
+  {
+    "adGroupId": "346969814119715",
+    "campaignId": "397729387742170",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 26/11/2025 21:19:33.866",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "414466891622281",
+    "campaignId": "407322014558764",
+    "defaultBid": 3.0,
+    "name": "Ad Group - Libidex",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "387274349286327",
+    "campaignId": "468295749469209",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 2/12/2025 11:17:23.914",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "451399547183340",
+    "campaignId": "357128676273041",
+    "defaultBid": 15.68,
+    "name": "Ad Group - 28/12/2025 08:58:12.753",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "510628161028289",
+    "campaignId": "210934865865971",
+    "defaultBid": 49.16,
+    "name": "Ad Group - 14/1/2026 12:49:46.825",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "301312817254896",
+    "campaignId": "229914575004886",
+    "defaultBid": 36.19,
+    "name": "Ad Group - 13/1/2026 21:18:53.983",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "318758252111263",
+    "campaignId": "29137304488031",
+    "defaultBid": 36.19,
+    "name": "Ad Group - 13/1/2026 21:20:59.238",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "327962915100998",
+    "campaignId": "133458871245973",
+    "defaultBid": 20.54,
+    "name": "Ad Group - 14/1/2026 13:38:49.549",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "514723711067272",
+    "campaignId": "267834069910394",
+    "defaultBid": 36.19,
+    "name": "Ad Group - 13/1/2026 21:13:31.859",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "302705967609222",
+    "campaignId": "178967556818291",
+    "defaultBid": 36.19,
+    "name": "Ad Group - 13/1/2026 21:21:54.190",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "514849097141018",
+    "campaignId": "74133162947877",
+    "defaultBid": 50.1,
+    "name": "Ad Group - 14/1/2026 13:02:41.029",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "515082949546423",
+    "campaignId": "49041941392843",
+    "defaultBid": 50.1,
+    "name": "Ad Group - 20/2/2026 02:27:20.662",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "536462863368325",
+    "campaignId": "139357691315524",
+    "defaultBid": 3.0,
+    "name": "Ad Group - 20/2/2026 02:10:55.826",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "520992212485985",
+    "campaignId": "24548112757383",
+    "defaultBid": 40.0,
+    "name": "Ad Group - 20/2/2026 02:16:29.568",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "366329076052339",
+    "campaignId": "93552709264142",
+    "defaultBid": 10.0,
+    "name": "Ad Group - 28/2/2026 16:28:31.941",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "369747148097689",
+    "campaignId": "215967555668245",
+    "defaultBid": 3.0,
+    "name": "Ad Group - Sugar Charna",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "293528377118572",
+    "campaignId": "161565584236416",
+    "defaultBid": 50.1,
+    "name": "Ad Group - 3/3/2026 10:11:19.159",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "393660635390765",
+    "campaignId": "17810330944554",
+    "defaultBid": 3.0,
+    "name": "libidex",
+    "state": "ENABLED"
+  },
+  {
+    "adGroupId": "448637470075843",
+    "campaignId": "102962410383200",
+    "defaultBid": 24.63,
+    "name": "Ad Group - 8/4/2026 05:39:17.587",
+    "state": "ENABLED"
+  }
+]

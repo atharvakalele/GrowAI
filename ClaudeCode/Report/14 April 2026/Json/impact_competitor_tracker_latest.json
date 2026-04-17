@@ -1,0 +1,170 @@
+{
+  "schema_type": "impact_summary",
+  "schema_version": "1.0",
+  "feature_id": "M01",
+  "feature_key": "competitor_tracker",
+  "feature_name": "Competitor Tracker",
+  "module_group": "market_intelligence",
+  "generated_at": "2026-04-15T09:29:00.033632",
+  "period": "manual",
+  "status": "warning",
+  "impact_level": "high",
+  "business_areas": [
+    "buy_box",
+    "pricing",
+    "competitor_pressure",
+    "revenue_protection"
+  ],
+  "headline": "Competitor risk found on 1 ASIN(s); review Buy Box and listing pressure.",
+  "summary_metrics": {
+    "profit_impact_rs": 0,
+    "loss_prevented_rs": 0,
+    "waste_blocked_rs": 0,
+    "revenue_protected_rs": 92622.86,
+    "rank_up_count": 0,
+    "rank_down_count": 0,
+    "buy_box_won_count": 29,
+    "buy_box_lost_count": 0,
+    "conversion_up_count": 0,
+    "conversion_down_count": 0,
+    "organic_gain_count": 0,
+    "organic_decline_count": 0,
+    "tracked_asins_count": 30,
+    "no_buy_box_count": 1,
+    "high_pressure_count": 0,
+    "revenue_at_risk_7d_rs": 1691.44,
+    "low_pressure_opportunities_count": 29
+  },
+  "positive_impacts": [
+    {
+      "type": "low_competitor_pressure",
+      "message": "29 ASIN(s) currently have Buy Box and no direct offer competition.",
+      "estimated_sales7d_rs": 92622.86
+    }
+  ],
+  "negative_impacts": [
+    {
+      "type": "competitor_or_buy_box_risk",
+      "message": "1 ASIN(s) need review due to Buy Box or competitor pressure.",
+      "estimated_sales7d_at_risk_rs": 1691.44
+    }
+  ],
+  "top_winners": [
+    {
+      "asin": "B0FBWXQ9JL",
+      "sku": "LS_SkyBlu_CelticSeaSalt_250gm",
+      "sales7d_rs": 17189.0,
+      "buy_box_status": "WON",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "Low pressure; maintain price discipline"
+    },
+    {
+      "asin": "B0DX7J5ZXT",
+      "sku": "JoshBoosterLibidex30_p2",
+      "sales7d_rs": 6347.62,
+      "buy_box_status": "WON",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "Low pressure; maintain price discipline"
+    },
+    {
+      "asin": "B0GQGN44GP",
+      "sku": "Vidyapith_SugarChurna_100gm__V9",
+      "sales7d_rs": 5999.93,
+      "buy_box_status": "WON",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "Low pressure; maintain price discipline"
+    },
+    {
+      "asin": "B0CXP6ZJZF",
+      "sku": "DrRLXManasamitraVatakamCaps30_v1",
+      "sales7d_rs": 5961.9,
+      "buy_box_status": "WON",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "Low pressure; maintain price discipline"
+    },
+    {
+      "asin": "B0GQGF94TF",
+      "sku": "Vidyapith_SugarChurna_100gm_P5_V17",
+      "sales7d_rs": 5645.75,
+      "buy_box_status": "WON",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "Low pressure; maintain price discipline"
+    },
+    {
+      "asin": "B0GT4T9JKB",
+      "sku": "Blue_CelticSalt_250GM_V1",
+      "sales7d_rs": 4962.14,
+      "buy_box_status": "WON",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "Low pressure; maintain price discipline"
+    },
+    {
+      "asin": "B0DGQS8X8C",
+      "sku": "USLabsLibidex40Plus_30Cap",
+      "sales7d_rs": 4069.5,
+      "buy_box_status": "WON",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "Low pressure; maintain price discipline"
+    },
+    {
+      "asin": "B0GT1MTW5R",
+      "sku": "Blue_CelticSalt_920GM_V3",
+      "sales7d_rs": 3695.05,
+      "buy_box_status": "WON",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "Low pressure; maintain price discipline"
+    },
+    {
+      "asin": "B0GNG7TF5Z",
+      "sku": "White_XenoprostCap30_1AnotherCap",
+      "sales7d_rs": 3644.76,
+      "buy_box_status": "WON",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "Low pressure; maintain price discipline"
+    },
+    {
+      "asin": "B0GQJ7P2H9",
+      "sku": "WhitGold_BigJack + SkyBlu_LibidexCrtn30",
+      "sales7d_rs": 3499.06,
+      "buy_box_status": "WON",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "Low pressure; maintain price discipline"
+    }
+  ],
+  "top_risks": [
+    {
+      "asin": "B0GQGHZH1B",
+      "sku": "Vidyapith_SugarChurna_100gm_P3__V14",
+      "sales7d_rs": 1691.44,
+      "buy_box_status": "NO_BUYBOX",
+      "competitor_count": 0,
+      "price_gap_rs": 0.0,
+      "recommendation": "Check listing suppression, pricing, and availability"
+    }
+  ],
+  "ai_learning": {
+    "new_rule_learned": false,
+    "rule_promoted_count": 0,
+    "confidence": 0.78,
+    "notes": "New-standard wrapper created from competitor tracker raw output."
+  },
+  "recommendations": [
+    "Review no Buy Box ASINs for listing suppression, pricing, and availability.",
+    "Use high-pressure ASINs as candidates for pricing, coupon, or fulfillment review."
+  ],
+  "detail_ref": {
+    "raw_file": "ClaudeCode/Report/14 April 2026/Json/competitor_tracker_latest.json",
+    "detail_file": "ClaudeCode/Report/14 April 2026/Json/competitor_tracker_20260415_092900.json",
+    "supporting_report": "ClaudeCode/Report/14 April 2026/Json/competitor_tracker_latest.json"
+  }
+}

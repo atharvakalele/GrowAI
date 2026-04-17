@@ -1,0 +1,23 @@
+{
+  "schema_type": "stock_control",
+  "schema_version": "1.0",
+  "scope": "seller_listing_only",
+  "default_target_stock": 1000,
+  "default_minimum_threshold": 1,
+  "manual_entries": [
+    {
+      "type": "asin",
+      "value": "B0DGB3M71M",
+      "excluded": false,
+      "created_at": "2026-04-15T19:58:32.334620",
+      "updated_at": "2026-04-15T19:58:36.553329"
+    },
+    {
+      "type": "asin",
+      "value": "B0DX7BWSKG",
+      "excluded": true,
+      "created_at": "2026-04-15T20:01:15.369546",
+      "updated_at": "2026-04-15T20:01:15.369546"
+    }
+  ]
+}

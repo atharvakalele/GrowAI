@@ -1,0 +1,54 @@
+{
+  "schema_type": "activity_summary",
+  "schema_version": "1.0",
+  "feature_id": "M01",
+  "feature_key": "competitor_tracker",
+  "feature_name": "Competitor Tracker",
+  "module_group": "market_intelligence",
+  "run_id": "competitor_tracker_20260415_092826",
+  "generated_at": "2026-04-15T09:29:00.033632",
+  "status": "warning",
+  "run_mode": "manual",
+  "duration_sec": 33.82,
+  "freshness_hours": 24,
+  "needs_review": true,
+  "input_sources": [
+    "config_competitor.json",
+    "ClaudeCode/Report/14 April 2026/Json/sp_product_ads_list.json",
+    "ClaudeCode/Report/12 April 2026/Json/sp_advertisedproduct_daily.json"
+  ],
+  "output_files": [
+    "ClaudeCode/Report/14 April 2026/Json/competitor_tracker_latest.json",
+    "ClaudeCode/Report/14 April 2026/Json/competitor_tracker_20260415_092900.json",
+    "ClaudeCode/Report/14 April 2026/Json/impact_competitor_tracker_20260415_092826.json",
+    "ClaudeCode/Report/14 April 2026/Json/activity_competitor_tracker_latest.json",
+    "ClaudeCode/Report/14 April 2026/Json/report_registry_latest.json"
+  ],
+  "counts": {
+    "items_scanned": 30,
+    "items_processed": 30,
+    "alerts_generated": 1,
+    "approvals_needed": 1,
+    "warnings": 1,
+    "errors": 0
+  },
+  "run_events": [
+    "Selected ASIN pool from ads/product report data.",
+    "Fetched competitive summary batches from Amazon SP-API.",
+    "Saved legacy raw competitor tracker output.",
+    "Published new-standard impact summary, activity summary, and registry entry."
+  ],
+  "warnings_list": [
+    "1 ASIN(s) have no Buy Box."
+  ],
+  "errors_list": [],
+  "review_items": {
+    "user_review": [
+      "1 ASIN(s) have no Buy Box."
+    ],
+    "developer_review": [],
+    "blocked_items": []
+  },
+  "source_report_folder": "14 April 2026",
+  "notes": "Compatibility migration: legacy raw output remains unchanged; dashboard-facing summaries follow future JSON contract."
+}

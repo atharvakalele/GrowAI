@@ -1,0 +1,196 @@
+{
+  "schema_type": "report_registry",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T19:56:43.957186",
+  "entries": [
+    {
+      "schema_type": "registry_entry",
+      "schema_version": "1.0",
+      "feature_id": "M02",
+      "feature_key": "buybox",
+      "feature_name": "Buy Box Monitor",
+      "module_group": "market_intelligence",
+      "files": {
+        "raw_output": "ClaudeCode/Report/15 April 2026/Json/buy_box_status.json",
+        "impact_summary": "ClaudeCode/Report/15 April 2026/Json/impact_buybox_latest.json",
+        "activity_summary": "ClaudeCode/Report/15 April 2026/Json/activity_buybox_latest.json",
+        "detail_report": "ClaudeCode/Report/15 April 2026/Json/buy_box_status_backfill_20260415_170054.json"
+      },
+      "generated_at": "2026-04-15T17:00:54.905373",
+      "dashboard_visibility": {
+        "show_on_main": true,
+        "show_on_activity": true,
+        "show_on_home": true,
+        "main_section": "Critical Impact Alerts",
+        "activity_section": "Run Status"
+      },
+      "importance": {
+        "status": "warning",
+        "impact_level": "high",
+        "priority_score": 70,
+        "strategic_weight": 8,
+        "is_critical": false
+      },
+      "display_rules": {
+        "headline": "Buy Box risk detected on 48 ASIN(s).",
+        "badge": "Review",
+        "sort_order": 70,
+        "collapse_by_default": false,
+        "pin_to_top_when": [
+          "critical",
+          "failed",
+          "warning"
+        ]
+      },
+      "review_state": {
+        "needs_review": true,
+        "needs_approval": false,
+        "has_warnings": true,
+        "has_errors": false
+      },
+      "notes": {
+        "dashboard_note": "Shows Buy Box status, AI fixes, and expected benefit of routed actions.",
+        "developer_note": "Future-module compatible Buy Box monitor with shared action routing.",
+        "migration_note": "Legacy buy_box_status.json remains available."
+      }
+    },
+    {
+      "schema_type": "registry_entry",
+      "schema_version": "1.0",
+      "feature_id": "M01",
+      "feature_key": "competitor_tracker",
+      "feature_name": "Competitor Tracker",
+      "module_group": "market_intelligence",
+      "files": {
+        "raw_output": "ClaudeCode/Report/15 April 2026/Json/competitor_tracker_latest.json",
+        "impact_summary": "ClaudeCode/Report/15 April 2026/Json/impact_competitor_tracker_latest.json",
+        "activity_summary": "ClaudeCode/Report/15 April 2026/Json/activity_competitor_tracker_latest.json",
+        "detail_report": "ClaudeCode/Report/15 April 2026/Json/competitor_tracker_latest.json"
+      },
+      "generated_at": "2026-04-15T14:08:34.630836",
+      "dashboard_visibility": {
+        "show_on_main": true,
+        "show_on_activity": true,
+        "show_on_home": true,
+        "main_section": "Critical Impact Alerts",
+        "activity_section": "Run Status"
+      },
+      "importance": {
+        "status": "warning",
+        "impact_level": "high",
+        "priority_score": 70,
+        "strategic_weight": 7,
+        "is_critical": false
+      },
+      "display_rules": {
+        "headline": "Competitor risk found on 1 ASIN(s); review Buy Box and listing pressure.",
+        "badge": "Review",
+        "sort_order": 70,
+        "collapse_by_default": false,
+        "pin_to_top_when": [
+          "critical",
+          "failed",
+          "warning"
+        ]
+      },
+      "review_state": {
+        "needs_review": true,
+        "needs_approval": false,
+        "has_warnings": true,
+        "has_errors": false
+      },
+      "notes": {
+        "dashboard_note": "Shows competitor pressure, Buy Box status, and revenue-at-risk signals.",
+        "developer_note": "AI-only compatible wrapper added beside legacy competitor tracker output.",
+        "migration_note": "Legacy raw competitor_tracker_latest.json remains unchanged."
+      }
+    },
+    {
+      "schema_type": "registry_entry",
+      "schema_version": "1.0",
+      "feature_id": "M03",
+      "feature_key": "listing_monitor",
+      "feature_name": "Top Listing Monitor",
+      "module_group": "listing_health",
+      "files": {
+        "raw_output": "ClaudeCode/Report/15 April 2026/Json/top_listing_status.json",
+        "impact_summary": "ClaudeCode/Report/15 April 2026/Json/impact_listing_monitor_latest.json",
+        "activity_summary": "ClaudeCode/Report/15 April 2026/Json/activity_listing_monitor_latest.json",
+        "detail_report": "ClaudeCode/Report/15 April 2026/Json/top_listing_status_backfill_20260415_172010.json"
+      },
+      "generated_at": "2026-04-13T18:59:12.148349",
+      "dashboard_visibility": {
+        "show_on_main": true,
+        "show_on_activity": true,
+        "show_on_home": true,
+        "main_section": "Critical Impact Alerts",
+        "activity_section": "Run Status"
+      },
+      "importance": {
+        "status": "warning",
+        "impact_level": "high",
+        "priority_score": 70,
+        "strategic_weight": 8,
+        "is_critical": false
+      },
+      "display_rules": {
+        "headline": "Listing risk detected on 1 top ASIN(s).",
+        "badge": "Review",
+        "sort_order": 70,
+        "collapse_by_default": false,
+        "pin_to_top_when": [
+          "critical",
+          "failed",
+          "warning"
+        ]
+      },
+      "review_state": {
+        "needs_review": true,
+        "needs_approval": false,
+        "has_warnings": true,
+        "has_errors": false
+      },
+      "notes": {
+        "dashboard_note": "Shows top listing health, AI recovery attempts, and expected business protection.",
+        "developer_note": "Future-module compatible top listing monitor with shared listing recovery routing.",
+        "migration_note": "Legacy top_listing_status.json remains available."
+      }
+    },
+    {
+      "schema_type": "registry_entry",
+      "schema_version": "1.0",
+      "feature_id": "M04",
+      "feature_key": "stock",
+      "feature_name": "Stock Monitor",
+      "module_group": "inventory",
+      "files": {
+        "raw_output": "ClaudeCode/Report/15 April 2026/Json/stock_status.json",
+        "impact_summary": "ClaudeCode/Report/15 April 2026/Json/impact_stock_latest.json",
+        "activity_summary": "ClaudeCode/Report/15 April 2026/Json/activity_stock_latest.json",
+        "detail_report": "ClaudeCode/Report/15 April 2026/Json/stock_status_20260415_195103.json"
+      },
+      "generated_at": "2026-04-15T19:56:00.870872",
+      "dashboard_visibility": {
+        "show_on_main": true,
+        "show_on_activity": true,
+        "show_on_home": true,
+        "main_section": "Critical Impact Alerts",
+        "activity_section": "Run Status"
+      },
+      "importance": {
+        "status": "partial",
+        "impact_level": "high",
+        "priority_score": 70
+      },
+      "display_rules": {
+        "headline": "Stock risk detected on 20 ASIN(s).",
+        "badge": "HIGH",
+        "default_view": "impact_first"
+      },
+      "review_state": {
+        "needs_review": true,
+        "has_warnings": false
+      }
+    }
+  ]
+}

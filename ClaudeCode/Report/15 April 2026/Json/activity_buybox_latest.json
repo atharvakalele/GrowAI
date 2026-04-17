@@ -1,0 +1,59 @@
+{
+  "schema_type": "activity_summary",
+  "schema_version": "1.0",
+  "feature_id": "M02",
+  "feature_key": "buybox",
+  "feature_name": "Buy Box Monitor",
+  "module_group": "market_intelligence",
+  "run_id": "buybox_20260415_170054",
+  "generated_at": "2026-04-15T17:00:54.905373",
+  "status": "warning",
+  "run_mode": "manual",
+  "duration_sec": 0.0,
+  "freshness_hours": 2,
+  "needs_review": true,
+  "input_sources": [
+    "ClaudeCode/Report/15 April 2026/Json/sp_product_ads_list.json",
+    "ClaudeCode/Report/15 April 2026/Json/sp_advertisedproduct_daily.json",
+    "ClaudeCode/Report/15 April 2026/Json/buy_box_status.json"
+  ],
+  "output_files": [
+    "ClaudeCode/Report/15 April 2026/Json/buy_box_status.json",
+    "ClaudeCode/Report/15 April 2026/Json/buy_box_status_backfill_20260415_170054.json",
+    "ClaudeCode/Report/15 April 2026/Json/impact_buybox_20260415_170054.json",
+    "ClaudeCode/Report/15 April 2026/Json/activity_buybox_latest.json",
+    "ClaudeCode/Report/15 April 2026/Json/report_registry_latest.json"
+  ],
+  "counts": {
+    "items_scanned": 300,
+    "items_processed": 300,
+    "alerts_generated": 2,
+    "approvals_needed": 2,
+    "warnings": 2,
+    "errors": 0,
+    "action_routes_created": 0,
+    "action_routes_executed": 0
+  },
+  "run_events": [
+    "Loaded ASINs from ads import data.",
+    "Fetched Buy Box competitive summary from Amazon SP-API.",
+    "Saved legacy buy_box_status.json output.",
+    "Action routing status: skipped."
+  ],
+  "warnings_list": [
+    "3 ASIN(s) lost Buy Box.",
+    "45 ASIN(s) have no Buy Box."
+  ],
+  "errors_list": [],
+  "review_items": {
+    "user_review": [
+      "3 ASIN(s) lost Buy Box.",
+      "45 ASIN(s) have no Buy Box."
+    ],
+    "developer_review": [],
+    "blocked_items": []
+  },
+  "action_history": [],
+  "source_report_folder": "15 April 2026",
+  "notes": "Buy Box monitor now publishes impact and activity summaries beside legacy output."
+}

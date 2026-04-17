@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-04-14T08:24:55.156219",
+  "today": {
+    "orders": 18,
+    "revenue": 12014.4,
+    "pending": 3
+  },
+  "yesterday": null,
+  "changes": {},
+  "alerts": [],
+  "alert_triggered": false
+}

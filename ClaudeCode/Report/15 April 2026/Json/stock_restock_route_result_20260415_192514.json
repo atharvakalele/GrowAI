@@ -1,0 +1,9 @@
+{
+  "route_type": "stock_restock_auto",
+  "engine": "stock_restock",
+  "generated_at": "2026-04-15T19:25:14.916006",
+  "request_count": 38,
+  "status": "pending",
+  "reason": "Self action disabled for stock feature.",
+  "actions": []
+}

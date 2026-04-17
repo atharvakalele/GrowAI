@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-04-15T08:26:23.925830",
+  "marketplace_id": "A21TJRUUN4KGV",
+  "tracked_asins": 0,
+  "failed_asins": [
+    "B0FBWXQ9JL"
+  ],
+  "run_errors": [
+    {
+      "batch": 1,
+      "asins": [
+        "B0FBWXQ9JL"
+      ],
+      "error": "Token fetch failed: [WinError 10061] No connection could be made because the target machine actively refused it"
+    }
+  ],
+  "summary": {
+    "lost_buy_box": 0,
+    "no_buy_box": 0,
+    "high_pressure": 0,
+    "low_pressure_opportunities": 0
+  },
+  "results": []
+}

@@ -1,0 +1,63 @@
+{
+  "schema_type": "listing_recovery_status",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T16:07:53.794365",
+  "input_route_file": "tmp_listing_route_price_fallback.json",
+  "input_route_count": 1,
+  "status": "skipped",
+  "reason": "No listing recovery routes qualified for price action.",
+  "checked_items": [
+    {
+      "asin": "B0FKHJQCCG",
+      "sku": "fallback_test_sku",
+      "current_price": 205.0,
+      "price_source": "sp_pricing_data",
+      "listing_status": "ERROR",
+      "issues": [],
+      "source_issue_type": "no_buy_box_listing_check",
+      "source_reason": "Fallback price resolution test"
+    }
+  ],
+  "blocked_items": [
+    {
+      "asin": "B0FKHJQCCG",
+      "sku": "fallback_test_sku",
+      "status": "SKIPPED",
+      "reason": "Listing status is ERROR; recovery price route not needed."
+    }
+  ],
+  "price_route": {
+    "route_run_id": "listing_recovery_price_20260415_160753",
+    "generated_at": "2026-04-15T16:07:55.827739",
+    "engine": "price_optimizer",
+    "request_count": 0,
+    "status": "skipped",
+    "reason": "No listing recovery routes qualified for price action.",
+    "summary": {},
+    "actions": [],
+    "blocked_items": [
+      {
+        "asin": "B0FKHJQCCG",
+        "sku": "fallback_test_sku",
+        "status": "SKIPPED",
+        "reason": "Listing status is ERROR; recovery price route not needed."
+      }
+    ],
+    "status_checks": [
+      {
+        "asin": "B0FKHJQCCG",
+        "sku": "fallback_test_sku",
+        "current_price": 205.0,
+        "price_source": "sp_pricing_data",
+        "listing_status": "ERROR",
+        "issues": [],
+        "source_issue_type": "no_buy_box_listing_check",
+        "source_reason": "Fallback price resolution test"
+      }
+    ],
+    "request_file": "ClaudeCode/Report/15 April 2026/Json/listing_recovery_price_route_latest.json",
+    "request_history_file": "ClaudeCode/Report/15 April 2026/Json/listing_recovery_price_route_20260415_160753.json",
+    "result_file": "ClaudeCode/Report/15 April 2026/Json/listing_recovery_price_route_result_latest.json",
+    "result_history_file": "ClaudeCode/Report/15 April 2026/Json/listing_recovery_price_route_result_20260415_160753.json"
+  }
+}

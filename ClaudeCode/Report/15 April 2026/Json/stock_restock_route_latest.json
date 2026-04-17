@@ -1,0 +1,191 @@
+{
+  "schema_type": "action_route_request",
+  "schema_version": "1.0",
+  "route_run_id": "stock_route_20260415_195103",
+  "generated_at": "2026-04-15T19:56:00.870872",
+  "source_feature_key": "stock",
+  "source_feature_name": "Stock Monitor",
+  "action_engine": "stock_restock",
+  "requests": [
+    {
+      "asin": "B0D3CK886B",
+      "sku": "UsLabs_AddyiPlus_ForWomen",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0D54MR138",
+      "sku": "NewBoldCareLibidexPlus30C",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0DX7BWSKG",
+      "sku": "LibidSafe_iGainCpsl30_P2",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0DG5SZMVR",
+      "sku": "BLKHorsePowerCap30_1Oil_v",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0D3DB5P73",
+      "sku": "xhlthboostrLibidx30Cap_Ad",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0DLCKR3CB",
+      "sku": "RED_HorsePowerCpls30_P2_V",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0CXQ8TVMZ",
+      "sku": "DrRLXKeedaJadiGoldCaps30_",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0DCTRKV5Q",
+      "sku": "CelticSaltGold_1kg_PouchV",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0FG19CFSM",
+      "sku": "Vedalabs LiBiDEXX30-Capsu",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0FDLFVMH5",
+      "sku": "BluWit_MagnesiumGlycinate",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0DCSY651M",
+      "sku": "JoshBoosterLibidex30Cap_F",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0D2V5NWSG",
+      "sku": "DrRelaxStressGuardCap30_v",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0CTHXGWPC",
+      "sku": "DrRLXCayennePapperCap30_v",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0F3CWZCFT",
+      "sku": "Brown_Organic_CelticSallt",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0FGYHYDL7",
+      "sku": "Black_HorsePower_Cap30_P2",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0FH2GCNRP",
+      "sku": "Red_HorseForce_Cap30_P2_F",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0FDLG2T8R",
+      "sku": "BluWit_MultivitaminPlusMe",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0FH2JPPR1",
+      "sku": "Black_HorseForce_Cap30_P2",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0DGB3M71M",
+      "sku": "DrRelaxHolisticBerberineC",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    },
+    {
+      "asin": "B0G2CWZWCD",
+      "sku": "WhiteBlue_Ashwagandha AF-",
+      "stock_status": "OUT OF STOCK",
+      "current_stock": 0,
+      "sales7d_rs": 0.0,
+      "target_stock": 1000,
+      "recommendation": "Auto stock seller listing"
+    }
+  ]
+}

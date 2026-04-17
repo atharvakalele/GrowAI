@@ -1,0 +1,1278 @@
+{
+  "schema_type": "stock_restock_candidates",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T19:56:01.112249",
+  "scope": "seller_listing_only",
+  "default_target_stock": 1000,
+  "default_minimum_threshold": 1,
+  "risk_items": [
+    {
+      "type": "asin",
+      "value": "B0D3CK886B",
+      "asin": "B0D3CK886B",
+      "sku": "UsLabs_AddyiPlus_ForWomen",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "UsLabs_AddyiPlus_ForWomen_30cps"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DC4CZ3Z8",
+      "asin": "B0DC4CZ3Z8",
+      "sku": "goldLibidex_oil",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "goldLibidex_oil"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DC48PQM7",
+      "asin": "B0DC48PQM7",
+      "sku": "goldLibidex",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "goldLibidex",
+        "Libidex_Gold"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0D54MR138",
+      "asin": "B0D54MR138",
+      "sku": "NewBoldCareLibidexPlus30C",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "NewBoldCareLibidexPlus30Cpsl_P2"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DX7BWSKG",
+      "asin": "B0DX7BWSKG",
+      "sku": "LibidSafe_iGainCpsl30_P2",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "LibidSafe_iGainCpsl30_P2"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DG5T519Z",
+      "asin": "B0DG5T519Z",
+      "sku": "RED_HorsePowerCap30_v6",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "RED_HorsePowerCap30_v6",
+        "RED_HorsePowerCap30_v1"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DG5SZMVR",
+      "asin": "B0DG5SZMVR",
+      "sku": "BLKHorsePowerCap30_1Oil_v",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "BLKHorsePowerCap30_1Oil_v8"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0D3DB5P73",
+      "asin": "B0D3DB5P73",
+      "sku": "xhlthboostrLibidx30Cap_Ad",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "xhlthboostrLibidx30Cap_Advan_FBA"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0D54G6W7K",
+      "asin": "B0D54G6W7K",
+      "sku": "XhlthBoosterLibidex_p2_v8",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "XhlthBoosterLibidex_p2_v8"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DLCKR3CB",
+      "asin": "B0DLCKR3CB",
+      "sku": "RED_HorsePowerCpls30_P2_V",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "RED_HorsePowerCpls30_P2_V2_v8"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0CXQ8TVMZ",
+      "asin": "B0CXQ8TVMZ",
+      "sku": "DrRLXKeedaJadiGoldCaps30_",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "DrRLXKeedaJadiGoldCaps30_v8"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DCTRKV5Q",
+      "asin": "B0DCTRKV5Q",
+      "sku": "CelticSaltGold_1kg_PouchV",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "CelticSaltGold_1kg_PouchV2"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DP473Q5L",
+      "asin": "B0DP473Q5L",
+      "sku": "CelticSaltWhite_1Kg_V2",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "CelticSaltWhite_1Kg_V2"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FF3GRXXF",
+      "asin": "B0FF3GRXXF",
+      "sku": "CartoonLibidex_V3",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "CartoonLibidex_V3"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FDLD6WCH",
+      "asin": "B0FDLD6WCH",
+      "sku": "BluWit_PartysmartCap30",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "BluWit_PartysmartCap30"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FBMF69WS",
+      "asin": "B0FBMF69WS",
+      "sku": "vedLab_libidex_cartoon_V1",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "vedLab_libidex_cartoon_V1"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FN4CQJCN",
+      "asin": "B0FN4CQJCN",
+      "sku": "Jaitunsalt_100gmBox",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "Jaitunsalt_100gmBox"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FNDT8F9J",
+      "asin": "B0FNDT8F9J",
+      "sku": "BluWhite_EpsomsaltGold_92",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "BluWhite_EpsomsaltGold_920gm"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FG19CFSM",
+      "asin": "B0FG19CFSM",
+      "sku": "Vedalabs LiBiDEXX30-Capsu",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "Vedalabs LiBiDEXX30-Capsule"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FDLFVMH5",
+      "asin": "B0FDLFVMH5",
+      "sku": "BluWit_MagnesiumGlycinate",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "BluWit_MagnesiumGlycinateCap30_FBA"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FSFD8NDV",
+      "asin": "B0FSFD8NDV",
+      "sku": "PT-MGEU-S4MJ",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "PT-MGEU-S4MJ"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DFMV5LWM",
+      "asin": "B0DFMV5LWM",
+      "sku": "ShilajitResinRed_p2",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "ShilajitResinRed_p2"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DFMSTXFJ",
+      "asin": "B0DFMSTXFJ",
+      "sku": "ShilajitResinRed_p1_v2",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "ShilajitResinRed_p1_v2"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DCSY651M",
+      "asin": "B0DCSY651M",
+      "sku": "JoshBoosterLibidex30Cap_F",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "JoshBoosterLibidex30Cap_FBA"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DGQS8X8C",
+      "asin": "B0DGQS8X8C",
+      "sku": "USLabsLibidex40Plus_30Cap",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "USLabsLibidex40Plus_30Cap"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DC1V1X5M",
+      "asin": "B0DC1V1X5M",
+      "sku": "UsLabsVisiorazPlusCps_v3",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "UsLabsVisiorazPlusCps_v3"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0D2V5NWSG",
+      "asin": "B0D2V5NWSG",
+      "sku": "DrRelaxStressGuardCap30_v",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "DrRelaxStressGuardCap30_v1"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0CTHXGWPC",
+      "asin": "B0CTHXGWPC",
+      "sku": "DrRLXCayennePapperCap30_v",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "DrRLXCayennePapperCap30_v1"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0F3CWZCFT",
+      "asin": "B0F3CWZCFT",
+      "sku": "Brown_Organic_CelticSallt",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "Brown_Organic_CelticSallt_v1"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FGYHYDL7",
+      "asin": "B0FGYHYDL7",
+      "sku": "Black_HorsePower_Cap30_P2",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "Black_HorsePower_Cap30_P2_V8_FBA"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FF39TSL1",
+      "asin": "B0FF39TSL1",
+      "sku": "CartoonLibidex_V2",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "CartoonLibidex_V2"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FH2GCNRP",
+      "asin": "B0FH2GCNRP",
+      "sku": "Red_HorseForce_Cap30_P2_F",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "Red_HorseForce_Cap30_P2_FBA"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FDLG2T8R",
+      "asin": "B0FDLG2T8R",
+      "sku": "BluWit_MultivitaminPlusMe",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "BluWit_MultivitaminPlusMenCap30"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FH2JPPR1",
+      "asin": "B0FH2JPPR1",
+      "sku": "Black_HorseForce_Cap30_P2",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "Black_HorseForce_Cap30_P2_FBA"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DGB3M71M",
+      "asin": "B0DGB3M71M",
+      "sku": "DrRelaxHolisticBerberineC",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "DrRelaxHolisticBerberineCaps30_FBA"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0G2CWXCRD",
+      "asin": "B0G2CWXCRD",
+      "sku": "BlackBlue_Proman_Cap30_V5",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "BlackBlue_Proman_Cap30_V5"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0G1NDQ4LG",
+      "asin": "B0G1NDQ4LG",
+      "sku": "Libidexx30Cap_30_cap",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "Libidexx30Cap_30_cap"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0G2CWZWCD",
+      "asin": "B0G2CWZWCD",
+      "sku": "WhiteBlue_Ashwagandha AF-",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "WhiteBlue_Ashwagandha AF-43_Cap30"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DV37KW2B",
+      "asin": "B0DV37KW2B",
+      "sku": "BlackGoldBigJack30cap_1Oi",
+      "seller_stock": 2,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "BlackGoldBigJack30cap_1Oil"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0GQHYWM2H",
+      "asin": "B0GQHYWM2H",
+      "sku": "UsLabs_BigJack + SkyBlu_L",
+      "seller_stock": 2,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "UsLabs_BigJack + SkyBlu_LibidexCrtn30"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0GTWM2PFP",
+      "asin": "B0GTWM2PFP",
+      "sku": "BluWit_Hawthorn + SeaBuck",
+      "seller_stock": 2,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "BluWit_Hawthorn + SeaBuckthorn_Cap30"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0GTWMVSDR",
+      "asin": "B0GTWMVSDR",
+      "sku": "BluWit_NaturalIron_Cap30",
+      "seller_stock": 2,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "BluWit_NaturalIron_Cap30 + 1 Another"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0GV7ZRPJX",
+      "asin": "B0GV7ZRPJX",
+      "sku": "WhiteGold_SugarBati_Cap30",
+      "seller_stock": 2,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "WhiteGold_SugarBati_Cap30_P3"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0GV7ZRSR1",
+      "asin": "B0GV7ZRSR1",
+      "sku": "WhiteGold_SugarBati_Cap30",
+      "seller_stock": 2,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "WhiteGold_SugarBati_Cap30_1Another"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0GWVRYPZH",
+      "asin": "B0GWVRYPZH",
+      "sku": "WhiteGold_SugarBati_Cap30",
+      "seller_stock": 2,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "WhiteGold_SugarBati_Cap30_V1"
+      ]
+    }
+  ],
+  "manual_items": [],
+  "eligible_items": [
+    {
+      "type": "asin",
+      "value": "B0D3CK886B",
+      "asin": "B0D3CK886B",
+      "sku": "UsLabs_AddyiPlus_ForWomen",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "UsLabs_AddyiPlus_ForWomen_30cps"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DC4CZ3Z8",
+      "asin": "B0DC4CZ3Z8",
+      "sku": "goldLibidex_oil",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "goldLibidex_oil"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DC48PQM7",
+      "asin": "B0DC48PQM7",
+      "sku": "goldLibidex",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "goldLibidex",
+        "Libidex_Gold"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0D54MR138",
+      "asin": "B0D54MR138",
+      "sku": "NewBoldCareLibidexPlus30C",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "NewBoldCareLibidexPlus30Cpsl_P2"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DX7BWSKG",
+      "asin": "B0DX7BWSKG",
+      "sku": "LibidSafe_iGainCpsl30_P2",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "LibidSafe_iGainCpsl30_P2"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DG5T519Z",
+      "asin": "B0DG5T519Z",
+      "sku": "RED_HorsePowerCap30_v6",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "RED_HorsePowerCap30_v6",
+        "RED_HorsePowerCap30_v1"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DG5SZMVR",
+      "asin": "B0DG5SZMVR",
+      "sku": "BLKHorsePowerCap30_1Oil_v",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "BLKHorsePowerCap30_1Oil_v8"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0D3DB5P73",
+      "asin": "B0D3DB5P73",
+      "sku": "xhlthboostrLibidx30Cap_Ad",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "xhlthboostrLibidx30Cap_Advan_FBA"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0D54G6W7K",
+      "asin": "B0D54G6W7K",
+      "sku": "XhlthBoosterLibidex_p2_v8",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "XhlthBoosterLibidex_p2_v8"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DLCKR3CB",
+      "asin": "B0DLCKR3CB",
+      "sku": "RED_HorsePowerCpls30_P2_V",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "RED_HorsePowerCpls30_P2_V2_v8"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0CXQ8TVMZ",
+      "asin": "B0CXQ8TVMZ",
+      "sku": "DrRLXKeedaJadiGoldCaps30_",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "DrRLXKeedaJadiGoldCaps30_v8"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DCTRKV5Q",
+      "asin": "B0DCTRKV5Q",
+      "sku": "CelticSaltGold_1kg_PouchV",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "CelticSaltGold_1kg_PouchV2"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DP473Q5L",
+      "asin": "B0DP473Q5L",
+      "sku": "CelticSaltWhite_1Kg_V2",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "CelticSaltWhite_1Kg_V2"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FF3GRXXF",
+      "asin": "B0FF3GRXXF",
+      "sku": "CartoonLibidex_V3",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "CartoonLibidex_V3"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FDLD6WCH",
+      "asin": "B0FDLD6WCH",
+      "sku": "BluWit_PartysmartCap30",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "BluWit_PartysmartCap30"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FBMF69WS",
+      "asin": "B0FBMF69WS",
+      "sku": "vedLab_libidex_cartoon_V1",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "vedLab_libidex_cartoon_V1"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FN4CQJCN",
+      "asin": "B0FN4CQJCN",
+      "sku": "Jaitunsalt_100gmBox",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "Jaitunsalt_100gmBox"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FNDT8F9J",
+      "asin": "B0FNDT8F9J",
+      "sku": "BluWhite_EpsomsaltGold_92",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "BluWhite_EpsomsaltGold_920gm"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FG19CFSM",
+      "asin": "B0FG19CFSM",
+      "sku": "Vedalabs LiBiDEXX30-Capsu",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "Vedalabs LiBiDEXX30-Capsule"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FDLFVMH5",
+      "asin": "B0FDLFVMH5",
+      "sku": "BluWit_MagnesiumGlycinate",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "BluWit_MagnesiumGlycinateCap30_FBA"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FSFD8NDV",
+      "asin": "B0FSFD8NDV",
+      "sku": "PT-MGEU-S4MJ",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "PT-MGEU-S4MJ"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DFMV5LWM",
+      "asin": "B0DFMV5LWM",
+      "sku": "ShilajitResinRed_p2",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "ShilajitResinRed_p2"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DFMSTXFJ",
+      "asin": "B0DFMSTXFJ",
+      "sku": "ShilajitResinRed_p1_v2",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "ShilajitResinRed_p1_v2"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DCSY651M",
+      "asin": "B0DCSY651M",
+      "sku": "JoshBoosterLibidex30Cap_F",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "JoshBoosterLibidex30Cap_FBA"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DGQS8X8C",
+      "asin": "B0DGQS8X8C",
+      "sku": "USLabsLibidex40Plus_30Cap",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "USLabsLibidex40Plus_30Cap"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DC1V1X5M",
+      "asin": "B0DC1V1X5M",
+      "sku": "UsLabsVisiorazPlusCps_v3",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "UsLabsVisiorazPlusCps_v3"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0D2V5NWSG",
+      "asin": "B0D2V5NWSG",
+      "sku": "DrRelaxStressGuardCap30_v",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "DrRelaxStressGuardCap30_v1"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0CTHXGWPC",
+      "asin": "B0CTHXGWPC",
+      "sku": "DrRLXCayennePapperCap30_v",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "DrRLXCayennePapperCap30_v1"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0F3CWZCFT",
+      "asin": "B0F3CWZCFT",
+      "sku": "Brown_Organic_CelticSallt",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "Brown_Organic_CelticSallt_v1"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FGYHYDL7",
+      "asin": "B0FGYHYDL7",
+      "sku": "Black_HorsePower_Cap30_P2",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "Black_HorsePower_Cap30_P2_V8_FBA"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FF39TSL1",
+      "asin": "B0FF39TSL1",
+      "sku": "CartoonLibidex_V2",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "CartoonLibidex_V2"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FH2GCNRP",
+      "asin": "B0FH2GCNRP",
+      "sku": "Red_HorseForce_Cap30_P2_F",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "Red_HorseForce_Cap30_P2_FBA"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FDLG2T8R",
+      "asin": "B0FDLG2T8R",
+      "sku": "BluWit_MultivitaminPlusMe",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "BluWit_MultivitaminPlusMenCap30"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0FH2JPPR1",
+      "asin": "B0FH2JPPR1",
+      "sku": "Black_HorseForce_Cap30_P2",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "Black_HorseForce_Cap30_P2_FBA"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DGB3M71M",
+      "asin": "B0DGB3M71M",
+      "sku": "DrRelaxHolisticBerberineC",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "DrRelaxHolisticBerberineCaps30_FBA"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0G2CWXCRD",
+      "asin": "B0G2CWXCRD",
+      "sku": "BlackBlue_Proman_Cap30_V5",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "BlackBlue_Proman_Cap30_V5"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0G1NDQ4LG",
+      "asin": "B0G1NDQ4LG",
+      "sku": "Libidexx30Cap_30_cap",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "Libidexx30Cap_30_cap"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0G2CWZWCD",
+      "asin": "B0G2CWZWCD",
+      "sku": "WhiteBlue_Ashwagandha AF-",
+      "seller_stock": 0,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "WhiteBlue_Ashwagandha AF-43_Cap30"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0DV37KW2B",
+      "asin": "B0DV37KW2B",
+      "sku": "BlackGoldBigJack30cap_1Oi",
+      "seller_stock": 2,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "BlackGoldBigJack30cap_1Oil"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0GQHYWM2H",
+      "asin": "B0GQHYWM2H",
+      "sku": "UsLabs_BigJack + SkyBlu_L",
+      "seller_stock": 2,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "UsLabs_BigJack + SkyBlu_LibidexCrtn30"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0GTWM2PFP",
+      "asin": "B0GTWM2PFP",
+      "sku": "BluWit_Hawthorn + SeaBuck",
+      "seller_stock": 2,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "BluWit_Hawthorn + SeaBuckthorn_Cap30"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0GTWMVSDR",
+      "asin": "B0GTWMVSDR",
+      "sku": "BluWit_NaturalIron_Cap30",
+      "seller_stock": 2,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "BluWit_NaturalIron_Cap30 + 1 Another"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0GV7ZRPJX",
+      "asin": "B0GV7ZRPJX",
+      "sku": "WhiteGold_SugarBati_Cap30",
+      "seller_stock": 2,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "WhiteGold_SugarBati_Cap30_P3"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0GV7ZRSR1",
+      "asin": "B0GV7ZRSR1",
+      "sku": "WhiteGold_SugarBati_Cap30",
+      "seller_stock": 2,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "WhiteGold_SugarBati_Cap30_1Another"
+      ]
+    },
+    {
+      "type": "asin",
+      "value": "B0GWVRYPZH",
+      "asin": "B0GWVRYPZH",
+      "sku": "WhiteGold_SugarBati_Cap30",
+      "seller_stock": 2,
+      "status": "",
+      "threshold": 1,
+      "target_stock": 1000,
+      "excluded": false,
+      "scope_skus": [
+        "WhiteGold_SugarBati_Cap30_V1"
+      ]
+    }
+  ],
+  "excluded_items": []
+}

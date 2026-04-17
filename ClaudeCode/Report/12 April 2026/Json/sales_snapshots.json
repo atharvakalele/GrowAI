@@ -1,0 +1,108 @@
+{
+  "snapshots": [
+    {
+      "timestamp": "2026-04-13T15:38:16.730913",
+      "date": "2026-04-13",
+      "hour": 15,
+      "time_label": "03:38 PM",
+      "order_count": 0,
+      "revenue": 0
+    },
+    {
+      "timestamp": "2026-04-13T15:44:05.522997",
+      "date": "2026-04-13",
+      "hour": 15,
+      "time_label": "03:44 PM",
+      "order_count": 58,
+      "revenue": 32678.0
+    },
+    {
+      "timestamp": "2026-04-13T15:49:02.225904",
+      "date": "2026-04-13",
+      "hour": 15,
+      "time_label": "03:49 PM",
+      "total_orders": 59,
+      "total_revenue": 34471.0,
+      "fba_orders": 7,
+      "fba_revenue": 6627.0,
+      "seller_orders": 52,
+      "seller_revenue": 27844.0
+    },
+    {
+      "timestamp": "2026-04-13T15:52:21.279801",
+      "date": "2026-04-13",
+      "hour": 15,
+      "time_label": "03:52 PM",
+      "total_orders": 59,
+      "total_revenue": 34471.0,
+      "fba_orders": 7,
+      "fba_revenue": 6627.0,
+      "seller_orders": 52,
+      "seller_revenue": 27844.0
+    },
+    {
+      "timestamp": "2026-04-13T15:58:26.025685",
+      "date": "2026-04-13",
+      "hour": 15,
+      "time_label": "03:58 PM",
+      "orders": 60,
+      "revenue": 34669.0
+    },
+    {
+      "timestamp": "2026-04-13T16:04:27.694683",
+      "date": "2026-04-13",
+      "hour": 16,
+      "time_label": "04:04 PM",
+      "orders": 73,
+      "revenue": 35886.0
+    },
+    {
+      "timestamp": "2026-04-13T16:05:24.399435",
+      "date": "2026-04-13",
+      "hour": 16,
+      "time_label": "04:05 PM",
+      "orders": 73,
+      "revenue": 42252.87
+    },
+    {
+      "timestamp": "2026-04-13T16:47:20.074513",
+      "date": "2026-04-13",
+      "hour": 16,
+      "time_label": "04:47 PM",
+      "orders": 75,
+      "revenue": 43715.62
+    },
+    {
+      "timestamp": "2026-04-13T18:41:36.363494",
+      "date": "2026-04-13",
+      "hour": 18,
+      "time_label": "06:41 PM",
+      "orders": 79,
+      "revenue": 44420.57
+    },
+    {
+      "timestamp": "2026-04-13T18:55:14.125959",
+      "date": "2026-04-13",
+      "hour": 18,
+      "time_label": "06:55 PM",
+      "orders": 79,
+      "revenue": 44420.57
+    },
+    {
+      "timestamp": "2026-04-13T20:37:26.453840",
+      "date": "2026-04-13",
+      "hour": 20,
+      "time_label": "08:37 PM",
+      "orders": 91,
+      "revenue": 50705.43
+    },
+    {
+      "timestamp": "2026-04-14T08:24:55.156219",
+      "date": "2026-04-14",
+      "hour": 8,
+      "time_label": "08:24 AM",
+      "orders": 18,
+      "revenue": 12014.4
+    }
+  ]
+}

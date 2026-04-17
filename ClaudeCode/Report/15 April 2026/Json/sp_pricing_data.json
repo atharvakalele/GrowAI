@@ -1,0 +1,3100 @@
+{
+  "B0DLCKR3CB": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FKHJQCCG": {
+    "your_price": 205.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DJMZSMPS": {
+    "your_price": 383.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 373.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 373.0
+    }
+  },
+  "B0DH2ND7K5": {
+    "your_price": 224.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DSSBRCNT": {
+    "your_price": 209.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GQHT38RT": {
+    "your_price": 999.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 999.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 999.0
+    }
+  },
+  "B0FFHCC6LV": {
+    "your_price": 259.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FKHMTTZY": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DF7859V2": {
+    "your_price": 805.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0CVFYQR9P": {
+    "your_price": 1090.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 1080.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 1080.0
+    }
+  },
+  "B0CQPBWVF1": {
+    "your_price": 200.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FGYGDLBM": {
+    "your_price": 400.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 370.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 370.0
+    }
+  },
+  "B0CQPBZ7ZT": {
+    "your_price": 210.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 200.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 200.0
+    }
+  },
+  "B0FF39TG5M": {
+    "your_price": 708.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DQNXRKDF": {
+    "your_price": 364.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FGYHYDL7": {
+    "your_price": 401.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FH2GCNRP": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GQGHZH1B": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 444.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 444.0
+    }
+  },
+  "B0DFS4ZP5T": {
+    "your_price": 199.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 199.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 199.0
+    }
+  },
+  "B0DVQ7NR67": {
+    "your_price": 309.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 299.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 299.0
+    }
+  },
+  "B0D3HYSBGV": {
+    "your_price": 1290.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FVSCHQCK": {
+    "your_price": 169.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 159.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 159.0
+    }
+  },
+  "B0DTQ4C1JZ": {
+    "your_price": 305.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 295.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 295.0
+    }
+  },
+  "B0FF3GD7DW": {
+    "your_price": 549.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DT3PMW19": {
+    "your_price": 200.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 200.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 200.0
+    }
+  },
+  "B0FVWDSQ4D": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0D54K1YZ1": {
+    "your_price": 931.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 600.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 600.0
+    }
+  },
+  "B0FNRXGLVS": {
+    "your_price": 104.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 89.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 89.0
+    }
+  },
+  "B0GNGHHWDR": {
+    "your_price": 309.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FDLD6WCH": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DDJHT2Z2": {
+    "your_price": 159.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 149.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 149.0
+    }
+  },
+  "B0DG5T519Z": {
+    "your_price": 380.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 350.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 350.0
+    }
+  },
+  "B0FH2J51XL": {
+    "your_price": 500.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 420.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 420.0
+    }
+  },
+  "B0CY66TB6C": {
+    "your_price": 299.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FBLC98WH": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0D4215995": {
+    "your_price": 831.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FDLG2T8R": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0F1TX2R7B": {
+    "your_price": 399.0,
+    "buy_box_winner": false,
+    "seller_id": "A23741LRIQVYD",
+    "fulfillment": "MFN",
+    "was_price": 325.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 325.0
+    }
+  },
+  "B0DQQ24W25": {
+    "your_price": 200.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DG3N1KH1": {
+    "your_price": 207.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DBKXY4JZ": {
+    "your_price": 227.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 227.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 227.0
+    }
+  },
+  "B0DC1YKQHS": {
+    "your_price": 210.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GQZJP5GJ": {
+    "your_price": 1300.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 1290.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 1290.0
+    }
+  },
+  "B0DG5SZMVR": {
+    "your_price": 530.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FZM5G3W7": {
+    "your_price": 290.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 280.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 280.0
+    }
+  },
+  "B0FKHRZ57K": {
+    "your_price": 197.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0D54HP1CB": {
+    "your_price": 774.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 578.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 578.0
+    }
+  },
+  "B0FRYJ26TJ": {
+    "your_price": 2040.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 2030.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 2030.0
+    }
+  },
+  "B0DJK582NX": {
+    "your_price": 427.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 275.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 275.0
+    }
+  },
+  "B0G2CWZWCD": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FKHNXNK6": {
+    "your_price": 196.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FVS9YQ7W": {
+    "your_price": 169.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 149.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 149.0
+    }
+  },
+  "B0FQ2RVK4B": {
+    "your_price": 169.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FZ4SDDXH": {
+    "your_price": 690.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 720.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 720.0
+    }
+  },
+  "B0D54MR138": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FF39TDZW": {
+    "your_price": 863.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 737.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 737.0
+    }
+  },
+  "B0DX7J5ZXT": {
+    "your_price": 711.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 440.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 440.0
+    }
+  },
+  "B0FF9JT77F": {
+    "your_price": 189.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0G2CWXCRD": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DQLCYK3T": {
+    "your_price": 205.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 195.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 195.0
+    }
+  },
+  "B0G85XKMP6": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FZ4V6L6S": {
+    "your_price": 279.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 239.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 239.0
+    }
+  },
+  "B0FBSXBHMV": {
+    "your_price": 315.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FBWXQ9JL": {
+    "your_price": 99.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 99.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 99.0
+    }
+  },
+  "B0DC1M4T6C": {
+    "your_price": 216.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FJXQRGC5": {
+    "your_price": 175.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0CRLCZ253": {
+    "your_price": 474.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 392.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 392.0
+    }
+  },
+  "B0GV82H7FZ": {
+    "your_price": 399.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FK2VR2YG": {
+    "your_price": 185.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GTWM2PFP": {
+    "your_price": 565.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FY3R8BH6": {
+    "your_price": 189.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 179.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 179.0
+    }
+  },
+  "B0CQP9LTJ1": {
+    "your_price": 590.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0CXP6ZJZF": {
+    "your_price": 382.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 210.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 210.0
+    }
+  },
+  "B0FF59D3JY": {
+    "your_price": 375.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FDLFD5TK": {
+    "your_price": 506.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FR47C6N9": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FH2HRPT6": {
+    "your_price": 308.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GNG4GQVH": {
+    "your_price": 509.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FF3FZNQ3": {
+    "your_price": 724.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0F6F88HBB": {
+    "your_price": 109.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 99.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 99.0
+    }
+  },
+  "B0DX7BWSKG": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DH4NY9X6": {
+    "your_price": 210.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 200.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 200.0
+    }
+  },
+  "B0CP47TNPY": {
+    "your_price": 203.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 203.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 203.0
+    }
+  },
+  "B0GNFSZ7CC": {
+    "your_price": 1000.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 990.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 990.0
+    }
+  },
+  "B0DSSSFCWC": {
+    "your_price": 183.88,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 173.88,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 173.88
+    }
+  },
+  "B0DRS8JT8Z": {
+    "your_price": 654.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 654.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 654.0
+    }
+  },
+  "B0FG19CFSM": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0G43W7DC9": {
+    "your_price": 209.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 199.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 199.0
+    }
+  },
+  "B0FQ3Y7WYN": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FT3WBMCL": {
+    "your_price": 314.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0G2CTC2L2": {
+    "your_price": 169.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FF3GCHM9": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GPKG7XCP": {
+    "your_price": 1510.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0CXP5PNV4": {
+    "your_price": 210.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 210.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 210.0
+    }
+  },
+  "B0DCW4B332": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 304.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 304.0
+    }
+  },
+  "B0DH2QQZM4": {
+    "your_price": 250.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 240.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 240.0
+    }
+  },
+  "B0DVLY9N6F": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FH2JPPR1": {
+    "your_price": 600.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 316.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 316.0
+    }
+  },
+  "B0FP5717VL": {
+    "your_price": 505.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0G85G1VD7": {
+    "your_price": 312.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 302.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 302.0
+    }
+  },
+  "B0F78XGQP4": {
+    "your_price": 169.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 159.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 159.0
+    }
+  },
+  "B0DGB27VLG": {
+    "your_price": 249.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 249.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 249.0
+    }
+  },
+  "B0GTW2W2MW": {
+    "your_price": 600.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0G4K1ZYZ3": {
+    "your_price": 809.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 799.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 799.0
+    }
+  },
+  "B0DGLBKNKR": {
+    "your_price": 200.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DGB1393T": {
+    "your_price": 304.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FRZDZC83": {
+    "your_price": 269.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0F79BS14F": {
+    "your_price": 285.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0D3DB5P73": {
+    "your_price": 614.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0D3CCZ93C": {
+    "your_price": 745.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 709.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 709.0
+    }
+  },
+  "B0FSFD8NDV": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FF3DLPCP": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GQGG59V3": {
+    "your_price": 850.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 899.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 899.0
+    }
+  },
+  "B0GQZGVFQM": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DSL78ZDM": {
+    "your_price": 305.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 295.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 295.0
+    }
+  },
+  "B0FF3FM1JR": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GNGK1W9N": {
+    "your_price": 499.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 499.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 499.0
+    }
+  },
+  "B0FSL7VPHY": {
+    "your_price": 260.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 250.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 250.0
+    }
+  },
+  "B0DF78C6YC": {
+    "your_price": 205.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 195.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 195.0
+    }
+  },
+  "B0FR4NXBNH": {
+    "your_price": 429.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DCTQ7MP7": {
+    "your_price": 499.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DFRJDXM6": {
+    "your_price": 259.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FH2HR3TF": {
+    "your_price": 339.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DGB3M71M": {
+    "your_price": 359.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FR47CCH6": {
+    "your_price": 488.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FF39TVM2": {
+    "your_price": 532.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FKHJSK2X": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FF9GM45G": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FDLFVMH5": {
+    "your_price": 504.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 494.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 494.0
+    }
+  },
+  "B0GTW4LG92": {
+    "your_price": 999.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FR47CPSW": {
+    "your_price": 370.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0G4JZ91FW": {
+    "your_price": 409.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 399.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 399.0
+    }
+  },
+  "B0FF3GXN3B": {
+    "your_price": 708.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FF5CQ7P7": {
+    "your_price": 265.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DCTRKV5Q": {
+    "your_price": 455.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 445.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 445.0
+    }
+  },
+  "B0DFM7TY5T": {
+    "your_price": 2109.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FGYG8PR9": {
+    "your_price": 420.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FHH6S2NB": {
+    "your_price": 910.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GQJ7P2H9": {
+    "your_price": 1510.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 1500.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 1500.0
+    }
+  },
+  "B0FR4XVN4G": {
+    "your_price": 420.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FVT44LHC": {
+    "your_price": 130.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 120.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 120.0
+    }
+  },
+  "B0DFMSTXFJ": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0D7TF54WV": {
+    "your_price": 559.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0D11KZDFF": {
+    "your_price": 299.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 299.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 299.0
+    }
+  },
+  "B0FDLFTSWN": {
+    "your_price": 159.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0D2V5NWSG": {
+    "your_price": 209.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GTWM33ZN": {
+    "your_price": 309.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DJ9MHF9M": {
+    "your_price": 285.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 275.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 275.0
+    }
+  },
+  "B0F3CWZCFT": {
+    "your_price": 350.0,
+    "buy_box_winner": false,
+    "seller_id": "A23741LRIQVYD",
+    "fulfillment": "AFN",
+    "was_price": 199.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 199.0
+    }
+  },
+  "B0FY3XCSRN": {
+    "your_price": 169.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 159.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 159.0
+    }
+  },
+  "B0DF7B78FZ": {
+    "your_price": 49.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 48.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 48.0
+    }
+  },
+  "B0GV7ZRSR1": {
+    "your_price": 400.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0G2CTJV3Q": {
+    "your_price": 150.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 130.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 130.0
+    }
+  },
+  "B0FR4TQ93L": {
+    "your_price": 404.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0F79RPB5Z": {
+    "your_price": 180.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0D3CJJHXJ": {
+    "your_price": 1241.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0G2YPBTSS": {
+    "your_price": 800.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GQGLM31G": {
+    "your_price": 449.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 475.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 475.0
+    }
+  },
+  "B0GQGF5RKF": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 888.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 888.0
+    }
+  },
+  "B0FR44SSQH": {
+    "your_price": 149.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 39.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 39.0
+    }
+  },
+  "B0DQPYYBRZ": {
+    "your_price": 259.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FF3JDZ8V": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DFVJC4DL": {
+    "your_price": 240.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 230.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 230.0
+    }
+  },
+  "B0DBL4MYWK": {
+    "your_price": 929.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 599.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 599.0
+    }
+  },
+  "B0DPDK2MQH": {
+    "your_price": 135.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 125.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 125.0
+    }
+  },
+  "B0FKHJTJ8G": {
+    "your_price": 175.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 165.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 165.0
+    }
+  },
+  "B0G1NDQ4LG": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GT4T9JKB": {
+    "your_price": 760.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 760.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 760.0
+    }
+  },
+  "B0FBTDHQ2Q": {
+    "your_price": 334.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FF3F7HZY": {
+    "your_price": 792.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DSKQ2CKD": {
+    "your_price": 212.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FQ3RWDG3": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FK3PCKSJ": {
+    "your_price": 209.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 199.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 199.0
+    }
+  },
+  "B0GNG7TF5Z": {
+    "your_price": 699.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 699.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 699.0
+    }
+  },
+  "B0DTPR8QPM": {
+    "your_price": 576.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 399.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 399.0
+    }
+  },
+  "B0FGY5XTR3": {
+    "your_price": 400.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 390.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 390.0
+    }
+  },
+  "B0DH2NFJSQ": {
+    "your_price": 250.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 240.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 240.0
+    }
+  },
+  "B0DX9MRKYN": {
+    "your_price": 489.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 497.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 497.0
+    }
+  },
+  "B0DFVH7J4D": {
+    "your_price": 259.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 249.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 249.0
+    }
+  },
+  "B0FR47BM69": {
+    "your_price": 406.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0G2XV9W71": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FJYNZVQX": {
+    "your_price": 159.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DGB2CJXC": {
+    "your_price": 309.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DR26NT8J": {
+    "your_price": 300.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FGYJDP14": {
+    "your_price": 439.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 329.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 329.0
+    }
+  },
+  "B0FF6GS3F3": {
+    "your_price": 165.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 165.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 165.0
+    }
+  },
+  "B0FSZJYW46": {
+    "your_price": 210.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 200.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 200.0
+    }
+  },
+  "B0FF39TSL1": {
+    "your_price": 729.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 529.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 529.0
+    }
+  },
+  "B0F79BMZL3": {
+    "your_price": 1119.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0F3XSJCH8": {
+    "your_price": 135.0,
+    "buy_box_winner": false,
+    "seller_id": "A1A33S3K3CXCPZ",
+    "fulfillment": "MFN",
+    "was_price": 195.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 195.0
+    }
+  },
+  "B0FKHRB8VD": {
+    "your_price": 165.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FJX997LF": {
+    "your_price": 182.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 172.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 172.0
+    }
+  },
+  "B0FSZD29LW": {
+    "your_price": 159.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 149.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 149.0
+    }
+  },
+  "B0GV7Y1V4S": {
+    "your_price": 349.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FT19PTQ9": {
+    "your_price": 410.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 400.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 400.0
+    }
+  },
+  "B0GT1PHQ66": {
+    "your_price": 960.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 960.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 960.0
+    }
+  },
+  "B0DSP4Y2SR": {
+    "your_price": 238.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 228.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 228.0
+    }
+  },
+  "B0DNRDZQRW": {
+    "your_price": 849.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 575.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 575.0
+    }
+  },
+  "B0G2CWQLLQ": {
+    "your_price": 599.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 579.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 579.0
+    }
+  },
+  "B0FF5C7YRL": {
+    "your_price": 175.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 165.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 165.0
+    }
+  },
+  "B0FF5DRKGW": {
+    "your_price": 169.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 149.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 149.0
+    }
+  },
+  "B0D2V7CFRG": {
+    "your_price": 225.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FY3V283P": {
+    "your_price": 209.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 199.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 199.0
+    }
+  },
+  "B0FGY73YC5": {
+    "your_price": 409.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 399.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 399.0
+    }
+  },
+  "B0DH2PT716": {
+    "your_price": 216.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 206.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 206.0
+    }
+  },
+  "B0DSSV947M": {
+    "your_price": 1009.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FQ4938RT": {
+    "your_price": 1267.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 810.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 810.0
+    }
+  },
+  "B0FBWQLQ8T": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0D5LTLKSW": {
+    "your_price": 506.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DJCDVQKK": {
+    "your_price": 980.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FR4VV6N6": {
+    "your_price": 344.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GQGG3Q1X": {
+    "your_price": 600.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 600.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 600.0
+    }
+  },
+  "B0CXV2WV4W": {
+    "your_price": 208.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 208.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 208.0
+    }
+  },
+  "B0G39Y3TWS": {
+    "your_price": 509.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 509.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 509.0
+    }
+  },
+  "B0CV4FSM3C": {
+    "your_price": 609.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 436.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 436.0
+    }
+  },
+  "B0FW6P9WSB": {
+    "your_price": 430.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 470.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 470.0
+    }
+  },
+  "B0GQGF94TF": {
+    "your_price": 439.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 444.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 444.0
+    }
+  },
+  "B0GQGN44GP": {
+    "your_price": 300.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 300.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 300.0
+    }
+  },
+  "B0FKHPG7XH": {
+    "your_price": 200.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DG2P9M8D": {
+    "your_price": 210.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 210.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 210.0
+    }
+  },
+  "B0G2CWZ1MX": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DGQR7GNZ": {
+    "your_price": 936.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 497.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 497.0
+    }
+  },
+  "B0FH2H6RT4": {
+    "your_price": 335.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FF9JSV3N": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DG3T4Y5V": {
+    "your_price": 210.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 200.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 200.0
+    }
+  },
+  "B0FJYM743L": {
+    "your_price": 209.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 169.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 169.0
+    }
+  },
+  "B0DFVGWR9F": {
+    "your_price": 200.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GV7SM326": {
+    "your_price": 499.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 499.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 499.0
+    }
+  },
+  "B0G1TZ62JQ": {
+    "your_price": 599.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 599.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 599.0
+    }
+  },
+  "B0DFVHTN57": {
+    "your_price": 358.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 348.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 348.0
+    }
+  },
+  "B0CZJPC3M5": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0G4K2NL2X": {
+    "your_price": 709.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 699.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 699.0
+    }
+  },
+  "B0FT16WLM9": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DH2NKXD7": {
+    "your_price": 450.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GQGJKKJR": {
+    "your_price": 499.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 499.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 499.0
+    }
+  },
+  "B0FDLHW9B8": {
+    "your_price": 500.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 490.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 490.0
+    }
+  },
+  "B0DGLB8C65": {
+    "your_price": 170.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 160.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 160.0
+    }
+  },
+  "B0FQ4JYQPB": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0CXQ8TVMZ": {
+    "your_price": 259.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 249.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 249.0
+    }
+  },
+  "B0FF3G2VNX": {
+    "your_price": 610.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 396.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 396.0
+    }
+  },
+  "B0F6KH7BR6": {
+    "your_price": 114.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 99.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 99.0
+    }
+  },
+  "B0FMRMJBGZ": {
+    "your_price": 314.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FR4NZF5T": {
+    "your_price": 350.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FJYHXGL8": {
+    "your_price": 199.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 205.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 205.0
+    }
+  },
+  "B0DGB8VX3J": {
+    "your_price": 200.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FRZ8DB6Z": {
+    "your_price": 450.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0D2V76N57": {
+    "your_price": 209.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DGD7VS5P": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FGY9467N": {
+    "your_price": 411.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 401.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 401.0
+    }
+  },
+  "B0CTHXGWPC": {
+    "your_price": 349.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 299.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 299.0
+    }
+  },
+  "B0F6F6BCRN": {
+    "your_price": 490.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0D2V26RB1": {
+    "your_price": 125.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 115.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 115.0
+    }
+  },
+  "B0FF39TGY5": {
+    "your_price": 817.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DGB8CVHR": {
+    "your_price": 200.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FRZ36FTH": {
+    "your_price": 389.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 379.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 379.0
+    }
+  },
+  "B0DJKXWF93": {
+    "your_price": 455.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 445.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 445.0
+    }
+  },
+  "B0FF3FSYHP": {
+    "your_price": 416.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GR1FKC9C": {
+    "your_price": 700.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FQ5T5FC8": {
+    "your_price": 204.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DTHSX5DQ": {
+    "your_price": 348.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FS9MVC7H": {
+    "your_price": 204.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 199.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 199.0
+    }
+  },
+  "B0GQGJ38X8": {
+    "your_price": 300.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 444.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 444.0
+    }
+  },
+  "B0DC4CZ3Z8": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DBVQKNV8": {
+    "your_price": 350.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 255.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 255.0
+    }
+  },
+  "B0DGQS8X8C": {
+    "your_price": 821.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 504.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 504.0
+    }
+  },
+  "B0DG5TF1X6": {
+    "your_price": 731.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 731.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 731.0
+    }
+  },
+  "B0GT1MTW5R": {
+    "your_price": 1310.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 1310.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 1310.0
+    }
+  },
+  "B0DC48PQM7": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FV8J7TWV": {
+    "your_price": 160.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 99.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 99.0
+    }
+  },
+  "B0DJFXK1PG": {
+    "your_price": 701.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 549.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 549.0
+    }
+  },
+  "B0FXNFK4TJ": {
+    "your_price": 199.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GTWJKMTQ": {
+    "your_price": 309.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0G4K23XMW": {
+    "your_price": 1000.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 899.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 899.0
+    }
+  },
+  "B0FRZ2D5VH": {
+    "your_price": 389.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0D3CK886B": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DLBSL86Y": {
+    "your_price": 309.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 299.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 299.0
+    }
+  },
+  "B0CXXYLFV6": {
+    "your_price": 403.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 393.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 393.0
+    }
+  },
+  "B0DX9QMGDB": {
+    "your_price": 605.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 367.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 367.0
+    }
+  },
+  "B0G3LRDZS7": {
+    "your_price": 409.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 449.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 449.0
+    }
+  },
+  "B0DXGS75SD": {
+    "your_price": 709.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FBMF69WS": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DC1YMY63": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DFGSKBC5": {
+    "your_price": 690.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 680.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 680.0
+    }
+  },
+  "B0FF3H5YGF": {
+    "your_price": 880.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FK4PK4HK": {
+    "your_price": 2209.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 2199.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 2199.0
+    }
+  },
+  "B0FN4CQJCN": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FMNZV3FG": {
+    "your_price": 500.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 490.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 490.0
+    }
+  },
+  "B0FKHPG2NN": {
+    "your_price": 195.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FG3FCXDM": {
+    "your_price": 0,
+    "buy_box_winner": false,
+    "seller_id": "",
+    "fulfillment": "",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DG5PR4DT": {
+    "your_price": 265.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DCSY651M": {
+    "your_price": 299.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 299.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 299.0
+    }
+  },
+  "B0FRYTYV46": {
+    "your_price": 596.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DFTPDR3L": {
+    "your_price": 500.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DFMV5LWM": {
+    "your_price": 200.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0DC1V1X5M": {
+    "your_price": 366.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 366.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 366.0
+    }
+  },
+  "B0FMRNM72Q": {
+    "your_price": 1829.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 1819.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 1819.0
+    }
+  },
+  "B0DH2NR2H2": {
+    "your_price": 222.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 212.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 212.0
+    }
+  },
+  "B0FT3WRZYW": {
+    "your_price": 209.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 199.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 199.0
+    }
+  },
+  "B0FKHJS32M": {
+    "your_price": 191.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 181.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 181.0
+    }
+  },
+  "B0FF5DTY9R": {
+    "your_price": 182.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GV7ZRPJX": {
+    "your_price": 599.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0GQHZFF4X": {
+    "your_price": 1610.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 1600.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 1600.0
+    }
+  },
+  "B0D5N246BY": {
+    "your_price": 446.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 281.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 281.0
+    }
+  },
+  "B0FGYG5YN6": {
+    "your_price": 396.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 296.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 296.0
+    }
+  },
+  "B0G4JXGK8N": {
+    "your_price": 989.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "AFN",
+    "was_price": 979.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 979.0
+    }
+  },
+  "B0FQ2VQK9D": {
+    "your_price": 164.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 154.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 154.0
+    }
+  },
+  "B0CZM4DGD2": {
+    "your_price": 200.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 200.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 200.0
+    }
+  },
+  "B0FF3JQ9GH": {
+    "your_price": 553.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  },
+  "B0FY3VSY66": {
+    "your_price": 189.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 179.0,
+    "list_price": 0,
+    "ref_prices": {
+      "WasPrice": 179.0
+    }
+  },
+  "B0GTWMVSDR": {
+    "your_price": 600.0,
+    "buy_box_winner": true,
+    "seller_id": "A2AC2AS9R9CBEA",
+    "fulfillment": "MFN",
+    "was_price": 0,
+    "list_price": 0,
+    "ref_prices": {}
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "route_run_id": "listing_recovery_price_20260415_152008",
+  "generated_at": "2026-04-15T15:20:10.788944",
+  "engine": "price_optimizer",
+  "request_count": 0,
+  "status": "skipped",
+  "reason": "No listing recovery routes qualified for price action.",
+  "summary": {},
+  "actions": [],
+  "blocked_items": [
+    {
+      "asin": "B0GQGHZH1B",
+      "sku": "Vidyapith_SugarChurna_100gm_P3__V14",
+      "status": "SKIPPED",
+      "reason": "Listing status is ERROR; recovery price route not needed."
+    }
+  ],
+  "status_checks": [
+    {
+      "asin": "B0GQGHZH1B",
+      "sku": "Vidyapith_SugarChurna_100gm_P3__V14",
+      "current_price": 444.0,
+      "listing_status": "ERROR",
+      "issues": [],
+      "source_issue_type": "no_buy_box_listing_check",
+      "source_reason": "No Buy Box found; verify listing state and start recovery if inactive or not searchable."
+    }
+  ],
+  "request_file": "ClaudeCode/Report/15 April 2026/Json/listing_recovery_price_route_latest.json",
+  "request_history_file": "ClaudeCode/Report/15 April 2026/Json/listing_recovery_price_route_20260415_152008.json"
+}

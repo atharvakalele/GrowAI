@@ -1,0 +1,5462 @@
+{
+  "log_version": "1.0",
+  "timestamp": "2026-04-13T14:51:24.306557",
+  "file": "C:\\Users\\Clu\\Documents\\Amazon Bussiness Grouth Automation AI\\ClaudeCode\\Python\\..\\Report\\12 April 2026\\GoAmrita_Action_Report_12 April 2026.xlsx",
+  "dry_run": true,
+  "summary": {
+    "total_approved": 444,
+    "executed_ok": 295,
+    "failed": 75
+  },
+  "undo_log": [
+    {
+      "action_type": "PAUSE Campaign — ACOS 1504%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign _AcvMoringaCap30",
+      "action_taken": "PAUSE campaign 179492337455839",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — ACOS 2437%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -SerenoaRepens30",
+      "action_taken": "PAUSE campaign 102962410383200",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — ACOS 1678%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -Stress Management",
+      "action_taken": "PAUSE campaign 158897536088196",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — Zero Sales",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -Lycopene",
+      "action_taken": "PAUSE campaign 135541900371924",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — ACOS 129%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign - Bigjack _libidex",
+      "action_taken": "PAUSE campaign 93552709264142",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — Zero Sales",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign - Natural iron",
+      "action_taken": "PAUSE campaign 155073957504277",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — Zero Sales",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -ShatavariCap30_1Anot",
+      "action_taken": "PAUSE campaign 113927601645262",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — ACOS 242%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -Titanic K5 + 1 Anoth",
+      "action_taken": "PAUSE campaign 13003423684327",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — Zero Sales",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -BluWit_SafedMusliCap",
+      "action_taken": "PAUSE campaign 160724507181475",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — Zero Sales",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign - Insugar",
+      "action_taken": "PAUSE campaign 59238665102526",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — ACOS 307%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -Tongkat Ali",
+      "action_taken": "PAUSE campaign 62814182106362",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — ACOS 164%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -sugar bati",
+      "action_taken": "PAUSE campaign 18542467437587",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — ACOS 182%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign - 13/1/2026 21:20:59.",
+      "action_taken": "PAUSE campaign 29137304488031",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — Zero Sales",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -Vitamin ADk",
+      "action_taken": "PAUSE campaign 65916490897100",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — Zero Sales",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -af-43, vatkam, stres",
+      "action_taken": "PAUSE campaign 347374395657911",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — ACOS 137%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "TL_EL_SPN_SG_Growz | SP Auto -",
+      "action_taken": "PAUSE campaign 513974424104456",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — Zero Sales",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -BluWit_TejasyaAshwag",
+      "action_taken": "PAUSE campaign 227200672725119",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — ACOS 203%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -Tentmax royal",
+      "action_taken": "PAUSE campaign 103239773381424",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — Zero Sales",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -GoliWajidAliShah30",
+      "action_taken": "PAUSE campaign 105822071750880",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "PAUSE Campaign — Zero Sales",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign - Red- Horsepower",
+      "action_taken": "PAUSE campaign 210934865865971",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Scale Up ~1% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -  IH 4 Capsule +oil",
+      "action_taken": "Scale: Budget 1000.0 -> 1500.0 (+50%)",
+      "timestamp": "2026-04-13T14:51:24.305557",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Fine-tune Up ~15%",
+      "entity_type": "campaign",
+      "entity_id": "407322014558764",
+      "entity_name": "Campaign - Libidexx",
+      "action_taken": "Monitor only - no change",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Scale Up ~22% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -Black_HorsePower Wit",
+      "action_taken": "Scale: Budget 750.0 -> 1125.0 (+50%)",
+      "timestamp": "2026-04-13T14:51:24.305557",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Fine-tune Up ~7%",
+      "entity_type": "campaign",
+      "entity_id": "178967556818291",
+      "entity_name": "Red_Horse power",
+      "action_taken": "Monitor only - no change",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Scale Up ~4% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign - Grey_Libidex",
+      "action_taken": "Scale: Budget 750.0 -> 1125.0 (+50%)",
+      "timestamp": "2026-04-13T14:51:24.305557",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~18% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign - Red Horse power",
+      "action_taken": "Scale: Budget 500.0 -> 750.0 (+50%)",
+      "timestamp": "2026-04-13T14:51:24.305557",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~9% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -vastu sea salt",
+      "action_taken": "Scale: Budget 500.0 -> 750.0 (+50%)",
+      "timestamp": "2026-04-13T14:51:24.305557",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~2% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign - HorsePower_p2",
+      "action_taken": "Scale: Budget 500.0 -> 750.0 (+50%)",
+      "timestamp": "2026-04-13T14:51:24.305557",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Fine-tune Up ~15%",
+      "entity_type": "campaign",
+      "entity_id": "315669267872113",
+      "entity_name": "TL_EL_SPN_SG_Horse FR",
+      "action_taken": "Monitor only - no change",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Scale Up ~1% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Namak Jaitun olive salt",
+      "action_taken": "Scale: Budget 3500.0 -> 5250.0 (+50%)",
+      "timestamp": "2026-04-13T14:51:24.305557",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~14% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -Visiorax",
+      "action_taken": "Scale: Budget 300.0 -> 450.0 (+50%)",
+      "timestamp": "2026-04-13T14:51:24.305557",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~40% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "TL_EL_SPN_SG_Growz | SP Auto -",
+      "action_taken": "Scale: Budget 140.0 -> 210.0 (+50%)",
+      "timestamp": "2026-04-13T14:51:24.305557",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~9% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign_Xenoprost caps",
+      "action_taken": "Scale: Budget 500.0 -> 750.0 (+50%)",
+      "timestamp": "2026-04-13T14:51:24.305557",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~3% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -xenoprostate active",
+      "action_taken": "Scale: Budget 750.0 -> 1125.0 (+50%)",
+      "timestamp": "2026-04-13T14:51:24.305557",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~31% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "TL_EL_SPN_SG_FEB_Listed",
+      "action_taken": "Scale: Budget 340.0 -> 510.0 (+50%)",
+      "timestamp": "2026-04-13T14:51:24.305557",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~30% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "TL_EL_SPN_SG_Growz | SP Auto -",
+      "action_taken": "Scale: Budget 504.0 -> 756.0 (+50%)",
+      "timestamp": "2026-04-13T14:51:24.305557",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~9% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "Campaign -Blue Celtic sea salt",
+      "action_taken": "Scale: Budget 1250.0 -> 1875.0 (+50%)",
+      "timestamp": "2026-04-13T14:51:24.305557",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Scale Up ~3% — Profitable",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "TL_EL_SPN_SG_Made in Heavens_S",
+      "action_taken": "Scale: Budget 1360.0 -> 2040.0 (+50%)",
+      "timestamp": "2026-04-13T14:51:24.305557",
+      "undo_action": "Reverse budget increase"
+    },
+    {
+      "action_type": "Negative — ACOS 2858%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "oziva acv moringa for weight l",
+      "action_taken": "Add negative \"oziva acv moringa for weight loss\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Negative — ACOS 459%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "acv moringa for weight loss oz",
+      "action_taken": "Add negative \"acv moringa for weight loss oziva\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "jamui ayurvedic sugar churna",
+      "action_taken": "Add negative \"jamui ayurvedic sugar churna\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "libidex capsule sexual health ",
+      "action_taken": "Add negative \"libidex capsule sexual health supplement for men\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Negative — ACOS 372%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "bidyapith ayurved sugar churna",
+      "action_taken": "Add negative \"bidyapith ayurved sugar churna\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ashwagandha powder",
+      "action_taken": "Add negative \"ashwagandha powder\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "acv moringa",
+      "action_taken": "Add negative \"acv moringa\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "lycopene",
+      "action_taken": "Add negative \"lycopene\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ashwagandha tablets for men",
+      "action_taken": "Add negative \"ashwagandha tablets for men\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Negative — ACOS 139%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "vidyapith ayurvedic sugar chur",
+      "action_taken": "Add negative \"vidyapith ayurvedic sugar churn special\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Negative — ACOS 239%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "vidyapith ayurveda sugar churn",
+      "action_taken": "Add negative \"vidyapith ayurveda sugar churna\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Negative — ACOS 346%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ashwagandha tablet",
+      "action_taken": "Add negative \"ashwagandha tablet\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "titanic k2 capsules for men or",
+      "action_taken": "Add negative \"titanic k2 capsules for men original\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "lycopene supplement",
+      "action_taken": "Add negative \"lycopene supplement\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ayurveda capsules",
+      "action_taken": "Add negative \"ayurveda capsules\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sugar control tablet",
+      "action_taken": "Add negative \"sugar control tablet\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "vidyapati ayurvedic sugar chur",
+      "action_taken": "Add negative \"vidyapati ayurvedic sugar churna rs 1200\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "saw palmetto",
+      "action_taken": "Add negative \"saw palmetto\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Negative — ACOS 131%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "vidhyapith ayurved sugar churn",
+      "action_taken": "Add negative \"vidhyapith ayurved sugar churna\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ar ayurveda horse fire tablet",
+      "action_taken": "Add negative \"ar ayurveda horse fire tablet\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "libidex gold capsule for men o",
+      "action_taken": "Add negative \"libidex gold capsule for men original\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "iron supplement for women",
+      "action_taken": "Add negative \"iron supplement for women\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "vitaherbal vidyapith ayurved s",
+      "action_taken": "Add negative \"vitaherbal vidyapith ayurved sugar\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "iron supplement",
+      "action_taken": "Add negative \"iron supplement\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "anti anxiety supplements",
+      "action_taken": "Add negative \"anti anxiety supplements\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "diabetes care",
+      "action_taken": "Add negative \"diabetes care\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sea buckthorn capsules",
+      "action_taken": "Add negative \"sea buckthorn capsules\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "saw palmetto",
+      "action_taken": "Add negative \"saw palmetto\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "diabetes control powder",
+      "action_taken": "Add negative \"diabetes control powder\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ashwagandha tablets for women",
+      "action_taken": "Add negative \"ashwagandha tablets for women\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "vidyapeeth sugar churna",
+      "action_taken": "Add negative \"vidyapeeth sugar churna\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "biotin tablets for hair growth",
+      "action_taken": "Add negative \"biotin tablets for hair growth\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "shatavari capsules for women",
+      "action_taken": "Add negative \"shatavari capsules for women\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "acv moringa tablets oziva",
+      "action_taken": "Add negative \"acv moringa tablets oziva\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "oziva acv moringa",
+      "action_taken": "Add negative \"oziva acv moringa\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "nutrasium oziva acv moringa fo",
+      "action_taken": "Add negative \"nutrasium oziva acv moringa for weight loss\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "diabetic powder ayurvedic",
+      "action_taken": "Add negative \"diabetic powder ayurvedic\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ashwagandha supplements",
+      "action_taken": "Add negative \"ashwagandha supplements\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "big jack capsule",
+      "action_taken": "Add negative \"big jack capsule\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "tentex royal",
+      "action_taken": "Add negative \"tentex royal\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "horse fire tablet",
+      "action_taken": "Add negative \"horse fire tablet\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "miduty adk vitamin d3 k2 a",
+      "action_taken": "Add negative \"miduty adk vitamin d3 k2 a\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Negative — ACOS 147%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "vidyapith ayurvedic sugar chur",
+      "action_taken": "Add negative \"vidyapith ayurvedic sugar churna 100gm special\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "saw palmetto",
+      "action_taken": "Add negative \"saw palmetto\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "horse power",
+      "action_taken": "Add negative \"horse power\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "celtic sea salt",
+      "action_taken": "Add negative \"celtic sea salt\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sugar killer ayurvedic medicin",
+      "action_taken": "Add negative \"sugar killer ayurvedic medicine\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ayurvedic medicine for diabete",
+      "action_taken": "Add negative \"ayurvedic medicine for diabetes\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "saw palmetto",
+      "action_taken": "Add negative \"saw palmetto\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "breast oil for breast size gro",
+      "action_taken": "Add negative \"breast oil for breast size growth big\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "lycopene tablets",
+      "action_taken": "Add negative \"lycopene tablets\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ashwagandha powder 100gm",
+      "action_taken": "Add negative \"ashwagandha powder 100gm\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "libidex capsules rs 2490",
+      "action_taken": "Add negative \"libidex capsules rs 2490\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "namak jaitun original",
+      "action_taken": "Add negative \"namak jaitun original\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "diabetic powder",
+      "action_taken": "Add negative \"diabetic powder\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sugar bati",
+      "action_taken": "Add negative \"sugar bati\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "jamui vidyapati ayurvedic suga",
+      "action_taken": "Add negative \"jamui vidyapati ayurvedic sugar churna rs 1200\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "vidyapith ayurvedic sugar chur",
+      "action_taken": "Add negative \"vidyapith ayurvedic sugar churn special\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "horse power tablets for men",
+      "action_taken": "Add negative \"horse power tablets for men\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "in sugar capsule",
+      "action_taken": "Add negative \"in sugar capsule\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "safed musli capsules",
+      "action_taken": "Add negative \"safed musli capsules\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "bidyapith ayurved sugar churna",
+      "action_taken": "Add negative \"bidyapith ayurved sugar churna jamuiproduct\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "diabetes powder",
+      "action_taken": "Add negative \"diabetes powder\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "tongkat ali for men",
+      "action_taken": "Add negative \"tongkat ali for men\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "acv moringa oziva tablet",
+      "action_taken": "Add negative \"acv moringa oziva tablet\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "tongkat ali",
+      "action_taken": "Add negative \"tongkat ali\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "oziva acv moringa for weight l",
+      "action_taken": "Add negative \"oziva acv moringa for weight loss oziva\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "bidyapith ayurved sugar churna",
+      "action_taken": "Add negative \"bidyapith ayurved sugar churna special\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ashwagandha extract powder",
+      "action_taken": "Add negative \"ashwagandha extract powder\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "libidex capsules rs 2490",
+      "action_taken": "Add negative \"libidex capsules rs 2490\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "anti stress tablets",
+      "action_taken": "Add negative \"anti stress tablets\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "diabetic",
+      "action_taken": "Add negative \"diabetic\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "diabetes medicine ayurvedic",
+      "action_taken": "Add negative \"diabetes medicine ayurvedic\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "organic ashwagandha tablet",
+      "action_taken": "Add negative \"organic ashwagandha tablet\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "health supplement",
+      "action_taken": "Add negative \"health supplement\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "safed musli powder organic",
+      "action_taken": "Add negative \"safed musli powder organic\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.305557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "wellwith sea buckthorn oil cap",
+      "action_taken": "Add negative \"wellwith sea buckthorn oil capsule\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "acv moringa for weight loss li",
+      "action_taken": "Add negative \"acv moringa for weight loss liquid\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sugar tablets for diabetes",
+      "action_taken": "Add negative \"sugar tablets for diabetes\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0gggjjktx",
+      "action_taken": "Add negative \"b0gggjjktx\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "height growth supplement",
+      "action_taken": "Add negative \"height growth supplement\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "acv moringa for weight loss ol",
+      "action_taken": "Add negative \"acv moringa for weight loss oliva.lemon\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "acv and moringa",
+      "action_taken": "Add negative \"acv and moringa\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sugar free tablets",
+      "action_taken": "Add negative \"sugar free tablets\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ashwagandha ksm 66",
+      "action_taken": "Add negative \"ashwagandha ksm 66\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Negative — ACOS 167%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "tongkat ali supplement",
+      "action_taken": "Add negative \"tongkat ali supplement\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "vidyapith ayurved sugar churna",
+      "action_taken": "Add negative \"vidyapith ayurved sugar churna\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "tension stress release for adu",
+      "action_taken": "Add negative \"tension stress release for adults\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ashwagandha",
+      "action_taken": "Add negative \"ashwagandha\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ayurvedic medicines for parkin",
+      "action_taken": "Add negative \"ayurvedic medicines for parkinson's\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "horse power tablets for men",
+      "action_taken": "Add negative \"horse power tablets for men\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0f4dlbs52",
+      "action_taken": "Add negative \"b0f4dlbs52\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ayurvedic sugar control medici",
+      "action_taken": "Add negative \"ayurvedic sugar control medicine\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sea buckthorn oil capsules",
+      "action_taken": "Add negative \"sea buckthorn oil capsules\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "shatavari capsule",
+      "action_taken": "Add negative \"shatavari capsule\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sugar capsule",
+      "action_taken": "Add negative \"sugar capsule\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sea buckthorn berry",
+      "action_taken": "Add negative \"sea buckthorn berry\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ayurveda products",
+      "action_taken": "Add negative \"ayurveda products\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "diabetic care powder",
+      "action_taken": "Add negative \"diabetic care powder\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b07rz5qk1g",
+      "action_taken": "Add negative \"b07rz5qk1g\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b076h3tjps",
+      "action_taken": "Add negative \"b076h3tjps\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "mahabhringraj oil for hair gro",
+      "action_taken": "Add negative \"mahabhringraj oil for hair growth\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "tongkat ali powder",
+      "action_taken": "Add negative \"tongkat ali powder\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "vidyapith ayurved sugar churn",
+      "action_taken": "Add negative \"vidyapith ayurved sugar churn\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "saw palmetto 85% fatty acid",
+      "action_taken": "Add negative \"saw palmetto 85% fatty acid\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "libidex tablet for man",
+      "action_taken": "Add negative \"libidex tablet for man\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sugar ayurvedic medicine",
+      "action_taken": "Add negative \"sugar ayurvedic medicine\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "insugar",
+      "action_taken": "Add negative \"insugar\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b000gg15l6",
+      "action_taken": "Add negative \"b000gg15l6\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0clgwp9xl",
+      "action_taken": "Add negative \"b0clgwp9xl\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "diabetes",
+      "action_taken": "Add negative \"diabetes\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "libidex gold capsule for men o",
+      "action_taken": "Add negative \"libidex gold capsule for men original\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "anti inflammation supplements",
+      "action_taken": "Add negative \"anti inflammation supplements\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "diabetes ayurvedic medicine",
+      "action_taken": "Add negative \"diabetes ayurvedic medicine\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sugar control powder",
+      "action_taken": "Add negative \"sugar control powder\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "xenoprost active capsule",
+      "action_taken": "Add negative \"xenoprost active capsule\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "acv moringa | control cravings",
+      "action_taken": "Add negative \"acv moringa | control cravings | apple cider vinegar, cinnamon, guggul | no\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sugar bati 40 tablet ridhi her",
+      "action_taken": "Add negative \"sugar bati 40 tablet ridhi herbal\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "himalayan organics",
+      "action_taken": "Add negative \"himalayan organics\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "lycopene",
+      "action_taken": "Add negative \"lycopene\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0g2xwdgsz",
+      "action_taken": "Add negative \"b0g2xwdgsz\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sugar free tablet",
+      "action_taken": "Add negative \"sugar free tablet\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "metabolic acv moringa",
+      "action_taken": "Add negative \"metabolic acv moringa\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "horse power tablets for men",
+      "action_taken": "Add negative \"horse power tablets for men\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "safed musli tablet",
+      "action_taken": "Add negative \"safed musli tablet\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "oziva acv moringa for weight l",
+      "action_taken": "Add negative \"oziva acv moringa for weight loss green apple\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "diabetic protein powder",
+      "action_taken": "Add negative \"diabetic protein powder\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "kerala ayurveda",
+      "action_taken": "Add negative \"kerala ayurveda\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "plix acv moringa for weight lo",
+      "action_taken": "Add negative \"plix acv moringa for weight loss\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "amazon recommended supplement ",
+      "action_taken": "Add negative \"amazon recommended supplement to cure prostrate problem in male\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "acv moringa hot mix oziva",
+      "action_taken": "Add negative \"acv moringa hot mix oziva\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0b49y9xht",
+      "action_taken": "Add negative \"b0b49y9xht\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b099jzlb1g",
+      "action_taken": "Add negative \"b099jzlb1g\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "lycopene capsules 500mg",
+      "action_taken": "Add negative \"lycopene capsules 500mg\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "liver detox supplement",
+      "action_taken": "Add negative \"liver detox supplement\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ashwagandha roots original",
+      "action_taken": "Add negative \"ashwagandha roots original\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "vidyapith sugar churan",
+      "action_taken": "Add negative \"vidyapith sugar churan\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0dzhgx3x8",
+      "action_taken": "Add negative \"b0dzhgx3x8\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "health products",
+      "action_taken": "Add negative \"health products\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "patanjali horse fire tablet",
+      "action_taken": "Add negative \"patanjali horse fire tablet\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "horse fire tablet 30 capsul se",
+      "action_taken": "Add negative \"horse fire tablet 30 capsul sex\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "pure celtic sea salt",
+      "action_taken": "Add negative \"pure celtic sea salt\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ustraa beard growth oil",
+      "action_taken": "Add negative \"ustraa beard growth oil\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "coarse sea salt",
+      "action_taken": "Add negative \"coarse sea salt\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0dvgp5wfy",
+      "action_taken": "Add negative \"b0dvgp5wfy\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "collagen supplements",
+      "action_taken": "Add negative \"collagen supplements\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0fvn7224m",
+      "action_taken": "Add negative \"b0fvn7224m\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "boostiq oziva acv moringa for ",
+      "action_taken": "Add negative \"boostiq oziva acv moringa for weight loss\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0dv4vw537",
+      "action_taken": "Add negative \"b0dv4vw537\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "i am moringa oziva acv moringa",
+      "action_taken": "Add negative \"i am moringa oziva acv moringa for weight loss\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "titanic k2 capsules for men or",
+      "action_taken": "Add negative \"titanic k2 capsules for men original\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "unicity balance",
+      "action_taken": "Add negative \"unicity balance\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "saw palmetto capsules",
+      "action_taken": "Add negative \"saw palmetto capsules\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ayurvedic medicine for sugar",
+      "action_taken": "Add negative \"ayurvedic medicine for sugar\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ayurvedic diabetes powder",
+      "action_taken": "Add negative \"ayurvedic diabetes powder\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sea moss",
+      "action_taken": "Add negative \"sea moss\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "diabetic protein powder sugar ",
+      "action_taken": "Add negative \"diabetic protein powder sugar free\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sugar reduce ayurvedic medicin",
+      "action_taken": "Add negative \"sugar reduce ayurvedic medicine\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "horse power tablets sex",
+      "action_taken": "Add negative \"horse power tablets sex\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "dabur stresscom capsule 120 ca",
+      "action_taken": "Add negative \"dabur stresscom capsule 120 capsule\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "acv moringa for weight loss oz",
+      "action_taken": "Add negative \"acv moringa for weight loss ozi\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ashwagandha roots original",
+      "action_taken": "Add negative \"ashwagandha roots original\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "protein diabetes powder",
+      "action_taken": "Add negative \"protein diabetes powder\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sugar ayurveda aushadhi churna",
+      "action_taken": "Add negative \"sugar ayurveda aushadhi churna\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "diabetes powder ayurvedic",
+      "action_taken": "Add negative \"diabetes powder ayurvedic\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "diabetic supplements",
+      "action_taken": "Add negative \"diabetic supplements\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b08hpgpqkg",
+      "action_taken": "Add negative \"b08hpgpqkg\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "mashroom x power",
+      "action_taken": "Add negative \"mashroom x power\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ashwagandha supplements powder",
+      "action_taken": "Add negative \"ashwagandha supplements powder\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0g2y5s37h",
+      "action_taken": "Add negative \"b0g2y5s37h\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ashwagandha gummies for stress",
+      "action_taken": "Add negative \"ashwagandha gummies for stress\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0013oxii8",
+      "action_taken": "Add negative \"b0013oxii8\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0dvsst3gj",
+      "action_taken": "Add negative \"b0dvsst3gj\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "nail oil for healthy nails and",
+      "action_taken": "Add negative \"nail oil for healthy nails and growth\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "derma roller for hair growth",
+      "action_taken": "Add negative \"derma roller for hair growth\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "diabetic supplement",
+      "action_taken": "Add negative \"diabetic supplement\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0dcgbnc2w",
+      "action_taken": "Add negative \"b0dcgbnc2w\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "ur healthcare insugar capsules",
+      "action_taken": "Add negative \"ur healthcare insugar capsules\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "diabetes medicine",
+      "action_taken": "Add negative \"diabetes medicine\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "acv moringa reviews",
+      "action_taken": "Add negative \"acv moringa reviews\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "oziva hot mix acv moringa",
+      "action_taken": "Add negative \"oziva hot mix acv moringa\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0fg4nkdhx",
+      "action_taken": "Add negative \"b0fg4nkdhx\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "saw palmetto capsule",
+      "action_taken": "Add negative \"saw palmetto capsule\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "hair growth serum",
+      "action_taken": "Add negative \"hair growth serum\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0c7rd1lrl",
+      "action_taken": "Add negative \"b0c7rd1lrl\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "saw palmetto supplements",
+      "action_taken": "Add negative \"saw palmetto supplements\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "xenoprost active capsule to sh",
+      "action_taken": "Add negative \"xenoprost active capsule to shrink enlarged prostate\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "hair growth tablets for men",
+      "action_taken": "Add negative \"hair growth tablets for men\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "blood sugar",
+      "action_taken": "Add negative \"blood sugar\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0c42yj92c",
+      "action_taken": "Add negative \"b0c42yj92c\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "saw palmetto capsules",
+      "action_taken": "Add negative \"saw palmetto capsules\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "low gi sugar",
+      "action_taken": "Add negative \"low gi sugar\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0fz4sddxh",
+      "action_taken": "Add negative \"b0fz4sddxh\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "renatus nova capsule 120 nutra",
+      "action_taken": "Add negative \"renatus nova capsule 120 nutraceuticals\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "carbamide forte iron supplemen",
+      "action_taken": "Add negative \"carbamide forte iron supplement for men\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "carbamide iron supplement",
+      "action_taken": "Add negative \"carbamide iron supplement\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "horse power oil for men",
+      "action_taken": "Add negative \"horse power oil for men\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "safed musli tablets",
+      "action_taken": "Add negative \"safed musli tablets\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "vidyapith ayurved sugar churna",
+      "action_taken": "Add negative \"vidyapith ayurved sugar churna\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "diabetes sugar",
+      "action_taken": "Add negative \"diabetes sugar\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b07dzxxbwq",
+      "action_taken": "Add negative \"b07dzxxbwq\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "organic india shatavari capsul",
+      "action_taken": "Add negative \"organic india shatavari capsules\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "celtic salt",
+      "action_taken": "Add negative \"celtic salt\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "acv moringa for weight loss",
+      "action_taken": "Add negative \"acv moringa for weight loss\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "saw palmetto for women",
+      "action_taken": "Add negative \"saw palmetto for women\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "acv moringa lemon",
+      "action_taken": "Add negative \"acv moringa lemon\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "pgr for plant growth regulator",
+      "action_taken": "Add negative \"pgr for plant growth regulator\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sugar bati 40 tablet rh",
+      "action_taken": "Add negative \"sugar bati 40 tablet rh\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sugar control medicine",
+      "action_taken": "Add negative \"sugar control medicine\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "libidex tablets for men origin",
+      "action_taken": "Add negative \"libidex tablets for men original\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "pumpkin seed oil and saw palme",
+      "action_taken": "Add negative \"pumpkin seed oil and saw palmetto capsule\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "stresscom dabur 10 capsule",
+      "action_taken": "Add negative \"stresscom dabur 10 capsule\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "shatavari capsules",
+      "action_taken": "Add negative \"shatavari capsules\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0d6glqm9k",
+      "action_taken": "Add negative \"b0d6glqm9k\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "b0g43w7dc9",
+      "action_taken": "Add negative \"b0g43w7dc9\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "shatavari capsules",
+      "action_taken": "Add negative \"shatavari capsules\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "safed musli himalaya",
+      "action_taken": "Add negative \"safed musli himalaya\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "hair growth serum for woman",
+      "action_taken": "Add negative \"hair growth serum for woman\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "sea buckthorn dry berry",
+      "action_taken": "Add negative \"sea buckthorn dry berry\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Add as Negative",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "rh sugar bati tablet",
+      "action_taken": "Add negative \"rh sugar bati tablet\" (NEGATIVE_EXACT)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Monitor/Reduce — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "namak jaitun",
+      "action_taken": "Monitor only - no change needed",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Monitor/Reduce — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "celtic sea salt organic",
+      "action_taken": "Monitor only - no change needed",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Monitor/Reduce — ACOS 80%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "horse power tablets for men",
+      "action_taken": "Monitor only - no change needed",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Monitor/Reduce — ACOS 76%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "celtic sea salt",
+      "action_taken": "Monitor only - no change needed",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Monitor/Reduce — ACOS 92%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "libidex capsule for men origin",
+      "action_taken": "Monitor only - no change needed",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "loose-match",
+      "action_taken": "SKIP: Auto-target (Amazon managed, not editable)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 1627%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "keyword-group=\"category\"",
+      "action_taken": "SKIP: Auto-target (Amazon managed, not editable)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 773%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "keyword-group=\"category\"",
+      "action_taken": "SKIP: Auto-target (Amazon managed, not editable)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 895%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "substitutes",
+      "action_taken": "SKIP: Auto-target (Amazon managed, not editable)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 443%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "bidyapith ayurved sugar churna",
+      "action_taken": "PAUSE keyword 145047849288772",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "libidex capsule sexual health ",
+      "action_taken": "PAUSE keyword 164238610567727",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "titanic k2 capsules for men or",
+      "action_taken": "PAUSE keyword 142026728729287",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "close-match",
+      "action_taken": "SKIP: Auto-target (Amazon managed, not editable)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "libidex gold capsule for men o",
+      "action_taken": "PAUSE keyword 12956193334015",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "namak jaitun",
+      "action_taken": "PAUSE keyword 17481402874427",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "keyword-group=\"category\"",
+      "action_taken": "SKIP: Auto-target (Amazon managed, not editable)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "complements",
+      "action_taken": "SKIP: Auto-target (Amazon managed, not editable)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "big jack capsule",
+      "action_taken": "PAUSE keyword 238694458030464",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "substitutes",
+      "action_taken": "SKIP: Auto-target (Amazon managed, not editable)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "horse power",
+      "action_taken": "PAUSE keyword 193435075613881",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "celtic sea salt",
+      "action_taken": "PAUSE keyword 14832636400705",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "libidex capsules rs 2490",
+      "action_taken": "PAUSE keyword 235404156219483",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "horse power tablet",
+      "action_taken": "PAUSE keyword 195573388402999",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "libidex tablet for man",
+      "action_taken": "PAUSE keyword 257359355347094",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "substitutes",
+      "action_taken": "SKIP: Auto-target (Amazon managed, not editable)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "libidex gold capsule for men o",
+      "action_taken": "PAUSE keyword 12956193334015",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "horse power tablets for men",
+      "action_taken": "PAUSE keyword 183574507906302",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "celtic sea salt organic",
+      "action_taken": "PAUSE keyword 168942353272668",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "titanic k2 capsules for men or",
+      "action_taken": "PAUSE keyword 142026728729287",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "horse power capsule",
+      "action_taken": "PAUSE keyword 23839815371475",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "horse power tablets sex",
+      "action_taken": "PAUSE keyword 202110902132916",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "keyword-group=\"category\"",
+      "action_taken": "SKIP: Auto-target (Amazon managed, not editable)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "titanic k2 capsule",
+      "action_taken": "PAUSE keyword 263695476833537",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "PAUSE Keyword — ACOS 999%",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "close-match",
+      "action_taken": "SKIP: Auto-target (Amazon managed, not editable)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Fine-tune Bid",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "substitutes",
+      "action_taken": "SKIP: Auto-target (Amazon managed, not editable)",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Fine-tune Bid",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "libidex capsule",
+      "action_taken": "Monitor only - no change needed",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    },
+    {
+      "action_type": "Fine-tune Bid",
+      "entity_type": "searchterm",
+      "entity_id": "",
+      "entity_name": "horse fire",
+      "action_taken": "Monitor only - no change needed",
+      "timestamp": "2026-04-13T14:51:24.306557"
+    }
+  ],
+  "undo_instructions": "To undo: use undo_log entries. Each has before/after values + undo_action description. Phase 2 will have auto-rollback.",
+  "results": [
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 179492337455839",
+      "row": 5,
+      "campaign": "Campaign _AcvMoringaCap30",
+      "todo": "PAUSE Campaign — ACOS 1504%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 102962410383200",
+      "row": 6,
+      "campaign": "Campaign -SerenoaRepens30",
+      "todo": "PAUSE Campaign — ACOS 2437%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 158897536088196",
+      "row": 7,
+      "campaign": "Campaign -Stress Management",
+      "todo": "PAUSE Campaign — ACOS 1678%"
+    },
+    {
+      "row": 8,
+      "status": "SKIP",
+      "reason": "Unknown action: Reduce Bids ~14% — ACOS 119%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 135541900371924",
+      "row": 9,
+      "campaign": "Campaign -Lycopene",
+      "todo": "PAUSE Campaign — Zero Sales"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 93552709264142",
+      "row": 10,
+      "campaign": "Campaign - Bigjack _libidex",
+      "todo": "PAUSE Campaign — ACOS 129%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 155073957504277",
+      "row": 11,
+      "campaign": "Campaign - Natural iron",
+      "todo": "PAUSE Campaign — Zero Sales"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 113927601645262",
+      "row": 12,
+      "campaign": "Campaign -ShatavariCap30_1Anot",
+      "todo": "PAUSE Campaign — Zero Sales"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 13003423684327",
+      "row": 13,
+      "campaign": "Campaign -Titanic K5 + 1 Anoth",
+      "todo": "PAUSE Campaign — ACOS 242%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 160724507181475",
+      "row": 14,
+      "campaign": "Campaign -BluWit_SafedMusliCap",
+      "todo": "PAUSE Campaign — Zero Sales"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 59238665102526",
+      "row": 15,
+      "campaign": "Campaign - Insugar",
+      "todo": "PAUSE Campaign — Zero Sales"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 62814182106362",
+      "row": 16,
+      "campaign": "Campaign -Tongkat Ali",
+      "todo": "PAUSE Campaign — ACOS 307%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 18542467437587",
+      "row": 17,
+      "campaign": "Campaign -sugar bati",
+      "todo": "PAUSE Campaign — ACOS 164%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 29137304488031",
+      "row": 18,
+      "campaign": "Campaign - 13/1/2026 21:20:59.",
+      "todo": "PAUSE Campaign — ACOS 182%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 65916490897100",
+      "row": 19,
+      "campaign": "Campaign -Vitamin ADk",
+      "todo": "PAUSE Campaign — Zero Sales"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 347374395657911",
+      "row": 20,
+      "campaign": "Campaign -af-43, vatkam, stres",
+      "todo": "PAUSE Campaign — Zero Sales"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 513974424104456",
+      "row": 21,
+      "campaign": "TL_EL_SPN_SG_Growz | SP Auto -",
+      "todo": "PAUSE Campaign — ACOS 137%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 227200672725119",
+      "row": 22,
+      "campaign": "Campaign -BluWit_TejasyaAshwag",
+      "todo": "PAUSE Campaign — Zero Sales"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 103239773381424",
+      "row": 23,
+      "campaign": "Campaign -Tentmax royal",
+      "todo": "PAUSE Campaign — ACOS 203%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 105822071750880",
+      "row": 24,
+      "campaign": "Campaign -GoliWajidAliShah30",
+      "todo": "PAUSE Campaign — Zero Sales"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE campaign 210934865865971",
+      "row": 25,
+      "campaign": "Campaign - Red- Horsepower",
+      "todo": "PAUSE Campaign — Zero Sales"
+    },
+    {
+      "row": 27,
+      "status": "SKIP",
+      "reason": "Unknown action: Reduce Bids ~7% — ACOS 117%"
+    },
+    {
+      "row": 28,
+      "status": "SKIP",
+      "reason": "Unknown action: Reduce Bids ~7% — ACOS 999%"
+    },
+    {
+      "row": 46,
+      "status": "SKIP",
+      "reason": "Unknown action: Reduce Bids ~18% — ACOS 64%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 1000.0 -> 1500.0 (+50%)",
+      "row": 47,
+      "campaign": "Campaign -  IH 4 Capsule +oil",
+      "todo": "Scale Up ~1% — Profitable"
+    },
+    {
+      "status": "OK",
+      "action": "Monitor only - no change",
+      "campaignId": "407322014558764",
+      "row": 48,
+      "campaign": "Campaign - Libidexx",
+      "todo": "Fine-tune Up ~15%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 750.0 -> 1125.0 (+50%)",
+      "row": 49,
+      "campaign": "Campaign -Black_HorsePower Wit",
+      "todo": "Scale Up ~22% — Profitable"
+    },
+    {
+      "status": "OK",
+      "action": "Monitor only - no change",
+      "campaignId": "178967556818291",
+      "row": 50,
+      "campaign": "Red_Horse power",
+      "todo": "Fine-tune Up ~7%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 750.0 -> 1125.0 (+50%)",
+      "row": 51,
+      "campaign": "Campaign - Grey_Libidex",
+      "todo": "Scale Up ~4% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 500.0 -> 750.0 (+50%)",
+      "row": 52,
+      "campaign": "Campaign - Red Horse power",
+      "todo": "Scale Up ~18% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 500.0 -> 750.0 (+50%)",
+      "row": 53,
+      "campaign": "Campaign -vastu sea salt",
+      "todo": "Scale Up ~9% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 500.0 -> 750.0 (+50%)",
+      "row": 54,
+      "campaign": "Campaign - HorsePower_p2",
+      "todo": "Scale Up ~2% — Profitable"
+    },
+    {
+      "status": "OK",
+      "action": "Monitor only - no change",
+      "campaignId": "315669267872113",
+      "row": 55,
+      "campaign": "TL_EL_SPN_SG_Horse FR",
+      "todo": "Fine-tune Up ~15%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 3500.0 -> 5250.0 (+50%)",
+      "row": 56,
+      "campaign": "Namak Jaitun olive salt",
+      "todo": "Scale Up ~1% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 300.0 -> 450.0 (+50%)",
+      "row": 57,
+      "campaign": "Campaign -Visiorax",
+      "todo": "Scale Up ~14% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 140.0 -> 210.0 (+50%)",
+      "row": 58,
+      "campaign": "TL_EL_SPN_SG_Growz | SP Auto -",
+      "todo": "Scale Up ~40% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 500.0 -> 750.0 (+50%)",
+      "row": 59,
+      "campaign": "Campaign_Xenoprost caps",
+      "todo": "Scale Up ~9% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 750.0 -> 1125.0 (+50%)",
+      "row": 60,
+      "campaign": "Campaign -xenoprostate active",
+      "todo": "Scale Up ~3% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 340.0 -> 510.0 (+50%)",
+      "row": 61,
+      "campaign": "TL_EL_SPN_SG_FEB_Listed",
+      "todo": "Scale Up ~31% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 504.0 -> 756.0 (+50%)",
+      "row": 62,
+      "campaign": "TL_EL_SPN_SG_Growz | SP Auto -",
+      "todo": "Scale Up ~30% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 1250.0 -> 1875.0 (+50%)",
+      "row": 63,
+      "campaign": "Campaign -Blue Celtic sea salt",
+      "todo": "Scale Up ~9% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Scale: Budget 1360.0 -> 2040.0 (+50%)",
+      "row": 64,
+      "campaign": "TL_EL_SPN_SG_Made in Heavens_S",
+      "todo": "Scale Up ~3% — Profitable"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"oziva acv moringa for weight loss\" (NEGATIVE_EXACT)",
+      "row": 5,
+      "keyword": "oziva acv moringa for weight l",
+      "todo": "Negative — ACOS 2858%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"acv moringa for weight loss oziva\" (NEGATIVE_EXACT)",
+      "row": 6,
+      "keyword": "acv moringa for weight loss oz",
+      "todo": "Negative — ACOS 459%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"jamui ayurvedic sugar churna\" (NEGATIVE_EXACT)",
+      "row": 7,
+      "keyword": "jamui ayurvedic sugar churna",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"libidex capsule sexual health supplement for men\" (NEGATIVE_EXACT)",
+      "row": 8,
+      "keyword": "libidex capsule sexual health ",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"bidyapith ayurved sugar churna\" (NEGATIVE_EXACT)",
+      "row": 9,
+      "keyword": "bidyapith ayurved sugar churna",
+      "todo": "Negative — ACOS 372%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ashwagandha powder\" (NEGATIVE_EXACT)",
+      "row": 10,
+      "keyword": "ashwagandha powder",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"acv moringa\" (NEGATIVE_EXACT)",
+      "row": 11,
+      "keyword": "acv moringa",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"lycopene\" (NEGATIVE_EXACT)",
+      "row": 12,
+      "keyword": "lycopene",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ashwagandha tablets for men\" (NEGATIVE_EXACT)",
+      "row": 13,
+      "keyword": "ashwagandha tablets for men",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"vidyapith ayurvedic sugar churn special\" (NEGATIVE_EXACT)",
+      "row": 14,
+      "keyword": "vidyapith ayurvedic sugar chur",
+      "todo": "Negative — ACOS 139%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"vidyapith ayurveda sugar churna\" (NEGATIVE_EXACT)",
+      "row": 15,
+      "keyword": "vidyapith ayurveda sugar churn",
+      "todo": "Negative — ACOS 239%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ashwagandha tablet\" (NEGATIVE_EXACT)",
+      "row": 16,
+      "keyword": "ashwagandha tablet",
+      "todo": "Negative — ACOS 346%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"titanic k2 capsules for men original\" (NEGATIVE_EXACT)",
+      "row": 17,
+      "keyword": "titanic k2 capsules for men or",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"lycopene supplement\" (NEGATIVE_EXACT)",
+      "row": 18,
+      "keyword": "lycopene supplement",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ayurveda capsules\" (NEGATIVE_EXACT)",
+      "row": 19,
+      "keyword": "ayurveda capsules",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sugar control tablet\" (NEGATIVE_EXACT)",
+      "row": 20,
+      "keyword": "sugar control tablet",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"vidyapati ayurvedic sugar churna rs 1200\" (NEGATIVE_EXACT)",
+      "row": 21,
+      "keyword": "vidyapati ayurvedic sugar chur",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"saw palmetto\" (NEGATIVE_EXACT)",
+      "row": 22,
+      "keyword": "saw palmetto",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"vidhyapith ayurved sugar churna\" (NEGATIVE_EXACT)",
+      "row": 23,
+      "keyword": "vidhyapith ayurved sugar churn",
+      "todo": "Negative — ACOS 131%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ar ayurveda horse fire tablet\" (NEGATIVE_EXACT)",
+      "row": 24,
+      "keyword": "ar ayurveda horse fire tablet",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"libidex gold capsule for men original\" (NEGATIVE_EXACT)",
+      "row": 25,
+      "keyword": "libidex gold capsule for men o",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"iron supplement for women\" (NEGATIVE_EXACT)",
+      "row": 26,
+      "keyword": "iron supplement for women",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"vitaherbal vidyapith ayurved sugar\" (NEGATIVE_EXACT)",
+      "row": 27,
+      "keyword": "vitaherbal vidyapith ayurved s",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"iron supplement\" (NEGATIVE_EXACT)",
+      "row": 28,
+      "keyword": "iron supplement",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"anti anxiety supplements\" (NEGATIVE_EXACT)",
+      "row": 29,
+      "keyword": "anti anxiety supplements",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"diabetes care\" (NEGATIVE_EXACT)",
+      "row": 30,
+      "keyword": "diabetes care",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sea buckthorn capsules\" (NEGATIVE_EXACT)",
+      "row": 31,
+      "keyword": "sea buckthorn capsules",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"saw palmetto\" (NEGATIVE_EXACT)",
+      "row": 32,
+      "keyword": "saw palmetto",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"diabetes control powder\" (NEGATIVE_EXACT)",
+      "row": 33,
+      "keyword": "diabetes control powder",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ashwagandha tablets for women\" (NEGATIVE_EXACT)",
+      "row": 34,
+      "keyword": "ashwagandha tablets for women",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"vidyapeeth sugar churna\" (NEGATIVE_EXACT)",
+      "row": 35,
+      "keyword": "vidyapeeth sugar churna",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"biotin tablets for hair growth\" (NEGATIVE_EXACT)",
+      "row": 36,
+      "keyword": "biotin tablets for hair growth",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"shatavari capsules for women\" (NEGATIVE_EXACT)",
+      "row": 37,
+      "keyword": "shatavari capsules for women",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"acv moringa tablets oziva\" (NEGATIVE_EXACT)",
+      "row": 38,
+      "keyword": "acv moringa tablets oziva",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"oziva acv moringa\" (NEGATIVE_EXACT)",
+      "row": 39,
+      "keyword": "oziva acv moringa",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"nutrasium oziva acv moringa for weight loss\" (NEGATIVE_EXACT)",
+      "row": 40,
+      "keyword": "nutrasium oziva acv moringa fo",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"diabetic powder ayurvedic\" (NEGATIVE_EXACT)",
+      "row": 41,
+      "keyword": "diabetic powder ayurvedic",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ashwagandha supplements\" (NEGATIVE_EXACT)",
+      "row": 42,
+      "keyword": "ashwagandha supplements",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"big jack capsule\" (NEGATIVE_EXACT)",
+      "row": 43,
+      "keyword": "big jack capsule",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"tentex royal\" (NEGATIVE_EXACT)",
+      "row": 44,
+      "keyword": "tentex royal",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"horse fire tablet\" (NEGATIVE_EXACT)",
+      "row": 45,
+      "keyword": "horse fire tablet",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"miduty adk vitamin d3 k2 a\" (NEGATIVE_EXACT)",
+      "row": 46,
+      "keyword": "miduty adk vitamin d3 k2 a",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"vidyapith ayurvedic sugar churna 100gm special\" (NEGATIVE_EXACT)",
+      "row": 47,
+      "keyword": "vidyapith ayurvedic sugar chur",
+      "todo": "Negative — ACOS 147%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"saw palmetto\" (NEGATIVE_EXACT)",
+      "row": 48,
+      "keyword": "saw palmetto",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"horse power\" (NEGATIVE_EXACT)",
+      "row": 49,
+      "keyword": "horse power",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"celtic sea salt\" (NEGATIVE_EXACT)",
+      "row": 50,
+      "keyword": "celtic sea salt",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sugar killer ayurvedic medicine\" (NEGATIVE_EXACT)",
+      "row": 51,
+      "keyword": "sugar killer ayurvedic medicin",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ayurvedic medicine for diabetes\" (NEGATIVE_EXACT)",
+      "row": 52,
+      "keyword": "ayurvedic medicine for diabete",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"saw palmetto\" (NEGATIVE_EXACT)",
+      "row": 53,
+      "keyword": "saw palmetto",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"breast oil for breast size growth big\" (NEGATIVE_EXACT)",
+      "row": 54,
+      "keyword": "breast oil for breast size gro",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"lycopene tablets\" (NEGATIVE_EXACT)",
+      "row": 55,
+      "keyword": "lycopene tablets",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ashwagandha powder 100gm\" (NEGATIVE_EXACT)",
+      "row": 56,
+      "keyword": "ashwagandha powder 100gm",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"libidex capsules rs 2490\" (NEGATIVE_EXACT)",
+      "row": 57,
+      "keyword": "libidex capsules rs 2490",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"namak jaitun original\" (NEGATIVE_EXACT)",
+      "row": 58,
+      "keyword": "namak jaitun original",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"diabetic powder\" (NEGATIVE_EXACT)",
+      "row": 59,
+      "keyword": "diabetic powder",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sugar bati\" (NEGATIVE_EXACT)",
+      "row": 60,
+      "keyword": "sugar bati",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"jamui vidyapati ayurvedic sugar churna rs 1200\" (NEGATIVE_EXACT)",
+      "row": 61,
+      "keyword": "jamui vidyapati ayurvedic suga",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"vidyapith ayurvedic sugar churn special\" (NEGATIVE_EXACT)",
+      "row": 62,
+      "keyword": "vidyapith ayurvedic sugar chur",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"horse power tablets for men\" (NEGATIVE_EXACT)",
+      "row": 63,
+      "keyword": "horse power tablets for men",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"in sugar capsule\" (NEGATIVE_EXACT)",
+      "row": 64,
+      "keyword": "in sugar capsule",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"safed musli capsules\" (NEGATIVE_EXACT)",
+      "row": 65,
+      "keyword": "safed musli capsules",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"bidyapith ayurved sugar churna jamuiproduct\" (NEGATIVE_EXACT)",
+      "row": 66,
+      "keyword": "bidyapith ayurved sugar churna",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"diabetes powder\" (NEGATIVE_EXACT)",
+      "row": 67,
+      "keyword": "diabetes powder",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"tongkat ali for men\" (NEGATIVE_EXACT)",
+      "row": 68,
+      "keyword": "tongkat ali for men",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"acv moringa oziva tablet\" (NEGATIVE_EXACT)",
+      "row": 69,
+      "keyword": "acv moringa oziva tablet",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"tongkat ali\" (NEGATIVE_EXACT)",
+      "row": 70,
+      "keyword": "tongkat ali",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"oziva acv moringa for weight loss oziva\" (NEGATIVE_EXACT)",
+      "row": 71,
+      "keyword": "oziva acv moringa for weight l",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"bidyapith ayurved sugar churna special\" (NEGATIVE_EXACT)",
+      "row": 72,
+      "keyword": "bidyapith ayurved sugar churna",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ashwagandha extract powder\" (NEGATIVE_EXACT)",
+      "row": 73,
+      "keyword": "ashwagandha extract powder",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"libidex capsules rs 2490\" (NEGATIVE_EXACT)",
+      "row": 74,
+      "keyword": "libidex capsules rs 2490",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"anti stress tablets\" (NEGATIVE_EXACT)",
+      "row": 75,
+      "keyword": "anti stress tablets",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"diabetic\" (NEGATIVE_EXACT)",
+      "row": 76,
+      "keyword": "diabetic",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"diabetes medicine ayurvedic\" (NEGATIVE_EXACT)",
+      "row": 77,
+      "keyword": "diabetes medicine ayurvedic",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"organic ashwagandha tablet\" (NEGATIVE_EXACT)",
+      "row": 78,
+      "keyword": "organic ashwagandha tablet",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"health supplement\" (NEGATIVE_EXACT)",
+      "row": 79,
+      "keyword": "health supplement",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"safed musli powder organic\" (NEGATIVE_EXACT)",
+      "row": 80,
+      "keyword": "safed musli powder organic",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"wellwith sea buckthorn oil capsule\" (NEGATIVE_EXACT)",
+      "row": 81,
+      "keyword": "wellwith sea buckthorn oil cap",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"acv moringa for weight loss liquid\" (NEGATIVE_EXACT)",
+      "row": 82,
+      "keyword": "acv moringa for weight loss li",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sugar tablets for diabetes\" (NEGATIVE_EXACT)",
+      "row": 83,
+      "keyword": "sugar tablets for diabetes",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0gggjjktx\" (NEGATIVE_EXACT)",
+      "row": 84,
+      "keyword": "b0gggjjktx",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"height growth supplement\" (NEGATIVE_EXACT)",
+      "row": 85,
+      "keyword": "height growth supplement",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"acv moringa for weight loss oliva.lemon\" (NEGATIVE_EXACT)",
+      "row": 86,
+      "keyword": "acv moringa for weight loss ol",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"acv and moringa\" (NEGATIVE_EXACT)",
+      "row": 87,
+      "keyword": "acv and moringa",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sugar free tablets\" (NEGATIVE_EXACT)",
+      "row": 88,
+      "keyword": "sugar free tablets",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ashwagandha ksm 66\" (NEGATIVE_EXACT)",
+      "row": 89,
+      "keyword": "ashwagandha ksm 66",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"tongkat ali supplement\" (NEGATIVE_EXACT)",
+      "row": 90,
+      "keyword": "tongkat ali supplement",
+      "todo": "Negative — ACOS 167%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"vidyapith ayurved sugar churna\" (NEGATIVE_EXACT)",
+      "row": 91,
+      "keyword": "vidyapith ayurved sugar churna",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"tension stress release for adults\" (NEGATIVE_EXACT)",
+      "row": 92,
+      "keyword": "tension stress release for adu",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ashwagandha\" (NEGATIVE_EXACT)",
+      "row": 93,
+      "keyword": "ashwagandha",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ayurvedic medicines for parkinson's\" (NEGATIVE_EXACT)",
+      "row": 94,
+      "keyword": "ayurvedic medicines for parkin",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"horse power tablets for men\" (NEGATIVE_EXACT)",
+      "row": 95,
+      "keyword": "horse power tablets for men",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0f4dlbs52\" (NEGATIVE_EXACT)",
+      "row": 96,
+      "keyword": "b0f4dlbs52",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ayurvedic sugar control medicine\" (NEGATIVE_EXACT)",
+      "row": 97,
+      "keyword": "ayurvedic sugar control medici",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sea buckthorn oil capsules\" (NEGATIVE_EXACT)",
+      "row": 98,
+      "keyword": "sea buckthorn oil capsules",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"shatavari capsule\" (NEGATIVE_EXACT)",
+      "row": 99,
+      "keyword": "shatavari capsule",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sugar capsule\" (NEGATIVE_EXACT)",
+      "row": 100,
+      "keyword": "sugar capsule",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sea buckthorn berry\" (NEGATIVE_EXACT)",
+      "row": 101,
+      "keyword": "sea buckthorn berry",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ayurveda products\" (NEGATIVE_EXACT)",
+      "row": 102,
+      "keyword": "ayurveda products",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"diabetic care powder\" (NEGATIVE_EXACT)",
+      "row": 103,
+      "keyword": "diabetic care powder",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b07rz5qk1g\" (NEGATIVE_EXACT)",
+      "row": 104,
+      "keyword": "b07rz5qk1g",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b076h3tjps\" (NEGATIVE_EXACT)",
+      "row": 105,
+      "keyword": "b076h3tjps",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"mahabhringraj oil for hair growth\" (NEGATIVE_EXACT)",
+      "row": 106,
+      "keyword": "mahabhringraj oil for hair gro",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"tongkat ali powder\" (NEGATIVE_EXACT)",
+      "row": 107,
+      "keyword": "tongkat ali powder",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"vidyapith ayurved sugar churn\" (NEGATIVE_EXACT)",
+      "row": 108,
+      "keyword": "vidyapith ayurved sugar churn",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"saw palmetto 85% fatty acid\" (NEGATIVE_EXACT)",
+      "row": 109,
+      "keyword": "saw palmetto 85% fatty acid",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"libidex tablet for man\" (NEGATIVE_EXACT)",
+      "row": 110,
+      "keyword": "libidex tablet for man",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sugar ayurvedic medicine\" (NEGATIVE_EXACT)",
+      "row": 111,
+      "keyword": "sugar ayurvedic medicine",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"insugar\" (NEGATIVE_EXACT)",
+      "row": 112,
+      "keyword": "insugar",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b000gg15l6\" (NEGATIVE_EXACT)",
+      "row": 113,
+      "keyword": "b000gg15l6",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0clgwp9xl\" (NEGATIVE_EXACT)",
+      "row": 114,
+      "keyword": "b0clgwp9xl",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"diabetes\" (NEGATIVE_EXACT)",
+      "row": 115,
+      "keyword": "diabetes",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"libidex gold capsule for men original\" (NEGATIVE_EXACT)",
+      "row": 116,
+      "keyword": "libidex gold capsule for men o",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"anti inflammation supplements\" (NEGATIVE_EXACT)",
+      "row": 117,
+      "keyword": "anti inflammation supplements",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"diabetes ayurvedic medicine\" (NEGATIVE_EXACT)",
+      "row": 118,
+      "keyword": "diabetes ayurvedic medicine",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sugar control powder\" (NEGATIVE_EXACT)",
+      "row": 119,
+      "keyword": "sugar control powder",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"xenoprost active capsule\" (NEGATIVE_EXACT)",
+      "row": 120,
+      "keyword": "xenoprost active capsule",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"acv moringa | control cravings | apple cider vinegar, cinnamon, guggul | no\" (NEGATIVE_EXACT)",
+      "row": 121,
+      "keyword": "acv moringa | control cravings",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sugar bati 40 tablet ridhi herbal\" (NEGATIVE_EXACT)",
+      "row": 122,
+      "keyword": "sugar bati 40 tablet ridhi her",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"himalayan organics\" (NEGATIVE_EXACT)",
+      "row": 123,
+      "keyword": "himalayan organics",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"lycopene\" (NEGATIVE_EXACT)",
+      "row": 124,
+      "keyword": "lycopene",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0g2xwdgsz\" (NEGATIVE_EXACT)",
+      "row": 125,
+      "keyword": "b0g2xwdgsz",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sugar free tablet\" (NEGATIVE_EXACT)",
+      "row": 126,
+      "keyword": "sugar free tablet",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"metabolic acv moringa\" (NEGATIVE_EXACT)",
+      "row": 127,
+      "keyword": "metabolic acv moringa",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"horse power tablets for men\" (NEGATIVE_EXACT)",
+      "row": 128,
+      "keyword": "horse power tablets for men",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"safed musli tablet\" (NEGATIVE_EXACT)",
+      "row": 129,
+      "keyword": "safed musli tablet",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"oziva acv moringa for weight loss green apple\" (NEGATIVE_EXACT)",
+      "row": 130,
+      "keyword": "oziva acv moringa for weight l",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"diabetic protein powder\" (NEGATIVE_EXACT)",
+      "row": 131,
+      "keyword": "diabetic protein powder",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"kerala ayurveda\" (NEGATIVE_EXACT)",
+      "row": 132,
+      "keyword": "kerala ayurveda",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"plix acv moringa for weight loss\" (NEGATIVE_EXACT)",
+      "row": 133,
+      "keyword": "plix acv moringa for weight lo",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"amazon recommended supplement to cure prostrate problem in male\" (NEGATIVE_EXACT)",
+      "row": 134,
+      "keyword": "amazon recommended supplement ",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"acv moringa hot mix oziva\" (NEGATIVE_EXACT)",
+      "row": 135,
+      "keyword": "acv moringa hot mix oziva",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0b49y9xht\" (NEGATIVE_EXACT)",
+      "row": 136,
+      "keyword": "b0b49y9xht",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b099jzlb1g\" (NEGATIVE_EXACT)",
+      "row": 137,
+      "keyword": "b099jzlb1g",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"lycopene capsules 500mg\" (NEGATIVE_EXACT)",
+      "row": 138,
+      "keyword": "lycopene capsules 500mg",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"liver detox supplement\" (NEGATIVE_EXACT)",
+      "row": 139,
+      "keyword": "liver detox supplement",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ashwagandha roots original\" (NEGATIVE_EXACT)",
+      "row": 140,
+      "keyword": "ashwagandha roots original",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"vidyapith sugar churan\" (NEGATIVE_EXACT)",
+      "row": 141,
+      "keyword": "vidyapith sugar churan",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0dzhgx3x8\" (NEGATIVE_EXACT)",
+      "row": 142,
+      "keyword": "b0dzhgx3x8",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"health products\" (NEGATIVE_EXACT)",
+      "row": 143,
+      "keyword": "health products",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"patanjali horse fire tablet\" (NEGATIVE_EXACT)",
+      "row": 144,
+      "keyword": "patanjali horse fire tablet",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"horse fire tablet 30 capsul sex\" (NEGATIVE_EXACT)",
+      "row": 145,
+      "keyword": "horse fire tablet 30 capsul se",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"pure celtic sea salt\" (NEGATIVE_EXACT)",
+      "row": 146,
+      "keyword": "pure celtic sea salt",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ustraa beard growth oil\" (NEGATIVE_EXACT)",
+      "row": 147,
+      "keyword": "ustraa beard growth oil",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"coarse sea salt\" (NEGATIVE_EXACT)",
+      "row": 148,
+      "keyword": "coarse sea salt",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0dvgp5wfy\" (NEGATIVE_EXACT)",
+      "row": 149,
+      "keyword": "b0dvgp5wfy",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"collagen supplements\" (NEGATIVE_EXACT)",
+      "row": 150,
+      "keyword": "collagen supplements",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0fvn7224m\" (NEGATIVE_EXACT)",
+      "row": 151,
+      "keyword": "b0fvn7224m",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"boostiq oziva acv moringa for weight loss\" (NEGATIVE_EXACT)",
+      "row": 152,
+      "keyword": "boostiq oziva acv moringa for ",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0dv4vw537\" (NEGATIVE_EXACT)",
+      "row": 153,
+      "keyword": "b0dv4vw537",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"i am moringa oziva acv moringa for weight loss\" (NEGATIVE_EXACT)",
+      "row": 154,
+      "keyword": "i am moringa oziva acv moringa",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"titanic k2 capsules for men original\" (NEGATIVE_EXACT)",
+      "row": 155,
+      "keyword": "titanic k2 capsules for men or",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"unicity balance\" (NEGATIVE_EXACT)",
+      "row": 156,
+      "keyword": "unicity balance",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"saw palmetto capsules\" (NEGATIVE_EXACT)",
+      "row": 157,
+      "keyword": "saw palmetto capsules",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ayurvedic medicine for sugar\" (NEGATIVE_EXACT)",
+      "row": 158,
+      "keyword": "ayurvedic medicine for sugar",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ayurvedic diabetes powder\" (NEGATIVE_EXACT)",
+      "row": 159,
+      "keyword": "ayurvedic diabetes powder",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sea moss\" (NEGATIVE_EXACT)",
+      "row": 160,
+      "keyword": "sea moss",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"diabetic protein powder sugar free\" (NEGATIVE_EXACT)",
+      "row": 161,
+      "keyword": "diabetic protein powder sugar ",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sugar reduce ayurvedic medicine\" (NEGATIVE_EXACT)",
+      "row": 162,
+      "keyword": "sugar reduce ayurvedic medicin",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"horse power tablets sex\" (NEGATIVE_EXACT)",
+      "row": 163,
+      "keyword": "horse power tablets sex",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"dabur stresscom capsule 120 capsule\" (NEGATIVE_EXACT)",
+      "row": 164,
+      "keyword": "dabur stresscom capsule 120 ca",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"acv moringa for weight loss ozi\" (NEGATIVE_EXACT)",
+      "row": 165,
+      "keyword": "acv moringa for weight loss oz",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ashwagandha roots original\" (NEGATIVE_EXACT)",
+      "row": 166,
+      "keyword": "ashwagandha roots original",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"protein diabetes powder\" (NEGATIVE_EXACT)",
+      "row": 167,
+      "keyword": "protein diabetes powder",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sugar ayurveda aushadhi churna\" (NEGATIVE_EXACT)",
+      "row": 168,
+      "keyword": "sugar ayurveda aushadhi churna",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"diabetes powder ayurvedic\" (NEGATIVE_EXACT)",
+      "row": 169,
+      "keyword": "diabetes powder ayurvedic",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"diabetic supplements\" (NEGATIVE_EXACT)",
+      "row": 170,
+      "keyword": "diabetic supplements",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b08hpgpqkg\" (NEGATIVE_EXACT)",
+      "row": 171,
+      "keyword": "b08hpgpqkg",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"mashroom x power\" (NEGATIVE_EXACT)",
+      "row": 172,
+      "keyword": "mashroom x power",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ashwagandha supplements powder\" (NEGATIVE_EXACT)",
+      "row": 173,
+      "keyword": "ashwagandha supplements powder",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0g2y5s37h\" (NEGATIVE_EXACT)",
+      "row": 174,
+      "keyword": "b0g2y5s37h",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ashwagandha gummies for stress\" (NEGATIVE_EXACT)",
+      "row": 175,
+      "keyword": "ashwagandha gummies for stress",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0013oxii8\" (NEGATIVE_EXACT)",
+      "row": 176,
+      "keyword": "b0013oxii8",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0dvsst3gj\" (NEGATIVE_EXACT)",
+      "row": 177,
+      "keyword": "b0dvsst3gj",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"nail oil for healthy nails and growth\" (NEGATIVE_EXACT)",
+      "row": 178,
+      "keyword": "nail oil for healthy nails and",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"derma roller for hair growth\" (NEGATIVE_EXACT)",
+      "row": 179,
+      "keyword": "derma roller for hair growth",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"diabetic supplement\" (NEGATIVE_EXACT)",
+      "row": 180,
+      "keyword": "diabetic supplement",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0dcgbnc2w\" (NEGATIVE_EXACT)",
+      "row": 181,
+      "keyword": "b0dcgbnc2w",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"ur healthcare insugar capsules\" (NEGATIVE_EXACT)",
+      "row": 182,
+      "keyword": "ur healthcare insugar capsules",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"diabetes medicine\" (NEGATIVE_EXACT)",
+      "row": 183,
+      "keyword": "diabetes medicine",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"acv moringa reviews\" (NEGATIVE_EXACT)",
+      "row": 184,
+      "keyword": "acv moringa reviews",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"oziva hot mix acv moringa\" (NEGATIVE_EXACT)",
+      "row": 185,
+      "keyword": "oziva hot mix acv moringa",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0fg4nkdhx\" (NEGATIVE_EXACT)",
+      "row": 186,
+      "keyword": "b0fg4nkdhx",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"saw palmetto capsule\" (NEGATIVE_EXACT)",
+      "row": 187,
+      "keyword": "saw palmetto capsule",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"hair growth serum\" (NEGATIVE_EXACT)",
+      "row": 188,
+      "keyword": "hair growth serum",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0c7rd1lrl\" (NEGATIVE_EXACT)",
+      "row": 189,
+      "keyword": "b0c7rd1lrl",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"saw palmetto supplements\" (NEGATIVE_EXACT)",
+      "row": 190,
+      "keyword": "saw palmetto supplements",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"xenoprost active capsule to shrink enlarged prostate\" (NEGATIVE_EXACT)",
+      "row": 191,
+      "keyword": "xenoprost active capsule to sh",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"hair growth tablets for men\" (NEGATIVE_EXACT)",
+      "row": 192,
+      "keyword": "hair growth tablets for men",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"blood sugar\" (NEGATIVE_EXACT)",
+      "row": 193,
+      "keyword": "blood sugar",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0c42yj92c\" (NEGATIVE_EXACT)",
+      "row": 194,
+      "keyword": "b0c42yj92c",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"saw palmetto capsules\" (NEGATIVE_EXACT)",
+      "row": 195,
+      "keyword": "saw palmetto capsules",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"low gi sugar\" (NEGATIVE_EXACT)",
+      "row": 196,
+      "keyword": "low gi sugar",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0fz4sddxh\" (NEGATIVE_EXACT)",
+      "row": 197,
+      "keyword": "b0fz4sddxh",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"renatus nova capsule 120 nutraceuticals\" (NEGATIVE_EXACT)",
+      "row": 198,
+      "keyword": "renatus nova capsule 120 nutra",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"carbamide forte iron supplement for men\" (NEGATIVE_EXACT)",
+      "row": 199,
+      "keyword": "carbamide forte iron supplemen",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"carbamide iron supplement\" (NEGATIVE_EXACT)",
+      "row": 200,
+      "keyword": "carbamide iron supplement",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"horse power oil for men\" (NEGATIVE_EXACT)",
+      "row": 201,
+      "keyword": "horse power oil for men",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"safed musli tablets\" (NEGATIVE_EXACT)",
+      "row": 202,
+      "keyword": "safed musli tablets",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"vidyapith ayurved sugar churna\" (NEGATIVE_EXACT)",
+      "row": 203,
+      "keyword": "vidyapith ayurved sugar churna",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"diabetes sugar\" (NEGATIVE_EXACT)",
+      "row": 204,
+      "keyword": "diabetes sugar",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b07dzxxbwq\" (NEGATIVE_EXACT)",
+      "row": 205,
+      "keyword": "b07dzxxbwq",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"organic india shatavari capsules\" (NEGATIVE_EXACT)",
+      "row": 206,
+      "keyword": "organic india shatavari capsul",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"celtic salt\" (NEGATIVE_EXACT)",
+      "row": 207,
+      "keyword": "celtic salt",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"acv moringa for weight loss\" (NEGATIVE_EXACT)",
+      "row": 208,
+      "keyword": "acv moringa for weight loss",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"saw palmetto for women\" (NEGATIVE_EXACT)",
+      "row": 209,
+      "keyword": "saw palmetto for women",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"acv moringa lemon\" (NEGATIVE_EXACT)",
+      "row": 210,
+      "keyword": "acv moringa lemon",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"pgr for plant growth regulator\" (NEGATIVE_EXACT)",
+      "row": 211,
+      "keyword": "pgr for plant growth regulator",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sugar bati 40 tablet rh\" (NEGATIVE_EXACT)",
+      "row": 212,
+      "keyword": "sugar bati 40 tablet rh",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sugar control medicine\" (NEGATIVE_EXACT)",
+      "row": 213,
+      "keyword": "sugar control medicine",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"libidex tablets for men original\" (NEGATIVE_EXACT)",
+      "row": 214,
+      "keyword": "libidex tablets for men origin",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"pumpkin seed oil and saw palmetto capsule\" (NEGATIVE_EXACT)",
+      "row": 215,
+      "keyword": "pumpkin seed oil and saw palme",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"stresscom dabur 10 capsule\" (NEGATIVE_EXACT)",
+      "row": 216,
+      "keyword": "stresscom dabur 10 capsule",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"shatavari capsules\" (NEGATIVE_EXACT)",
+      "row": 217,
+      "keyword": "shatavari capsules",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0d6glqm9k\" (NEGATIVE_EXACT)",
+      "row": 218,
+      "keyword": "b0d6glqm9k",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"b0g43w7dc9\" (NEGATIVE_EXACT)",
+      "row": 219,
+      "keyword": "b0g43w7dc9",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"shatavari capsules\" (NEGATIVE_EXACT)",
+      "row": 220,
+      "keyword": "shatavari capsules",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"safed musli himalaya\" (NEGATIVE_EXACT)",
+      "row": 221,
+      "keyword": "safed musli himalaya",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"hair growth serum for woman\" (NEGATIVE_EXACT)",
+      "row": 222,
+      "keyword": "hair growth serum for woman",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"sea buckthorn dry berry\" (NEGATIVE_EXACT)",
+      "row": 223,
+      "keyword": "sea buckthorn dry berry",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "Add negative \"rh sugar bati tablet\" (NEGATIVE_EXACT)",
+      "row": 224,
+      "keyword": "rh sugar bati tablet",
+      "todo": "Add as Negative"
+    },
+    {
+      "status": "OK",
+      "action": "Monitor only - no change needed",
+      "row": 240,
+      "keyword": "namak jaitun",
+      "todo": "Monitor/Reduce — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: celtics salt",
+      "row": 242,
+      "keyword": "celtics salt",
+      "todo": "Monitor/Reduce — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: pink rock salt",
+      "row": 247,
+      "keyword": "pink rock salt",
+      "todo": "Monitor/Reduce — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: ih 4 oil ling malish tel",
+      "row": 260,
+      "keyword": "ih 4 oil ling malish tel",
+      "todo": "Monitor/Reduce — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: rhodiola rosea",
+      "row": 296,
+      "keyword": "rhodiola rosea",
+      "todo": "Monitor/Reduce — ACOS 999%"
+    },
+    {
+      "status": "OK",
+      "action": "Monitor only - no change needed",
+      "row": 301,
+      "keyword": "celtic sea salt organic",
+      "todo": "Monitor/Reduce — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: manasamitra vatakam tablet",
+      "row": 309,
+      "keyword": "manasamitra vatakam tablet",
+      "todo": "Monitor/Reduce — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: b0dctrkv5q",
+      "row": 866,
+      "keyword": "b0dctrkv5q",
+      "todo": "Monitor/Reduce — ACOS 82%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: salvora rhodiola rosea",
+      "row": 867,
+      "keyword": "salvora rhodiola rosea",
+      "todo": "Monitor/Reduce — ACOS 78%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: rock salt",
+      "row": 868,
+      "keyword": "rock salt",
+      "todo": "Monitor/Reduce — ACOS 76%"
+    },
+    {
+      "status": "OK",
+      "action": "Monitor only - no change needed",
+      "row": 870,
+      "keyword": "horse power tablets for men",
+      "todo": "Monitor/Reduce — ACOS 80%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: rhodiola rosea supplement",
+      "row": 871,
+      "keyword": "rhodiola rosea supplement",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: pink salt",
+      "row": 873,
+      "keyword": "pink salt",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: vastu salt",
+      "row": 874,
+      "keyword": "vastu salt",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "OK",
+      "action": "Monitor only - no change needed",
+      "row": 879,
+      "keyword": "celtic sea salt",
+      "todo": "Monitor/Reduce — ACOS 76%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: vidhyapeeth ayurvedic sugar ch",
+      "row": 882,
+      "keyword": "vidhyapeeth ayurvedic sugar ch",
+      "todo": "Monitor/Reduce — ACOS 78%"
+    },
+    {
+      "status": "UNKNOWN",
+      "action": {
+        "type": "scale",
+        "budget_pct": 50,
+        "bid_pct": 20
+      },
+      "row": 885,
+      "keyword": "jaitun salt",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: visiorax ayurvedic capsules",
+      "row": 889,
+      "keyword": "visiorax ayurvedic capsules",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "row": 890,
+      "status": "SKIP",
+      "reason": "Unknown action: Optimize Match Type"
+    },
+    {
+      "row": 892,
+      "status": "SKIP",
+      "reason": "Unknown action: Optimize Match Type"
+    },
+    {
+      "row": 898,
+      "status": "SKIP",
+      "reason": "Unknown action: Optimize Match Type"
+    },
+    {
+      "row": 899,
+      "status": "SKIP",
+      "reason": "Unknown action: Optimize Match Type"
+    },
+    {
+      "status": "UNKNOWN",
+      "action": {
+        "type": "scale",
+        "budget_pct": 50,
+        "bid_pct": 20
+      },
+      "row": 900,
+      "keyword": "libidex",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "OK",
+      "action": "Monitor only - no change needed",
+      "row": 905,
+      "keyword": "libidex capsule for men origin",
+      "todo": "Monitor/Reduce — ACOS 92%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: vidyapith ayurved sugar churna",
+      "row": 906,
+      "keyword": "vidyapith ayurved sugar churna",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "UNKNOWN",
+      "action": {
+        "type": "scale",
+        "budget_pct": 50,
+        "bid_pct": 20
+      },
+      "row": 912,
+      "keyword": "libidex capsules rs 2490",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "UNKNOWN",
+      "action": {
+        "type": "scale",
+        "budget_pct": 50,
+        "bid_pct": 20
+      },
+      "row": 913,
+      "keyword": "celtic sea salt",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "UNKNOWN",
+      "action": {
+        "type": "scale",
+        "budget_pct": 50,
+        "bid_pct": 20
+      },
+      "row": 914,
+      "keyword": "horse power tablet",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "UNKNOWN",
+      "action": {
+        "type": "scale",
+        "budget_pct": 50,
+        "bid_pct": 20
+      },
+      "row": 915,
+      "keyword": "horse power tablets for men",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: manasmitra vatkam tablet",
+      "row": 919,
+      "keyword": "manasmitra vatkam tablet",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: xenoprost active",
+      "row": 922,
+      "keyword": "xenoprost active",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "UNKNOWN",
+      "action": {
+        "type": "scale",
+        "budget_pct": 50,
+        "bid_pct": 20
+      },
+      "row": 927,
+      "keyword": "olive salt",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "UNKNOWN",
+      "action": {
+        "type": "scale",
+        "budget_pct": 50,
+        "bid_pct": 20
+      },
+      "row": 932,
+      "keyword": "celtic sea salt organic 82 min",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "UNKNOWN",
+      "action": {
+        "type": "scale",
+        "budget_pct": 50,
+        "bid_pct": 20
+      },
+      "row": 934,
+      "keyword": "celtic salt pure",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: vidhyapith ayurved sugar churn",
+      "row": 935,
+      "keyword": "vidhyapith ayurved sugar churn",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: prostate care capsules",
+      "row": 936,
+      "keyword": "prostate care capsules",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: vastu salt to remove negative ",
+      "row": 937,
+      "keyword": "vastu salt to remove negative ",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "UNKNOWN",
+      "action": {
+        "type": "scale",
+        "budget_pct": 50,
+        "bid_pct": 20
+      },
+      "row": 939,
+      "keyword": "celtic sea salt organic",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "UNKNOWN",
+      "action": {
+        "type": "scale",
+        "budget_pct": 50,
+        "bid_pct": 20
+      },
+      "row": 940,
+      "keyword": "namak zaitoon",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "UNKNOWN",
+      "action": {
+        "type": "scale",
+        "budget_pct": 50,
+        "bid_pct": 20
+      },
+      "row": 944,
+      "keyword": "horse power tablets for men",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: celtics sea salt",
+      "row": 945,
+      "keyword": "celtics sea salt",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "UNKNOWN",
+      "action": {
+        "type": "scale",
+        "budget_pct": 50,
+        "bid_pct": 20
+      },
+      "row": 947,
+      "keyword": "celtic sea salt organic",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: xenoprost active capsule for p",
+      "row": 948,
+      "keyword": "xenoprost active capsule for p",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: visiorax eye capsules",
+      "row": 951,
+      "keyword": "visiorax eye capsules",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: celtic salt",
+      "row": 952,
+      "keyword": "celtic salt",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "UNKNOWN",
+      "action": {
+        "type": "scale",
+        "budget_pct": 50,
+        "bid_pct": 20
+      },
+      "row": 953,
+      "keyword": "celtic salt pure",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: manasamitra vatakam",
+      "row": 954,
+      "keyword": "manasamitra vatakam",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "UNKNOWN",
+      "action": {
+        "type": "scale",
+        "budget_pct": 50,
+        "bid_pct": 20
+      },
+      "row": 955,
+      "keyword": "horse fire tablet",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: sea salt",
+      "row": 956,
+      "keyword": "sea salt",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: xenoprost active capsule for m",
+      "row": 957,
+      "keyword": "xenoprost active capsule for m",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "UNKNOWN",
+      "action": {
+        "type": "scale",
+        "budget_pct": 50,
+        "bid_pct": 20
+      },
+      "row": 958,
+      "keyword": "celtic sea salt",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "row": 959,
+      "status": "SKIP",
+      "reason": "Unknown action: Optimize Match Type"
+    },
+    {
+      "status": "UNKNOWN",
+      "action": {
+        "type": "scale",
+        "budget_pct": 50,
+        "bid_pct": 20
+      },
+      "row": 960,
+      "keyword": "celtic sea salt",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "UNKNOWN",
+      "action": {
+        "type": "scale",
+        "budget_pct": 50,
+        "bid_pct": 20
+      },
+      "row": 961,
+      "keyword": "libidex capsule for men origin",
+      "todo": "Move to Exact Match + Scale"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: acv moringa",
+      "row": 5,
+      "keyword": "acv moringa",
+      "todo": "PAUSE Keyword — ACOS 1481%"
+    },
+    {
+      "row": 6,
+      "status": "OK",
+      "keyword": "loose-match",
+      "todo": "PAUSE Keyword — ACOS 999%",
+      "action": "SKIP: Auto-target (Amazon managed, not editable)"
+    },
+    {
+      "row": 7,
+      "status": "OK",
+      "keyword": "keyword-group=\"category\"",
+      "todo": "PAUSE Keyword — ACOS 1627%",
+      "action": "SKIP: Auto-target (Amazon managed, not editable)"
+    },
+    {
+      "row": 8,
+      "status": "OK",
+      "keyword": "keyword-group=\"category\"",
+      "todo": "PAUSE Keyword — ACOS 773%",
+      "action": "SKIP: Auto-target (Amazon managed, not editable)"
+    },
+    {
+      "row": 9,
+      "status": "OK",
+      "keyword": "substitutes",
+      "todo": "PAUSE Keyword — ACOS 895%",
+      "action": "SKIP: Auto-target (Amazon managed, not editable)"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE keyword 145047849288772",
+      "row": 10,
+      "keyword": "bidyapith ayurved sugar churna",
+      "todo": "PAUSE Keyword — ACOS 443%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: jamui ayurvedic sugar churna",
+      "row": 11,
+      "keyword": "jamui ayurvedic sugar churna",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE keyword 164238610567727",
+      "row": 12,
+      "keyword": "libidex capsule sexual health ",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: lycopene",
+      "row": 13,
+      "keyword": "lycopene",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: vidyapith ayurvedic sugar chur",
+      "row": 14,
+      "keyword": "vidyapith ayurvedic sugar chur",
+      "todo": "PAUSE Keyword — ACOS 139%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: vidyapith ayurveda sugar churn",
+      "row": 15,
+      "keyword": "vidyapith ayurveda sugar churn",
+      "todo": "PAUSE Keyword — ACOS 239%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE keyword 142026728729287",
+      "row": 16,
+      "keyword": "titanic k2 capsules for men or",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: lycopene supplement",
+      "row": 17,
+      "keyword": "lycopene supplement",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: vidyapith ayurved",
+      "row": 18,
+      "keyword": "vidyapith ayurved",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: vidhyapith ayurved sugar churn",
+      "row": 19,
+      "keyword": "vidhyapith ayurved sugar churn",
+      "todo": "PAUSE Keyword — ACOS 131%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: ar ayurveda horse fire",
+      "row": 20,
+      "keyword": "ar ayurveda horse fire",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "row": 21,
+      "status": "OK",
+      "keyword": "close-match",
+      "todo": "PAUSE Keyword — ACOS 999%",
+      "action": "SKIP: Auto-target (Amazon managed, not editable)"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE keyword 12956193334015",
+      "row": 22,
+      "keyword": "libidex gold capsule for men o",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: iron supplement for women",
+      "row": 23,
+      "keyword": "iron supplement for women",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE keyword 17481402874427",
+      "row": 24,
+      "keyword": "namak jaitun",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: iron supplement",
+      "row": 25,
+      "keyword": "iron supplement",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "row": 26,
+      "status": "OK",
+      "keyword": "keyword-group=\"category\"",
+      "todo": "PAUSE Keyword — ACOS 999%",
+      "action": "SKIP: Auto-target (Amazon managed, not editable)"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: in sugar capsule",
+      "row": 27,
+      "keyword": "in sugar capsule",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "row": 28,
+      "status": "OK",
+      "keyword": "complements",
+      "todo": "PAUSE Keyword — ACOS 999%",
+      "action": "SKIP: Auto-target (Amazon managed, not editable)"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: vidyapeeth sugar churna",
+      "row": 29,
+      "keyword": "vidyapeeth sugar churna",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: shatavari capsules for women",
+      "row": 30,
+      "keyword": "shatavari capsules for women",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE keyword 238694458030464",
+      "row": 31,
+      "keyword": "big jack capsule",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: tentex royal",
+      "row": 32,
+      "keyword": "tentex royal",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "row": 33,
+      "status": "OK",
+      "keyword": "substitutes",
+      "todo": "PAUSE Keyword — ACOS 999%",
+      "action": "SKIP: Auto-target (Amazon managed, not editable)"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: miduty adk vitamin d3 k2 a",
+      "row": 34,
+      "keyword": "miduty adk vitamin d3 k2 a",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE keyword 193435075613881",
+      "row": 35,
+      "keyword": "horse power",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE keyword 14832636400705",
+      "row": 36,
+      "keyword": "celtic sea salt",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: shatavari capsules",
+      "row": 37,
+      "keyword": "shatavari capsules",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE keyword 235404156219483",
+      "row": 38,
+      "keyword": "libidex capsules rs 2490",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: lycopene",
+      "row": 39,
+      "keyword": "lycopene",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: vidyapith ayurvedic sugar chur",
+      "row": 40,
+      "keyword": "vidyapith ayurvedic sugar chur",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: safed musli tablet",
+      "row": 41,
+      "keyword": "safed musli tablet",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: shatavari capsules",
+      "row": 42,
+      "keyword": "shatavari capsules",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE keyword 195573388402999",
+      "row": 43,
+      "keyword": "horse power tablet",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: safed musli capsules",
+      "row": 44,
+      "keyword": "safed musli capsules",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: tongkat ali for men",
+      "row": 45,
+      "keyword": "tongkat ali for men",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE keyword 257359355347094",
+      "row": 46,
+      "keyword": "libidex tablet for man",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "row": 47,
+      "status": "OK",
+      "keyword": "substitutes",
+      "todo": "PAUSE Keyword — ACOS 999%",
+      "action": "SKIP: Auto-target (Amazon managed, not editable)"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: safed musli powder organic",
+      "row": 48,
+      "keyword": "safed musli powder organic",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: tongkat ali supplement",
+      "row": 49,
+      "keyword": "tongkat ali supplement",
+      "todo": "PAUSE Keyword — ACOS 167%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: stress release",
+      "row": 50,
+      "keyword": "stress release",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: iron supplement",
+      "row": 51,
+      "keyword": "iron supplement",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: tongkat ali powder",
+      "row": 52,
+      "keyword": "tongkat ali powder",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: vidyapith ayurved sugar churn",
+      "row": 53,
+      "keyword": "vidyapith ayurved sugar churn",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: insugar",
+      "row": 54,
+      "keyword": "insugar",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE keyword 12956193334015",
+      "row": 55,
+      "keyword": "libidex gold capsule for men o",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: lycopene",
+      "row": 56,
+      "keyword": "lycopene",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: vastu sea salt",
+      "row": 57,
+      "keyword": "vastu sea salt",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE keyword 183574507906302",
+      "row": 58,
+      "keyword": "horse power tablets for men",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: sugar bati tablet",
+      "row": 59,
+      "keyword": "sugar bati tablet",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: acv moringa for weight loss",
+      "row": 60,
+      "keyword": "acv moringa for weight loss",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE keyword 168942353272668",
+      "row": 61,
+      "keyword": "celtic sea salt organic",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: lycopene capsules 500mg",
+      "row": 62,
+      "keyword": "lycopene capsules 500mg",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: vidyapith sugar churan",
+      "row": 63,
+      "keyword": "vidyapith sugar churan",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: prostate supplements for men",
+      "row": 64,
+      "keyword": "prostate supplements for men",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE keyword 142026728729287",
+      "row": 65,
+      "keyword": "titanic k2 capsules for men or",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE keyword 23839815371475",
+      "row": 66,
+      "keyword": "horse power capsule",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE keyword 202110902132916",
+      "row": 67,
+      "keyword": "horse power tablets sex",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: stresscom capsule",
+      "row": 68,
+      "keyword": "stresscom capsule",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "row": 69,
+      "status": "OK",
+      "keyword": "keyword-group=\"category\"",
+      "todo": "PAUSE Keyword — ACOS 999%",
+      "action": "SKIP: Auto-target (Amazon managed, not editable)"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: sugar ayurveda aushadhi churna",
+      "row": 70,
+      "keyword": "sugar ayurveda aushadhi churna",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: insugar capsule",
+      "row": 71,
+      "keyword": "insugar capsule",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: organic india shatavari capsul",
+      "row": 72,
+      "keyword": "organic india shatavari capsul",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "DRY_RUN",
+      "action": "PAUSE keyword 263695476833537",
+      "row": 73,
+      "keyword": "titanic k2 capsule",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: manasamitra",
+      "row": 74,
+      "keyword": "manasamitra",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: stresscom dabur",
+      "row": 75,
+      "keyword": "stresscom dabur",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: xenoprost active capsule for p",
+      "row": 76,
+      "keyword": "xenoprost active capsule for p",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "row": 77,
+      "status": "OK",
+      "keyword": "close-match",
+      "todo": "PAUSE Keyword — ACOS 999%",
+      "action": "SKIP: Auto-target (Amazon managed, not editable)"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: safed musli himalaya",
+      "row": 78,
+      "keyword": "safed musli himalaya",
+      "todo": "PAUSE Keyword — ACOS 999%"
+    },
+    {
+      "row": 83,
+      "status": "SKIP",
+      "reason": "Unknown action: Reduce Bid ~10%"
+    },
+    {
+      "row": 84,
+      "status": "SKIP",
+      "reason": "Unknown action: Reduce Bid ~10%"
+    },
+    {
+      "row": 93,
+      "status": "SKIP",
+      "reason": "Unknown action: Reduce Bid ~35%"
+    },
+    {
+      "row": 95,
+      "status": "SKIP",
+      "reason": "Unknown action: Reduce Bid ~14%"
+    },
+    {
+      "row": 96,
+      "status": "SKIP",
+      "reason": "Unknown action: Reduce Bid ~10%"
+    },
+    {
+      "row": 505,
+      "status": "SKIP",
+      "reason": "Unknown action: Reduce Bid ~11%"
+    },
+    {
+      "row": 506,
+      "status": "SKIP",
+      "reason": "Unknown action: Reduce Bid ~9%"
+    },
+    {
+      "row": 507,
+      "status": "SKIP",
+      "reason": "Unknown action: Reduce Bid ~11%"
+    },
+    {
+      "row": 508,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~5%"
+    },
+    {
+      "row": 509,
+      "status": "OK",
+      "keyword": "substitutes",
+      "todo": "Fine-tune Bid",
+      "action": "SKIP: Auto-target (Amazon managed, not editable)"
+    },
+    {
+      "row": 510,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~1%"
+    },
+    {
+      "row": 511,
+      "status": "SKIP",
+      "reason": "Unknown action: Reduce Bid ~10%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: asin=\"B0DCTRKV5Q\"",
+      "row": 512,
+      "keyword": "asin=\"B0DCTRKV5Q\"",
+      "todo": "Fine-tune Bid"
+    },
+    {
+      "row": 514,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~3%"
+    },
+    {
+      "row": 515,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~3%"
+    },
+    {
+      "status": "OK",
+      "action": "Monitor only - no change needed",
+      "row": 516,
+      "keyword": "libidex capsule",
+      "todo": "Fine-tune Bid"
+    },
+    {
+      "row": 517,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~3%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: celtics sea salt",
+      "row": 518,
+      "keyword": "celtics sea salt",
+      "todo": "Fine-tune Bid"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: sugar churna",
+      "row": 520,
+      "keyword": "sugar churna",
+      "todo": "Fine-tune Bid"
+    },
+    {
+      "row": 521,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~4%"
+    },
+    {
+      "row": 523,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~7%"
+    },
+    {
+      "row": 524,
+      "status": "SKIP",
+      "reason": "Unknown action: Reduce Bid ~20%"
+    },
+    {
+      "row": 525,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~10%"
+    },
+    {
+      "row": 526,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~4%"
+    },
+    {
+      "row": 528,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~9%"
+    },
+    {
+      "row": 529,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~7%"
+    },
+    {
+      "row": 530,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~5%"
+    },
+    {
+      "row": 533,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~9%"
+    },
+    {
+      "row": 534,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~10%"
+    },
+    {
+      "row": 535,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~10%"
+    },
+    {
+      "row": 536,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~13%"
+    },
+    {
+      "row": 540,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~3%"
+    },
+    {
+      "row": 541,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~6%"
+    },
+    {
+      "row": 542,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~2%"
+    },
+    {
+      "row": 543,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~2%"
+    },
+    {
+      "row": 544,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~4%"
+    },
+    {
+      "row": 545,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~3%"
+    },
+    {
+      "row": 546,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~8%"
+    },
+    {
+      "row": 547,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~13%"
+    },
+    {
+      "row": 549,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~2%"
+    },
+    {
+      "row": 550,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~5%"
+    },
+    {
+      "row": 551,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~20%"
+    },
+    {
+      "row": 552,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~7%"
+    },
+    {
+      "row": 553,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~13%"
+    },
+    {
+      "row": 554,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~11%"
+    },
+    {
+      "status": "OK",
+      "action": "Monitor only - no change needed",
+      "row": 555,
+      "keyword": "horse fire",
+      "todo": "Fine-tune Bid"
+    },
+    {
+      "row": 556,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~19%"
+    },
+    {
+      "row": 557,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~15%"
+    },
+    {
+      "row": 558,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~9%"
+    },
+    {
+      "row": 559,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~9%"
+    },
+    {
+      "status": "FAILED",
+      "reason": "Keyword not found: vidyapith ayurved sugar churna",
+      "row": 560,
+      "keyword": "vidyapith ayurved sugar churna",
+      "todo": "Fine-tune Bid"
+    },
+    {
+      "row": 561,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~24%"
+    },
+    {
+      "row": 562,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~27%"
+    },
+    {
+      "row": 563,
+      "status": "SKIP",
+      "reason": "Unknown action: Increase Bid ~10%"
+    }
+  ]
+}

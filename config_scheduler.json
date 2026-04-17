@@ -1,0 +1,145 @@
+{
+  "daily_pipeline_time": "08:30",
+  "freshness_rules": {
+    "buy_box_status": 1,
+    "campaign_metrics": 4,
+    "competitor_prices": 12,
+    "pricing": 12,
+    "search_terms": 24,
+    "stock_levels": 2,
+    "true_profit": 24
+  },
+  "pipelines": {
+    "daily": [
+      "import",
+      "pricing",
+      "profit",
+      "campaign_new",
+      "report_ads",
+      "report_listing",
+      "execute"
+    ],
+    "monitor": [
+      "buybox"
+    ],
+    "weekly": [
+      "campaign_profit"
+    ]
+  },
+  "tasks": {
+    "buybox": {
+      "depends_on": [],
+      "enabled": true,
+      "freshness_hours": 2,
+      "name": "Buy Box Monitor",
+      "script": "buy_box_monitor_v1.1.py",
+      "script_dir": "Grow24_AI/marketplaces/amazon/seller_api/market_intelligence"
+    },
+    "campaign_new": {
+      "args": [
+        "--mode",
+        "newlisting",
+        "--days",
+        "8"
+      ],
+      "depends_on": [
+        "profit"
+      ],
+      "enabled": true,
+      "freshness_hours": 24,
+      "name": "Auto Campaign: New Listings",
+      "script": "auto_campaign_creator_v2.0.py"
+    },
+    "campaign_profit": {
+      "args": [
+        "--mode",
+        "profit",
+        "--top",
+        "5"
+      ],
+      "depends_on": [
+        "profit"
+      ],
+      "enabled": true,
+      "freshness_hours": 360,
+      "name": "Auto Campaign: Top Profit",
+      "script": "auto_campaign_creator_v2.0.py"
+    },
+    "execute": {
+      "depends_on": [
+        "report_ads"
+      ],
+      "enabled": true,
+      "freshness_hours": 24,
+      "name": "Execute Approved Actions",
+      "script": "execute_approvals_v1.0.py"
+    },
+    "import": {
+      "args": [
+        "--days",
+        "1"
+      ],
+      "depends_on": [],
+      "enabled": true,
+      "freshness_hours": 4,
+      "name": "Data Import",
+      "script": "sp_ads_complete_import_v1.0.py"
+    },
+    "price_optimizer": {
+      "alert_on_issue": true,
+      "depends_on": [
+        "pricing",
+        "profit"
+      ],
+      "enabled": false,
+      "freshness_hours": 0.5,
+      "name": "Auto Price Optimizer",
+      "note": "Runs every 30 min during active hours (06:00-23:00). Config: config_price_optimizer.json",
+      "schedule": "every_30min",
+      "script": "price_optimizer_v1.0.py",
+      "script_dir": "Grow24_AI/marketplaces/amazon/seller_api/pricing"
+    },
+    "pricing": {
+      "depends_on": [],
+      "enabled": true,
+      "freshness_hours": 12,
+      "name": "Pricing Refresh",
+      "script": "fetch_pricing_v1.0.py"
+    },
+    "profit": {
+      "depends_on": [
+        "import",
+        "pricing"
+      ],
+      "enabled": true,
+      "freshness_hours": 24,
+      "name": "True Profit Calculator",
+      "script": "true_profit_calculator_v1.0.py"
+    },
+    "report_ads": {
+      "args": [
+        "--period",
+        "daily",
+        "--days",
+        "1"
+      ],
+      "depends_on": [
+        "profit"
+      ],
+      "enabled": true,
+      "freshness_hours": 24,
+      "name": "Ad Action Report",
+      "script": "create_action_report_v2.0.py"
+    },
+    "report_listing": {
+      "depends_on": [
+        "profit"
+      ],
+      "enabled": true,
+      "freshness_hours": 24,
+      "name": "Listing Health Report",
+      "script": "listing_health_report_v1.0.py"
+    }
+  },
+  "version": "1.0"
+}

@@ -1,0 +1,149 @@
+{
+  "timestamp": "2026-04-15T19:56:00.870872",
+  "threshold": 1,
+  "total": 330,
+  "zero_stock": [
+    {
+      "asin": "B0D3CK886B",
+      "sku": "UsLabs_AddyiPlus_ForWomen",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0D54MR138",
+      "sku": "NewBoldCareLibidexPlus30C",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0DX7BWSKG",
+      "sku": "LibidSafe_iGainCpsl30_P2",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0DG5SZMVR",
+      "sku": "BLKHorsePowerCap30_1Oil_v",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0D3DB5P73",
+      "sku": "xhlthboostrLibidx30Cap_Ad",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0DLCKR3CB",
+      "sku": "RED_HorsePowerCpls30_P2_V",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0CXQ8TVMZ",
+      "sku": "DrRLXKeedaJadiGoldCaps30_",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0DCTRKV5Q",
+      "sku": "CelticSaltGold_1kg_PouchV",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0FG19CFSM",
+      "sku": "Vedalabs LiBiDEXX30-Capsu",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0FDLFVMH5",
+      "sku": "BluWit_MagnesiumGlycinate",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0DCSY651M",
+      "sku": "JoshBoosterLibidex30Cap_F",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0D2V5NWSG",
+      "sku": "DrRelaxStressGuardCap30_v",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0CTHXGWPC",
+      "sku": "DrRLXCayennePapperCap30_v",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0F3CWZCFT",
+      "sku": "Brown_Organic_CelticSallt",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0FGYHYDL7",
+      "sku": "Black_HorsePower_Cap30_P2",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0FH2GCNRP",
+      "sku": "Red_HorseForce_Cap30_P2_F",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0FDLG2T8R",
+      "sku": "BluWit_MultivitaminPlusMe",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0FH2JPPR1",
+      "sku": "Black_HorseForce_Cap30_P2",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0DGB3M71M",
+      "sku": "DrRelaxHolisticBerberineC",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    },
+    {
+      "asin": "B0G2CWZWCD",
+      "sku": "WhiteBlue_Ashwagandha AF-",
+      "fba_stock": 0,
+      "mnf_stock": 0,
+      "total_stock": 0
+    }
+  ],
+  "low_stock": [],
+  "healthy_count": 310
+}

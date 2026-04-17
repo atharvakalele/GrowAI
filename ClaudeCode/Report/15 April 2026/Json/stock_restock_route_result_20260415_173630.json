@@ -1,0 +1,93 @@
+{
+  "route_type": "stock_restock_approval",
+  "engine": "stock_restock",
+  "generated_at": "2026-04-15T17:36:30.626762",
+  "request_count": 45,
+  "status": "approval_generated",
+  "reason": "Restock approval workbook prepared for user review.",
+  "actions": [
+    {
+      "action": "PREPARE_RESTOCK_APPROVAL",
+      "status": "approval_generated",
+      "asin": "B0D3CK886B",
+      "sku": "UsLabs_AddyiPlus_ForWomen",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0
+    },
+    {
+      "action": "PREPARE_RESTOCK_APPROVAL",
+      "status": "approval_generated",
+      "asin": "B0DC4CZ3Z8",
+      "sku": "goldLibidex_oil",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0
+    },
+    {
+      "action": "PREPARE_RESTOCK_APPROVAL",
+      "status": "approval_generated",
+      "asin": "B0DC48PQM7",
+      "sku": "goldLibidex",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0
+    },
+    {
+      "action": "PREPARE_RESTOCK_APPROVAL",
+      "status": "approval_generated",
+      "asin": "B0D54MR138",
+      "sku": "NewBoldCareLibidexPlus30C",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0
+    },
+    {
+      "action": "PREPARE_RESTOCK_APPROVAL",
+      "status": "approval_generated",
+      "asin": "B0DX7BWSKG",
+      "sku": "LibidSafe_iGainCpsl30_P2",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0
+    },
+    {
+      "action": "PREPARE_RESTOCK_APPROVAL",
+      "status": "approval_generated",
+      "asin": "B0DG5T519Z",
+      "sku": "RED_HorsePowerCap30_v6",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0
+    },
+    {
+      "action": "PREPARE_RESTOCK_APPROVAL",
+      "status": "approval_generated",
+      "asin": "B0DG5SZMVR",
+      "sku": "BLKHorsePowerCap30_1Oil_v",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0
+    },
+    {
+      "action": "PREPARE_RESTOCK_APPROVAL",
+      "status": "approval_generated",
+      "asin": "B0D3DB5P73",
+      "sku": "xhlthboostrLibidx30Cap_Ad",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0
+    },
+    {
+      "action": "PREPARE_RESTOCK_APPROVAL",
+      "status": "approval_generated",
+      "asin": "B0D54G6W7K",
+      "sku": "XhlthBoosterLibidex_p2_v8",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0
+    },
+    {
+      "action": "PREPARE_RESTOCK_APPROVAL",
+      "status": "approval_generated",
+      "asin": "B0DLCKR3CB",
+      "sku": "RED_HorsePowerCpls30_P2_V",
+      "reason": "OUT OF STOCK",
+      "current_stock": 0
+    }
+  ],
+  "return_code": 0,
+  "command": "C:\\Users\\Clu\\AppData\\Local\\Programs\\Python\\Python311\\python.exe C:\\Users\\Clu\\Documents\\Be Extra Carefull Sonet Amazon Bussiness Grouth Automation AI\\ClaudeCode\\Python\\stock_restock_v1.0.py --list",
+  "output_file": "ClaudeCode/Report/15 April 2026/GoAmrita_Restock_Approval.xlsx"
+}

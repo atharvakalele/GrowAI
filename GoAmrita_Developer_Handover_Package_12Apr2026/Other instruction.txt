@@ -1,0 +1,7 @@
+ old beta folder : ClaudeCode/Python
+new as per architect folder : Grow24_AI
+Never create duplicate functions, check if already exist for similar purpose, and reuse it. make small or medium size resulable function. 
+
+ not to create duplicate function if already available similar in another feature, just call him, if its not sufficient ? improve it in such a way that its not effect existing function or not break 
+
+data import from amazon Same emoji encoding issue frequent , fix it permanently 

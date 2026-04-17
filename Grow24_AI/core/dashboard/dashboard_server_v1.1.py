@@ -1,0 +1,4497 @@
+#!/usr/bin/env python3
+"""
+AutoGrow AI — Live Dashboard Server v1.1
+==========================================
+Real-time dashboard with controls. Refreshes every 1 second.
+
+v1.1 Changes:
+  - Features loaded from config_features.json (SINGLE SOURCE OF TRUTH)
+  - Quick Action buttons auto-generated from config
+  - /api/run/<task> auto-generated from config
+  - Settings page shows feature enable/disable toggles
+  - No hardcoded script lists
+
+Features:
+  - Live sales, buy box, stock, execution status
+  - Run/Stop/Pause any task
+  - View activity logs
+  - Configuration controls
+  - Dark/Light theme toggle
+  - Settings page for all config files + feature toggles
+  - Open/Download report files
+
+Usage:
+    python dashboard_server_v1.1.py              (start on port 5000)
+    python dashboard_server_v1.1.py --port 8080  (custom port)
+"""
+
+import json
+import os
+import sys
+import subprocess
+import threading
+from datetime import datetime, timedelta
+from flask import Flask, jsonify, render_template_string, request, send_from_directory
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
+def find_project_dir(start_dir):
+    current = os.path.abspath(start_dir)
+    while True:
+        if (
+            os.path.exists(os.path.join(current, "sp_api_credentials.json"))
+            and os.path.exists(os.path.join(current, "config_features.json"))
+        ):
+            return current
+        parent = os.path.dirname(current)
+        if parent == current:
+            raise RuntimeError("Project root not found for dashboard server")
+        current = parent
+
+
+PROJECT_DIR = find_project_dir(SCRIPT_DIR)
+PYTHON = sys.executable
+LEGACY_PYTHON_DIR = os.path.join(PROJECT_DIR, "ClaudeCode", "Python")
+SCHEDULER_SYNC_SCRIPT = os.path.join(PROJECT_DIR, "Grow24_AI", "core", "orchestrator", "scheduler_sync_v1.0.py")
+RUN_DASHBOARD_BAT = os.path.join(PROJECT_DIR, "Grow24_AI", "core", "launchers", "amazon", "run_dashboard.bat")
+
+# ── Features config (SINGLE SOURCE OF TRUTH) ──
+FEATURES_CONFIG = os.path.join(PROJECT_DIR, "config_features.json")
+
+REPORT_BASE = os.path.join(PROJECT_DIR, "ClaudeCode", "Report")
+report_folders = [f for f in os.listdir(REPORT_BASE) if os.path.isdir(os.path.join(REPORT_BASE, f))]
+report_folders.sort(key=lambda x: os.path.getmtime(os.path.join(REPORT_BASE, x)), reverse=True)
+LATEST_REPORT = report_folders[0] if report_folders else datetime.now().strftime("%d %B %Y")
+JSON_DIR = os.path.join(REPORT_BASE, LATEST_REPORT, "Json")
+
+# Config files mapping
+RULES_CONFIG = os.path.join(PROJECT_DIR, "config_custom_rules.json")
+
+FBA_CONFIG = os.path.join(PROJECT_DIR, 'Grow24_AI', 'config', 'fba_config.json')
+
+PRICE_OPT_CONFIG = os.path.join(PROJECT_DIR, "config_price_optimizer.json")
+STOCK_CONTROL_CONFIG = os.path.join(PROJECT_DIR, "config_stock_control.json")
+STOCK_STATUS_FILE = os.path.join(JSON_DIR, "stock_status.json")
+STOCK_ACTIVITY_FILE = os.path.join(JSON_DIR, "stock_activity_log.json")
+
+CONFIG_FILES = {
+    'true_profit': os.path.join(PROJECT_DIR, 'config_true_profit.json'),
+    'scheduler': os.path.join(PROJECT_DIR, 'config_scheduler.json'),
+    'email': os.path.join(PROJECT_DIR, 'config_email.json'),
+    'pcse': os.path.join(PROJECT_DIR, 'config_pcse.json'),
+    'google_sheet': os.path.join(PROJECT_DIR, 'config_google_sheet.json'),
+    'features': FEATURES_CONFIG,
+    'custom_rules': RULES_CONFIG,
+    'fba': FBA_CONFIG,
+    'price_optimizer': PRICE_OPT_CONFIG,
+    'stock_control': STOCK_CONTROL_CONFIG,
+}
+
+app = Flask(__name__)
+
+# Running tasks tracker
+running_tasks = {}
+
+
+def default_stock_control_config():
+    return {
+        "schema_type": "stock_control",
+        "schema_version": "1.0",
+        "scope": "seller_listing_only",
+        "default_target_stock": 1000,
+        "default_minimum_threshold": 1,
+        "manual_entries": []
+    }
+
+
+def normalize_stock_control_entry(entry):
+    return {
+        "type": str(entry.get("type", "")).strip().lower(),
+        "value": str(entry.get("value", "")).strip(),
+        "excluded": bool(entry.get("excluded", False)),
+        "created_at": entry.get("created_at", ""),
+        "updated_at": entry.get("updated_at", ""),
+    }
+
+
+def load_stock_control_config():
+    cfg = load_json(STOCK_CONTROL_CONFIG)
+    if not isinstance(cfg, dict) or not cfg:
+        cfg = default_stock_control_config()
+    cfg.setdefault("schema_type", "stock_control")
+    cfg.setdefault("schema_version", "1.0")
+    cfg["scope"] = "seller_listing_only"
+    cfg["default_target_stock"] = int(cfg.get("default_target_stock", 1000) or 1000)
+    cfg["default_minimum_threshold"] = int(cfg.get("default_minimum_threshold", 1) or 1)
+    cfg["manual_entries"] = [
+        normalize_stock_control_entry(entry)
+        for entry in cfg.get("manual_entries", [])
+        if str(entry.get("type", "")).strip().lower() in ("asin", "sku") and str(entry.get("value", "")).strip()
+    ]
+    if not os.path.exists(STOCK_CONTROL_CONFIG):
+        save_json(STOCK_CONTROL_CONFIG, cfg)
+    return cfg
+
+
+def save_stock_control_config_data(cfg):
+    save_json(STOCK_CONTROL_CONFIG, cfg)
+
+
+def find_latest_ads_map():
+    ads_rows = []
+    for folder in report_folders:
+        candidate = os.path.join(REPORT_BASE, folder, "Json", "sp_product_ads_list.json")
+        if os.path.exists(candidate):
+            ads_rows = load_json(candidate, [])
+            if ads_rows:
+                break
+    asin_skus = {}
+    for row in ads_rows if isinstance(ads_rows, list) else []:
+        asin = str(row.get("asin", "")).strip()
+        sku = str(row.get("sku", "")).strip()
+        if asin and sku:
+            asin_skus.setdefault(asin, [])
+            if sku not in asin_skus[asin]:
+                asin_skus[asin].append(sku)
+    return asin_skus
+
+
+def get_stock_feature_enabled():
+    feat_config = load_json(FEATURES_CONFIG)
+    return bool(feat_config.get("features", {}).get("stock", {}).get("enabled", True))
+
+
+def get_stock_action_label(entry_type, entry_value, asin="", sku=""):
+    activity_log = load_json(STOCK_ACTIVITY_FILE, {"activities": []})
+    relevant_actions = {"RESTOCK_SUCCESS": "Restocked", "RESTOCK_FAILED": "Failed", "RESTOCK_DRY_RUN": "Previewed"}
+    for activity in reversed(activity_log.get("activities", [])):
+        action = activity.get("action", "")
+        if action not in relevant_actions:
+            continue
+        if entry_type == "sku":
+            if sku and activity.get("sku") == sku:
+                return relevant_actions[action]
+            if activity.get("scope_type") == "sku" and activity.get("scope_value") == entry_value:
+                return relevant_actions[action]
+        else:
+            if asin and activity.get("asin") == asin:
+                return relevant_actions[action]
+            if activity.get("scope_type") == "asin" and activity.get("scope_value") == entry_value:
+                return relevant_actions[action]
+    return "No recent action"
+
+
+def build_stock_control_items():
+    cfg = load_stock_control_config()
+    status = load_json(STOCK_STATUS_FILE, {})
+    asin_skus = find_latest_ads_map()
+    threshold = int(cfg.get("default_minimum_threshold", 1) or 1)
+    target_stock = int(cfg.get("default_target_stock", 1000) or 1000)
+    manual_entries = cfg.get("manual_entries", [])
+    asin_rules = {entry["value"]: entry for entry in manual_entries if entry["type"] == "asin"}
+    items = []
+    seen_keys = set()
+
+    for item in list(status.get("zero_stock", [])) + list(status.get("low_stock", [])):
+        asin = str(item.get("asin", "")).strip()
+        sku = str(item.get("sku", "")).strip()
+        key = f"asin:{asin}"
+        seen_keys.add(key)
+        excluded = bool(asin_rules.get(asin, {}).get("excluded", False))
+        items.append({
+            "key": key,
+            "type": "asin",
+            "value": asin,
+            "asin": asin,
+            "sku": sku,
+            "status": "OUT OF STOCK" if int(item.get("total_stock", 0) or 0) == 0 else "LOW STOCK",
+            "seller_stock": int(item.get("total_stock", 0) or 0),
+            "threshold": threshold,
+            "target_stock": target_stock,
+            "excluded": excluded,
+            "origin": "risk",
+            "scope_size": len(asin_skus.get(asin, [])),
+            "last_action": get_stock_action_label("asin", asin, asin=asin, sku=sku),
+        })
+
+    for entry in manual_entries:
+        key = f"{entry['type']}:{entry['value']}"
+        if key in seen_keys:
+            continue
+        value = entry["value"]
+        items.append({
+            "key": key,
+            "type": entry["type"],
+            "value": value,
+            "asin": value if entry["type"] == "asin" else "",
+            "sku": value if entry["type"] == "sku" else "",
+            "status": "MANUAL",
+            "seller_stock": None,
+            "threshold": threshold,
+            "target_stock": target_stock,
+            "excluded": bool(entry.get("excluded", False)),
+            "origin": "manual",
+            "scope_size": len(asin_skus.get(value, [])) if entry["type"] == "asin" else 1,
+            "last_action": get_stock_action_label(entry["type"], value, asin=value if entry["type"] == "asin" else "", sku=value if entry["type"] == "sku" else ""),
+        })
+
+    items.sort(key=lambda item: (0 if item["origin"] == "risk" else 1, item["type"], item["value"]))
+    return {
+        "feature_enabled": get_stock_feature_enabled(),
+        "config": cfg,
+        "items": items,
+        "summary": {
+            "risk_items": sum(1 for item in items if item["origin"] == "risk"),
+            "manual_items": sum(1 for item in items if item["origin"] == "manual"),
+            "excluded_items": sum(1 for item in items if item["excluded"]),
+        }
+    }
+
+
+def load_json(path, default=None):
+    if default is None:
+        default = {}
+    if os.path.exists(path):
+        try:
+            with open(path, encoding='utf-8') as f:
+                return json.load(f)
+        except:
+            pass
+    return default
+
+
+def save_json(path, data):
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+
+
+def sweet_date(iso_str):
+    """Convert ISO date to sweet pot format: 'Today 3:45 PM' or '12 Apr 2:30 PM'"""
+    if not iso_str:
+        return '—'
+    try:
+        dt = datetime.fromisoformat(iso_str.replace('Z', ''))
+        now = datetime.now()
+        if dt.date() == now.date():
+            return f"Today {dt.strftime('%I:%M %p')}"
+        elif dt.date() == (now - timedelta(days=1)).date():
+            return f"Yesterday {dt.strftime('%I:%M %p')}"
+        else:
+            return dt.strftime('%d %b %I:%M %p')
+    except:
+        return iso_str[:16] if len(iso_str) > 16 else iso_str
+
+def file_age_str(path):
+    if os.path.exists(path):
+        age = datetime.now().timestamp() - os.path.getmtime(path)
+        if age < 60: return f"{age:.0f}s ago"
+        if age < 3600: return f"{age/60:.0f}m ago"
+        if age < 86400: return f"{age/3600:.1f}h ago"
+        return f"{age/86400:.0f}d ago"
+    return "—"
+
+
+def get_feature_last_run(fid):
+    """Get last run time for a feature by checking its output file modification time"""
+    feature_files = {
+        'import': '_import_metadata.json',
+        'pricing': 'sp_pricing_data.json',
+        'profit': 'true_profit_per_asin.json',
+        'report_ads': None,  # check report xlsx below
+        'sales_compare': 'sales_compare_latest.json',
+        'buybox': 'buy_box_status.json',
+        'stock': 'stock_status.json',
+        'listing_monitor': 'top_listing_status.json',
+        'competitor_tracker': 'competitor_tracker_latest.json',
+        'aplus_monitor': 'aplus_status.json',
+        'rule_engine': 'rule_engine_log.json',
+    }
+    fname = feature_files.get(fid)
+    if fname:
+        path = os.path.join(JSON_DIR, fname)
+        if os.path.exists(path):
+            return file_age_str(path)
+    # For report_ads, check latest .xlsx in report dir
+    if fid == 'report_ads':
+        report_dir = os.path.join(REPORT_BASE, LATEST_REPORT)
+        if os.path.isdir(report_dir):
+            xlsx_files = [f for f in os.listdir(report_dir) if f.endswith('.xlsx') and not f.startswith('~')]
+            if xlsx_files:
+                latest = max(xlsx_files, key=lambda x: os.path.getmtime(os.path.join(report_dir, x)))
+                return file_age_str(os.path.join(report_dir, latest))
+    return None
+
+
+def get_features_list():
+    """Build features list for dashboard from config_features.json"""
+    feat_config = load_json(FEATURES_CONFIG)
+    features_list = []
+    for fid, f in feat_config.get('features', {}).items():
+        if f.get('dashboard_button'):
+            features_list.append({
+                'id': fid,
+                'label': f['button_label'],
+                'color': f['button_color'],
+                'category': f['category'],
+                'schedule': f.get('schedule', 'none'),
+                'enabled': f.get('enabled', True),
+                'last_run': get_feature_last_run(fid),
+            })
+    # Sort by category order
+    categories = feat_config.get('categories', {})
+    features_list.sort(key=lambda x: categories.get(x['category'], {}).get('order', 99))
+    return features_list
+
+
+def load_future_module_dashboard_data():
+    """Read new-standard report registry outputs for future modules."""
+    registry = load_json(os.path.join(JSON_DIR, "report_registry_latest.json"))
+    modules = []
+    for entry in registry.get("entries", []):
+        files = entry.get("files", {})
+        impact = load_json(os.path.join(PROJECT_DIR, files.get("impact_summary", ""))) if files.get("impact_summary") else {}
+        activity = load_json(os.path.join(PROJECT_DIR, files.get("activity_summary", ""))) if files.get("activity_summary") else {}
+        raw = load_json(os.path.join(PROJECT_DIR, files.get("raw_output", ""))) if files.get("raw_output") else {}
+        importance = entry.get("importance", {})
+        review_state = entry.get("review_state", {})
+        raw_results = raw.get("results", []) if isinstance(raw, dict) else raw if isinstance(raw, list) else []
+        detail_rows = []
+        for item in raw_results[:50]:
+            buy_box_or_status = item.get("buy_box_status", item.get("status", ""))
+            detail_rows.append({
+                "asin": item.get("asin", ""),
+                "sku": item.get("sku", ""),
+                "buy_box_status": buy_box_or_status,
+                "action_priority": item.get("action_priority", "HIGH" if buy_box_or_status in ("LOST", "NO_BUYBOX", "NOT ACTIVE", "NOT SEARCHABLE") else "LOW"),
+                "fba_stock": item.get("fba_stock", 0),
+                "mnf_stock": item.get("mnf_stock", 0),
+                "total_stock": item.get("total_stock", 0),
+                "sales7d_rs": item.get("sales7d", item.get("weekly_sales", 0)),
+                "orders7d": item.get("orders7d", item.get("weekly_orders", 0)),
+                "competitor_count": item.get("competitor_count", item.get("num_competitors", 0)),
+                "price_gap_rs": item.get("price_gap_rs", 0),
+                "recommendation": item.get("recommendation", item.get("reason", "")),
+                "signals": item.get("signals", []),
+                "change": item.get("change", "")
+            })
+        modules.append({
+            "feature_key": entry.get("feature_key", ""),
+            "feature_name": entry.get("feature_name", ""),
+            "module_group": entry.get("module_group", ""),
+            "status": importance.get("status", impact.get("status", "success")),
+            "impact_level": importance.get("impact_level", impact.get("impact_level", "low")),
+            "priority_score": importance.get("priority_score", 0),
+            "headline": entry.get("display_rules", {}).get("headline", impact.get("headline", "")),
+            "badge": entry.get("display_rules", {}).get("badge", ""),
+            "needs_review": review_state.get("needs_review", activity.get("needs_review", False)),
+            "has_warnings": review_state.get("has_warnings", False),
+            "generated_at": sweet_date(entry.get("generated_at", impact.get("generated_at", ""))),
+            "summary_metrics": impact.get("summary_metrics", {}),
+            "ai_action_summary": impact.get("ai_action_summary", {}),
+            "top_risks": impact.get("top_risks", [])[:5],
+            "positive_impacts": impact.get("positive_impacts", [])[:3],
+            "warnings_list": activity.get("warnings_list", [])[:5],
+            "errors_list": activity.get("errors_list", [])[:5],
+            "counts": activity.get("counts", {}),
+            "run_events": activity.get("run_events", [])[-4:],
+            "output_files": activity.get("output_files", [])[:6],
+            "action_history": activity.get("action_history", [])[:6],
+            "detail_rows": detail_rows,
+        })
+    modules.sort(key=lambda x: x.get("priority_score", 0), reverse=True)
+    return modules
+
+
+@app.route('/api/data')
+def api_data():
+    """All dashboard data in one JSON call"""
+    # Sales
+    sales = load_json(os.path.join(JSON_DIR, "sales_compare_latest.json"))
+    today = sales.get('today', {})
+
+    # Buy Box
+    bb_data = load_json(os.path.join(JSON_DIR, "buy_box_status.json"))
+    bb = {'won': 0, 'lost': 0, 'no_bb': 0}
+    if isinstance(bb_data, list):
+        bb['won'] = sum(1 for d in bb_data if d.get('buy_box_status') == 'WON')
+        bb['lost'] = sum(1 for d in bb_data if d.get('buy_box_status') == 'LOST')
+        bb['no_bb'] = sum(1 for d in bb_data if d.get('buy_box_status') == 'NO_BUYBOX')
+
+    # Stock
+    stock_data = load_json(os.path.join(JSON_DIR, "stock_status.json"))
+    stock = {
+        'zero': len(stock_data.get('zero_stock', [])),
+        'low': len(stock_data.get('low_stock', [])),
+        'healthy': stock_data.get('healthy_count', 0),
+    }
+
+    # Recent Activity — ALL status/log files with timestamps
+    logs = []
+
+    # Execution logs
+    for f in sorted(os.listdir(JSON_DIR), reverse=True):
+        if f.startswith('execution_log_') and f.endswith('.json'):
+            d = load_json(os.path.join(JSON_DIR, f))
+            if d:
+                s = d.get('summary', d)
+                logs.append({
+                    'time': sweet_date(d.get('timestamp', '')),
+                    'task': 'Ad Actions Executed',
+                    'detail': f"OK:{s.get('executed_ok', s.get('ok', 0))} Failed:{s.get('failed', 0)}",
+                    'raw_time': d.get('timestamp', ''),
+                })
+
+    # All other status files with timestamps
+    status_files = {
+        'sales_compare_latest.json': 'Sales Compare',
+        'buy_box_status.json': 'Buy Box Check',
+        'stock_status.json': 'Stock Monitor',
+        'true_profit_per_asin.json': 'True Profit Calc',
+        'sp_pricing_data.json': 'Price Refresh',
+        'sp_catalog_prices.json': 'Catalog Fetch',
+        'aplus_status.json': 'A+ Content Check',
+        'top_listing_status.json': 'Listing Monitor',
+        'rule_engine_log.json': 'Custom Rules',
+        'stock_activity_log.json': 'Stock Restock',
+        '_import_metadata.json': 'Data Import',
+        'price_optimizer_status.json': 'Price Optimizer',
+    }
+
+    for fname, task_name in status_files.items():
+        path = os.path.join(JSON_DIR, fname)
+        if os.path.exists(path):
+            d = load_json(path)
+            # Handle both dict and list data
+            if isinstance(d, list):
+                ts = datetime.fromtimestamp(os.path.getmtime(path)).isoformat()
+            else:
+                ts = d.get('timestamp', d.get('import_date', ''))
+            if not ts:
+                ts = datetime.fromtimestamp(os.path.getmtime(path)).isoformat()
+            detail = ''
+            if isinstance(d, list):
+                detail = f"{len(d)} items"
+                logs.append({'time': sweet_date(ts), 'task': task_name, 'detail': detail, 'raw_time': ts})
+                continue
+            if 'sales' in fname:
+                today = d.get('today', {})
+                detail = f"{today.get('orders', 0)} orders, Rs.{today.get('revenue', 0):,.0f}"
+            elif 'buy_box' in fname and isinstance(d, list):
+                detail = f"{len(d)} ASINs checked"
+            elif 'stock_status' in fname:
+                detail = f"Zero:{len(d.get('zero_stock',[]))} Low:{len(d.get('low_stock',[]))}"
+            elif 'profit' in fname and isinstance(d, list):
+                detail = f"{len(d)} ASINs"
+            elif 'pricing' in fname and isinstance(d, dict):
+                detail = f"{len(d)} ASINs priced"
+            elif 'aplus' in fname:
+                detail = f"With A+:{d.get('with_aplus', 0)} Without:{d.get('without_aplus', 0)}"
+            elif 'top_listing' in fname:
+                detail = f"Active:{d.get('active', 0)} Inactive:{d.get('inactive', 0)}"
+            elif 'rule_engine' in fname:
+                detail = f"OK:{d.get('ok', 0)} Failed:{d.get('failed', 0)}"
+            elif 'stock_activity' in fname:
+                detail = f"Restocked:{sum(1 for a in d.get('activities',[]) if a.get('action')=='RESTOCK_SUCCESS')}"
+            elif 'import' in fname:
+                detail = f"{d.get('total_rows', 0)} rows imported"
+            elif 'price_optimizer' in fname:
+                ps = d.get('summary', {})
+                detail = f"↑{ps.get('price_increased', 0)} ↓{ps.get('price_decreased', 0)} 🚫{ps.get('blocked', 0)}"
+                if d.get('dry_run'):
+                    detail += " (DRY RUN)"
+
+            logs.append({
+                'time': sweet_date(ts),
+                'task': task_name,
+                'detail': detail,
+                'raw_time': ts,
+            })
+
+    # Sort by raw time descending, take top 15
+    logs.sort(key=lambda x: x.get('raw_time', ''), reverse=True)
+    logs = logs[:15]
+    # Remove raw_time from output
+    for l in logs:
+        l.pop('raw_time', None)
+
+    # Campaigns created
+    camps = []
+    for f in os.listdir(JSON_DIR):
+        if f.startswith('campaign_created_') and f.endswith('.json'):
+            d = load_json(os.path.join(JSON_DIR, f))
+            if d:
+                camps.append({
+                    'name': d.get('campaign_name', d.get('name', '?'))[:35],
+                    'asin': d.get('asin', ''),
+                    'budget': d.get('budget', 0),
+                    'kw': d.get('keywords_created', d.get('keywords', 0)),
+                    'date': sweet_date(d.get('created_at', d.get('created', ''))),
+                })
+
+    # Scheduled tasks
+    tasks = []
+    try:
+        r = subprocess.run('schtasks /query /fo CSV /nh', shell=True,
+            capture_output=True, text=True, timeout=10,
+            env={**os.environ, 'MSYS_NO_PATHCONV': '1'})
+        for line in r.stdout.strip().split('\n'):
+            if 'AutoGrow' in line or 'GoAmrita' in line:
+                p = line.strip('"').split('","')
+                if len(p) >= 3:
+                    tasks.append({'name': p[0].replace('\\',''), 'next': p[1], 'status': p[2]})
+    except:
+        pass
+
+    # Stock activity
+    sa = load_json(os.path.join(JSON_DIR, "stock_activity_log.json"))
+    sa_count = len(sa.get('activities', []))
+    sa_restocked = sum(1 for a in sa.get('activities', []) if a.get('action') == 'RESTOCK_SUCCESS')
+
+    # Reports
+    reports = []
+    report_dir = os.path.join(REPORT_BASE, LATEST_REPORT)
+    for f in os.listdir(report_dir):
+        if f.endswith('.xlsx') and not f.startswith('~'):
+            reports.append({'name': f, 'age': file_age_str(os.path.join(report_dir, f))})
+
+    # Running tasks
+    active = {k: v for k, v in running_tasks.items() if v.get('running')}
+
+    # Features from config (auto-generated buttons)
+    features_list = get_features_list()
+
+    # Future module dashboard summaries (new standard)
+    future_modules = load_future_module_dashboard_data()
+
+    # Price Optimizer summary for dashboard cards
+    po_status = load_json(os.path.join(JSON_DIR, "price_optimizer_status.json"))
+    po_summary = po_status.get("summary", {})
+    po_data = {
+        'last_run': sweet_date(po_status.get('last_run', '')),
+        'dry_run': po_status.get('dry_run', False),
+        'increased': po_summary.get('price_increased', 0),
+        'decreased': po_summary.get('price_decreased', 0),
+        'blocked': po_summary.get('blocked', 0),
+        'qualified': po_summary.get('total_qualified', 0),
+        'inactive_count': len(po_status.get('inactive_found', [])),
+        'recovery_count': len(po_status.get('recoveries', [])),
+        'impact_count': len(po_status.get('impact', [])),
+    }
+
+    return jsonify({
+        'time': datetime.now().strftime('%I:%M:%S %p'),
+        'date': datetime.now().strftime('%d %B %Y'),
+        'sales': {'orders': today.get('orders', 0), 'revenue': today.get('revenue', 0)},
+        'buybox': bb,
+        'stock': stock,
+        'logs': logs,
+        'campaigns': camps,
+        'tasks': tasks,
+        'reports': reports,
+        'stock_activity': {'total': sa_count, 'restocked': sa_restocked},
+        'running_tasks': list(active.keys()),
+        'last_sync': {
+            'Sales': sweet_date(load_json(os.path.join(JSON_DIR, 'sales_compare_latest.json')).get('timestamp', '')),
+            'Prices': file_age_str(os.path.join(JSON_DIR, 'sp_pricing_data.json')),
+            'Buy Box': file_age_str(os.path.join(JSON_DIR, 'buy_box_status.json')),
+            'Stock': file_age_str(os.path.join(JSON_DIR, 'stock_status.json')),
+            'Profit': file_age_str(os.path.join(JSON_DIR, 'true_profit_per_asin.json')),
+        },
+        'alerts': sales.get('alerts', []),
+        'features': features_list,
+        'future_modules': future_modules,
+        'price_optimizer': po_data,
+        'import_info': _get_import_info(),
+    })
+
+
+def _get_import_info():
+    """Get import metadata info for dashboard alerts"""
+    meta = load_json(os.path.join(JSON_DIR, "_import_metadata.json"))
+    if not meta:
+        return {}
+    info = {
+        'success': meta.get('success_count', 0),
+        'total': meta.get('total_reports', 0),
+        'rows': meta.get('total_rows', 0),
+        'data_date': meta.get('period', {}).get('end', ''),
+        'import_time': meta.get('import_date', ''),
+    }
+    return info
+
+
+@app.route('/api/run/<task>')
+def api_run_task(task):
+    """Run a task in background — reads from config_features.json"""
+    feat_config = load_json(FEATURES_CONFIG)
+    feat = feat_config.get('features', {}).get(task)
+
+    if not feat:
+        return jsonify({'error': f'Unknown task: {task}'}), 400
+
+    if not feat.get('enabled', True):
+        return jsonify({'error': f'Task {task} is disabled'}), 400
+
+    if task in running_tasks and running_tasks[task].get('running'):
+        return jsonify({'error': f'{task} already running'}), 400
+
+    script_dir = feat.get('script_dir')
+    script = os.path.join(PROJECT_DIR, script_dir, feat['script']) if script_dir else os.path.join(LEGACY_PYTHON_DIR, feat['script'])
+    args = feat.get('args', [])
+    cmd = [PYTHON, script] + [str(a) for a in args]
+
+    def run_bg():
+        running_tasks[task] = {'running': True, 'started': datetime.now().isoformat()}
+        try:
+            env = {**os.environ, 'PYTHONIOENCODING': 'utf-8'}
+            r = subprocess.run(cmd, capture_output=True, text=True, timeout=600, env=env)
+            running_tasks[task] = {
+                'running': False, 'finished': datetime.now().isoformat(),
+                'success': r.returncode == 0,
+                'output': r.stdout[-500:] if r.stdout else r.stderr[-200:],
+            }
+        except Exception as e:
+            running_tasks[task] = {'running': False, 'error': str(e)[:200]}
+
+    t = threading.Thread(target=run_bg, daemon=True)
+    t.start()
+    return jsonify({'status': 'started', 'task': task})
+
+
+@app.route('/api/task_status/<task>')
+def api_task_status(task):
+    return jsonify(running_tasks.get(task, {'running': False, 'status': 'not started'}))
+
+
+@app.route('/api/price-optimizer')
+def api_price_optimizer():
+    """Full Price Optimizer data: impact table + inactive + recoveries + history"""
+    po_status = load_json(os.path.join(JSON_DIR, "price_optimizer_status.json"))
+    po_log = load_json(os.path.join(JSON_DIR, "price_optimizer_log.json"))
+    po_config = load_json(PRICE_OPT_CONFIG)
+
+    summary = po_status.get("summary", {})
+    impacts = po_status.get("impact", [])
+    inactive = po_status.get("inactive_found", [])
+    recoveries = po_status.get("recoveries", [])
+    actions = po_status.get("actions", [])
+
+    # Anti-oscillation blocks
+    osc_blocked = [i for i in impacts if i.get("anti_oscillation_blocked")]
+
+    # Recent history (last 30 changes across all products)
+    recent_history = []
+    if isinstance(po_log, dict):
+        for key, entries in po_log.items():
+            parts = key.split("_", 1)
+            asin = parts[0] if parts else key
+            sku = parts[1] if len(parts) > 1 else ""
+            for e in entries[-5:]:
+                recent_history.append({
+                    'asin': asin,
+                    'sku': sku[:25],
+                    'timestamp': e.get('timestamp', '')[:16],
+                    'action': e.get('action', '?'),
+                    'old_price': e.get('old_price', 0),
+                    'new_price': e.get('new_price', 0),
+                    'change_pct': e.get('change_pct', 0),
+                    'status': e.get('status', '?'),
+                    'reason': e.get('reason', '')[:60],
+                    'dry_run': e.get('dry_run', False),
+                })
+    recent_history.sort(key=lambda x: x['timestamp'], reverse=True)
+    recent_history = recent_history[:30]
+
+    # Stats
+    total_profit_impact = sum(i.get('profit_change', 0) for i in impacts)
+    total_sales_impact = sum(i.get('sales_change', 0) for i in impacts)
+    bb_won = sum(1 for i in impacts if i.get('buy_box_status') in ('WON', True))
+    bb_lost = sum(1 for i in impacts if i.get('buy_box_status') in ('LOST', False))
+    total_inactive_min = sum(i.get('total_inactive_minutes', 0) for i in impacts)
+    total_deactivations = sum(i.get('deactivation_count', 0) for i in impacts)
+
+    return jsonify({
+        'last_run': po_status.get('last_run', ''),
+        'last_run_pretty': sweet_date(po_status.get('last_run', '')),
+        'dry_run': po_status.get('dry_run', False),
+        'config_enabled': po_config.get('enabled', False),
+        'schedule_interval': po_config.get('schedule', {}).get('interval_minutes', 30),
+        'summary': summary,
+        'stats': {
+            'total_profit_impact': round(total_profit_impact, 1),
+            'total_sales_impact': round(total_sales_impact, 0),
+            'bb_won': bb_won,
+            'bb_lost': bb_lost,
+            'total_inactive_minutes': total_inactive_min,
+            'total_deactivations': total_deactivations,
+            'osc_blocked': len(osc_blocked),
+        },
+        'impact': impacts,
+        'inactive': inactive,
+        'recoveries': recoveries,
+        'actions': actions,
+        'osc_blocked': osc_blocked,
+        'recent_history': recent_history,
+    })
+
+
+@app.route('/open/<filename>')
+def open_file(filename):
+    """Open file on local machine"""
+    filepath = os.path.join(REPORT_BASE, LATEST_REPORT, filename)
+    if os.path.exists(filepath):
+        os.startfile(filepath)
+        return jsonify({'status': 'opened', 'file': filename})
+    return jsonify({'error': 'File not found'}), 404
+
+
+@app.route('/download/<filename>')
+def download_file(filename):
+    """Download file"""
+    return send_from_directory(os.path.join(REPORT_BASE, LATEST_REPORT), filename, as_attachment=True)
+
+
+@app.route('/api/config/<config_name>', methods=['GET'])
+def get_config(config_name):
+    """Return config JSON"""
+    if config_name not in CONFIG_FILES:
+        return jsonify({'error': 'Unknown config'}), 404
+    path = CONFIG_FILES[config_name]
+    data = load_json(path)
+    # Strip sensitive fields for email config
+    if config_name == 'email':
+        data = dict(data)
+        data.pop('sender_app_password', None)
+    return jsonify(data)
+
+
+@app.route('/api/config/<config_name>', methods=['POST'])
+def save_config(config_name):
+    """Save updated config from form"""
+    if config_name not in CONFIG_FILES:
+        return jsonify({'error': 'Unknown config'}), 404
+    path = CONFIG_FILES[config_name]
+    new_data = request.get_json()
+    if not new_data:
+        return jsonify({'error': 'No data provided'}), 400
+
+    # For email config, preserve the password
+    if config_name == 'email':
+        existing = load_json(path)
+        if 'sender_app_password' not in new_data and 'sender_app_password' in existing:
+            new_data['sender_app_password'] = existing['sender_app_password']
+
+    save_json(path, new_data)
+    # Auto-sync to Windows Scheduler when features config is saved
+    if config_name == 'features':
+        threading.Thread(
+            target=lambda: subprocess.run(
+                [PYTHON, SCHEDULER_SYNC_SCRIPT],
+                capture_output=True
+            ), daemon=True
+        ).start()
+    return jsonify({'status': 'saved', 'config': config_name})
+
+
+@app.route('/api/test_email', methods=['POST'])
+def test_email():
+    """Send a test email"""
+    try:
+        cmd = [PYTHON, os.path.join(LEGACY_PYTHON_DIR, 'email_alerts_v1.0.py'), '--test']
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=30,
+                           env={**os.environ, 'PYTHONIOENCODING': 'utf-8'})
+        if r.returncode == 0:
+            return jsonify({'status': 'sent', 'output': r.stdout[-200:]})
+        return jsonify({'error': r.stderr[-200:]}), 500
+    except Exception as e:
+        return jsonify({'error': str(e)[:200]}), 500
+
+
+@app.route('/api/test_gsheet')
+def test_gsheet():
+    """Test Google Sheet webhook connection"""
+    try:
+        gs_config = load_json(CONFIG_FILES.get('google_sheet', ''))
+        webhook = gs_config.get('webhook_url', '')
+        secret = gs_config.get('secret', '')
+        if not webhook:
+            return jsonify({'ok': False, 'error': 'Webhook URL not set'})
+        import urllib.request as ur
+        url = f"{webhook}?secret={secret}&action=list"
+        import ssl as _ssl
+        try:
+            import certifi
+            _ctx = _ssl.create_default_context(cafile=certifi.where())
+        except ImportError:
+            _ctx = _ssl.create_default_context()
+        resp = ur.urlopen(ur.Request(url), context=_ctx, timeout=15)
+        data = json.loads(resp.read().decode())
+        if 'tabs' in data:
+            return jsonify({'ok': True, 'tabs': data['tabs']})
+        return jsonify({'ok': False, 'error': data.get('error', 'Unknown')})
+    except Exception as e:
+        return jsonify({'ok': False, 'error': str(e)[:200]})
+
+
+@app.route('/api/features/toggle', methods=['POST'])
+def toggle_feature():
+    """Toggle a feature's enabled state in config_features.json"""
+    data = request.get_json()
+    if not data or 'feature_id' not in data:
+        return jsonify({'error': 'No feature_id provided'}), 400
+
+    feat_config = load_json(FEATURES_CONFIG)
+    fid = data['feature_id']
+    feat = feat_config.get('features', {}).get(fid)
+    if not feat:
+        return jsonify({'error': f'Unknown feature: {fid}'}), 404
+
+    feat['enabled'] = data.get('enabled', not feat.get('enabled', True))
+    save_json(FEATURES_CONFIG, feat_config)
+    # Auto-sync this feature to Windows Scheduler
+    threading.Thread(
+        target=lambda: subprocess.run(
+            [PYTHON, SCHEDULER_SYNC_SCRIPT, '--feature', fid],
+            capture_output=True
+        ), daemon=True
+    ).start()
+    return jsonify({'status': 'toggled', 'feature': fid, 'enabled': feat['enabled']})
+
+
+@app.route('/api/features/schedule', methods=['POST'])
+def update_feature_schedule():
+    """Update a feature's schedule in config_features.json"""
+    data = request.get_json()
+    if not data or 'feature_id' not in data:
+        return jsonify({'error': 'No feature_id'}), 400
+
+    feat_config = load_json(FEATURES_CONFIG)
+    fid = data['feature_id']
+    feat = feat_config.get('features', {}).get(fid)
+    if not feat:
+        return jsonify({'error': f'Unknown feature: {fid}'}), 404
+
+    if 'schedule' in data:
+        feat['schedule'] = data['schedule']
+    if 'schedule_time' in data:
+        feat['schedule_time'] = data['schedule_time']
+    if 'freshness_hours' in data:
+        feat['freshness_hours'] = float(data['freshness_hours'])
+
+    save_json(FEATURES_CONFIG, feat_config)
+    return jsonify({'status': 'updated', 'feature': fid})
+
+
+@app.route('/api/sync-scheduler', methods=['POST'])
+def sync_scheduler():
+    """Manually trigger full sync of config_features.json → Windows Scheduler"""
+    try:
+        result = subprocess.run(
+            [PYTHON, SCHEDULER_SYNC_SCRIPT],
+            capture_output=True, text=True, timeout=30
+        )
+        output = result.stdout or result.stderr or "Sync complete"
+        created = output.count("✅")
+        deleted = output.count("🗑️")
+        failed  = output.count("❌")
+        return jsonify({
+            'status': 'synced',
+            'created': created,
+            'deleted': deleted,
+            'failed': failed,
+            'output': output[-500:]
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/')
+def dashboard():
+    return render_template_string(DASHBOARD_HTML)
+
+
+@app.route('/settings')
+def settings_page():
+    return render_template_string(SETTINGS_HTML)
+
+
+@app.route('/scheduler')
+def scheduler_page():
+    from flask import Response
+    return Response(SCHEDULER_HTML, mimetype='text/html')
+
+
+@app.route('/fba-settings')
+def fba_settings_page():
+    # Use Response directly — bypasses Jinja2 (avoids parsing JS {} as templates)
+    from flask import Response
+    return Response(FBA_SETTINGS_HTML, mimetype='text/html')
+
+
+@app.route('/stock-control')
+def stock_control_page():
+    from flask import Response
+    return Response(STOCK_CONTROL_HTML, mimetype='text/html')
+
+
+@app.route('/api/fba/config', methods=['GET'])
+def fba_get_config():
+    """Return full fba_config.json"""
+    try:
+        with open(FBA_CONFIG, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        return jsonify({"success": True, "config": data})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+@app.route('/api/fba/config', methods=['POST'])
+def fba_save_config():
+    """Save full fba_config.json"""
+    try:
+        data = request.get_json()
+        with open(FBA_CONFIG, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+        return jsonify({"success": True})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+@app.route('/api/fba/product-overrides', methods=['GET'])
+def fba_get_overrides():
+    """Return product_overrides from fba_config.json (clean, no meta keys)"""
+    try:
+        with open(FBA_CONFIG, 'r', encoding='utf-8') as f:
+            cfg = json.load(f)
+        overrides = {k: v for k, v in cfg.get("product_overrides", {}).items()
+                     if not k.startswith("_")}
+        return jsonify({"success": True, "overrides": overrides})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+@app.route('/api/fba/product-overrides', methods=['POST'])
+def fba_save_overrides():
+    """
+    Save product overrides. POST body:
+      {"sku_or_asin": "SKU-001", "data": {...}}  → add/update
+      {"sku_or_asin": "SKU-001", "delete": true} → remove
+    """
+    try:
+        with open(FBA_CONFIG, 'r', encoding='utf-8') as f:
+            cfg = json.load(f)
+
+        overrides = cfg.setdefault("product_overrides", {})
+        # Clean meta keys
+        meta_keys = [k for k in overrides if k.startswith("_")]
+
+        body        = request.get_json()
+        key         = body.get("sku_or_asin", "").strip()
+        delete_flag = body.get("delete", False)
+        item_data   = body.get("data", {})
+
+        if not key:
+            return jsonify({"success": False, "error": "sku_or_asin required"}), 400
+
+        if delete_flag:
+            overrides.pop(key, None)
+        else:
+            overrides[key] = item_data
+
+        with open(FBA_CONFIG, 'w', encoding='utf-8') as f:
+            json.dump(cfg, f, indent=2, ensure_ascii=False)
+
+        return jsonify({"success": True, "key": key, "action": "deleted" if delete_flag else "saved"})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+@app.route('/api/fba/po-columns', methods=['GET'])
+def fba_get_po_columns():
+    """Return current PO columns list"""
+    try:
+        with open(FBA_CONFIG, 'r', encoding='utf-8') as f:
+            cfg = json.load(f)
+        cols = cfg.get("po_columns", ["SKU", "Quantity", "Box Count", "Date", "Status", "Notes"])
+        return jsonify({"success": True, "columns": cols})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+@app.route('/api/fba/po-columns', methods=['POST'])
+def fba_save_po_columns():
+    """Save PO columns list. Body: {"columns": ["SKU", "Quantity", ...]}"""
+    try:
+        body = request.get_json()
+        cols = body.get("columns", [])
+        if not isinstance(cols, list) or not cols:
+            return jsonify({"success": False, "error": "columns must be non-empty list"}), 400
+
+        with open(FBA_CONFIG, 'r', encoding='utf-8') as f:
+            cfg = json.load(f)
+        cfg["po_columns"] = cols
+        with open(FBA_CONFIG, 'w', encoding='utf-8') as f:
+            json.dump(cfg, f, indent=2, ensure_ascii=False)
+
+        return jsonify({"success": True, "columns": cols})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+@app.route('/api/fba/box-categories', methods=['POST'])
+def fba_save_box_category():
+    """
+    Save a box category. Body:
+      {"key": "ayurved", "data": {label, detect_keywords, box_dimensions_cm, ...}}
+      {"key": "ayurved", "delete": true}
+    """
+    try:
+        with open(FBA_CONFIG, 'r', encoding='utf-8') as f:
+            cfg = json.load(f)
+
+        body        = request.get_json()
+        key         = body.get("key", "").strip()
+        delete_flag = body.get("delete", False)
+        cat_data    = body.get("data", {})
+
+        if not key:
+            return jsonify({"success": False, "error": "category key required"}), 400
+
+        cats = cfg.setdefault("box_categories", {})
+
+        if delete_flag:
+            cats.pop(key, None)
+        else:
+            cats[key] = cat_data
+
+        with open(FBA_CONFIG, 'w', encoding='utf-8') as f:
+            json.dump(cfg, f, indent=2, ensure_ascii=False)
+
+        return jsonify({"success": True, "key": key})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)}), 500
+
+
+@app.route('/api/stock-control/config', methods=['GET'])
+def stock_control_get_config():
+    data = build_stock_control_items()
+    return jsonify({
+        "success": True,
+        "feature_enabled": data["feature_enabled"],
+        "config": data["config"],
+        "summary": data["summary"],
+    })
+
+
+@app.route('/api/stock-control/config', methods=['POST'])
+def stock_control_save_config():
+    payload = request.get_json() or {}
+    cfg = load_stock_control_config()
+    cfg["default_target_stock"] = int(payload.get("default_target_stock", cfg.get("default_target_stock", 1000)) or 1000)
+    cfg["default_minimum_threshold"] = int(payload.get("default_minimum_threshold", cfg.get("default_minimum_threshold", 1)) or 1)
+    save_stock_control_config_data(cfg)
+    return jsonify({"success": True, "config": cfg})
+
+
+@app.route('/api/stock-control/items', methods=['GET'])
+def stock_control_get_items():
+    data = build_stock_control_items()
+    return jsonify({
+        "success": True,
+        "feature_enabled": data["feature_enabled"],
+        "items": data["items"],
+        "summary": data["summary"],
+    })
+
+
+@app.route('/api/stock-control/entry', methods=['POST'])
+def stock_control_upsert_entry():
+    payload = request.get_json() or {}
+    entry_type = str(payload.get("type", "")).strip().lower()
+    value = str(payload.get("value", "")).strip()
+    if entry_type not in ("asin", "sku") or not value:
+        return jsonify({"success": False, "error": "Type and value are required."}), 400
+
+    cfg = load_stock_control_config()
+    entries = cfg.get("manual_entries", [])
+    now = datetime.now().isoformat()
+    delete_flag = bool(payload.get("delete", False))
+    found = False
+    new_entries = []
+    for entry in entries:
+        if entry.get("type") == entry_type and entry.get("value") == value:
+            found = True
+            if delete_flag:
+                continue
+            entry["excluded"] = bool(payload.get("excluded", entry.get("excluded", False)))
+            entry["updated_at"] = now
+        new_entries.append(entry)
+    if not found and not delete_flag:
+        new_entries.append({
+            "type": entry_type,
+            "value": value,
+            "excluded": bool(payload.get("excluded", False)),
+            "created_at": now,
+            "updated_at": now,
+        })
+    cfg["manual_entries"] = new_entries
+    save_stock_control_config_data(cfg)
+    return jsonify({"success": True})
+
+
+@app.route('/api/dashboard/restart', methods=['POST'])
+def restart_dashboard():
+    try:
+        if not os.path.exists(RUN_DASHBOARD_BAT):
+            return jsonify({"success": False, "error": "Dashboard launcher not found."}), 500
+        subprocess.Popen(
+            ['cmd', '/c', 'start', '', RUN_DASHBOARD_BAT],
+            cwd=PROJECT_DIR,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+        return jsonify({"success": True, "message": "Dashboard restart triggered."})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)[:200]}), 500
+
+
+@app.route('/rules')
+def rules_page():
+    return render_template_string(RULES_HTML)
+
+
+@app.route('/api/rules', methods=['GET'])
+def get_rules():
+    """Return all rules + available fields/operators/actions"""
+    data = load_json(RULES_CONFIG)
+    return jsonify(data)
+
+
+@app.route('/api/rules', methods=['POST'])
+def create_rule():
+    """Create a new rule"""
+    data = load_json(RULES_CONFIG)
+    new_rule = request.get_json()
+    if not new_rule:
+        return jsonify({'error': 'No data provided'}), 400
+
+    # Validate at least 1 condition and 1 action
+    if not new_rule.get('conditions') or len(new_rule['conditions']) == 0:
+        return jsonify({'error': 'At least 1 condition is required'}), 400
+    if not new_rule.get('actions') or len(new_rule['actions']) == 0:
+        return jsonify({'error': 'At least 1 action is required'}), 400
+
+    # Generate unique ID
+    rule_id = 'rule_' + str(int(datetime.now().timestamp() * 1000))
+    new_rule['id'] = rule_id
+    new_rule.setdefault('enabled', True)
+    new_rule.setdefault('created', datetime.now().strftime('%Y-%m-%d'))
+    new_rule.setdefault('last_triggered', None)
+    new_rule.setdefault('trigger_count', 0)
+
+    if 'rules' not in data:
+        data['rules'] = []
+    data['rules'].append(new_rule)
+    save_json(RULES_CONFIG, data)
+    return jsonify({'status': 'created', 'rule': new_rule})
+
+
+@app.route('/api/rules/<rule_id>', methods=['PUT'])
+def update_rule(rule_id):
+    """Update an existing rule"""
+    data = load_json(RULES_CONFIG)
+    updated = request.get_json()
+    if not updated:
+        return jsonify({'error': 'No data provided'}), 400
+
+    # Validate at least 1 condition and 1 action
+    if not updated.get('conditions') or len(updated['conditions']) == 0:
+        return jsonify({'error': 'At least 1 condition is required'}), 400
+    if not updated.get('actions') or len(updated['actions']) == 0:
+        return jsonify({'error': 'At least 1 action is required'}), 400
+
+    for i, rule in enumerate(data.get('rules', [])):
+        if rule['id'] == rule_id:
+            # Preserve metadata
+            updated['id'] = rule_id
+            updated.setdefault('created', rule.get('created'))
+            updated.setdefault('last_triggered', rule.get('last_triggered'))
+            updated.setdefault('trigger_count', rule.get('trigger_count', 0))
+            data['rules'][i] = updated
+            save_json(RULES_CONFIG, data)
+            return jsonify({'status': 'updated', 'rule': updated})
+
+    return jsonify({'error': 'Rule not found'}), 404
+
+
+@app.route('/api/rules/<rule_id>', methods=['DELETE'])
+def delete_rule(rule_id):
+    """Delete a rule"""
+    data = load_json(RULES_CONFIG)
+    rules = data.get('rules', [])
+    original_len = len(rules)
+    data['rules'] = [r for r in rules if r['id'] != rule_id]
+    if len(data['rules']) == original_len:
+        return jsonify({'error': 'Rule not found'}), 404
+    save_json(RULES_CONFIG, data)
+    return jsonify({'status': 'deleted', 'rule_id': rule_id})
+
+
+@app.route('/api/rules/<rule_id>/toggle', methods=['POST'])
+def toggle_rule(rule_id):
+    """Enable/disable a rule"""
+    data = load_json(RULES_CONFIG)
+    for rule in data.get('rules', []):
+        if rule['id'] == rule_id:
+            rule['enabled'] = not rule.get('enabled', True)
+            save_json(RULES_CONFIG, data)
+            return jsonify({'status': 'toggled', 'rule_id': rule_id, 'enabled': rule['enabled']})
+    return jsonify({'error': 'Rule not found'}), 404
+
+
+@app.route('/api/rules/<rule_id>/test', methods=['POST'])
+def test_rule(rule_id):
+    """Dry-run a single rule, return matched count (stub)"""
+    data = load_json(RULES_CONFIG)
+    for rule in data.get('rules', []):
+        if rule['id'] == rule_id:
+            # Stub: simulate a test run — real implementation would query live data
+            import random
+            matched = random.randint(0, 12)
+            return jsonify({
+                'status': 'tested',
+                'rule_id': rule_id,
+                'rule_name': rule.get('name', ''),
+                'matched': matched,
+                'dry_run': True,
+                'message': f'Dry run complete. {matched} entities matched.'
+            })
+    return jsonify({'error': 'Rule not found'}), 404
+
+
+# ═══════════════════════════════════════════════════════════════
+# DASHBOARD HTML
+# ═══════════════════════════════════════════════════════════════
+
+DASHBOARD_HTML = r"""<!DOCTYPE html>
+<html>
+<head>
+    <title>AutoGrow AI — Dashboard</title>
+    <meta charset="UTF-8">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        /* ── Dark Theme (default) ── */
+        :root {
+            --bg: #0F1923;
+            --card-bg: #1A2332;
+            --card-border: #2A3A4A;
+            --text: #E0E6ED;
+            --text-muted: #7B8FA3;
+            --text-dim: #5B7A95;
+            --hover-bg: #1F2D3D;
+            --section-bg: #1A2332;
+            --footer-text: #3B5068;
+        }
+
+        /* ── Light Theme ── */
+        body.light {
+            --bg: #F0F2F5;
+            --card-bg: #FFFFFF;
+            --card-border: #E0E0E0;
+            --text: #2C3E50;
+            --text-muted: #6B7B8D;
+            --text-dim: #8899AA;
+            --hover-bg: #EEF1F5;
+            --section-bg: #FFFFFF;
+            --footer-text: #8899AA;
+        }
+
+        body { font-family:Calibri,Arial; background:var(--bg); color:var(--text); min-height:100vh; transition: background 0.3s, color 0.3s; }
+        .header { background:linear-gradient(135deg,#1A3A5C,#2563EB); padding:18px 25px; display:flex; justify-content:space-between; align-items:center; }
+        .header h1 { font-size:28px; color:white; } .header h1 span { color:#60A5FA; }
+        .header .right { display:flex; align-items:center; gap:18px; }
+        .header .time { color:rgba(255,255,255,0.8); font-size:14px; }
+        .nav-links { display:flex; gap:8px; }
+        .nav-links a { color:rgba(255,255,255,0.85); text-decoration:none; font-size:14px; font-weight:bold; padding:5px 14px; border-radius:6px; transition:0.2s; }
+        .nav-links a:hover, .nav-links a.active { background:rgba(255,255,255,0.15); color:white; }
+        .theme-toggle { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:white; padding:5px 14px; border-radius:6px; cursor:pointer; font-size:13px; font-weight:bold; transition:0.2s; }
+        .theme-toggle:hover { background:rgba(255,255,255,0.25); }
+
+        .alert-bar { background:#DC2626; color:white; padding:10px 20px; text-align:center; font-weight:bold; display:none; }
+        .grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; padding:15px 20px; }
+        .card { background:var(--card-bg); border-radius:10px; padding:16px; border:1px solid var(--card-border); transition: background 0.3s, border 0.3s; }
+        .card h3 { font-size:14px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+        .card .val { font-size:42px; font-weight:bold; color:var(--text); }
+        .card .sub { font-size:14px; color:var(--text-dim); margin-top:4px; }
+        .green { color:#22C55E !important; } .red { color:#EF4444 !important; } .orange { color:#F59E0B !important; } .blue { color:#60A5FA !important; }
+        .sections { padding:0 20px 20px; display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+        .section { background:var(--section-bg); border-radius:10px; padding:16px; border:1px solid var(--card-border); transition: background 0.3s, border 0.3s; }
+        .section.full { grid-column:1/3; }
+        .section h2 { font-size:18px; color:#60A5FA; margin-bottom:10px; border-bottom:1px solid var(--card-border); padding-bottom:6px; }
+        table { width:100%; border-collapse:collapse; font-size:15px; }
+        th { color:var(--text-dim); text-align:left; padding:6px 8px; font-size:13px; text-transform:uppercase; }
+        td { padding:6px 8px; border-bottom:1px solid var(--card-border); }
+        tr:hover { background:var(--hover-bg); }
+        .btn { display:inline-block; padding:5px 14px; border-radius:6px; border:none; cursor:pointer; font-size:14px; font-weight:bold; margin:2px; transition:0.2s; }
+        .btn-blue { background:#2563EB; color:white; } .btn-blue:hover { background:#3B82F6; }
+        .btn-green { background:#16A34A; color:white; } .btn-green:hover { background:#22C55E; }
+        .btn-orange { background:#D97706; color:white; } .btn-orange:hover { background:#F59E0B; }
+        .btn-red { background:#DC2626; color:white; } .btn-red:hover { background:#EF4444; }
+        .btn.running { opacity:0.5; cursor:wait; }
+        .btn-sm { padding:3px 10px; font-size:12px; }
+        .controls { padding:10px 20px; }
+        .controls h2 { font-size:18px; color:#60A5FA; margin-bottom:8px; }
+        .cat-label { display:inline-block; font-size:12px; color:var(--text-dim); text-transform:uppercase; letter-spacing:1px; margin:8px 4px 4px 0; font-weight:bold; }
+        .badge { display:inline-block; padding:2px 8px; border-radius:10px; font-size:13px; font-weight:bold; }
+        .badge-ok { background:#064E3B; color:#34D399; }
+        .badge-run { background:#1E3A5F; color:#60A5FA; }
+        .badge-fail { background:#450A0A; color:#FCA5A5; }
+        .footer { text-align:center; padding:10px; color:var(--footer-text); font-size:12px; }
+
+        /* Running indicator animation */
+        .running-indicator { display:inline-flex; align-items:center; gap:6px; color:#60A5FA; font-size:14px; font-weight:bold; }
+        .running-indicator .dot { width:8px; height:8px; border-radius:50%; background:#60A5FA; animation:pulse 1s infinite; }
+        .running-indicator .dot:nth-child(2) { animation-delay:0.2s; }
+        .running-indicator .dot:nth-child(3) { animation-delay:0.4s; }
+        @keyframes pulse { 0%,100%{opacity:0.3} 50%{opacity:1} }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AutoGrow <span>AI</span></h1>
+        <div class="right">
+            <div class="nav-links">
+                <a href="/" class="active">Dashboard</a>
+                <a href="/settings">Settings</a>
+                <a href="/scheduler">Scheduler</a>
+                <a href="/stock-control">Stock Control</a>
+                <a href="/fba-settings">📦 FBA</a>
+                <a href="/rules">Rules</a>
+            </div>
+            <button class="theme-toggle" onclick="restartDashboard()">Restart</button>
+            <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">Theme: Dark</button>
+            <div class="time" id="clock"></div>
+        </div>
+    </div>
+    <div class="alert-bar" id="alertBar"></div>
+
+    <div class="grid" style="grid-template-columns:repeat(5,1fr);">
+        <div class="card">
+            <h3>Today's Sales</h3>
+            <div class="val green" id="revenue">—</div>
+            <div class="sub"><span id="orders">—</span> orders</div>
+        </div>
+        <div class="card">
+            <h3>Buy Box</h3>
+            <div class="val" id="bbWon">—</div>
+            <div class="sub">Won | <span class="red" id="bbLost">0</span> Lost | <span id="bbNoBB">0</span> No BB</div>
+        </div>
+        <div class="card">
+            <h3>Stock Status</h3>
+            <div class="val" id="stockZero">—</div>
+            <div class="sub">Zero Stock | <span id="stockLow">0</span> Low | <span id="stockOk">0</span> OK</div>
+        </div>
+        <div class="card">
+            <h3>⚡ Price Optimizer</h3>
+            <div class="val" id="poCardVal" style="font-size:18px;">—</div>
+            <div class="sub" id="poCardSub" style="font-size:11px;">—</div>
+        </div>
+        <div class="card">
+            <h3>Last Sync</h3>
+            <div id="lastSyncList" style="font-size:13px;line-height:1.8"></div>
+        </div>
+    </div>
+
+    <!-- ══════ PRICE OPTIMIZER IMPACT PANEL ══════ -->
+    <div class="section" id="priceOptimizerPanel" style="margin:16px 20px;display:none;">
+        <h2>⚡ Price Optimizer — AI Impact Dashboard</h2>
+        <div id="poSummaryCards" class="grid" style="grid-template-columns:repeat(6,1fr);gap:10px;margin:12px 0;"></div>
+        <div id="poImpactTable" style="margin-top:12px;"></div>
+        <div id="poInactive" style="margin-top:12px;"></div>
+        <div id="poRecoveries" style="margin-top:12px;"></div>
+        <div id="poOscBlocked" style="margin-top:12px;"></div>
+        <div id="poRecentHistory" style="margin-top:12px;"></div>
+        <div style="margin-top:8px;font-size:11px;opacity:0.5;">
+            <span id="poLastRun">—</span> |
+            <a href="javascript:void(0)" onclick="loadPriceOptimizer()" style="color:#8BC6EC;">Refresh</a>
+        </div>
+    </div>
+    <!-- ══════ END PRICE OPTIMIZER PANEL ══════ -->
+
+    <div class="section" id="futureImpactPanel" style="margin:16px 20px;display:none;">
+        <h2>Strategy Impact Dashboard</h2>
+        <div id="futureImpactStatus" style="margin-top:6px;font-size:12px;opacity:0.72;"></div>
+        <div id="futureImpactCards" class="grid" style="grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px;"></div>
+        <div id="futureAsinDetails" style="margin-top:14px;"></div>
+    </div>
+
+    <div class="section" id="futureActivityPanel" style="margin:16px 20px;display:none;">
+        <h2>Activity Dashboard</h2>
+        <div id="futureActivityStatus" style="margin-top:6px;font-size:12px;opacity:0.72;"></div>
+        <table><thead><tr><th>Module</th><th>Status</th><th>Activity</th><th>Review</th></tr></thead>
+        <tbody id="futureActivityTable"></tbody></table>
+    </div>
+
+    <div class="controls">
+        <h2>Quick Actions</h2>
+        <div id="actionButtons"></div>
+        <div id="taskStatus" style="margin-top:8px;"></div>
+    </div>
+
+    <div class="sections">
+        <div class="section">
+            <h2>Recent Activity</h2>
+            <table><thead><tr><th>Time</th><th>Task</th><th>Details</th></tr></thead>
+            <tbody id="logsTable"></tbody></table>
+        </div>
+        <div class="section">
+            <h2>AI-Created Campaigns</h2>
+            <table><thead><tr><th>Campaign</th><th>Budget</th><th>Keywords</th><th>Date</th></tr></thead>
+            <tbody id="campsTable"></tbody></table>
+        </div>
+        <div class="section">
+            <h2>Reports</h2>
+            <table><thead><tr><th>File</th><th>Generated</th><th>Actions</th></tr></thead>
+            <tbody id="reportsTable"></tbody></table>
+        </div>
+    </div>
+
+    <div class="footer">AutoGrow AI v1.1 | Live Dashboard | Data refreshes every second</div>
+
+    <script>
+    /* ── Theme Toggle ── */
+    function applyTheme(theme) {
+        if (theme === 'light') {
+            document.body.classList.add('light');
+            document.getElementById('themeBtn').textContent = 'Theme: Light';
+        } else {
+            document.body.classList.remove('light');
+            document.getElementById('themeBtn').textContent = 'Theme: Dark';
+        }
+    }
+    function toggleTheme() {
+        var isLight = document.body.classList.contains('light');
+        var newTheme = isLight ? 'dark' : 'light';
+        localStorage.setItem('autogrow_theme', newTheme);
+        applyTheme(newTheme);
+    }
+    function restartDashboard() {
+        fetch('/api/dashboard/restart', {method:'POST'})
+            .then(r=>r.json()).then(function(d){
+                alert(d.success ? 'Dashboard restart triggered. Wait a few seconds and refresh.' : (d.error || 'Could not restart dashboard'));
+            }).catch(function(){
+                alert('Could not restart dashboard');
+            });
+    }
+    // Apply saved theme on load
+    applyTheme(localStorage.getItem('autogrow_theme') || 'dark');
+
+    function fmt(n) { return n ? 'Rs.' + Number(n).toLocaleString('en-IN') : 'Rs.0'; }
+    function esc(s) {
+        return String(s === undefined || s === null ? '' : s)
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;').replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
+
+    var futureDashboardState = {
+        impactSignature: '',
+        activitySignature: '',
+        pendingImpactHtml: null,
+        pendingActivityHtml: null,
+        pendingImpactSignature: '',
+        pendingActivitySignature: ''
+    };
+
+    function isInteractiveElement(el) {
+        if (!el || !el.tagName) return false;
+        var tag = el.tagName.toUpperCase();
+        if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT' || tag === 'OPTION') return true;
+        if (el.isContentEditable) return true;
+        if (tag === 'BUTTON' && el.getAttribute('data-dashboard-edit') === 'true') return true;
+        return false;
+    }
+
+    function selectionInside(panel) {
+        if (!panel || !window.getSelection) return false;
+        var sel = window.getSelection();
+        if (!sel || sel.rangeCount === 0 || sel.isCollapsed) return false;
+        try {
+            var node = sel.getRangeAt(0).commonAncestorContainer;
+            if (node && node.nodeType === 3) node = node.parentNode;
+            return !!(node && panel.contains(node));
+        } catch (e) {
+            return false;
+        }
+    }
+
+    function panelIsBusy(panel) {
+        if (!panel) return false;
+        if (selectionInside(panel)) return true;
+        var active = document.activeElement;
+        if (active && panel.contains(active) && isInteractiveElement(active)) return true;
+        if (panel.querySelector('input[type="file"]')) {
+            var fileInput = panel.querySelector('input[type="file"]:focus');
+            if (fileInput) return true;
+        }
+        return false;
+    }
+
+    function collectOpenFutureDetails(panel) {
+        var openIds = {};
+        if (!panel) return openIds;
+        panel.querySelectorAll('details[id]').forEach(function(d) {
+            if (d.open) openIds[d.id] = true;
+        });
+        return openIds;
+    }
+
+    function restoreOpenFutureDetails(panel, openIds) {
+        if (!panel || !openIds) return;
+        Object.keys(openIds).forEach(function(id) {
+            var el = panel.querySelector('#' + id);
+            if (el) el.open = true;
+        });
+    }
+
+    function applyQueuedFutureSection(sectionName) {
+        var panel = document.getElementById(sectionName === 'impact' ? 'futureImpactPanel' : 'futureActivityPanel');
+        var statusEl = document.getElementById(sectionName === 'impact' ? 'futureImpactStatus' : 'futureActivityStatus');
+        var htmlKey = sectionName === 'impact' ? 'pendingImpactHtml' : 'pendingActivityHtml';
+        var sigKey = sectionName === 'impact' ? 'pendingImpactSignature' : 'pendingActivitySignature';
+        var liveSigKey = sectionName === 'impact' ? 'impactSignature' : 'activitySignature';
+        if (!futureDashboardState[htmlKey]) return;
+        var openIds = collectOpenFutureDetails(panel);
+        if (sectionName === 'impact') {
+            document.getElementById('futureImpactCards').innerHTML = futureDashboardState[htmlKey].cards;
+            document.getElementById('futureAsinDetails').innerHTML = futureDashboardState[htmlKey].details;
+        } else {
+            document.getElementById('futureActivityTable').innerHTML = futureDashboardState[htmlKey].rows;
+        }
+        restoreOpenFutureDetails(panel, openIds);
+        futureDashboardState[liveSigKey] = futureDashboardState[sigKey];
+        futureDashboardState[htmlKey] = null;
+        futureDashboardState[sigKey] = '';
+        if (statusEl) {
+            statusEl.innerHTML = '<span style="color:#22C55E;">Live</span> | latest update applied';
+        }
+    }
+
+    function updateFutureSectionStatus(sectionName, mode, hasPending) {
+        var statusEl = document.getElementById(sectionName === 'impact' ? 'futureImpactStatus' : 'futureActivityStatus');
+        if (!statusEl) return;
+        if (mode === 'hidden') {
+            statusEl.textContent = '';
+            return;
+        }
+        if (hasPending) {
+            statusEl.innerHTML = '<span style="color:#F59E0B;">Paused while you work in this section</span> | <a href="javascript:void(0)" onclick="applyQueuedFutureSection(\'' + sectionName + '\')" style="color:#8BC6EC;">Apply latest update</a>';
+            return;
+        }
+        if (mode === 'idle') {
+            statusEl.innerHTML = '<span style="color:#22C55E;">Live</span> | section updates automatically when data changes';
+            return;
+        }
+        if (mode === 'updated') {
+            statusEl.innerHTML = '<span style="color:#22C55E;">Live</span> | updated';
+        }
+    }
+
+    function buildFutureImpactHtml(modules) {
+        var cards = '';
+        var detailHtml = '';
+        modules.forEach(function(m) {
+            var metrics = m.summary_metrics || {};
+            var ai = m.ai_action_summary || {};
+            var color = m.status === 'success' ? '#22C55E' : (m.status === 'warning' || m.status === 'partial' ? '#F59E0B' : '#EF4444');
+            var risks = (m.top_risks || []).map(function(r) {
+                return '<div style="font-size:12px;margin-top:4px;">' + esc(r.asin) + ' | ' + esc(r.buy_box_status) + ' | ' + fmt(r.sales7d_rs || 0) + '</div>';
+            }).join('');
+            cards += '<div class="card" style="border-left:4px solid '+color+';">'
+                + '<h3>' + esc(m.feature_name) + '</h3>'
+                + '<div class="val" style="font-size:18px;color:'+color+';">' + esc(m.badge || m.status) + '</div>'
+                + '<div class="sub" style="margin-top:6px;">' + esc(m.headline) + '</div>'
+                + '<div style="font-size:12px;line-height:1.7;margin-top:10px;">'
+                + 'Tracked: <b>' + (metrics.tracked_asins_count || 0) + '</b> | '
+                + 'Risk: <b>' + (metrics.risk_item_count || metrics.no_buy_box_count || metrics.buy_box_lost_count || 0) + '</b><br>'
+                + 'Revenue protected: <b>' + fmt(metrics.revenue_protected_rs || 0) + '</b><br>'
+                + 'Revenue at risk: <b>' + fmt(metrics.revenue_at_risk_7d_rs || 0) + '</b><br>'
+                + 'AI benefit: <b>' + fmt(ai.expected_sales_protected_rs || metrics.ai_action_sales_protected_rs || 0) + '</b>'
+                + '</div>' + risks + '</div>';
+        });
+
+        modules.forEach(function(m) {
+            var rows = m.detail_rows || [];
+            var ai = m.ai_action_summary || {};
+            var actionHistory = m.action_history || [];
+            if (ai.headline || (ai.items || []).length || (actionHistory || []).length) {
+                detailHtml += '<div class="section" style="margin-top:18px;padding:14px 16px;">'
+                    + '<h3 style="margin:0 0 8px;">AI Benefit Details - ' + esc(m.feature_name) + '</h3>';
+                if (ai.headline) {
+                    detailHtml += '<div style="font-size:14px;line-height:1.6;"><b>' + esc(ai.headline) + '</b></div>';
+                }
+                if ((ai.items || []).length) {
+                    detailHtml += '<table style="margin-top:10px;"><thead><tr><th>ASIN / SKU</th><th>AI Action</th><th>Status</th><th>Change</th><th>Reason</th></tr></thead><tbody>';
+                    ai.items.forEach(function(item) {
+                        detailHtml += '<tr>'
+                            + '<td><b>' + esc(item.asin) + '</b><br><span style="opacity:0.65;font-size:11px;">' + esc(item.sku) + '</span></td>'
+                            + '<td>' + esc(item.action || 'Monitor') + '</td>'
+                            + '<td>' + esc(item.status || '-') + '</td>'
+                            + '<td>' + fmt(item.old_price || 0) + ' → ' + fmt(item.new_price || 0) + '</td>'
+                            + '<td>' + esc(item.reason || '') + '</td>'
+                            + '</tr>';
+                    });
+                    detailHtml += '</tbody></table>';
+                }
+                detailHtml += '</div>';
+            }
+            if (actionHistory.length) {
+                detailHtml += '<div class="section" style="margin-top:14px;padding:14px 16px;">'
+                    + '<h3 style="margin:0 0 8px;">Action History - ' + esc(m.feature_name) + '</h3>'
+                    + '<table><thead><tr><th>Route</th><th>Status</th><th>Requests</th><th>Executed</th><th>Reason</th></tr></thead><tbody>';
+                actionHistory.forEach(function(item) {
+                    detailHtml += '<tr>'
+                        + '<td>' + esc(item.route_type || item.engine || '-') + '</td>'
+                        + '<td>' + esc(item.status || '-') + '</td>'
+                        + '<td>' + (item.request_count || 0) + '</td>'
+                        + '<td>' + (item.actions_executed || 0) + '</td>'
+                        + '<td>' + esc(item.reason || '') + '</td>'
+                        + '</tr>';
+                });
+                detailHtml += '</tbody></table></div>';
+            }
+            if (!rows.length) return;
+            var actionRows = rows.filter(function(r) {
+                return r.action_priority === 'HIGH' || r.action_priority === 'MEDIUM' || r.buy_box_status === 'LOST' || r.buy_box_status === 'NO_BUYBOX';
+            });
+            var safeRows = rows.filter(function(r) {
+                return !(r.action_priority === 'HIGH' || r.action_priority === 'MEDIUM' || r.buy_box_status === 'LOST' || r.buy_box_status === 'NO_BUYBOX');
+            });
+            var visibleRows = actionRows.length ? actionRows : rows.slice(0, 5);
+            var safeId = 'safeAsins_' + esc(m.feature_key).replace(/[^a-zA-Z0-9_]/g, '_');
+            detailHtml += '<h3 style="margin-top:18px;">Actual ASIN Actions - ' + esc(m.feature_name) + '</h3>'
+                + '<div style="font-size:12px;opacity:0.7;margin:4px 0 8px;">Showing action-needed ASINs first. Safe ASINs are hidden to keep this clean.</div>'
+                + '<table><thead><tr>'
+                + '<th>ASIN / SKU</th><th>Priority</th><th>Buy Box</th><th>Sales 7d</th><th>Competitors</th><th>Price Gap</th><th>Exact Action</th>'
+                + '</tr></thead><tbody>';
+            visibleRows.forEach(function(r) {
+                var priorityColor = r.action_priority === 'HIGH' ? '#EF4444' : (r.action_priority === 'MEDIUM' ? '#F59E0B' : '#22C55E');
+                var signals = (r.signals || []).join(', ');
+                detailHtml += '<tr>'
+                    + '<td><b>' + esc(r.asin) + '</b><br><span style="opacity:0.65;font-size:11px;">' + esc(r.sku) + '</span></td>'
+                    + '<td><span class="badge" style="background:' + priorityColor + ';">' + esc(r.action_priority || 'LOW') + '</span></td>'
+                    + '<td>' + esc(r.buy_box_status) + '</td>'
+                    + '<td>' + fmt(r.sales7d_rs || 0) + '<br><span style="opacity:0.6;font-size:11px;">' + (r.orders7d || 0) + ' orders</span></td>'
+                    + '<td>' + (r.competitor_count || 0) + '</td>'
+                    + '<td>' + fmt(r.price_gap_rs || 0) + '</td>'
+                    + '<td><b>' + esc(r.recommendation || 'Monitor') + '</b>' + (signals ? '<br><span style="opacity:0.65;font-size:11px;">' + esc(signals) + '</span>' : '') + '</td>'
+                    + '</tr>';
+            });
+            detailHtml += '</tbody></table>';
+            if (safeRows.length && actionRows.length) {
+                detailHtml += '<details id="' + safeId + '" style="margin-top:8px;">'
+                    + '<summary style="cursor:pointer;color:#8BC6EC;font-weight:700;">View safe ASINs (' + safeRows.length + ')</summary>'
+                    + '<div style="margin-top:8px;">'
+                    + '<table><thead><tr>'
+                    + '<th>ASIN / SKU</th><th>Buy Box</th><th>Sales 7d</th><th>Competitors</th><th>Why Safe</th>'
+                    + '</tr></thead><tbody>';
+                safeRows.forEach(function(r) {
+                    var signals = (r.signals || []).join(', ') || 'No action needed';
+                    detailHtml += '<tr>'
+                        + '<td><b>' + esc(r.asin) + '</b><br><span style="opacity:0.65;font-size:11px;">' + esc(r.sku) + '</span></td>'
+                        + '<td>' + esc(r.buy_box_status) + '</td>'
+                        + '<td>' + fmt(r.sales7d_rs || 0) + '<br><span style="opacity:0.6;font-size:11px;">' + (r.orders7d || 0) + ' orders</span></td>'
+                        + '<td>' + (r.competitor_count || 0) + '</td>'
+                        + '<td>' + esc(signals) + '</td>'
+                        + '</tr>';
+                });
+                detailHtml += '</tbody></table></div></details>';
+            }
+        });
+        return { cards: cards, details: detailHtml };
+    }
+
+    function buildFutureActivityHtml(modules) {
+        var rows = '';
+        modules.forEach(function(m) {
+            var counts = m.counts || {};
+            var review = m.needs_review ? 'Needs review' : 'No review needed';
+            var warnings = (m.warnings_list || []).join(' | ');
+            var actionHistory = m.action_history || [];
+            var actionSummary = actionHistory.map(function(item) {
+                return (item.route_type || item.engine || '-') + ': ' + (item.status || '-') + ' (' + (item.actions_executed || 0) + ' executed)';
+            }).join(' | ');
+            rows += '<tr><td><b>' + esc(m.feature_name) + '</b><br><span style="opacity:0.6">' + esc(m.generated_at) + '</span></td>'
+                + '<td><span class="badge ' + (m.status === 'success' ? 'badge-ok' : 'badge-run') + '">' + esc(m.status) + '</span></td>'
+                + '<td>Processed: ' + (counts.items_processed || 0) + ' | Warnings: ' + (counts.warnings || 0) + ' | Errors: ' + (counts.errors || 0) + (actionSummary ? '<br><span style="opacity:0.72">' + esc(actionSummary) + '</span>' : '') + '</td>'
+                + '<td>' + esc(review) + (warnings ? '<br><span style="color:#F59E0B">' + esc(warnings) + '</span>' : '') + '</td></tr>';
+        });
+        return { rows: rows };
+    }
+
+    function renderFutureDashboards(modules) {
+        var impactPanel = document.getElementById('futureImpactPanel');
+        var activityPanel = document.getElementById('futureActivityPanel');
+        modules = modules || [];
+        if (!modules.length) {
+            impactPanel.style.display = 'none';
+            activityPanel.style.display = 'none';
+            updateFutureSectionStatus('impact', 'hidden');
+            updateFutureSectionStatus('activity', 'hidden');
+            return;
+        }
+        impactPanel.style.display = 'block';
+        activityPanel.style.display = 'block';
+
+        var impactHtml = buildFutureImpactHtml(modules);
+        var activityHtml = buildFutureActivityHtml(modules);
+        var impactSignature = JSON.stringify(impactHtml);
+        var activitySignature = JSON.stringify(activityHtml);
+        var impactBusy = panelIsBusy(impactPanel);
+        var activityBusy = panelIsBusy(activityPanel);
+
+        if (impactSignature !== futureDashboardState.impactSignature) {
+            if (impactBusy) {
+                futureDashboardState.pendingImpactHtml = impactHtml;
+                futureDashboardState.pendingImpactSignature = impactSignature;
+                updateFutureSectionStatus('impact', 'idle', true);
+            } else {
+                var openImpact = collectOpenFutureDetails(impactPanel);
+                document.getElementById('futureImpactCards').innerHTML = impactHtml.cards;
+                document.getElementById('futureAsinDetails').innerHTML = impactHtml.details;
+                restoreOpenFutureDetails(impactPanel, openImpact);
+                futureDashboardState.impactSignature = impactSignature;
+                futureDashboardState.pendingImpactHtml = null;
+                futureDashboardState.pendingImpactSignature = '';
+                updateFutureSectionStatus('impact', 'updated', false);
+            }
+        } else {
+            updateFutureSectionStatus('impact', 'idle', !!futureDashboardState.pendingImpactHtml);
+        }
+
+        if (activitySignature !== futureDashboardState.activitySignature) {
+            if (activityBusy) {
+                futureDashboardState.pendingActivityHtml = activityHtml;
+                futureDashboardState.pendingActivitySignature = activitySignature;
+                updateFutureSectionStatus('activity', 'idle', true);
+            } else {
+                document.getElementById('futureActivityTable').innerHTML = activityHtml.rows;
+                futureDashboardState.activitySignature = activitySignature;
+                futureDashboardState.pendingActivityHtml = null;
+                futureDashboardState.pendingActivitySignature = '';
+                updateFutureSectionStatus('activity', 'updated', false);
+            }
+        } else {
+            updateFutureSectionStatus('activity', 'idle', !!futureDashboardState.pendingActivityHtml);
+        }
+    }
+
+    function openFile(name) {
+        fetch('/open/' + encodeURIComponent(name)).then(r=>r.json()).then(d => {
+            if (d.error) alert('Error: ' + d.error);
+        });
+    }
+
+    function refresh() {
+        fetch('/api/data').then(r=>r.json()).then(d => {
+            document.getElementById('clock').textContent = d.date + ' | ' + d.time;
+            document.getElementById('revenue').textContent = fmt(d.sales.revenue);
+            document.getElementById('orders').textContent = d.sales.orders;
+            document.getElementById('bbWon').textContent = d.buybox.won;
+            document.getElementById('bbWon').className = 'val green';
+            document.getElementById('bbLost').textContent = d.buybox.lost;
+            document.getElementById('bbNoBB').textContent = d.buybox.no_bb;
+
+            var sz = document.getElementById('stockZero');
+            sz.textContent = d.stock.zero;
+            sz.className = d.stock.zero > 0 ? 'val red' : 'val green';
+            document.getElementById('stockLow').textContent = d.stock.low;
+            document.getElementById('stockOk').textContent = d.stock.healthy;
+
+            // Price Optimizer card
+            if (d.price_optimizer) {
+                var po = d.price_optimizer;
+                if (po.last_run && po.last_run !== '—') {
+                    document.getElementById('poCardVal').innerHTML = '<span style="color:#22C55E">↑' + po.increased + '</span> <span style="color:#F59E0B">↓' + po.decreased + '</span>';
+                    var subParts = [];
+                    if (po.blocked > 0) subParts.push('<span style="color:#EF4444">🚫' + po.blocked + ' blocked</span>');
+                    if (po.inactive_count > 0) subParts.push('<span style="color:#EF4444">⚠️' + po.inactive_count + ' inactive</span>');
+                    if (po.recovery_count > 0) subParts.push('<span style="color:#22C55E">✅' + po.recovery_count + ' recovered</span>');
+                    subParts.push(po.last_run);
+                    document.getElementById('poCardSub').innerHTML = subParts.join(' | ');
+                } else {
+                    document.getElementById('poCardVal').textContent = 'Not run yet';
+                    document.getElementById('poCardSub').textContent = '—';
+                }
+            }
+
+            // Last Sync
+            if (d.last_sync) {
+                var syncHtml = '';
+                for (var k in d.last_sync) {
+                    syncHtml += '<div>' + k + ': <b>' + d.last_sync[k] + '</b></div>';
+                }
+                document.getElementById('lastSyncList').innerHTML = syncHtml;
+            }
+
+            if (d.logs.length > 0) {
+                // Removed: old exec cards replaced by lastSyncList
+            }
+
+            // Alert bar
+            var ab = document.getElementById('alertBar');
+            var alertMsgs = [];
+            if (d.alerts && d.alerts.length > 0) alertMsgs = alertMsgs.concat(d.alerts);
+            if (d.buybox && d.buybox.lost > 0) alertMsgs.push('Buy Box Lost: '+d.buybox.lost+' products');
+            if (d.import_info && d.import_info.total && d.import_info.success < d.import_info.total) {
+                alertMsgs.push('⚠️ Import: '+d.import_info.success+'/'+d.import_info.total+' reports succeeded');
+            }
+            if (alertMsgs.length > 0) { ab.style.display='block'; ab.textContent = alertMsgs.join(' | '); ab.style.background = d.alerts && d.alerts.length > 0 ? '#DC2626' : '#D97706'; }
+            else { ab.style.display='none'; }
+
+            // ── Auto-generate Quick Action buttons from features config ──
+            var btnHtml = '';
+            var lastCat = '';
+            if (d.features && d.features.length > 0) {
+                d.features.forEach(function(f) {
+                    if (!f.enabled) return;
+                    if (f.category !== lastCat) {
+                        if (lastCat) btnHtml += '<br>';
+                        lastCat = f.category;
+                    }
+                    var cls = 'btn btn-' + f.color;
+                    if (d.running_tasks.indexOf(f.id) !== -1) cls += ' running';
+                    btnHtml += '<button class="' + cls + '" onclick="runTask(\'' + f.id + '\')">' + f.label + (f.last_run ? '<br><span style="font-size:10px;opacity:0.7">' + f.last_run + '</span>' : '') + '</button> ';
+                });
+            }
+            document.getElementById('actionButtons').innerHTML = btnHtml;
+
+            renderFutureDashboards(d.future_modules);
+
+            // Tables
+            var lt = ''; d.logs.forEach(function(l) {
+                lt += '<tr><td>'+l.time+'</td><td><b>'+l.task+'</b></td><td>'+l.detail+'</td></tr>';
+            }); document.getElementById('logsTable').innerHTML = lt;
+
+            var ct = ''; d.campaigns.forEach(function(c) {
+                ct += '<tr><td>'+c.name+'</td><td>Rs.'+c.budget+'</td><td>'+c.kw+'</td><td>'+c.date+'</td></tr>';
+            }); document.getElementById('campsTable').innerHTML = ct;
+
+            var rt = ''; d.reports.forEach(function(r) {
+                rt += '<tr><td>'+r.name+'</td><td>'+r.age+'</td><td>'
+                    +'<button class="btn btn-blue btn-sm" onclick="openFile(\''+r.name.replace(/'/g,"\\'")+'\')">Open</button> '
+                    +'<a class="btn btn-green btn-sm" href="/download/'+encodeURIComponent(r.name)+'" style="text-decoration:none;color:white">Download</a>'
+                    +'</td></tr>';
+            }); document.getElementById('reportsTable').innerHTML = rt;
+
+            // Running indicators (don't overwrite if poll is active with live log)
+            if (!taskPollActive) {
+                var ts = document.getElementById('taskStatus');
+                if (d.running_tasks.length > 0) {
+                    ts.innerHTML = '<span class="running-indicator"><span class="dot"></span><span class="dot"></span><span class="dot"></span> Running: ' + d.running_tasks.join(', ') + '</span>';
+                } else {
+                    ts.innerHTML = '';
+                }
+            }
+        }).catch(function(e) {});
+    }
+
+    var showLogs = localStorage.getItem('autogrow_show_logs') !== 'false';
+    var taskPollActive = false;
+
+    function runTask(task) {
+        var logHtml = showLogs ? '<pre id="taskLog" style="max-height:200px;overflow:auto;font-size:12px;background:#0a1520;padding:10px;border-radius:6px;margin-top:8px;color:#8BC6EC"></pre>' : '';
+        document.getElementById('taskStatus').innerHTML = '<span class="running-indicator"><span class="dot"></span><span class="dot"></span><span class="dot"></span> Starting ' + task + '...</span>' + logHtml;
+        taskPollActive = true;
+        fetch('/api/run/' + task).then(r=>r.json()).then(function(d) {
+            if (d.status == 'started') {
+                document.getElementById('taskStatus').innerHTML = '<span class="running-indicator"><span class="dot"></span><span class="dot"></span><span class="dot"></span> <b>' + task + '</b> running...</span>' + logHtml;
+                var pollId = setInterval(function() {
+                    fetch('/api/task_status/' + task).then(r=>r.json()).then(function(s) {
+                        if (showLogs) {
+                            var log = document.getElementById('taskLog');
+                            if (log && s.output) log.textContent = s.output;
+                        }
+                        if (!s.running) {
+                            clearInterval(pollId);
+                            taskPollActive = false;
+                            var status = s.success ? 'DONE' : 'FAILED';
+                            var statusColor = s.success ? '#22C55E' : '#EF4444';
+                            var statusHtml = '<br><b style="color:' + statusColor + '">' + task + ' — ' + status + '</b>';
+                            document.getElementById('taskStatus').innerHTML += statusHtml;
+                        }
+                    });
+                }, 2000);
+            } else {
+                document.getElementById('taskStatus').textContent = d.error || 'Error';
+            }
+        });
+    }
+
+    /* ══ Price Optimizer Impact Panel ══ */
+    function loadPriceOptimizer() {
+        fetch('/api/price-optimizer').then(r=>r.json()).then(function(d) {
+            var panel = document.getElementById('priceOptimizerPanel');
+            if (!d.last_run) { panel.style.display='none'; return; }
+            panel.style.display = 'block';
+
+            // Summary cards
+            var s = d.summary || {};
+            var st = d.stats || {};
+            var profitColor = st.total_profit_impact >= 0 ? '#22C55E' : '#EF4444';
+            var salesColor = st.total_sales_impact >= 0 ? '#22C55E' : '#EF4444';
+            var cardsHtml = ''
+                + '<div class="card" style="padding:12px;text-align:center"><div style="font-size:11px;opacity:0.6">Qualified</div><div class="val" style="font-size:20px">' + (s.total_qualified||0) + '</div></div>'
+                + '<div class="card" style="padding:12px;text-align:center"><div style="font-size:11px;opacity:0.6">Price ↑</div><div class="val green" style="font-size:20px">' + (s.price_increased||0) + '</div></div>'
+                + '<div class="card" style="padding:12px;text-align:center"><div style="font-size:11px;opacity:0.6">Price ↓ (Recovery)</div><div class="val" style="font-size:20px;color:#F59E0B">' + (s.price_decreased||0) + '</div></div>'
+                + '<div class="card" style="padding:12px;text-align:center"><div style="font-size:11px;opacity:0.6">Blocked (Safety)</div><div class="val red" style="font-size:20px">' + (s.blocked||0) + '</div></div>'
+                + '<div class="card" style="padding:12px;text-align:center"><div style="font-size:11px;opacity:0.6">Profit Impact</div><div style="font-size:20px;font-weight:bold;color:'+profitColor+'">' + (st.total_profit_impact>=0?'+':'') + st.total_profit_impact + '</div></div>'
+                + '<div class="card" style="padding:12px;text-align:center"><div style="font-size:11px;opacity:0.6">Buy Box</div><div style="font-size:14px"><span style="color:#22C55E">✅' + st.bb_won + '</span> <span style="color:#EF4444">❌' + st.bb_lost + '</span></div></div>';
+            document.getElementById('poSummaryCards').innerHTML = cardsHtml;
+
+            // Impact table
+            var impacts = d.impact || [];
+            if (impacts.length > 0) {
+                var t = '<h3 style="margin-bottom:8px">📊 Product-wise Impact (Price → Sales → Profit)</h3>'
+                    + '<table><thead><tr><th>ASIN</th><th>Orig ₹</th><th>Now ₹</th><th>Chg%</th>'
+                    + '<th>Before Sales 7d</th><th>Now Sales 7d</th><th>Sales%</th>'
+                    + '<th>Profit Δ</th><th>Buy Box</th><th>Deact</th><th>Inactive Min</th></tr></thead><tbody>';
+                impacts.sort(function(a,b) { return Math.abs(b.sales_change_pct||0) - Math.abs(a.sales_change_pct||0); });
+                impacts.forEach(function(i) {
+                    var saleIcon = i.sales_change_pct > 0 ? '📈' : i.sales_change_pct < 0 ? '📉' : '➡️';
+                    var bb = (i.buy_box_status==='WON' || i.buy_box_status===true) ? '<span style="color:#22C55E">✅ WON</span>' : (i.buy_box_status==='LOST' || i.buy_box_status===false) ? '<span style="color:#EF4444">❌ LOST</span>' : '—';
+                    var prChg = i.price_change_pct >= 0 ? '<span style="color:#22C55E">+'+i.price_change_pct+'%</span>' : '<span style="color:#EF4444">'+i.price_change_pct+'%</span>';
+                    var saleChg = i.sales_change_pct >= 0 ? '<span style="color:#22C55E">'+saleIcon+'+'+i.sales_change_pct+'%</span>' : '<span style="color:#EF4444">'+saleIcon+i.sales_change_pct+'%</span>';
+                    var profitChg = i.profit_change >= 0 ? '<span style="color:#22C55E">+₹'+i.profit_change.toFixed(0)+'</span>' : '<span style="color:#EF4444">₹'+i.profit_change.toFixed(0)+'</span>';
+                    var deact = i.deactivation_count > 0 ? '<span style="color:#EF4444">'+i.deactivation_count+'</span>' : '0';
+                    var inactMin = i.total_inactive_minutes > 0 ? '<span style="color:#F59E0B">'+i.total_inactive_minutes+'m</span>' : '0';
+                    t += '<tr><td>'+i.asin+'</td><td>₹'+i.original_price.toFixed(0)+'</td><td>₹'+i.current_price.toFixed(0)+'</td>'
+                       + '<td>'+prChg+'</td><td>₹'+i.before_sales_7d.toFixed(0)+'</td><td>₹'+i.current_sales_7d.toFixed(0)+'</td>'
+                       + '<td>'+saleChg+'</td><td>'+profitChg+'</td><td>'+bb+'</td><td>'+deact+'</td><td>'+inactMin+'</td></tr>';
+                });
+                t += '</tbody></table>';
+                document.getElementById('poImpactTable').innerHTML = t;
+            } else {
+                document.getElementById('poImpactTable').innerHTML = '<p style="opacity:0.5;font-size:13px">No impact data yet — run a cycle first</p>';
+            }
+
+            // Inactive listings
+            var inactive = d.inactive || [];
+            if (inactive.length > 0) {
+                var ih = '<h3 style="color:#EF4444;margin-bottom:8px">⚠️ Currently INACTIVE (' + inactive.length + ' listings) — Recovery in progress</h3><table><thead><tr><th>ASIN</th><th>SKU</th><th>Status</th><th>Retry #</th><th>Issues</th></tr></thead><tbody>';
+                inactive.forEach(function(item) {
+                    var issues = (item.issues||[]).map(function(x){return x.msg||x;}).join('; ').substring(0,80);
+                    ih += '<tr style="background:rgba(239,68,68,0.1)"><td>'+item.asin+'</td><td>'+(item.sku||'').substring(0,25)+'</td><td><span class="badge badge-fail">'+(item.status||'INACTIVE')+'</span></td><td>'+(item.retry_attempt||0)+'</td><td>'+issues+'</td></tr>';
+                });
+                ih += '</tbody></table>';
+                document.getElementById('poInactive').innerHTML = ih;
+            } else {
+                document.getElementById('poInactive').innerHTML = '';
+            }
+
+            // Recoveries
+            var rec = d.recoveries || [];
+            if (rec.length > 0) {
+                var rh = '<h3 style="color:#22C55E;margin-bottom:8px">✅ Recovered this cycle (' + rec.length + ')</h3><table><thead><tr><th>ASIN</th><th>SKU</th><th>Inactive Price</th><th>Recovered Price</th><th>Downtime</th></tr></thead><tbody>';
+                rec.forEach(function(r) {
+                    rh += '<tr style="background:rgba(34,197,94,0.1)"><td>'+r.asin+'</td><td>'+(r.sku||'').substring(0,25)+'</td><td>₹'+(r.inactive_price||0).toFixed(0)+'</td><td>₹'+(r.recovered_price||0).toFixed(0)+'</td><td>'+(r.duration_min||0)+' min</td></tr>';
+                });
+                rh += '</tbody></table>';
+                document.getElementById('poRecoveries').innerHTML = rh;
+            } else {
+                document.getElementById('poRecoveries').innerHTML = '';
+            }
+
+            // Anti-oscillation blocks
+            var osc = d.osc_blocked || [];
+            if (osc.length > 0) {
+                var oh = '<h3 style="color:#F59E0B;margin-bottom:8px">🔄 Anti-Oscillation Blocked (' + osc.length + ')</h3><ul style="padding-left:20px">';
+                osc.forEach(function(o) {
+                    oh += '<li>'+o.asin+' — '+o.total_changes+' changes, price flipping too fast (blocked to prevent loops)</li>';
+                });
+                oh += '</ul>';
+                document.getElementById('poOscBlocked').innerHTML = oh;
+            } else {
+                document.getElementById('poOscBlocked').innerHTML = '';
+            }
+
+            // Recent history
+            var hist = d.recent_history || [];
+            if (hist.length > 0) {
+                var hh = '<details><summary style="cursor:pointer;font-weight:bold;font-size:14px">📜 Recent Price Changes (' + hist.length + ')</summary>'
+                    + '<table style="margin-top:8px"><thead><tr><th>Time</th><th>ASIN</th><th>Action</th><th>Old ₹</th><th>New ₹</th><th>Chg%</th><th>Status</th><th>Reason</th></tr></thead><tbody>';
+                hist.forEach(function(h) {
+                    var icon = h.action==='INCREASE' ? '📈' : h.action.indexOf('DECREASE')>=0 ? '📉' : '🚫';
+                    var stBadge = h.status.indexOf('OK')>=0 ? 'badge-ok' : h.status==='FAILED' ? 'badge-fail' : 'badge-run';
+                    var dryTag = h.dry_run ? ' <span style="color:#F59E0B;font-size:10px">[DRY]</span>' : '';
+                    hh += '<tr><td>'+h.timestamp+'</td><td>'+h.asin+'</td><td>'+icon+' '+h.action+'</td>'
+                        + '<td>₹'+h.old_price.toFixed(0)+'</td><td>₹'+h.new_price.toFixed(0)+'</td>'
+                        + '<td>'+(h.change_pct>=0?'+':'')+h.change_pct.toFixed(1)+'%</td>'
+                        + '<td><span class="badge '+stBadge+'">'+h.status+'</span>'+dryTag+'</td>'
+                        + '<td style="font-size:12px">'+h.reason+'</td></tr>';
+                });
+                hh += '</tbody></table></details>';
+                document.getElementById('poRecentHistory').innerHTML = hh;
+            } else {
+                document.getElementById('poRecentHistory').innerHTML = '';
+            }
+
+            // Last run time
+            document.getElementById('poLastRun').textContent = 'Last run: ' + d.last_run_pretty + (d.dry_run ? ' (DRY RUN)' : '');
+        }).catch(function(e) {
+            console.log('Price optimizer data not available:', e);
+        });
+    }
+
+    // Load price optimizer on page load, then every 30s
+    loadPriceOptimizer();
+    setInterval(loadPriceOptimizer, 30000);
+
+    setInterval(refresh, 1000);
+    refresh();
+    </script>
+</body>
+</html>"""
+
+
+# ═══════════════════════════════════════════════════════════════
+# SETTINGS HTML
+# ═══════════════════════════════════════════════════════════════
+
+SETTINGS_HTML = r"""<!DOCTYPE html>
+<html>
+<head>
+    <title>AutoGrow AI — Settings</title>
+    <meta charset="UTF-8">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        :root {
+            --bg: #0F1923;
+            --card-bg: #1A2332;
+            --card-border: #2A3A4A;
+            --text: #E0E6ED;
+            --text-muted: #7B8FA3;
+            --text-dim: #5B7A95;
+            --hover-bg: #1F2D3D;
+            --section-bg: #1A2332;
+            --input-bg: #0F1923;
+            --input-border: #2A3A4A;
+        }
+        body.light {
+            --bg: #F0F2F5;
+            --card-bg: #FFFFFF;
+            --card-border: #E0E0E0;
+            --text: #2C3E50;
+            --text-muted: #6B7B8D;
+            --text-dim: #8899AA;
+            --hover-bg: #EEF1F5;
+            --section-bg: #FFFFFF;
+            --input-bg: #F8F9FA;
+            --input-border: #D0D5DD;
+        }
+        body { font-family:Calibri,Arial; background:var(--bg); color:var(--text); min-height:100vh; transition: background 0.3s, color 0.3s; }
+        .header { background:linear-gradient(135deg,#1A3A5C,#2563EB); padding:18px 25px; display:flex; justify-content:space-between; align-items:center; }
+        .header h1 { font-size:28px; color:white; } .header h1 span { color:#60A5FA; }
+        .header .right { display:flex; align-items:center; gap:18px; }
+        .header .time { color:rgba(255,255,255,0.8); font-size:14px; }
+        .nav-links { display:flex; gap:8px; }
+        .nav-links a { color:rgba(255,255,255,0.85); text-decoration:none; font-size:14px; font-weight:bold; padding:5px 14px; border-radius:6px; transition:0.2s; }
+        .nav-links a:hover, .nav-links a.active { background:rgba(255,255,255,0.15); color:white; }
+        .theme-toggle { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:white; padding:5px 14px; border-radius:6px; cursor:pointer; font-size:13px; font-weight:bold; transition:0.2s; }
+        .theme-toggle:hover { background:rgba(255,255,255,0.25); }
+
+        .settings-container { max-width:900px; margin:20px auto; padding:0 20px; }
+        .config-section { background:var(--section-bg); border-radius:10px; padding:20px; border:1px solid var(--card-border); margin-bottom:16px; transition: background 0.3s, border 0.3s; }
+        .config-section h2 { font-size:18px; color:#60A5FA; margin-bottom:14px; border-bottom:1px solid var(--card-border); padding-bottom:8px; }
+        .form-row { display:flex; align-items:center; margin-bottom:10px; gap:12px; }
+        .form-row label { flex:0 0 220px; font-size:14px; color:var(--text-muted); font-weight:bold; }
+        .form-row input, .form-row select { flex:1; padding:8px 12px; border-radius:6px; border:1px solid var(--input-border); background:var(--input-bg); color:var(--text); font-size:14px; font-family:Calibri,Arial; }
+        .form-row input:focus { outline:none; border-color:#2563EB; }
+        .task-row { display:flex; align-items:center; gap:10px; margin-bottom:6px; padding:6px 8px; border-radius:6px; }
+        .task-row:hover { background:var(--hover-bg); }
+        .task-row input[type="checkbox"] { width:18px; height:18px; cursor:pointer; }
+        .task-row .task-name { flex:1; font-size:14px; }
+        .task-row .task-schedule { font-size:13px; color:var(--text-dim); min-width:100px; }
+        .task-row .task-category { font-size:12px; color:var(--text-dim); background:var(--hover-bg); padding:2px 8px; border-radius:4px; }
+        .cat-header { font-size:14px; color:#60A5FA; margin:14px 0 6px; font-weight:bold; text-transform:uppercase; letter-spacing:1px; }
+        .btn { display:inline-block; padding:8px 20px; border-radius:6px; border:none; cursor:pointer; font-size:14px; font-weight:bold; margin:2px; transition:0.2s; }
+        .btn-blue { background:#2563EB; color:white; } .btn-blue:hover { background:#3B82F6; }
+        .btn-green { background:#16A34A; color:white; } .btn-green:hover { background:#22C55E; }
+        .btn-orange { background:#D97706; color:white; } .btn-orange:hover { background:#F59E0B; }
+        .save-status { display:inline-block; margin-left:10px; font-size:13px; font-weight:bold; opacity:0; transition:opacity 0.3s; }
+        .save-status.show { opacity:1; }
+        .footer { text-align:center; padding:10px; color:var(--text-dim); font-size:12px; }
+
+        /* Toggle switch */
+        .toggle-switch { position:relative; width:44px; height:24px; flex-shrink:0; }
+        .toggle-switch input { opacity:0; width:0; height:0; }
+        .toggle-slider { position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background:#4B5563; border-radius:24px; transition:0.3s; }
+        .toggle-slider:before { content:''; position:absolute; height:18px; width:18px; left:3px; bottom:3px; background:white; border-radius:50%; transition:0.3s; }
+        .toggle-switch input:checked + .toggle-slider { background:#22C55E; }
+        .toggle-switch input:checked + .toggle-slider:before { transform:translateX(20px); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AutoGrow <span>AI</span> — Settings</h1>
+        <div class="right">
+            <div class="nav-links">
+                <a href="/">Dashboard</a>
+                <a href="/settings" class="active">Settings</a>
+                <a href="/stock-control">Stock Control</a>
+                <a href="/fba-settings">📦 FBA</a>
+                <a href="/rules">Rules</a>
+            </div>
+            <button class="theme-toggle" onclick="restartDashboard()">Restart</button>
+            <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">Theme: Dark</button>
+        </div>
+    </div>
+
+    <div class="settings-container">
+
+        <!-- Dashboard Settings -->
+        <div class="config-section" id="sec-dashboard">
+            <h2>Dashboard Settings</h2>
+            <div class="form-row">
+                <label>Show Task Logs on Dashboard</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="show_logs" onchange="saveDashSettings()">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <p style="font-size:12px;color:var(--text-dim);margin-top:6px">When enabled, running tasks will show live output below the Quick Actions buttons.</p>
+        </div>
+
+        <!-- True Profit Settings -->
+        <div class="config-section" id="sec-true-profit">
+            <h2>True Profit Settings</h2>
+            <div class="form-row"><label>Product Cost (Rs.)</label><input type="number" id="tp_product_cost"></div>
+            <div class="form-row"><label>Referral Fee (%)</label><input type="number" step="0.1" id="tp_referral_fee"></div>
+            <div class="form-row"><label>Closing Fee (Rs.)</label><input type="number" id="tp_closing_fee"></div>
+            <div class="form-row"><label>Shipping (Rs.)</label><input type="number" id="tp_shipping"></div>
+            <div class="form-row"><label>Return Rate (%)</label><input type="number" step="0.1" id="tp_return_rate"></div>
+            <div class="form-row"><label>Target Profit Retention (%)</label><input type="number" id="tp_retention"></div>
+            <button class="btn btn-blue" onclick="saveTP()">Save</button>
+            <span class="save-status" id="tp_status"></span>
+        </div>
+
+        <!-- Email Settings -->
+        <div class="config-section" id="sec-email">
+            <h2>Email Settings</h2>
+            <div class="form-row"><label>Sender Email</label><input type="text" id="em_sender" readonly style="opacity:0.7"></div>
+            <div class="form-row"><label>Ads Staff</label><input type="text" id="em_ads"></div>
+            <div class="form-row"><label>Listing Staff</label><input type="text" id="em_listing"></div>
+            <div class="form-row"><label>Critical Alerts</label><input type="text" id="em_critical"></div>
+            <button class="btn btn-orange" onclick="testEmail()">Test Email</button>
+            <button class="btn btn-blue" onclick="saveEmail()">Save</button>
+            <span class="save-status" id="em_status"></span>
+        </div>
+
+        <!-- Google Sheet Settings -->
+        <div class="config-section" id="sec-gsheet">
+            <h2>Google Sheet Connection</h2>
+            <div class="form-row"><label>Webhook URL</label><input type="text" id="gs_webhook" style="width:100%"></div>
+            <div class="form-row"><label>Secret</label><input type="text" id="gs_secret"></div>
+            <h3 style="margin-top:12px;color:var(--text)">A+ Content Sheet</h3>
+            <div class="form-row"><label>Sheet ID</label><input type="text" id="gs_sheet_id" placeholder="Leave empty for bound sheet"></div>
+            <div class="form-row"><label>Tab Name</label><input type="text" id="gs_tab" value="A+"></div>
+            <div class="form-row"><label>ASIN Column</label><input type="text" id="gs_asin_col" value="A" style="width:60px"></div>
+            <div class="form-row"><label>Image Columns (comma separated)</label><input type="text" id="gs_img_cols" value="B,C,D,E,F"></div>
+            <div class="form-row"><label>Start Row</label><input type="number" id="gs_start_row" value="2" style="width:80px"></div>
+            <button class="btn btn-green" onclick="saveGSheet()">Save</button>
+            <button class="btn btn-blue" onclick="testGSheet()">Test Connection</button>
+            <div id="gsheetStatus" style="margin-top:8px;font-size:13px"></div>
+        </div>
+
+        <!-- PCSE Settings -->
+        <div class="config-section" id="sec-pcse">
+            <h2>PCSE Settings</h2>
+            <div class="form-row"><label>ACOS Target (%)</label><input type="number" id="pcse_acos"></div>
+            <div class="form-row"><label>Safety Factor</label><input type="number" step="0.1" id="pcse_safety"></div>
+            <div class="form-row"><label>Learning Period Days</label><input type="number" id="pcse_learn_days"></div>
+            <div class="form-row"><label>Learning Period Budget (Rs.)</label><input type="number" id="pcse_learn_budget"></div>
+            <div class="form-row"><label>Max Bid Change (%)</label><input type="number" id="pcse_max_bid"></div>
+            <button class="btn btn-blue" onclick="savePCSE()">Save</button>
+            <span class="save-status" id="pcse_status"></span>
+        </div>
+
+        <!-- Price Optimizer Settings -->
+        <div class="config-section" id="sec-price-optimizer">
+            <h2>Price Optimizer Settings</h2>
+            <p style="font-size:13px;color:var(--text-dim);margin-bottom:14px;">Auto-increase price for top sellers, recover inactive listings. Changes saved to config_price_optimizer.json.</p>
+
+            <h3 style="font-size:15px;color:#60A5FA;margin:10px 0 8px;">Enable / Disable</h3>
+            <div class="form-row">
+                <label>Price Optimizer Enabled</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="po_enabled">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+
+            <h3 style="font-size:15px;color:#60A5FA;margin:14px 0 8px;">Which Products to Optimize — Auto Select</h3>
+            <div class="form-row">
+                <label>Auto Select Top Sellers</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="po_auto_qualify_enabled" onchange="toggleSection('po_auto_qualify_fields', this.checked)">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div id="po_auto_qualify_fields">
+                <div class="form-row"><label>Min Orders (last 30 days)</label><input type="number" id="po_min_orders" min="0"></div>
+                <p style="font-size:11px;color:var(--text-dim);margin:-4px 0 6px 0;">Product must have at least this many orders to qualify</p>
+                <div class="form-row"><label>Top N Products by Revenue</label><input type="number" id="po_top_n" min="1"></div>
+                <p style="font-size:11px;color:var(--text-dim);margin:-4px 0 6px 0;">Only top N highest revenue products are considered</p>
+            </div>
+
+            <h3 style="font-size:15px;color:#60A5FA;margin:14px 0 8px;">Star Rating Filter (extra condition for Auto Select)</h3>
+            <div class="form-row">
+                <label>Only Optimize High-Rated Products</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="po_star_rating_enabled" onchange="toggleSection('po_star_rating_fields', this.checked)">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div id="po_star_rating_fields">
+                <div class="form-row"><label>Minimum Customer Rating</label><input type="number" step="0.1" id="po_min_star_rating" min="1" max="5" value="4.0"></div>
+            </div>
+            <p style="font-size:11px;color:#FBBF24;margin:-4px 0 6px 0;">AND condition: when ON, Auto Select products must have enough orders AND this rating. Does not affect manually added ASINs/SKUs.</p>
+
+            <h3 style="font-size:15px;color:#60A5FA;margin:14px 0 8px;">Manually Add ASINs (independent from Auto Select)</h3>
+            <div class="form-row">
+                <label>Add Specific ASINs</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="po_manual_asins_enabled" onchange="toggleSection('po_manual_asins_fields', this.checked)">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div id="po_manual_asins_fields">
+                <div class="form-row"><label>ASINs (comma separated)</label><textarea id="po_manual_asins" rows="3" style="width:100%;background:var(--card-bg);color:var(--text-main);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:13px;" placeholder="B0XXXXXX, B0YYYYYY"></textarea></div>
+                <p style="font-size:11px;color:var(--text-dim);margin:-4px 0 6px 0;">All SKUs of this ASIN included. No order/rating check needed. Can run together with Auto Select.</p>
+            </div>
+
+            <h3 style="font-size:15px;color:#60A5FA;margin:14px 0 8px;">Manually Add SKUs (independent from Auto Select)</h3>
+            <div class="form-row">
+                <label>Add Specific SKUs</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="po_manual_skus_enabled" onchange="toggleSection('po_manual_skus_fields', this.checked)">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div id="po_manual_skus_fields">
+                <div class="form-row"><label>SKUs (comma separated)</label><textarea id="po_manual_skus" rows="3" style="width:100%;background:var(--card-bg);color:var(--text-main);border:1px solid var(--border);border-radius:6px;padding:8px;font-size:13px;" placeholder="SKU-001, SKU-002"></textarea></div>
+                <p style="font-size:11px;color:var(--text-dim);margin:-4px 0 6px 0;">Only this specific SKU. No order/rating check needed. Can run together with Auto Select.</p>
+            </div>
+            <p style="font-size:11px;color:#34D399;margin:2px 0 6px 0;">Safe: If same product is in Auto Select AND Manual, price increases only ONCE (no double increase).</p>
+
+            <h3 style="font-size:15px;color:#60A5FA;margin:14px 0 8px;">Exclude Products</h3>
+            <div class="form-row"><label>Never Optimize These ASINs</label><input type="text" id="po_exclude_asins" placeholder="B0XXXXXX, B0YYYYYY"></div>
+            <p style="font-size:11px;color:var(--text-dim);margin:-4px 0 6px 0;">These ASINs will never be touched, even if they qualify above</p>
+
+            <h3 style="font-size:15px;color:#60A5FA;margin:14px 0 8px;">How Much to Change Price</h3>
+            <div class="form-row"><label>Price Increase Step (%)</label><input type="number" step="0.1" id="po_increase_pct" min="0" max="10"></div>
+            <p style="font-size:11px;color:var(--text-dim);margin:-4px 0 6px 0;">Each cycle, price goes up by this % (e.g. 1% = Rs.200 becomes Rs.202)</p>
+            <div class="form-row"><label>Price Decrease Step (%)</label><input type="number" step="0.1" id="po_decrease_pct" min="0" max="10"></div>
+            <p style="font-size:11px;color:var(--text-dim);margin:-4px 0 6px 0;">If listing goes inactive, price drops by this % to recover</p>
+
+            <h3 style="font-size:15px;color:#60A5FA;margin:14px 0 8px;">Safety Limits</h3>
+            <div class="form-row"><label>Max Total Increase from Original Price (%)</label><input type="number" step="0.1" id="po_max_total_pct"></div>
+            <p style="font-size:11px;color:var(--text-dim);margin:-4px 0 6px 0;">Price will never go above original + this % (e.g. 15% = Rs.200 max becomes Rs.230)</p>
+            <div class="form-row"><label>Min Profit Margin — Stop if Below (%)</label><input type="number" step="0.1" id="po_min_margin"></div>
+            <p style="font-size:11px;color:var(--text-dim);margin:-4px 0 6px 0;">Will not decrease price if profit margin would fall below this %</p>
+            <div class="form-row"><label>Price Bounce Protection — Max Flips Allowed</label><input type="number" id="po_max_flips" min="1" max="20"></div>
+            <p style="font-size:11px;color:var(--text-dim);margin:-4px 0 6px 0;">If price keeps going up-down-up-down this many times, optimizer STOPS for that product (needs manual review)</p>
+            <div class="form-row"><label>Price Bounce Check Window (hours)</label><input type="number" id="po_osc_window" min="1"></div>
+            <p style="font-size:11px;color:var(--text-dim);margin:-4px 0 6px 0;">Count bounces within this time window (e.g. 3 flips in 24 hours = stop)</p>
+
+            <h3 style="font-size:15px;color:#60A5FA;margin:14px 0 8px;">Schedule — When to Run</h3>
+            <div class="form-row">
+                <label>Auto Schedule Enabled</label>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="po_schedule_enabled">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
+            <div class="form-row"><label>Run Every (minutes)</label><input type="number" id="po_interval" min="5" max="1440"></div>
+            <p style="font-size:11px;color:var(--text-dim);margin:-4px 0 6px 0;">How often optimizer checks and adjusts prices</p>
+            <div class="form-row"><label>Active Hours Start</label><input type="time" id="po_active_start"></div>
+            <div class="form-row"><label>Active Hours End</label><input type="time" id="po_active_end"></div>
+            <p style="font-size:11px;color:var(--text-dim);margin:-4px 0 6px 0;">Optimizer only runs between these hours (no price changes at night when buy box behaves differently)</p>
+
+            <button class="btn btn-blue" onclick="savePO()">Save</button>
+            <button class="btn btn-green" onclick="window.open('/api/config/price_optimizer','_blank')">View Raw JSON</button>
+            <span class="save-status" id="po_status"></span>
+        </div>
+
+    </div>
+
+    <div class="footer">AutoGrow AI v1.1 | Settings</div>
+
+    <script>
+    /* ── Theme ── */
+    function applyTheme(theme) {
+        if (theme === 'light') {
+            document.body.classList.add('light');
+            document.getElementById('themeBtn').textContent = 'Theme: Light';
+        } else {
+            document.body.classList.remove('light');
+            document.getElementById('themeBtn').textContent = 'Theme: Dark';
+        }
+    }
+    function toggleTheme() {
+        var isLight = document.body.classList.contains('light');
+        var newTheme = isLight ? 'dark' : 'light';
+        localStorage.setItem('autogrow_theme', newTheme);
+        applyTheme(newTheme);
+    }
+    function restartDashboard() {
+        fetch('/api/dashboard/restart', {method:'POST'})
+            .then(r=>r.json()).then(function(d){
+                alert(d.success ? 'Dashboard restart triggered. Wait a few seconds and refresh.' : (d.error || 'Could not restart dashboard'));
+            }).catch(function(){
+                alert('Could not restart dashboard');
+            });
+    }
+    applyTheme(localStorage.getItem('autogrow_theme') || 'dark');
+
+    /* ── Dashboard Settings (logs toggle) ── */
+    (function() {
+        var showLogs = localStorage.getItem('autogrow_show_logs') !== 'false';
+        document.getElementById('show_logs').checked = showLogs;
+    })();
+    function saveDashSettings() {
+        var showLogs = document.getElementById('show_logs').checked;
+        localStorage.setItem('autogrow_show_logs', showLogs ? 'true' : 'false');
+    }
+
+    function showStatus(id, msg, color) {
+        var el = document.getElementById(id);
+        el.textContent = msg;
+        el.style.color = color || '#22C55E';
+        el.classList.add('show');
+        setTimeout(function(){ el.classList.remove('show'); }, 2500);
+    }
+
+    /* ── Store full config objects for save ── */
+    var fullTP = {};
+    var fullEmail = {};
+    var fullPCSE = {};
+
+    /* ── Load True Profit ── */
+    fetch('/api/config/true_profit').then(r=>r.json()).then(function(d) {
+        fullTP = d;
+        document.getElementById('tp_product_cost').value = d.account_default ? d.account_default.product_cost : 85;
+        document.getElementById('tp_referral_fee').value = d.amazon_fees ? d.amazon_fees.referral_fee_pct : 3;
+        document.getElementById('tp_closing_fee').value = d.amazon_fees ? d.amazon_fees.closing_fee : 5;
+        document.getElementById('tp_shipping').value = d.shipping ? d.shipping.default : 95;
+        document.getElementById('tp_return_rate').value = d.return_rate ? d.return_rate.default_percent : 5;
+        document.getElementById('tp_retention').value = d.target_profit_retention || 60;
+    });
+
+    function saveTP() {
+        fullTP.account_default.product_cost = Number(document.getElementById('tp_product_cost').value);
+        fullTP.amazon_fees.referral_fee_pct = Number(document.getElementById('tp_referral_fee').value);
+        fullTP.amazon_fees.closing_fee = Number(document.getElementById('tp_closing_fee').value);
+        fullTP.shipping.default = Number(document.getElementById('tp_shipping').value);
+        fullTP.return_rate.default_percent = Number(document.getElementById('tp_return_rate').value);
+        fullTP.target_profit_retention = Number(document.getElementById('tp_retention').value);
+        fetch('/api/config/true_profit', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(fullTP)})
+            .then(r=>r.json()).then(function(d){ showStatus('tp_status', 'Saved!'); }).catch(function(){ showStatus('tp_status','Error','#EF4444'); });
+    }
+
+    /* ── Load Email ── */
+    fetch('/api/config/email').then(r=>r.json()).then(function(d) {
+        fullEmail = d;
+        document.getElementById('em_sender').value = d.sender_email || '';
+        var rec = d.recipients || {};
+        document.getElementById('em_ads').value = (rec.ads_staff || []).join(', ');
+        document.getElementById('em_listing').value = (rec.listing_staff || []).join(', ');
+        document.getElementById('em_critical').value = (rec.critical_alerts || []).join(', ');
+    });
+
+    function saveEmail() {
+        fullEmail.sender_email = document.getElementById('em_sender').value;
+        fullEmail.recipients = fullEmail.recipients || {};
+        fullEmail.recipients.ads_staff = document.getElementById('em_ads').value.split(',').map(function(s){return s.trim();}).filter(Boolean);
+        fullEmail.recipients.listing_staff = document.getElementById('em_listing').value.split(',').map(function(s){return s.trim();}).filter(Boolean);
+        fullEmail.recipients.critical_alerts = document.getElementById('em_critical').value.split(',').map(function(s){return s.trim();}).filter(Boolean);
+        fetch('/api/config/email', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(fullEmail)})
+            .then(r=>r.json()).then(function(d){ showStatus('em_status', 'Saved!'); }).catch(function(){ showStatus('em_status','Error','#EF4444'); });
+    }
+
+    function testEmail() {
+        showStatus('em_status', 'Sending...', '#F59E0B');
+        fetch('/api/test_email', {method:'POST'}).then(r=>r.json()).then(function(d){
+            if (d.status==='sent') showStatus('em_status','Test sent!','#22C55E');
+            else showStatus('em_status', d.error || 'Failed', '#EF4444');
+        }).catch(function(){ showStatus('em_status','Error','#EF4444'); });
+    }
+
+    /* ── Load PCSE ── */
+    fetch('/api/config/pcse').then(r=>r.json()).then(function(d) {
+        fullPCSE = d;
+        document.getElementById('pcse_acos').value = d.acos_target || 25;
+        document.getElementById('pcse_safety').value = d.safety_factor || 0.7;
+        document.getElementById('pcse_learn_days').value = d.learning_period_days || 7;
+        document.getElementById('pcse_learn_budget').value = d.learning_period_budget || 2000;
+        document.getElementById('pcse_max_bid').value = d.max_bid_change_pct || 50;
+    });
+
+    function savePCSE() {
+        fullPCSE.acos_target = Number(document.getElementById('pcse_acos').value);
+        fullPCSE.safety_factor = Number(document.getElementById('pcse_safety').value);
+        fullPCSE.learning_period_days = Number(document.getElementById('pcse_learn_days').value);
+        fullPCSE.learning_period_budget = Number(document.getElementById('pcse_learn_budget').value);
+        fullPCSE.max_bid_change_pct = Number(document.getElementById('pcse_max_bid').value);
+        fetch('/api/config/pcse', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(fullPCSE)})
+            .then(r=>r.json()).then(function(d){ showStatus('pcse_status', 'Saved!'); }).catch(function(){ showStatus('pcse_status','Error','#EF4444'); });
+    }
+
+    // Google Sheet
+    var fullGSheet = {};
+    fetch('/api/config/google_sheet').then(r=>r.json()).then(function(d){
+        fullGSheet = d;
+        document.getElementById('gs_webhook').value = d.webhook_url || '';
+        document.getElementById('gs_secret').value = d.secret || '';
+        var ap = d.aplus_config || {};
+        document.getElementById('gs_sheet_id').value = ap.sheet_id || '';
+        document.getElementById('gs_tab').value = ap.tab_name || 'A+';
+        document.getElementById('gs_asin_col').value = ap.asin_column || 'A';
+        document.getElementById('gs_img_cols').value = (ap.image_columns || ['B','C','D','E','F']).join(',');
+        document.getElementById('gs_start_row').value = ap.start_row || 2;
+    });
+
+    function saveGSheet() {
+        fullGSheet.webhook_url = document.getElementById('gs_webhook').value;
+        fullGSheet.secret = document.getElementById('gs_secret').value;
+        if (!fullGSheet.aplus_config) fullGSheet.aplus_config = {};
+        fullGSheet.aplus_config.sheet_id = document.getElementById('gs_sheet_id').value;
+        fullGSheet.aplus_config.tab_name = document.getElementById('gs_tab').value;
+        fullGSheet.aplus_config.asin_column = document.getElementById('gs_asin_col').value;
+        fullGSheet.aplus_config.image_columns = document.getElementById('gs_img_cols').value.split(',').map(function(s){return s.trim()});
+        fullGSheet.aplus_config.start_row = Number(document.getElementById('gs_start_row').value);
+        fetch('/api/config/google_sheet', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(fullGSheet)})
+            .then(r=>r.json()).then(function(d){ showStatus('gsheetStatus', 'Saved!'); }).catch(function(){ showStatus('gsheetStatus','Error','#EF4444'); });
+    }
+
+    function testGSheet() {
+        showStatus('gsheetStatus', 'Testing...');
+        // Test via backend to avoid CORS
+        fetch('/api/test_gsheet').then(r=>r.json()).then(function(d){
+            if (d.ok) { showStatus('gsheetStatus', 'Connected! Tabs: ' + d.tabs.join(', ')); }
+            else { showStatus('gsheetStatus', 'Error: ' + (d.error||'Unknown'), '#EF4444'); }
+        }).catch(function(e){ showStatus('gsheetStatus', 'Failed: ' + e, '#EF4444'); });
+    }
+
+    // ── Toggle Section Visibility ──
+    function toggleSection(sectionId, show) {
+        var el = document.getElementById(sectionId);
+        if (el) el.style.display = show ? 'block' : 'none';
+    }
+
+    // ── Price Optimizer Settings ──
+    var fullPO = {};
+    fetch('/api/config/price_optimizer').then(r=>r.json()).then(function(d){
+        fullPO = d;
+        document.getElementById('po_enabled').checked = d.enabled !== false;
+        // Qualify
+        var qr = d.qualify_rules || {};
+        // Auto Qualify toggle + fields
+        var autoQualOn = qr.auto_qualify_enabled !== false;
+        document.getElementById('po_auto_qualify_enabled').checked = autoQualOn;
+        toggleSection('po_auto_qualify_fields', autoQualOn);
+        document.getElementById('po_min_orders').value = qr.min_orders_30d || 5;
+        document.getElementById('po_top_n').value = qr.top_n_by_revenue || 50;
+        // Star Rating toggle + fields
+        var starOn = qr.star_rating_enabled === true;
+        document.getElementById('po_star_rating_enabled').checked = starOn;
+        toggleSection('po_star_rating_fields', starOn);
+        document.getElementById('po_min_star_rating').value = qr.min_star_rating || 4.0;
+        // Manual ASINs toggle + fields
+        var maOn = qr.manual_asins_enabled === true;
+        document.getElementById('po_manual_asins_enabled').checked = maOn;
+        toggleSection('po_manual_asins_fields', maOn);
+        document.getElementById('po_manual_asins').value = (qr.manual_asins || []).join(', ');
+        // Manual SKUs toggle + fields
+        var msOn = qr.manual_skus_enabled === true;
+        document.getElementById('po_manual_skus_enabled').checked = msOn;
+        toggleSection('po_manual_skus_fields', msOn);
+        document.getElementById('po_manual_skus').value = (qr.manual_skus || []).join(', ');
+        // Exclusions
+        document.getElementById('po_exclude_asins').value = (qr.exclude_asins || []).join(', ');
+        // Pricing
+        var pr = d.pricing_rules || {};
+        document.getElementById('po_increase_pct').value = pr.increase_pct || 1.0;
+        document.getElementById('po_decrease_pct').value = pr.decrease_pct || 1.0;
+        // Safety
+        var sf = d.safety || {};
+        document.getElementById('po_max_total_pct').value = sf.max_total_increase_from_original_pct || 15.0;
+        document.getElementById('po_min_margin').value = sf.min_profit_margin_pct || 10.0;
+        document.getElementById('po_max_flips').value = sf.anti_oscillation_max_flips || 3;
+        document.getElementById('po_osc_window').value = sf.anti_oscillation_window_hours || 24;
+        // Schedule
+        var sc = d.schedule || {};
+        document.getElementById('po_schedule_enabled').checked = sc.enabled !== false;
+        document.getElementById('po_interval').value = sc.interval_minutes || 30;
+        document.getElementById('po_active_start').value = sc.active_hours_start || '06:00';
+        document.getElementById('po_active_end').value = sc.active_hours_end || '23:00';
+    });
+
+    function savePO() {
+        fullPO.enabled = document.getElementById('po_enabled').checked;
+        // Qualify
+        if (!fullPO.qualify_rules) fullPO.qualify_rules = {};
+        // Auto Qualify
+        fullPO.qualify_rules.auto_qualify_enabled = document.getElementById('po_auto_qualify_enabled').checked;
+        fullPO.qualify_rules.auto_qualify_top_sellers = document.getElementById('po_auto_qualify_enabled').checked;
+        fullPO.qualify_rules.min_orders_30d = Number(document.getElementById('po_min_orders').value);
+        fullPO.qualify_rules.top_n_by_revenue = Number(document.getElementById('po_top_n').value);
+        // Star Rating
+        fullPO.qualify_rules.star_rating_enabled = document.getElementById('po_star_rating_enabled').checked;
+        fullPO.qualify_rules.min_star_rating = Number(document.getElementById('po_min_star_rating').value);
+        // Manual ASINs
+        fullPO.qualify_rules.manual_asins_enabled = document.getElementById('po_manual_asins_enabled').checked;
+        var maVal = document.getElementById('po_manual_asins').value.trim();
+        fullPO.qualify_rules.manual_asins = maVal ? maVal.split(',').map(function(s){return s.trim()}).filter(Boolean) : [];
+        // Manual SKUs
+        fullPO.qualify_rules.manual_skus_enabled = document.getElementById('po_manual_skus_enabled').checked;
+        var msVal = document.getElementById('po_manual_skus').value.trim();
+        fullPO.qualify_rules.manual_skus = msVal ? msVal.split(',').map(function(s){return s.trim()}).filter(Boolean) : [];
+        // Exclusions
+        var exVal = document.getElementById('po_exclude_asins').value.trim();
+        fullPO.qualify_rules.exclude_asins = exVal ? exVal.split(',').map(function(s){return s.trim()}).filter(Boolean) : [];
+        // Pricing
+        if (!fullPO.pricing_rules) fullPO.pricing_rules = {};
+        fullPO.pricing_rules.increase_pct = Number(document.getElementById('po_increase_pct').value);
+        fullPO.pricing_rules.decrease_pct = Number(document.getElementById('po_decrease_pct').value);
+        // Safety
+        if (!fullPO.safety) fullPO.safety = {};
+        fullPO.safety.max_total_increase_from_original_pct = Number(document.getElementById('po_max_total_pct').value);
+        fullPO.safety.min_profit_margin_pct = Number(document.getElementById('po_min_margin').value);
+        fullPO.safety.anti_oscillation_max_flips = Number(document.getElementById('po_max_flips').value);
+        fullPO.safety.anti_oscillation_window_hours = Number(document.getElementById('po_osc_window').value);
+        // Schedule
+        if (!fullPO.schedule) fullPO.schedule = {};
+        fullPO.schedule.enabled = document.getElementById('po_schedule_enabled').checked;
+        fullPO.schedule.interval_minutes = Number(document.getElementById('po_interval').value);
+        fullPO.schedule.active_hours_start = document.getElementById('po_active_start').value;
+        fullPO.schedule.active_hours_end = document.getElementById('po_active_end').value;
+
+        fetch('/api/config/price_optimizer', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(fullPO)})
+            .then(r=>r.json()).then(function(d){ showStatus('po_status', 'Saved!'); }).catch(function(){ showStatus('po_status','Error','#EF4444'); });
+    }
+    </script>
+</body>
+</html>"""
+
+
+# ═══════════════════════════════════════════════════════════════
+# SCHEDULER HTML
+# ═══════════════════════════════════════════════════════════════
+
+SCHEDULER_HTML = r"""<!DOCTYPE html>
+<html>
+<head>
+    <title>AutoGrow AI — Scheduler</title>
+    <meta charset="UTF-8">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        :root {
+            --bg: #0F1923; --card-bg: #1A2332; --card-border: #2A3A4A;
+            --text: #E0E6ED; --text-muted: #7B8FA3; --text-dim: #5B7A95;
+            --hover-bg: #1F2D3D; --section-bg: #1A2332; --input-bg: #0F1923; --input-border: #2A3A4A;
+        }
+        body.light {
+            --bg: #F0F2F5; --card-bg: #FFFFFF; --card-border: #E0E0E0;
+            --text: #2C3E50; --text-muted: #6B7B8D; --text-dim: #8899AA;
+            --hover-bg: #EEF1F5; --section-bg: #FFFFFF; --input-bg: #FFFFFF; --input-border: #E0E0E0;
+        }
+        body { font-family:Calibri,Arial; background:var(--bg); color:var(--text); min-height:100vh; transition: background 0.3s, color 0.3s; }
+        .header { background:linear-gradient(135deg,#1A3A5C,#2563EB); padding:18px 25px; display:flex; justify-content:space-between; align-items:center; }
+        .header h1 { font-size:28px; color:white; } .header h1 span { color:#60A5FA; }
+        .header .right { display:flex; align-items:center; gap:18px; }
+        .nav-links { display:flex; gap:8px; }
+        .nav-links a { color:rgba(255,255,255,0.85); text-decoration:none; font-size:14px; font-weight:bold; padding:5px 14px; border-radius:6px; transition:0.2s; }
+        .nav-links a:hover, .nav-links a.active { background:rgba(255,255,255,0.15); color:white; }
+        .theme-toggle { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:white; padding:5px 14px; border-radius:6px; cursor:pointer; font-size:13px; font-weight:bold; }
+
+        .container { max-width:1000px; margin:20px auto; padding:0 20px; }
+        .section { background:var(--section-bg); border-radius:10px; padding:20px; border:1px solid var(--card-border); margin-bottom:16px; }
+        .section h2 { font-size:18px; color:#60A5FA; margin-bottom:14px; border-bottom:1px solid var(--card-border); padding-bottom:8px; }
+
+        .toggle-switch { position:relative; width:44px; height:24px; flex-shrink:0; display:inline-block; }
+        .toggle-switch input { opacity:0; width:0; height:0; }
+        .toggle-slider { position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background:#4B5563; border-radius:24px; transition:0.3s; }
+        .toggle-slider:before { content:''; position:absolute; height:18px; width:18px; left:3px; bottom:3px; background:white; border-radius:50%; transition:0.3s; }
+        .toggle-switch input:checked + .toggle-slider { background:#22C55E; }
+        .toggle-switch input:checked + .toggle-slider:before { transform:translateX(20px); }
+
+        table { width:100%; border-collapse:collapse; font-size:14px; }
+        th { color:var(--text-dim); text-align:left; padding:8px; font-size:13px; text-transform:uppercase; border-bottom:2px solid var(--card-border); }
+        td { padding:8px; border-bottom:1px solid var(--card-border); }
+        tr:hover { background:var(--hover-bg); }
+        .cat-row td { color:#60A5FA; font-weight:bold; text-transform:uppercase; font-size:12px; letter-spacing:1px; border:none; padding-top:14px; }
+        .form-row { display:flex; align-items:center; margin-bottom:10px; gap:12px; }
+        .form-row label { flex:0 0 200px; font-size:14px; color:var(--text-muted); font-weight:bold; }
+        .btn { display:inline-block; padding:8px 20px; border-radius:6px; border:none; cursor:pointer; font-size:14px; font-weight:bold; margin:2px; transition:0.2s; }
+        .btn-blue { background:#2563EB; color:white; } .btn-blue:hover { background:#3B82F6; }
+        .save-status { font-size:13px; margin-left:10px; opacity:0; transition:opacity 0.3s; color:#22C55E; }
+        .save-status.show { opacity:1; }
+        .footer { text-align:center; padding:10px; color:var(--text-dim); font-size:12px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AutoGrow <span>AI</span> — Scheduler</h1>
+        <div class="right">
+            <div class="nav-links">
+                <a href="/">Dashboard</a>
+                <a href="/settings">Settings</a>
+                <a href="/scheduler" class="active">Scheduler</a>
+                <a href="/stock-control">Stock Control</a>
+                <a href="/fba-settings">FBA</a>
+                <a href="/rules">Rules</a>
+            </div>
+            <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">Theme: Dark</button>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Master Control Panel -->
+        <div class="section">
+            <h2>Master Control Panel</h2>
+            <p style="font-size:13px;color:var(--text-dim);margin-bottom:12px;">All features: toggle ON/OFF + set schedule. Changes apply immediately.</p>
+            <div id="masterPanel">Loading...</div>
+        </div>
+
+        <!-- Scheduler Config -->
+        <div class="section">
+            <h2>Scheduler Config</h2>
+            <div class="form-row">
+                <label>Daily Pipeline Time</label>
+                <input type="time" id="sch_time" style="padding:6px 10px;border-radius:6px;border:1px solid var(--input-border);background:var(--input-bg);color:var(--text);font-size:14px;">
+            </div>
+            <p style="font-size:11px;color:var(--text-dim);margin:-4px 0 10px 0;">Daily tasks (import, reports, etc.) only run after this time</p>
+            <div id="schTasks"></div>
+            <button class="btn btn-blue" onclick="saveSch()">Save Scheduler Config</button>
+            <span class="save-status" id="sch_status"></span>
+        </div>
+
+    </div>
+    <div class="footer">AutoGrow AI v1.1 | Scheduler</div>
+
+    <script>
+    /* ── Theme ── */
+    function applyTheme(t) {
+        if (t==='light') { document.body.classList.add('light'); document.getElementById('themeBtn').textContent='Theme: Light'; }
+        else { document.body.classList.remove('light'); document.getElementById('themeBtn').textContent='Theme: Dark'; }
+    }
+    function toggleTheme() {
+        var n = document.body.classList.contains('light') ? 'dark' : 'light';
+        localStorage.setItem('autogrow_theme', n); applyTheme(n);
+    }
+    applyTheme(localStorage.getItem('autogrow_theme') || 'dark');
+
+    function showStatus(id, msg, color) {
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.textContent = msg;
+        el.style.color = color || '#22C55E';
+        el.classList.add('show');
+        setTimeout(function(){ el.classList.remove('show'); }, 2500);
+    }
+
+    /* ── Schedule Options ── */
+    var _so = {
+        'none':'Manual Only','daily':'Daily','every_30min':'Every 30 min','every_1hr':'Every 1 hr',
+        'every_2hr':'Every 2 hrs','every_4hr':'Every 4 hrs','every_8hr':'Every 8 hrs','every_12hr':'Every 12 hrs','weekly':'Weekly'
+    };
+
+    /* ── Master Control Panel ── */
+    fetch('/api/config/features').then(function(r){return r.json()}).then(function(d) {
+        var features = d.features || {};
+        var categories = d.categories || {};
+        var catOrder = {};
+        for (var c in categories) catOrder[c] = {label:categories[c].label, order:categories[c].order, items:[]};
+        for (var fid in features) {
+            var f = features[fid];
+            var cat = f.category || 'other';
+            if (!catOrder[cat]) catOrder[cat] = {label:cat, order:99, items:[]};
+            catOrder[cat].items.push({id:fid, name:f.name, enabled:f.enabled!==false, schedule:f.schedule||'none', schedule_time:f.schedule_time||''});
+        }
+        var sorted = Object.keys(catOrder).sort(function(a,b){return catOrder[a].order - catOrder[b].order});
+
+        var html = '<table><thead><tr><th style="width:50px;">ON/OFF</th><th>Feature</th><th style="width:150px;">Schedule</th><th style="width:100px;">Time</th></tr></thead><tbody>';
+        sorted.forEach(function(catId) {
+            var cat = catOrder[catId];
+            if (!cat.items.length) return;
+            html += '<tr class="cat-row"><td colspan="4">' + cat.label + '</td></tr>';
+            cat.items.forEach(function(f) {
+                var selHtml = '<select id="mcp_s_'+f.id+'" style="padding:4px 6px;border-radius:4px;border:1px solid var(--input-border);background:var(--input-bg);color:var(--text);font-size:13px;width:100%;" onchange="mcpSched(\''+f.id+'\')">';
+                for (var sk in _so) selHtml += '<option value="'+sk+'"'+(f.schedule===sk?' selected':'')+'>'+_so[sk]+'</option>';
+                selHtml += '</select>';
+                var showTime = (f.schedule==='daily'||f.schedule==='weekly') ? '' : 'display:none;';
+                var timeHtml = '<input type="time" id="mcp_t_'+f.id+'" value="'+(f.schedule_time||'08:30')+'" style="'+showTime+'padding:4px 6px;border-radius:4px;border:1px solid var(--input-border);background:var(--input-bg);color:var(--text);font-size:13px;width:100%;" onchange="mcpSched(\''+f.id+'\')">';
+                var opacity = f.enabled ? '1' : '0.5';
+                html += '<tr id="mcp_r_'+f.id+'" style="opacity:'+opacity+';">'
+                    + '<td><label class="toggle-switch"><input type="checkbox" '+(f.enabled?'checked':'')+' onchange="mcpToggle(\''+f.id+'\',this.checked)"><span class="toggle-slider"></span></label></td>'
+                    + '<td>'+f.name+'</td>'
+                    + '<td>'+selHtml+'</td>'
+                    + '<td>'+timeHtml+'</td>'
+                    + '</tr>';
+            });
+        });
+        html += '</tbody></table>';
+        document.getElementById('masterPanel').innerHTML = html;
+    });
+
+    function mcpToggle(fid, enabled) {
+        fetch('/api/features/toggle', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({feature_id:fid, enabled:enabled})})
+        .then(function(r){return r.json()}).then(function() {
+            var row = document.getElementById('mcp_r_'+fid);
+            if (row) row.style.opacity = enabled ? '1' : '0.5';
+        });
+    }
+
+    function mcpSched(fid) {
+        var sel = document.getElementById('mcp_s_'+fid);
+        var ti = document.getElementById('mcp_t_'+fid);
+        var sched = sel ? sel.value : 'none';
+        if (ti) ti.style.display = (sched==='daily'||sched==='weekly') ? '' : 'none';
+        var payload = {feature_id:fid, schedule:sched};
+        if (ti && ti.value) payload.schedule_time = ti.value;
+        fetch('/api/features/schedule', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload)})
+        .then(function(r){return r.json()}).then(function() {
+            var row = document.getElementById('mcp_r_'+fid);
+            if (row) { row.style.background='rgba(96,165,250,0.1)'; setTimeout(function(){row.style.background='';},600); }
+        });
+    }
+
+    /* ── Scheduler Config (config_scheduler.json) ── */
+    var fullSch = {};
+    fetch('/api/config/scheduler').then(function(r){return r.json()}).then(function(d) {
+        fullSch = d;
+        document.getElementById('sch_time').value = d.daily_pipeline_time || '08:30';
+        var html = '<table><thead><tr><th style="width:40px;">ON</th><th>Task</th><th style="width:120px;">Interval</th><th style="width:70px;">Hours</th></tr></thead><tbody>';
+        var tasks = d.tasks || {};
+        for (var key in tasks) {
+            var t = tasks[key];
+            html += '<tr>'
+                + '<td><input type="checkbox" id="sch_t_'+key+'" '+(t.enabled?'checked':'')+'></td>'
+                + '<td>'+t.name+'</td>'
+                + '<td style="font-size:12px;color:var(--text-muted);">'+(t.schedule||'auto')+'</td>'
+                + '<td><input type="number" id="sch_f_'+key+'" value="'+t.freshness_hours+'" style="width:60px;padding:3px 6px;border-radius:4px;border:1px solid var(--input-border);background:var(--input-bg);color:var(--text);font-size:13px;" title="Run every X hours"></td>'
+                + '</tr>';
+        }
+        html += '</tbody></table>';
+        document.getElementById('schTasks').innerHTML = html;
+    });
+
+    function saveSch() {
+        fullSch.daily_pipeline_time = document.getElementById('sch_time').value;
+        var tasks = fullSch.tasks || {};
+        for (var key in tasks) {
+            var cb = document.getElementById('sch_t_'+key);
+            if (cb) tasks[key].enabled = cb.checked;
+            var fh = document.getElementById('sch_f_'+key);
+            if (fh) tasks[key].freshness_hours = Number(fh.value);
+        }
+        fetch('/api/config/scheduler', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(fullSch)})
+            .then(function(r){return r.json()}).then(function(){ showStatus('sch_status', 'Saved!'); })
+            .catch(function(){ showStatus('sch_status','Error','#EF4444'); });
+    }
+    </script>
+</body>
+</html>"""
+
+
+# ═══════════════════════════════════════════════════════════════
+# FBA SETTINGS HTML
+# ═══════════════════════════════════════════════════════════════
+STOCK_CONTROL_HTML = r"""<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Stock Control — Grow24 AI</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh}
+  nav{background:#1a1d2e;padding:14px 24px;display:flex;align-items:center;gap:20px;border-bottom:1px solid #2d3748}
+  nav a{color:#94a3b8;text-decoration:none;font-size:14px}
+  nav a:hover{color:#fff}
+  nav .brand{color:#60a5fa;font-weight:700;font-size:16px;margin-right:auto}
+  .container{max-width:1180px;margin:0 auto;padding:24px}
+  h1{font-size:24px;color:#60a5fa;margin-bottom:6px}
+  .subtitle{color:#94a3b8;font-size:13px;margin-bottom:22px}
+  .grid{display:grid;grid-template-columns:320px 1fr;gap:18px}
+  .card{background:#1a1d2e;border:1px solid #2d3748;border-radius:12px;padding:18px}
+  .card h2{font-size:15px;color:#cbd5e1;margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em}
+  .card p{color:#94a3b8;font-size:13px;line-height:1.5}
+  .status-pill{display:inline-flex;align-items:center;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600}
+  .status-on{background:#14532d;color:#86efac}
+  .status-off{background:#7f1d1d;color:#fca5a5}
+  .help-box{background:#111827;border:1px solid #243041;border-radius:10px;padding:12px;margin-top:12px}
+  .help-line{font-size:12px;color:#cbd5e1;margin-bottom:8px}
+  .help-line:last-child{margin-bottom:0}
+  .form-row{margin-bottom:12px}
+  label{display:block;font-size:12px;color:#94a3b8;margin-bottom:4px}
+  input,select{width:100%;background:#0f1117;border:1px solid #2d3748;color:#e2e8f0;padding:10px 12px;border-radius:8px;font-size:13px}
+  input:focus,select:focus{outline:none;border-color:#60a5fa}
+  .btn{padding:9px 14px;border-radius:8px;border:none;cursor:pointer;font-size:13px;font-weight:600}
+  .btn-primary{background:#2563eb;color:#fff}
+  .btn-danger{background:#dc2626;color:#fff}
+  .summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+  .mini{background:#111827;border:1px solid #243041;border-radius:10px;padding:12px}
+  .mini .num{font-size:22px;font-weight:700;color:#fff}
+  .mini .lbl{font-size:11px;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{background:#111827;color:#94a3b8;padding:10px;text-align:left;font-size:12px;text-transform:uppercase;border-bottom:1px solid #2d3748}
+  td{padding:10px;border-bottom:1px solid #1f2937;vertical-align:top}
+  tr:hover td{background:#111827}
+  .tag{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:600}
+  .tag-risk{background:#7c2d12;color:#fdba74}
+  .tag-manual{background:#1e3a8a;color:#93c5fd}
+  .tag-asin{background:#0f766e;color:#99f6e4}
+  .tag-sku{background:#4c1d95;color:#d8b4fe}
+  .small{font-size:12px;color:#94a3b8}
+  .empty{padding:28px;text-align:center;color:#64748b;border:1px dashed #334155;border-radius:12px}
+  .toggle{display:inline-flex;align-items:center;gap:8px}
+  .toggle input{width:18px;height:18px}
+  .toast{position:fixed;bottom:24px;right:24px;background:#16a34a;color:#fff;padding:12px 18px;border-radius:10px;font-size:13px;font-weight:600;display:none}
+  .toast.error{background:#dc2626}
+  @media (max-width: 900px){ .grid{grid-template-columns:1fr} .summary{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<nav>
+  <span class="brand">Grow24 AI</span>
+  <a href="/">Dashboard</a>
+  <a href="/settings">Settings</a>
+  <a href="/stock-control" style="color:#fff;font-weight:600">Stock Control</a>
+  <a href="/fba-settings">FBA Settings</a>
+  <a href="/rules">Rules</a>
+  <button class="btn btn-primary" onclick="restartDashboard()">Restart</button>
+</nav>
+<div class="container">
+  <h1>Stock Control</h1>
+  <p class="subtitle">Seller listing auto stock only. FBA is handled in a separate module.</p>
+  <div class="grid">
+    <div>
+      <div class="card">
+        <h2>Feature Status</h2>
+        <div id="featureStatus" class="status-pill status-on">Loading...</div>
+        <p style="margin-top:10px">Enable or disable Auto Stock from <a href="/settings" style="color:#93c5fd">Settings</a>. This page controls seller listing defaults and exclusions only.</p>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h2>Defaults</h2>
+        <div class="form-row">
+          <label>Default Target Stock</label>
+          <input id="defaultTargetStock" type="number" min="1">
+        </div>
+        <div class="form-row">
+          <label>Default Minimum Threshold</label>
+          <input id="defaultMinimumThreshold" type="number" min="0">
+        </div>
+        <button class="btn btn-primary" onclick="saveDefaults()">Save Defaults</button>
+      </div>
+      <div class="card" style="margin-top:16px">
+        <h2>Add Manual Item</h2>
+        <div class="help-box" style="margin-top:0;margin-bottom:12px">
+          <div class="help-line"><strong>Add SKU</strong>: Applies only to that SKU</div>
+          <div class="help-line"><strong>Add ASIN</strong>: Applies to all SKUs under that ASIN</div>
+          <div class="help-line"><strong>Rule priority</strong>: SKU rule overrides ASIN rule</div>
+        </div>
+        <div class="form-row">
+          <label>Type</label>
+          <select id="entryType">
+            <option value="sku">SKU</option>
+            <option value="asin">ASIN</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label>Value</label>
+          <input id="entryValue" placeholder="SKU123 or B0XXXXXXXX">
+        </div>
+        <div class="form-row">
+          <label class="toggle"><input id="entryExcluded" type="checkbox" checked> Excluded from Auto Stock</label>
+        </div>
+        <button class="btn btn-primary" onclick="addEntry()">Add / Update</button>
+      </div>
+    </div>
+    <div>
+      <div class="summary">
+        <div class="mini"><div class="num" id="sumRisk">0</div><div class="lbl">Risk Items</div></div>
+        <div class="mini"><div class="num" id="sumManual">0</div><div class="lbl">Manual Items</div></div>
+        <div class="mini"><div class="num" id="sumExcluded">0</div><div class="lbl">Excluded</div></div>
+      </div>
+      <div class="card">
+        <h2>Auto Stock List</h2>
+        <p style="margin-bottom:14px">Only risk items and manually added items appear here. Quiet skips stay in backend logs and do not create dashboard noise.</p>
+        <div id="itemsWrap" class="empty">Loading...</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+let stockItems = [];
+function showToast(msg, isError=false){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = isError ? 'toast error' : 'toast';
+  t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 2500);
+}
+async function loadConfig(){
+  const res = await fetch('/api/stock-control/config');
+  const data = await res.json();
+  if(!data.success) throw new Error(data.error || 'Failed to load config');
+  document.getElementById('defaultTargetStock').value = data.config.default_target_stock;
+  document.getElementById('defaultMinimumThreshold').value = data.config.default_minimum_threshold;
+  const pill = document.getElementById('featureStatus');
+  if(data.feature_enabled){
+    pill.textContent = 'Auto Stock ON (from Settings)';
+    pill.className = 'status-pill status-on';
+  } else {
+    pill.textContent = 'Auto Stock OFF (from Settings)';
+    pill.className = 'status-pill status-off';
+  }
+  document.getElementById('sumRisk').textContent = data.summary.risk_items || 0;
+  document.getElementById('sumManual').textContent = data.summary.manual_items || 0;
+  document.getElementById('sumExcluded').textContent = data.summary.excluded_items || 0;
+}
+async function loadItems(){
+  const res = await fetch('/api/stock-control/items');
+  const data = await res.json();
+  if(!data.success) throw new Error(data.error || 'Failed to load items');
+  stockItems = data.items || [];
+  renderItems();
+}
+function renderItems(){
+  const wrap = document.getElementById('itemsWrap');
+  if(!stockItems.length){
+    wrap.className = 'empty';
+    wrap.innerHTML = 'No risk items or manual items to show right now.';
+    return;
+  }
+  wrap.className = '';
+  let html = '<table><thead><tr><th>Item</th><th>Scope</th><th>Seller Stock</th><th>Target / Threshold</th><th>Auto Stock</th><th>Last AI Action</th><th></th></tr></thead><tbody>';
+  for(const item of stockItems){
+    const originTag = item.origin === 'risk' ? '<span class="tag tag-risk">Risk</span>' : '<span class="tag tag-manual">Manual</span>';
+    const typeTag = item.type === 'asin' ? '<span class="tag tag-asin">ASIN</span>' : '<span class="tag tag-sku">SKU</span>';
+    const stockText = item.seller_stock === null || item.seller_stock === undefined ? '—' : String(item.seller_stock);
+    const scopeText = item.type === 'asin' ? ((item.scope_size || 0) + ' SKU(s)') : '1 SKU';
+    const primaryLabel = item.sku || item.value;
+    const secondaryLabel = item.sku && item.asin ? ('ASIN: ' + item.asin) : (item.type === 'asin' ? ('ASIN: ' + item.value) : '');
+    html += `<tr>
+      <td><div><strong>${primaryLabel}</strong></div><div class="small">${secondaryLabel || ''}</div><div class="small">${originTag} ${typeTag}</div></td>
+      <td><div>${scopeText}</div><div class="small">${item.status}</div></td>
+      <td>${stockText}</td>
+      <td><div>${item.target_stock} / ${item.threshold}</div><div class="small">Target / Min</div></td>
+      <td><label class="toggle"><input type="checkbox" ${item.excluded ? '' : 'checked'} onchange="toggleExcluded('${item.type}','${item.value}', this.checked)"><span>${item.excluded ? 'Excluded' : 'Included'}</span></label></td>
+      <td>${item.last_action || 'No recent action'}</td>
+      <td>${item.origin === 'manual' ? `<button class="btn btn-danger" onclick="removeEntry('${item.type}','${item.value}')">Remove</button>` : ''}</td>
+    </tr>`;
+  }
+  html += '</tbody></table>';
+  wrap.innerHTML = html;
+}
+async function saveDefaults(){
+  const body = {
+    default_target_stock: parseInt(document.getElementById('defaultTargetStock').value || '1000', 10),
+    default_minimum_threshold: parseInt(document.getElementById('defaultMinimumThreshold').value || '1', 10)
+  };
+  const res = await fetch('/api/stock-control/config', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
+  const data = await res.json();
+  if(!data.success){ showToast(data.error || 'Save failed', true); return; }
+  showToast('Defaults saved');
+  await loadConfig();
+  await loadItems();
+}
+async function addEntry(){
+  const body = {
+    type: document.getElementById('entryType').value,
+    value: document.getElementById('entryValue').value.trim(),
+    excluded: document.getElementById('entryExcluded').checked
+  };
+  if(!body.value){ showToast('Type and value are required', true); return; }
+  const res = await fetch('/api/stock-control/entry', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
+  const data = await res.json();
+  if(!data.success){ showToast(data.error || 'Could not save item', true); return; }
+  document.getElementById('entryValue').value = '';
+  document.getElementById('entryExcluded').checked = true;
+  showToast('Item saved');
+  await loadConfig();
+  await loadItems();
+}
+async function toggleExcluded(type, value, included){
+  const res = await fetch('/api/stock-control/entry', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({type, value, excluded: !included})});
+  const data = await res.json();
+  if(!data.success){ showToast(data.error || 'Could not update item', true); await loadItems(); return; }
+  showToast('Auto stock rule updated');
+  await loadConfig();
+  await loadItems();
+}
+async function removeEntry(type, value){
+  const res = await fetch('/api/stock-control/entry', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({type, value, delete: true})});
+  const data = await res.json();
+  if(!data.success){ showToast(data.error || 'Could not remove item', true); return; }
+  showToast('Manual item removed');
+  await loadConfig();
+  await loadItems();
+}
+async function restartDashboard(){
+  showToast('Restarting dashboard...');
+  const res = await fetch('/api/dashboard/restart', {method:'POST'});
+  const data = await res.json();
+  if(!data.success){ showToast(data.error || 'Could not restart dashboard', true); return; }
+  showToast('Dashboard restart triggered');
+  setTimeout(() => window.location.href = '/', 3500);
+}
+Promise.all([loadConfig(), loadItems()]).catch(err => {
+  document.getElementById('itemsWrap').className = 'empty';
+  document.getElementById('itemsWrap').textContent = err.message || 'Failed to load stock control';
+});
+</script>
+</body>
+</html>"""
+
+
+FBA_SETTINGS_HTML = r"""<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>FBA Settings — Grow24 AI</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',sans-serif;background:#0f1117;color:#e2e8f0;min-height:100vh}
+  nav{background:#1a1d2e;padding:14px 24px;display:flex;align-items:center;gap:20px;border-bottom:1px solid #2d3748}
+  nav a{color:#94a3b8;text-decoration:none;font-size:14px}
+  nav a:hover{color:#fff}
+  nav .brand{color:#f59e0b;font-weight:700;font-size:16px;margin-right:auto}
+  .container{max-width:1100px;margin:0 auto;padding:24px}
+  h1{font-size:22px;color:#f59e0b;margin-bottom:4px}
+  .subtitle{color:#64748b;font-size:13px;margin-bottom:28px}
+  .tabs{display:flex;gap:4px;margin-bottom:24px;flex-wrap:wrap}
+  .tab-btn{padding:8px 18px;border:1px solid #2d3748;background:#1a1d2e;color:#94a3b8;
+           border-radius:6px;cursor:pointer;font-size:13px;transition:.2s}
+  .tab-btn.active{background:#f59e0b;color:#000;border-color:#f59e0b;font-weight:600}
+  .tab-pane{display:none}
+  .tab-pane.active{display:block}
+  .card{background:#1a1d2e;border:1px solid #2d3748;border-radius:10px;padding:20px;margin-bottom:16px}
+  .card h3{font-size:14px;color:#94a3b8;text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+  .form-row.triple{grid-template-columns:1fr 1fr 1fr}
+  .form-row.full{grid-template-columns:1fr}
+  label{font-size:12px;color:#94a3b8;display:block;margin-bottom:4px}
+  input,select,textarea{width:100%;background:#0f1117;border:1px solid #2d3748;color:#e2e8f0;
+    padding:8px 10px;border-radius:6px;font-size:13px;outline:none}
+  input:focus,select:focus,textarea:focus{border-color:#f59e0b}
+  textarea{resize:vertical;min-height:70px;font-family:monospace;font-size:12px}
+  .btn{padding:8px 18px;border-radius:6px;border:none;cursor:pointer;font-size:13px;font-weight:600}
+  .btn-primary{background:#f59e0b;color:#000}
+  .btn-danger{background:#ef4444;color:#fff}
+  .btn-success{background:#22c55e;color:#000}
+  .btn-ghost{background:#2d3748;color:#e2e8f0}
+  .btn:hover{opacity:.85}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{background:#0f1117;color:#94a3b8;padding:10px 12px;text-align:left;font-size:12px;
+     text-transform:uppercase;border-bottom:1px solid #2d3748}
+  td{padding:10px 12px;border-bottom:1px solid #1e2535;color:#e2e8f0}
+  tr:hover td{background:#1e2535}
+  .badge{padding:2px 8px;border-radius:99px;font-size:11px;font-weight:600}
+  .badge-blue{background:#1e40af;color:#93c5fd}
+  .badge-green{background:#14532d;color:#86efac}
+  .badge-orange{background:#78350f;color:#fcd34d}
+  .tag{display:inline-block;background:#1e3a5f;color:#93c5fd;border-radius:4px;
+       padding:2px 6px;font-size:11px;margin:2px}
+  .toast{position:fixed;bottom:24px;right:24px;background:#22c55e;color:#000;
+         padding:12px 20px;border-radius:8px;font-weight:600;display:none;z-index:999}
+  .toast.error{background:#ef4444;color:#fff}
+  .col-chips{display:flex;flex-wrap:wrap;gap:6px;padding:10px 0}
+  .chip{background:#1e3a5f;color:#93c5fd;border-radius:99px;padding:4px 12px;
+        font-size:12px;display:flex;align-items:center;gap:6px;cursor:move;user-select:none}
+  .chip .rm{cursor:pointer;color:#ef4444;font-size:14px;line-height:1}
+  .all-cols{display:flex;flex-wrap:wrap;gap:6px;padding:8px 0}
+  .col-opt{background:#0f1117;border:1px solid #2d3748;color:#64748b;padding:4px 10px;
+           border-radius:99px;font-size:12px;cursor:pointer}
+  .col-opt.used{opacity:.4;cursor:not-allowed}
+  .kw-group{background:#0f1117;border:1px solid #2d3748;border-radius:6px;padding:8px;margin-bottom:6px}
+  .kw-group-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+  .kw-tag{background:#1e3a5f;color:#93c5fd;padding:2px 8px;border-radius:99px;font-size:12px;
+          display:inline-flex;align-items:center;gap:4px}
+  .kw-tag span{cursor:pointer;color:#ef4444}
+  .section-note{font-size:11px;color:#64748b;margin-bottom:10px;font-style:italic}
+</style>
+</head>
+<body>
+<nav>
+  <span class="brand">📦 Grow24 AI</span>
+  <a href="/">Dashboard</a>
+  <a href="/settings">Settings</a>
+  <a href="/stock-control">Stock Control</a>
+  <a href="/fba-settings" style="color:#f59e0b;font-weight:600">FBA Settings</a>
+  <a href="/rules">Rules</a>
+  <button class="btn btn-primary" onclick="restartDashboard()">Restart</button>
+</nav>
+<div class="container">
+  <h1>📦 FBA Settings</h1>
+  <p class="subtitle">All FBA module configuration — product overrides, box categories, PO columns, Drive & Sheet</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('overrides')">🏷️ Product Overrides</button>
+    <button class="tab-btn" onclick="showTab('categories')">📦 Box Categories</button>
+    <button class="tab-btn" onclick="showTab('po')">📊 PO Columns</button>
+    <button class="tab-btn" onclick="showTab('drive')">☁️ Drive & Sheet</button>
+    <button class="tab-btn" onclick="showTab('shipment')">🚛 Shipment</button>
+    <button class="tab-btn" onclick="showTab('appt')">📅 Appointment</button>
+    <button class="tab-btn" onclick="showTab('qty')">📈 Quantity</button>
+  </div>
+
+  <!-- ══ TAB 1: Product Overrides ══════════════════════════════════════════ -->
+  <div class="tab-pane active" id="tab-overrides">
+    <div class="card">
+      <h3>Product-Level Override (checked FIRST before category detection)</h3>
+      <p class="section-note">Define custom box size/weight per SKU or ASIN. Leave empty to use category auto-detection.</p>
+      <table id="override-table">
+        <thead><tr>
+          <th>SKU / ASIN</th><th>Category</th>
+          <th>L×W×H (cm)</th><th>Weight (kg)</th><th>Units/Box</th><th>Note</th><th></th>
+        </tr></thead>
+        <tbody id="override-tbody"></tbody>
+      </table>
+      <div style="margin-top:14px">
+        <button class="btn btn-primary" onclick="openAddOverride()">+ Add Product Override</button>
+      </div>
+    </div>
+
+    <!-- Add/Edit override form (hidden by default) -->
+    <div class="card" id="override-form-card" style="display:none">
+      <h3 id="override-form-title">Add Product Override</h3>
+      <div class="form-row">
+        <div><label>SKU or ASIN *</label><input id="ov-key" placeholder="SKU-001 or B0XXXXXXXX"></div>
+        <div><label>Category</label>
+          <select id="ov-cat"><option value="">-- auto detect --</option></select></div>
+      </div>
+      <div class="form-row triple">
+        <div><label>Length (cm)</label><input id="ov-l" type="number" placeholder="28"></div>
+        <div><label>Width (cm)</label><input id="ov-w" type="number" placeholder="34"></div>
+        <div><label>Height (cm)</label><input id="ov-h" type="number" placeholder="36"></div>
+      </div>
+      <div class="form-row">
+        <div><label>Box Weight (kg)</label><input id="ov-wt" type="number" step="0.1" placeholder="5.5"></div>
+        <div><label>Units per Box</label><input id="ov-upb" type="number" placeholder="100"></div>
+      </div>
+      <div class="form-row full">
+        <div><label>Note (optional)</label><input id="ov-note" placeholder="Custom box for this product"></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <button class="btn btn-primary" onclick="saveOverride()">Save Override</button>
+        <button class="btn btn-ghost" onclick="cancelOverrideForm()">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TAB 2: Box Categories ═════════════════════════════════════════════ -->
+  <div class="tab-pane" id="tab-categories">
+    <div id="cat-cards"></div>
+    <div class="card" style="border-style:dashed;cursor:pointer" onclick="addCategoryCard()">
+      <div style="text-align:center;color:#64748b;padding:10px">+ Add New Category</div>
+    </div>
+    <div style="margin-top:10px">
+      <button class="btn btn-primary" onclick="saveAllCategories()">💾 Save All Categories</button>
+    </div>
+  </div>
+
+  <!-- ══ TAB 3: PO Columns ═════════════════════════════════════════════════ -->
+  <div class="tab-pane" id="tab-po">
+    <div class="card">
+      <h3>PO Sheet Columns</h3>
+      <p class="section-note">Drag to reorder. Click × to remove. Click a column below to add it.</p>
+      <div id="col-chips" class="col-chips"></div>
+      <div style="margin:10px 0;color:#64748b;font-size:12px">Available columns (click to add):</div>
+      <div class="all-cols" id="all-cols-list"></div>
+      <div style="margin-top:14px;display:flex;gap:8px">
+        <button class="btn btn-primary" onclick="savePOColumns()">💾 Save Columns</button>
+        <button class="btn btn-ghost" onclick="resetPOColumns()">Reset to Default</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ TAB 4: Drive & Sheet ══════════════════════════════════════════════ -->
+  <div class="tab-pane" id="tab-drive">
+    <div class="card">
+      <h3>Google Drive — Labels & Challans</h3>
+      <p class="section-note">Uses DriveUpload.gs (POST webhook). PDF files uploaded after each shipment.</p>
+      <div class="form-row full">
+        <div><label>Drive Upload Webhook URL</label>
+          <input id="drive-webhook" placeholder="https://script.google.com/macros/s/.../exec"></div>
+      </div>
+      <div class="form-row">
+        <div><label>Labels Folder Path (comma-separated)</label>
+          <input id="drive-labels-folder" placeholder="Grow24 AI, FBA Labels"></div>
+        <div><label>Challans Folder Path (comma-separated)</label>
+          <input id="drive-challans-folder" placeholder="Grow24 AI, FBA Challans"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Google Sheet — PO Tab</h3>
+      <p class="section-note">Uses sheet webhook (config_google_sheet.json). Creates FBA PO 1, FBA PO 2... tabs.</p>
+      <div class="form-row">
+        <div><label>Sheet ID (Google Sheet URL ID)</label>
+          <input id="gs-sheet-id" placeholder="1fBU4evxVn..."></div>
+        <div><label>Filter Tab Name</label>
+          <input id="gs-filter-tab" placeholder="FBA_Filter"></div>
+      </div>
+      <div class="form-row">
+        <div><label>PO Tab Prefix</label>
+          <input id="gs-po-prefix" placeholder="FBA PO"></div>
+        <div><label>Drive Secret</label>
+          <input id="drive-secret" placeholder="MagicalDream"></div>
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="saveDriveSheet()">💾 Save Drive & Sheet Config</button>
+  </div>
+
+  <!-- ══ TAB 5: Shipment ════════════════════════════════════════════════════ -->
+  <div class="tab-pane" id="tab-shipment">
+    <div class="card">
+      <h3>Source / Pickup Address</h3>
+      <div class="form-row">
+        <div><label>Name</label><input id="src-name" placeholder="Mahendra"></div>
+        <div><label>Company</label><input id="src-company" placeholder="GoAmrita Bhandar"></div>
+      </div>
+      <div class="form-row full">
+        <div><label>Address Line 1</label><input id="src-addr1" placeholder="123, Market Street"></div>
+      </div>
+      <div class="form-row full">
+        <div><label>Address Line 2 (optional)</label><input id="src-addr2"></div>
+      </div>
+      <div class="form-row triple">
+        <div><label>City</label><input id="src-city"></div>
+        <div><label>State Code</label><input id="src-state" placeholder="KA"></div>
+        <div><label>Postal Code</label><input id="src-pin" placeholder="560001"></div>
+      </div>
+      <div class="form-row">
+        <div><label>Phone</label><input id="src-phone" placeholder="+91XXXXXXXXXX"></div>
+        <div><label>Email</label><input id="src-email"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Shipment Settings</h3>
+      <div class="form-row triple">
+        <div><label>Primary Warehouse</label><input id="wh-primary" placeholder="DED3"></div>
+        <div><label>Fallback Warehouse</label><input id="wh-fallback" placeholder="DED5"></div>
+        <div><label>Prep Owner</label>
+          <select id="prep-owner"><option>SELLER</option><option>AMAZON</option></select></div>
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="saveShipment()">💾 Save Shipment Config</button>
+  </div>
+
+  <!-- ══ TAB 6: Appointment ════════════════════════════════════════════════ -->
+  <div class="tab-pane" id="tab-appt">
+    <div class="card">
+      <h3>Self-Ship Appointment Rules</h3>
+      <div class="form-row">
+        <div><label>Preferred Start Time (24hr)</label><input id="appt-start" placeholder="14:00"></div>
+        <div><label>Preferred End Time (24hr)</label><input id="appt-end" placeholder="16:00"></div>
+      </div>
+      <div class="form-row full">
+        <div>
+          <label>Skip Days (comma-separated)</label>
+          <input id="appt-skip" placeholder="Sunday">
+          <span style="font-size:11px;color:#64748b">e.g. Sunday, Saturday</span>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="saveAppointment()">💾 Save Appointment Rules</button>
+  </div>
+
+  <!-- ══ TAB 7: Quantity ════════════════════════════════════════════════════ -->
+  <div class="tab-pane" id="tab-qty">
+    <div class="card">
+      <h3>Quantity Predictor</h3>
+      <p class="section-note">send_qty = (avg_daily_sales × target_days) − current_stock</p>
+      <div class="form-row triple">
+        <div><label>Target Days Coverage</label>
+          <input id="qty-target" type="number" placeholder="15"></div>
+        <div><label>Min Send Quantity</label>
+          <input id="qty-min" type="number" placeholder="10"></div>
+        <div><label>Sales Window (days)</label>
+          <input id="qty-window" type="number" placeholder="7"></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Category Detection</h3>
+      <div class="form-row">
+        <div><label>Default Category (when detection fails)</label>
+          <select id="det-default"></select></div>
+        <div><label>Keyword Match Mode</label>
+          <select id="det-mode">
+            <option value="AND_WITHIN_GROUP">AND within group, OR between groups</option>
+            <option value="OR_ANY">OR — any single keyword matches</option>
+          </select></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>SKU Filter</h3>
+      <div class="form-row">
+        <div><label>Filter Mode</label>
+          <select id="filter-mode">
+            <option value="INCLUDE">INCLUDE — only listed SKUs</option>
+            <option value="EXCLUDE">EXCLUDE — all except listed</option>
+            <option value="NONE">NONE — process all SKUs</option>
+          </select></div>
+        <div><label>Sheet Tab Name</label>
+          <input id="filter-tab" placeholder="FBA_Filter"></div>
+      </div>
+    </div>
+    <button class="btn btn-primary" onclick="saveQtySettings()">💾 Save Quantity & Detection</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── Globals ────────────────────────────────────────────────────────────────
+let CFG = {};
+const ALL_PO_COLS = [
+  "SKU","Quantity","Box Count","Date","Status","Notes",
+  "ASIN","Product Name","Category","Units Per Box",
+  "Box Size (cm)","Box Weight (kg)","Warehouse","Appointment Slot","Shipment ID"
+];
+const DEFAULT_PO_COLS = ["SKU","Quantity","Box Count","Date","Status","Notes"];
+
+// ── Init ───────────────────────────────────────────────────────────────────
+async function init() {
+  const resp = await fetch('/api/fba/config');
+  const data = await resp.json();
+  if (!data.success) { toast('Error loading config: ' + data.error, 'error'); return; }
+  CFG = data.config;
+  renderOverrides();
+  renderCategories();
+  renderPOColumns();
+  renderDriveSheet();
+  renderShipment();
+  renderAppointment();
+  renderQtySettings();
+}
+
+// ── Tab switching ──────────────────────────────────────────────────────────
+function showTab(name) {
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ── Toast ──────────────────────────────────────────────────────────────────
+function toast(msg, type='success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast' + (type === 'error' ? ' error' : '');
+  t.style.display = 'block';
+  setTimeout(() => t.style.display = 'none', 3000);
+}
+
+// ── Save helper ────────────────────────────────────────────────────────────
+async function saveFullConfig() {
+  const r = await fetch('/api/fba/config', {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify(CFG)
+  });
+  const d = await r.json();
+  if (d.success) toast('Saved!');
+  else toast('Error: ' + d.error, 'error');
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// TAB 1: PRODUCT OVERRIDES
+// ═══════════════════════════════════════════════════════════════════════
+function renderOverrides() {
+  const tbody = document.getElementById('override-tbody');
+  const overrides = CFG.product_overrides || {};
+  tbody.innerHTML = '';
+  let count = 0;
+  for (const [key, val] of Object.entries(overrides)) {
+    if (key.startsWith('_')) continue;
+    count++;
+    const dims = `${val.length_cm||'?'}×${val.width_cm||'?'}×${val.height_cm||'?'}`;
+    tbody.innerHTML += `<tr>
+      <td><strong>${key}</strong>${val.sku&&val.sku!==key?'<br><small style="color:#64748b">SKU: '+val.sku+'</small>':''}</td>
+      <td><span class="badge badge-blue">${val.category||'—'}</span></td>
+      <td>${dims}</td>
+      <td>${val.weight_kg||'—'}</td>
+      <td>${val.units_per_box||'—'}</td>
+      <td style="color:#64748b;font-size:11px">${val.note||''}</td>
+      <td><button class="btn btn-ghost" style="padding:4px 8px;font-size:11px"
+          onclick="editOverride('${key}')">Edit</button>
+          <button class="btn btn-danger" style="padding:4px 8px;font-size:11px;margin-left:4px"
+          onclick="deleteOverride('${key}')">Del</button></td>
+    </tr>`;
+  }
+  if (count === 0) {
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#64748b;padding:20px">No product overrides yet. Add one above.</td></tr>';
+  }
+  // Populate category select
+  const sel = document.getElementById('ov-cat');
+  sel.innerHTML = '<option value="">-- auto detect --</option>';
+  for (const k of Object.keys(CFG.box_categories||{})) {
+    if (!k.startsWith('_')) sel.innerHTML += `<option value="${k}">${k}</option>`;
+  }
+}
+
+function openAddOverride() {
+  document.getElementById('override-form-card').style.display = 'block';
+  document.getElementById('override-form-title').textContent = 'Add Product Override';
+  ['ov-key','ov-l','ov-w','ov-h','ov-wt','ov-upb','ov-note'].forEach(id => document.getElementById(id).value='');
+  document.getElementById('ov-cat').value = '';
+}
+
+function editOverride(key) {
+  const v = CFG.product_overrides[key] || {};
+  document.getElementById('override-form-card').style.display = 'block';
+  document.getElementById('override-form-title').textContent = 'Edit: ' + key;
+  document.getElementById('ov-key').value  = key;
+  document.getElementById('ov-cat').value  = v.category||'';
+  document.getElementById('ov-l').value    = v.length_cm||'';
+  document.getElementById('ov-w').value    = v.width_cm||'';
+  document.getElementById('ov-h').value    = v.height_cm||'';
+  document.getElementById('ov-wt').value   = v.weight_kg||'';
+  document.getElementById('ov-upb').value  = v.units_per_box||'';
+  document.getElementById('ov-note').value = v.note||'';
+}
+
+function cancelOverrideForm() {
+  document.getElementById('override-form-card').style.display = 'none';
+}
+
+async function saveOverride() {
+  const key = document.getElementById('ov-key').value.trim();
+  if (!key) { toast('SKU/ASIN is required','error'); return; }
+  const data = {
+    category:    document.getElementById('ov-cat').value,
+    length_cm:   parseFloat(document.getElementById('ov-l').value)||0,
+    width_cm:    parseFloat(document.getElementById('ov-w').value)||0,
+    height_cm:   parseFloat(document.getElementById('ov-h').value)||0,
+    weight_kg:   parseFloat(document.getElementById('ov-wt').value)||0,
+    units_per_box: parseInt(document.getElementById('ov-upb').value)||0,
+    note:        document.getElementById('ov-note').value,
+  };
+  if (!CFG.product_overrides) CFG.product_overrides = {};
+  CFG.product_overrides[key] = data;
+  cancelOverrideForm();
+  renderOverrides();
+  await saveFullConfig();
+}
+
+async function deleteOverride(key) {
+  if (!confirm('Delete override for ' + key + '?')) return;
+  delete CFG.product_overrides[key];
+  renderOverrides();
+  await saveFullConfig();
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// TAB 2: BOX CATEGORIES
+// ═══════════════════════════════════════════════════════════════════════
+function renderCategories() {
+  const container = document.getElementById('cat-cards');
+  container.innerHTML = '';
+  const cats = CFG.box_categories || {};
+  for (const [key, cat] of Object.entries(cats)) {
+    if (key.startsWith('_')) continue;
+    container.appendChild(buildCatCard(key, cat));
+  }
+}
+
+function buildCatCard(key, cat) {
+  const div = document.createElement('div');
+  div.className = 'card';
+  div.dataset.catkey = key;
+
+  const dims = cat.box_dimensions_cm || {length:28,width:34,height:36};
+  const kwHtml = (cat.detect_keywords||[]).map(g => {
+    const group = Array.isArray(g) ? g : [g];
+    const tags = group.map(w => `<span class="kw-tag">${w}<span onclick="removeKw(this)">×</span></span>`).join(' + ');
+    return `<div class="kw-group"><div class="kw-group-row">${tags}
+      <button class="btn btn-ghost" style="padding:2px 8px;font-size:11px" onclick="removeKwGroup(this)">✕ group</button>
+    </div></div>`;
+  }).join('');
+
+  div.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <div>
+        <input class="cat-key-input" value="${key}" style="font-weight:700;font-size:15px;width:120px;background:transparent;border:none;border-bottom:1px solid #2d3748;color:#f59e0b">
+        <input class="cat-label" placeholder="Label" value="${cat.label||''}" style="margin-left:10px;width:220px;font-size:13px;color:#94a3b8">
+      </div>
+      <button class="btn btn-danger" style="padding:4px 10px;font-size:12px" onclick="deleteCategory(this,'${key}')">Delete</button>
+    </div>
+    <div class="form-row triple">
+      <div><label>Length (cm)</label><input class="dim-l" type="number" value="${dims.length||28}"></div>
+      <div><label>Width (cm)</label><input class="dim-w" type="number" value="${dims.width||34}"></div>
+      <div><label>Height (cm)</label><input class="dim-h" type="number" value="${dims.height||36}"></div>
+    </div>
+    <div class="form-row triple">
+      <div><label>Units per Box</label><input class="upb" type="number" value="${cat.units_per_box||100}"></div>
+      <div><label>Unit Weight (gm)</label><input class="uwt" type="number" value="${cat.unit_weight_gm||50}"></div>
+      <div><label>Box Weight (kg, fixed — overrides formula)</label><input class="bwt" type="number" step="0.1" value="${cat.box_weight_kg||''}"></div>
+    </div>
+    <div style="margin-top:10px">
+      <label style="font-size:12px;color:#94a3b8;margin-bottom:6px;display:block">
+        Keyword Groups (AND within group, OR between groups)
+      </label>
+      <div class="kw-container">${kwHtml}</div>
+      <div style="display:flex;gap:6px;margin-top:6px">
+        <input class="kw-add-input" placeholder="type keyword" style="width:160px">
+        <button class="btn btn-ghost" style="padding:4px 10px;font-size:12px" onclick="addKwToGroup(this)">+ New Group</button>
+      </div>
+    </div>`;
+  return div;
+}
+
+function removeKw(span) {
+  const tag = span.parentElement;
+  const group = tag.parentElement;
+  tag.remove();
+  if (group.querySelectorAll('.kw-tag').length === 0) group.parentElement.remove();
+}
+
+function removeKwGroup(btn) {
+  btn.closest('.kw-group').remove();
+}
+
+function addKwToGroup(btn) {
+  const card = btn.closest('.card');
+  const input = card.querySelector('.kw-add-input');
+  const kw = input.value.trim();
+  if (!kw) return;
+  const container = card.querySelector('.kw-container');
+  const grpDiv = document.createElement('div');
+  grpDiv.className = 'kw-group';
+  grpDiv.innerHTML = `<div class="kw-group-row">
+    <span class="kw-tag">${kw}<span onclick="removeKw(this)">×</span></span>
+    <button class="btn btn-ghost" style="padding:2px 8px;font-size:11px" onclick="removeKwGroup(this)">✕ group</button>
+  </div>`;
+  container.appendChild(grpDiv);
+  input.value = '';
+}
+
+function deleteCategory(btn, key) {
+  if (!confirm('Delete category "' + key + '"?')) return;
+  btn.closest('.card').remove();
+}
+
+function addCategoryCard() {
+  const key = 'new_category_' + Date.now();
+  const cat = {label:'New Category',detect_keywords:[],box_dimensions_cm:{length:28,width:28,height:28},units_per_box:100,unit_weight_gm:50};
+  document.getElementById('cat-cards').appendChild(buildCatCard(key, cat));
+}
+
+async function saveAllCategories() {
+  const cats = {};
+  for (const card of document.querySelectorAll('#cat-cards .card')) {
+    const key = card.querySelector('.cat-key-input').value.trim();
+    if (!key) continue;
+
+    const kws = [];
+    for (const grp of card.querySelectorAll('.kw-group')) {
+      const tags = [...grp.querySelectorAll('.kw-tag')].map(t => t.textContent.replace('×','').trim());
+      if (tags.length > 0) kws.push(tags.length === 1 ? [tags[0]] : tags);
+    }
+
+    const bwt = parseFloat(card.querySelector('.bwt').value);
+    const cat = {
+      label:              card.querySelector('.cat-label').value,
+      detect_keywords:    kws,
+      box_dimensions_cm:  {
+        length: parseFloat(card.querySelector('.dim-l').value)||28,
+        width:  parseFloat(card.querySelector('.dim-w').value)||28,
+        height: parseFloat(card.querySelector('.dim-h').value)||28,
+      },
+      units_per_box:  parseInt(card.querySelector('.upb').value)||100,
+      unit_weight_gm: parseInt(card.querySelector('.uwt').value)||50,
+    };
+    if (!isNaN(bwt) && bwt > 0) cat.box_weight_kg = bwt;
+    cats[key] = cat;
+  }
+  CFG.box_categories = cats;
+  // Update default category dropdown
+  const dc = document.getElementById('det-default');
+  if (dc) {
+    dc.innerHTML = Object.keys(cats).map(k=>`<option value="${k}">${k}</option>`).join('');
+    dc.value = CFG.category_detection?.default_category || '';
+  }
+  await saveFullConfig();
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// TAB 3: PO COLUMNS
+// ═══════════════════════════════════════════════════════════════════════
+let currentCols = [];
+
+function renderPOColumns() {
+  currentCols = [...(CFG.po_columns || DEFAULT_PO_COLS)];
+  drawChips();
+  drawColOptions();
+}
+
+function drawChips() {
+  const cont = document.getElementById('col-chips');
+  cont.innerHTML = currentCols.map((c,i) =>
+    `<div class="chip" draggable="true" data-idx="${i}"
+          ondragstart="dragStart(event)" ondrop="drop(event)" ondragover="e=>e.preventDefault()">
+       ${c} <span class="rm" onclick="removeCol('${c}')">×</span>
+     </div>`
+  ).join('');
+  cont.querySelectorAll('.chip').forEach(chip => {
+    chip.addEventListener('dragover', e => e.preventDefault());
+    chip.addEventListener('drop', drop);
+  });
+}
+
+function drawColOptions() {
+  const cont = document.getElementById('all-cols-list');
+  cont.innerHTML = ALL_PO_COLS.map(c =>
+    `<div class="col-opt ${currentCols.includes(c)?'used':''}" onclick="addCol('${c}')">${c}</div>`
+  ).join('');
+}
+
+function addCol(col) {
+  if (currentCols.includes(col)) return;
+  currentCols.push(col);
+  drawChips(); drawColOptions();
+}
+
+function removeCol(col) {
+  currentCols = currentCols.filter(c => c !== col);
+  drawChips(); drawColOptions();
+}
+
+let dragIdx = null;
+function dragStart(e) { dragIdx = parseInt(e.target.dataset.idx); }
+function drop(e) {
+  const target = parseInt(e.target.closest('[data-idx]')?.dataset.idx);
+  if (isNaN(target) || target === dragIdx) return;
+  const [item] = currentCols.splice(dragIdx, 1);
+  currentCols.splice(target, 0, item);
+  drawChips(); drawColOptions();
+}
+
+async function savePOColumns() {
+  CFG.po_columns = currentCols;
+  await saveFullConfig();
+}
+
+function resetPOColumns() {
+  currentCols = [...DEFAULT_PO_COLS];
+  drawChips(); drawColOptions();
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// TAB 4: DRIVE & SHEET
+// ═══════════════════════════════════════════════════════════════════════
+function renderDriveSheet() {
+  const d = CFG.google_drive || {};
+  const g = CFG.google_sheet || {};
+  document.getElementById('drive-webhook').value        = d.webhook_url||'';
+  document.getElementById('drive-labels-folder').value  = (d.labels_folder||['Grow24 AI','FBA Labels']).join(', ');
+  document.getElementById('drive-challans-folder').value= (d.challans_folder||['Grow24 AI','FBA Challans']).join(', ');
+  document.getElementById('drive-secret').value         = d.secret||'MagicalDream';
+  document.getElementById('gs-sheet-id').value          = g.sheet_id||'';
+  document.getElementById('gs-filter-tab').value        = g.filter_tab||'FBA_Filter';
+  document.getElementById('gs-po-prefix').value         = g.po_tab_prefix||'FBA PO';
+}
+
+async function saveDriveSheet() {
+  CFG.google_drive = {
+    webhook_url:     document.getElementById('drive-webhook').value.trim(),
+    secret:          document.getElementById('drive-secret').value.trim(),
+    labels_folder:   document.getElementById('drive-labels-folder').value.split(',').map(s=>s.trim()).filter(Boolean),
+    challans_folder: document.getElementById('drive-challans-folder').value.split(',').map(s=>s.trim()).filter(Boolean),
+  };
+  CFG.google_sheet = Object.assign(CFG.google_sheet||{}, {
+    sheet_id:      document.getElementById('gs-sheet-id').value.trim(),
+    filter_tab:    document.getElementById('gs-filter-tab').value.trim(),
+    po_tab_prefix: document.getElementById('gs-po-prefix').value.trim(),
+  });
+  await saveFullConfig();
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// TAB 5: SHIPMENT
+// ═══════════════════════════════════════════════════════════════════════
+function renderShipment() {
+  const s = CFG.source_address || {};
+  const w = CFG.warehouses || {};
+  const sh = CFG.shipment || {};
+  document.getElementById('src-name').value    = s.name||'';
+  document.getElementById('src-company').value = s.company_name||'';
+  document.getElementById('src-addr1').value   = s.address_line1||'';
+  document.getElementById('src-addr2').value   = s.address_line2||'';
+  document.getElementById('src-city').value    = s.city||'';
+  document.getElementById('src-state').value   = s.state_code||'';
+  document.getElementById('src-pin').value     = s.postal_code||'';
+  document.getElementById('src-phone').value   = s.phone||'';
+  document.getElementById('src-email').value   = s.email||'';
+  document.getElementById('wh-primary').value  = w.primary||'DED3';
+  document.getElementById('wh-fallback').value = w.fallback||'DED5';
+  document.getElementById('prep-owner').value  = sh.prep_owner||'SELLER';
+}
+
+async function saveShipment() {
+  CFG.source_address = {
+    name: document.getElementById('src-name').value,
+    company_name: document.getElementById('src-company').value,
+    address_line1: document.getElementById('src-addr1').value,
+    address_line2: document.getElementById('src-addr2').value,
+    city: document.getElementById('src-city').value,
+    state_code: document.getElementById('src-state').value,
+    postal_code: document.getElementById('src-pin').value,
+    country_code: 'IN',
+    phone: document.getElementById('src-phone').value,
+    email: document.getElementById('src-email').value,
+  };
+  CFG.warehouses = {
+    primary: document.getElementById('wh-primary').value,
+    fallback: document.getElementById('wh-fallback').value,
+  };
+  CFG.shipment = Object.assign(CFG.shipment||{}, {
+    prep_owner:  document.getElementById('prep-owner').value,
+    label_owner: document.getElementById('prep-owner').value,
+  });
+  await saveFullConfig();
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// TAB 6: APPOINTMENT
+// ═══════════════════════════════════════════════════════════════════════
+function renderAppointment() {
+  const a = CFG.appointment || {};
+  document.getElementById('appt-start').value = a.preferred_time_start||'14:00';
+  document.getElementById('appt-end').value   = a.preferred_time_end||'16:00';
+  document.getElementById('appt-skip').value  = (a.skip_days||['Sunday']).join(', ');
+}
+
+async function saveAppointment() {
+  const skip = document.getElementById('appt-skip').value.split(',').map(s=>s.trim()).filter(Boolean);
+  CFG.appointment = {
+    skip_days:            skip,
+    preferred_time_start: document.getElementById('appt-start').value,
+    preferred_time_end:   document.getElementById('appt-end').value,
+  };
+  await saveFullConfig();
+}
+
+// ═══════════════════════════════════════════════════════════════════════
+// TAB 7: QUANTITY & DETECTION
+// ═══════════════════════════════════════════════════════════════════════
+function renderQtySettings() {
+  const q = CFG.quantity_predictor || {};
+  const d = CFG.category_detection || {};
+  const f = CFG.filter || {};
+  document.getElementById('qty-target').value  = q.target_days||15;
+  document.getElementById('qty-min').value     = q.min_send_quantity||10;
+  document.getElementById('qty-window').value  = q.sales_window_days||7;
+  document.getElementById('det-mode').value    = d.keyword_match_mode||'AND_WITHIN_GROUP';
+  document.getElementById('filter-mode').value = f.mode||'INCLUDE';
+  document.getElementById('filter-tab').value  = f.sheet_tab||'FBA_Filter';
+  // Populate default category
+  const dc = document.getElementById('det-default');
+  dc.innerHTML = Object.keys(CFG.box_categories||{})
+    .filter(k=>!k.startsWith('_'))
+    .map(k=>`<option value="${k}">${k}</option>`).join('');
+  dc.value = d.default_category||'ayurved';
+}
+
+async function saveQtySettings() {
+  CFG.quantity_predictor = {
+    target_days:       parseInt(document.getElementById('qty-target').value)||15,
+    min_send_quantity: parseInt(document.getElementById('qty-min').value)||10,
+    sales_window_days: parseInt(document.getElementById('qty-window').value)||7,
+  };
+  CFG.category_detection = Object.assign(CFG.category_detection||{}, {
+    keyword_match_mode: document.getElementById('det-mode').value,
+    default_category:   document.getElementById('det-default').value,
+  });
+  CFG.filter = Object.assign(CFG.filter||{}, {
+    mode:      document.getElementById('filter-mode').value,
+    sheet_tab: document.getElementById('filter-tab').value,
+  });
+  await saveFullConfig();
+}
+
+function restartDashboard() {
+  fetch('/api/dashboard/restart', {method:'POST'})
+    .then(r=>r.json()).then(function(d){
+      alert(d.success ? 'Dashboard restart triggered. Wait a few seconds and refresh.' : (d.error || 'Could not restart dashboard'));
+    }).catch(function(){
+      alert('Could not restart dashboard');
+    });
+}
+
+init();
+</script>
+</body>
+</html>"""
+
+
+# ═══════════════════════════════════════════════════════════════
+# RULES HTML
+# ═══════════════════════════════════════════════════════════════
+
+RULES_HTML = r"""<!DOCTYPE html>
+<html>
+<head>
+    <title>AutoGrow AI — Custom Rules</title>
+    <meta charset="UTF-8">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        :root {
+            --bg: #0F1923;
+            --card-bg: #1A2332;
+            --card-border: #2A3A4A;
+            --text: #E0E6ED;
+            --text-muted: #7B8FA3;
+            --text-dim: #5B7A95;
+            --hover-bg: #1F2D3D;
+            --section-bg: #1A2332;
+            --input-bg: #0F1923;
+            --input-border: #2A3A4A;
+            --footer-text: #3B5068;
+        }
+        body.light {
+            --bg: #F0F2F5;
+            --card-bg: #FFFFFF;
+            --card-border: #E0E0E0;
+            --text: #2C3E50;
+            --text-muted: #6B7B8D;
+            --text-dim: #8899AA;
+            --hover-bg: #EEF1F5;
+            --section-bg: #FFFFFF;
+            --input-bg: #F8F9FA;
+            --input-border: #D0D5DD;
+            --footer-text: #8899AA;
+        }
+        body { font-family:Calibri,Arial; background:var(--bg); color:var(--text); min-height:100vh; transition: background 0.3s, color 0.3s; }
+        .header { background:linear-gradient(135deg,#1A3A5C,#2563EB); padding:18px 25px; display:flex; justify-content:space-between; align-items:center; }
+        .header h1 { font-size:28px; color:white; } .header h1 span { color:#60A5FA; }
+        .header .right { display:flex; align-items:center; gap:18px; }
+        .header .time { color:rgba(255,255,255,0.8); font-size:14px; }
+        .nav-links { display:flex; gap:8px; }
+        .nav-links a { color:rgba(255,255,255,0.85); text-decoration:none; font-size:14px; font-weight:bold; padding:5px 14px; border-radius:6px; transition:0.2s; }
+        .nav-links a:hover, .nav-links a.active { background:rgba(255,255,255,0.15); color:white; }
+        .theme-toggle { background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); color:white; padding:5px 14px; border-radius:6px; cursor:pointer; font-size:13px; font-weight:bold; transition:0.2s; }
+        .theme-toggle:hover { background:rgba(255,255,255,0.25); }
+
+        .rules-container { max-width:1000px; margin:20px auto; padding:0 20px; }
+        .toolbar { display:flex; gap:10px; margin-bottom:18px; flex-wrap:wrap; align-items:center; }
+        .btn { display:inline-block; padding:8px 18px; border-radius:6px; border:none; cursor:pointer; font-size:14px; font-weight:bold; margin:2px; transition:0.2s; }
+        .btn-blue { background:#2563EB; color:white; } .btn-blue:hover { background:#3B82F6; }
+        .btn-green { background:#16A34A; color:white; } .btn-green:hover { background:#22C55E; }
+        .btn-orange { background:#D97706; color:white; } .btn-orange:hover { background:#F59E0B; }
+        .btn-red { background:#DC2626; color:white; } .btn-red:hover { background:#EF4444; }
+        .btn-sm { padding:5px 12px; font-size:13px; }
+        .btn-ghost { background:transparent; border:1px solid var(--card-border); color:var(--text-muted); }
+        .btn-ghost:hover { background:var(--hover-bg); color:var(--text); }
+
+        /* Rule cards */
+        .rule-card { background:var(--card-bg); border-radius:10px; padding:16px 20px; border:1px solid var(--card-border); margin-bottom:12px; border-left:4px solid #22C55E; transition:0.3s; }
+        .rule-card.disabled { border-left-color:#4B5563; opacity:0.7; }
+        .rule-card-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+        .rule-card-header h3 { font-size:17px; color:var(--text); }
+        .rule-card-header .actions { display:flex; gap:6px; align-items:center; }
+        .rule-conditions { font-size:14px; color:#60A5FA; font-family:Consolas,monospace; margin-bottom:6px; }
+        .rule-action-line { font-size:14px; color:#F59E0B; margin-bottom:6px; }
+        .rule-meta { font-size:13px; color:var(--text-dim); display:flex; gap:16px; flex-wrap:wrap; }
+        .test-result { display:inline-block; font-size:13px; font-weight:bold; margin-left:8px; }
+
+        /* Toggle switch */
+        .toggle-switch { position:relative; width:44px; height:24px; flex-shrink:0; }
+        .toggle-switch input { opacity:0; width:0; height:0; }
+        .toggle-slider { position:absolute; cursor:pointer; top:0; left:0; right:0; bottom:0; background:#4B5563; border-radius:24px; transition:0.3s; }
+        .toggle-slider:before { content:''; position:absolute; height:18px; width:18px; left:3px; bottom:3px; background:white; border-radius:50%; transition:0.3s; }
+        .toggle-switch input:checked + .toggle-slider { background:#22C55E; }
+        .toggle-switch input:checked + .toggle-slider:before { transform:translateX(20px); }
+
+        /* Modal overlay */
+        .modal-overlay { display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.6); z-index:100; justify-content:center; align-items:flex-start; padding-top:40px; overflow-y:auto; }
+        .modal-overlay.show { display:flex; }
+        .modal { background:var(--card-bg); border-radius:12px; padding:24px; width:90%; max-width:700px; border:1px solid var(--card-border); margin-bottom:40px; }
+        .modal h2 { font-size:20px; color:#60A5FA; margin-bottom:16px; border-bottom:1px solid var(--card-border); padding-bottom:10px; }
+        .form-group { margin-bottom:14px; }
+        .form-group label { display:block; font-size:13px; color:var(--text-muted); font-weight:bold; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:5px; }
+        .form-group input, .form-group select { width:100%; padding:9px 12px; border-radius:6px; border:1px solid var(--input-border); background:var(--input-bg); color:var(--text); font-size:14px; font-family:Calibri,Arial; }
+        .form-group input:focus, .form-group select:focus { outline:none; border-color:#2563EB; }
+        .form-group .radio-group { display:flex; gap:16px; padding:6px 0; }
+        .form-group .radio-group label { display:inline-flex; align-items:center; gap:5px; text-transform:none; font-size:14px; cursor:pointer; }
+        .form-group .radio-group input[type="radio"] { width:auto; }
+
+        /* Condition/Action rows */
+        .cond-row, .action-row { display:flex; gap:8px; align-items:center; margin-bottom:8px; flex-wrap:wrap; }
+        .cond-row select, .cond-row input { padding:7px 10px; border-radius:6px; border:1px solid var(--input-border); background:var(--input-bg); color:var(--text); font-size:13px; }
+        .cond-row .field-select { flex:2; min-width:180px; }
+        .cond-row .op-select { flex:0 0 80px; }
+        .cond-row .val-input { flex:1; min-width:100px; }
+        .action-row select, .action-row input { padding:7px 10px; border-radius:6px; border:1px solid var(--input-border); background:var(--input-bg); color:var(--text); font-size:13px; }
+        .action-row .action-select { flex:2; }
+        .action-row .action-value { flex:1; }
+        .action-row .action-msg { flex:2; }
+        .remove-btn { background:#DC2626; color:white; border:none; border-radius:4px; width:28px; height:28px; cursor:pointer; font-size:16px; line-height:1; flex-shrink:0; }
+        .remove-btn:hover { background:#EF4444; }
+
+        /* Field search */
+        .field-search-wrap { position:relative; }
+        .field-search-input { width:100%; padding:7px 10px; border-radius:6px; border:1px solid var(--input-border); background:var(--input-bg); color:var(--text); font-size:13px; }
+        .field-dropdown { display:none; position:absolute; top:100%; left:0; right:0; max-height:260px; overflow-y:auto; background:var(--card-bg); border:1px solid var(--card-border); border-radius:6px; z-index:200; margin-top:2px; }
+        .field-dropdown.show { display:block; }
+        .field-dropdown .group-label { font-size:11px; color:#60A5FA; text-transform:uppercase; letter-spacing:1px; padding:6px 10px 2px; font-weight:bold; }
+        .field-dropdown .field-option { padding:5px 10px 5px 20px; font-size:13px; cursor:pointer; color:var(--text); }
+        .field-dropdown .field-option:hover { background:var(--hover-bg); }
+        .field-dropdown .field-option .dtype { color:var(--text-dim); font-size:11px; margin-left:6px; }
+
+        .section-label { font-size:14px; color:#60A5FA; font-weight:bold; margin:14px 0 8px; }
+        .inline-row { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+        .inline-row .form-group { margin-bottom:0; flex:1; min-width:140px; }
+        .modal-footer { display:flex; gap:10px; margin-top:18px; padding-top:14px; border-top:1px solid var(--card-border); }
+
+        .no-rules { text-align:center; padding:40px; color:var(--text-dim); font-size:16px; }
+        .footer { text-align:center; padding:10px; color:var(--footer-text); font-size:12px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AutoGrow <span>AI</span> — Custom Rule Builder</h1>
+        <div class="right">
+            <div class="nav-links">
+                <a href="/">Dashboard</a>
+                <a href="/settings">Settings</a>
+                <a href="/stock-control">Stock Control</a>
+                <a href="/fba-settings">📦 FBA</a>
+                <a href="/rules" class="active">Rules</a>
+            </div>
+            <button class="theme-toggle" onclick="restartDashboard()">Restart</button>
+            <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">Theme: Dark</button>
+        </div>
+    </div>
+
+    <div class="rules-container">
+        <div class="toolbar">
+            <button class="btn btn-green" onclick="openCreateModal()">+ Create New Rule</button>
+            <button class="btn btn-blue" onclick="runAllRules()">Run All Rules</button>
+            <button class="btn btn-orange" onclick="previewAllRules()">Preview All (Dry Run)</button>
+            <span id="globalStatus" style="font-size:13px;font-weight:bold;margin-left:8px;"></span>
+        </div>
+
+        <div id="rulesList">
+            <div class="no-rules">Loading rules...</div>
+        </div>
+    </div>
+
+    <!-- Create/Edit Modal -->
+    <div class="modal-overlay" id="ruleModal">
+        <div class="modal">
+            <h2 id="modalTitle">Create New Rule</h2>
+            <input type="hidden" id="editingRuleId" value="">
+
+            <div class="form-group">
+                <label>Rule Name</label>
+                <input type="text" id="ruleName" placeholder="e.g. Pause High Loss Campaigns">
+            </div>
+
+            <div class="form-group">
+                <label>Applies To</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="appliesTo" value="campaign" checked> Campaign</label>
+                    <label><input type="radio" name="appliesTo" value="keyword"> Keyword</label>
+                    <label><input type="radio" name="appliesTo" value="product"> Product</label>
+                    <label><input type="radio" name="appliesTo" value="search_term"> Search Term</label>
+                    <label><input type="radio" name="appliesTo" value="stock"> Stock</label>
+                    <label><input type="radio" name="appliesTo" value="buy_box"> Buy Box</label>
+                    <label><input type="radio" name="appliesTo" value="account"> Account Level</label>
+                    <label><input type="radio" name="appliesTo" value="asin_all"> All ASINs</label>
+                </div>
+            </div>
+
+            <div class="section-label">CONDITIONS</div>
+            <div id="conditionsContainer"></div>
+            <div style="display:flex;gap:14px;align-items:center;margin-bottom:14px;">
+                <button class="btn btn-sm btn-ghost" onclick="addConditionRow()">+ Add Condition</button>
+                <div class="form-group" style="margin-bottom:0;">
+                    <div class="radio-group">
+                        <label><input type="radio" name="condLogic" value="AND" checked> AND</label>
+                        <label><input type="radio" name="condLogic" value="OR"> OR</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-label">ACTIONS</div>
+            <div id="actionsContainer"></div>
+            <button class="btn btn-sm btn-ghost" onclick="addActionRow()" style="margin-bottom:14px;">+ Add Action</button>
+
+            <div class="inline-row">
+                <div class="form-group">
+                    <label>Schedule</label>
+                    <select id="ruleSchedule">
+                        <option value="daily">Daily</option>
+                        <option value="every_2hr">Every 2 Hours</option>
+                        <option value="every_6hr">Every 6 Hours</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="manual">Manual Only</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Priority (1-10)</label>
+                    <input type="number" id="rulePriority" min="1" max="10" value="5">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-green" onclick="saveRule()">Save Rule</button>
+                <button class="btn btn-ghost" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">AutoGrow AI v1.1 | Custom Rules</div>
+
+    <script>
+    /* ── Theme ── */
+    function applyTheme(theme) {
+        if (theme === 'light') {
+            document.body.classList.add('light');
+            document.getElementById('themeBtn').textContent = 'Theme: Light';
+        } else {
+            document.body.classList.remove('light');
+            document.getElementById('themeBtn').textContent = 'Theme: Dark';
+        }
+    }
+    function toggleTheme() {
+        var isLight = document.body.classList.contains('light');
+        var newTheme = isLight ? 'dark' : 'light';
+        localStorage.setItem('autogrow_theme', newTheme);
+        applyTheme(newTheme);
+    }
+    function restartDashboard() {
+        fetch('/api/dashboard/restart', {method:'POST'})
+            .then(r=>r.json()).then(function(d){
+                alert(d.success ? 'Dashboard restart triggered. Wait a few seconds and refresh.' : (d.error || 'Could not restart dashboard'));
+            }).catch(function(){
+                alert('Could not restart dashboard');
+            });
+    }
+    applyTheme(localStorage.getItem('autogrow_theme') || 'dark');
+
+    /* ── Global state ── */
+    var allRules = [];
+    var availableFields = {};
+    var availableOperators = [];
+    var availableActions = [];
+
+    /* ── Field data types (heuristic) ── */
+    var fieldTypes = {
+        'cost':'number','clicks':'number','impressions':'number','purchases7d':'number','sales7d':'number',
+        'clickThroughRate':'number','costPerClick':'number','campaignBudgetAmount':'number',
+        'matchType':'text','keyword':'text','keywordId':'text','searchTerm':'text','keywordType':'text',
+        'advertisedAsin':'text','advertisedSku':'text','campaignStatus':'text',
+        'true_profit':'number','sale_price':'number','product_cost':'number','amazon_fee':'number',
+        'shipping':'number','profitable_for_ads':'boolean',
+        'your_price':'number','buy_box_winner':'text','fulfillment':'text','was_price':'number',
+        'buy_box_status':'text','is_ours':'boolean','our_price':'number','bb_price':'number','num_competitors':'number',
+        'total_stock':'number','fba_stock':'number','mnf_stock':'number',
+        'defaultBid':'number','state':'text','bid':'number','keywordText':'text',
+        'orders':'number','revenue':'number'
+    };
+
+    function getFieldType(fieldName) {
+        var parts = fieldName.split('.');
+        var name = parts[parts.length - 1];
+        return fieldTypes[name] || 'text';
+    }
+
+    /* ── Load all data ── */
+    function loadRules() {
+        fetch('/api/rules').then(function(r){return r.json();}).then(function(data) {
+            allRules = data.rules || [];
+            availableFields = data.available_fields || {};
+            availableOperators = data.available_operators || [];
+            availableActions = data.available_actions || [];
+            renderRules();
+        });
+    }
+
+    function renderRules() {
+        var container = document.getElementById('rulesList');
+        if (allRules.length === 0) {
+            container.innerHTML = '<div class="no-rules">No rules created yet. Click "+ Create New Rule" to get started.</div>';
+            return;
+        }
+        var html = '';
+        allRules.forEach(function(rule, idx) {
+            var enabledClass = rule.enabled ? '' : ' disabled';
+            var condStr = rule.conditions.map(function(c) {
+                return c.field + ' ' + c.operator + ' ' + c.value;
+            }).join(' ' + (rule.condition_logic || 'AND') + ' ');
+
+            var actionStr = rule.actions.map(function(a) {
+                var act = availableActions.find(function(x){return x.type===a.type;});
+                var label = act ? act.label : a.type;
+                if (a.value) label += ' ' + a.value + '%';
+                if (a.message) label += ': ' + a.message;
+                return label;
+            }).join(', ');
+
+            var lastTriggered = rule.last_triggered ? rule.last_triggered.substring(0, 10) : 'Never';
+            var triggerCount = rule.trigger_count || 0;
+
+            html += '<div class="rule-card' + enabledClass + '" id="card_' + rule.id + '">'
+                + '<div class="rule-card-header">'
+                + '<h3>Rule ' + (idx+1) + ': ' + (rule.name || 'Unnamed') + '</h3>'
+                + '<div class="actions">'
+                + '<label class="toggle-switch"><input type="checkbox" ' + (rule.enabled ? 'checked' : '') + ' onchange="toggleRule(\'' + rule.id + '\')"><span class="toggle-slider"></span></label>'
+                + '<button class="btn btn-sm btn-blue" onclick="openEditModal(\'' + rule.id + '\')">Edit</button>'
+                + '<button class="btn btn-sm btn-orange" onclick="testRule(\'' + rule.id + '\')">Test</button>'
+                + '<button class="btn btn-sm btn-red" onclick="deleteRule(\'' + rule.id + '\')">Delete</button>'
+                + '</div></div>'
+                + '<div class="rule-conditions">IF ' + escapeHtml(condStr) + '</div>'
+                + '<div class="rule-action-line">THEN: ' + escapeHtml(actionStr) + '</div>'
+                + '<div class="rule-meta">'
+                + '<span>Applies to: ' + (rule.applies_to || 'campaign') + '</span>'
+                + '<span>Schedule: ' + (rule.schedule || 'daily') + '</span>'
+                + '<span>Triggered: ' + triggerCount + ' time' + (triggerCount !== 1 ? 's' : '') + '</span>'
+                + '<span>Last: ' + lastTriggered + '</span>'
+                + '<span>Priority: ' + (rule.priority || '-') + '</span>'
+                + '<span class="test-result" id="test_' + rule.id + '"></span>'
+                + '</div></div>';
+        });
+        container.innerHTML = html;
+    }
+
+    function escapeHtml(str) {
+        var div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+
+    /* ── Toggle ── */
+    function toggleRule(ruleId) {
+        fetch('/api/rules/' + ruleId + '/toggle', {method:'POST'})
+            .then(function(r){return r.json();})
+            .then(function(d) {
+                var card = document.getElementById('card_' + ruleId);
+                if (d.enabled) { card.classList.remove('disabled'); }
+                else { card.classList.add('disabled'); }
+                // Update local state
+                allRules.forEach(function(r){ if(r.id===ruleId) r.enabled=d.enabled; });
+            });
+    }
+
+    /* ── Test ── */
+    function testRule(ruleId) {
+        var el = document.getElementById('test_' + ruleId);
+        el.textContent = 'Testing...';
+        el.style.color = '#F59E0B';
+        fetch('/api/rules/' + ruleId + '/test', {method:'POST'})
+            .then(function(r){return r.json();})
+            .then(function(d) {
+                el.textContent = 'Matched: ' + d.matched + ' entities';
+                el.style.color = d.matched > 0 ? '#22C55E' : '#60A5FA';
+            })
+            .catch(function() {
+                el.textContent = 'Error';
+                el.style.color = '#EF4444';
+            });
+    }
+
+    /* ── Delete ── */
+    function deleteRule(ruleId) {
+        if (!confirm('Delete this rule permanently?')) return;
+        fetch('/api/rules/' + ruleId, {method:'DELETE'})
+            .then(function(r){return r.json();})
+            .then(function(d) {
+                if (d.status === 'deleted') {
+                    allRules = allRules.filter(function(r){return r.id !== ruleId;});
+                    renderRules();
+                }
+            });
+    }
+
+    /* ── Run All / Preview All ── */
+    function runAllRules() {
+        var el = document.getElementById('globalStatus');
+        el.textContent = 'Running all rules...';
+        el.style.color = '#60A5FA';
+        var promises = allRules.filter(function(r){return r.enabled;}).map(function(r){
+            return fetch('/api/rules/' + r.id + '/test', {method:'POST'}).then(function(res){return res.json();});
+        });
+        Promise.all(promises).then(function(results) {
+            var total = results.reduce(function(s,r){return s + (r.matched||0);}, 0);
+            el.textContent = 'Done! Total matched: ' + total + ' entities across ' + results.length + ' rules';
+            el.style.color = '#22C55E';
+            setTimeout(function(){ el.textContent = ''; }, 5000);
+        });
+    }
+
+    function previewAllRules() {
+        var el = document.getElementById('globalStatus');
+        el.textContent = 'Dry run in progress...';
+        el.style.color = '#F59E0B';
+        var promises = allRules.map(function(r){
+            return fetch('/api/rules/' + r.id + '/test', {method:'POST'}).then(function(res){return res.json();});
+        });
+        Promise.all(promises).then(function(results) {
+            var total = results.reduce(function(s,r){return s + (r.matched||0);}, 0);
+            el.textContent = 'Preview done! ' + total + ' entities would be affected across ' + results.length + ' rules';
+            el.style.color = '#60A5FA';
+            results.forEach(function(d) {
+                var te = document.getElementById('test_' + d.rule_id);
+                if (te) {
+                    te.textContent = 'Matched: ' + d.matched;
+                    te.style.color = d.matched > 0 ? '#22C55E' : '#60A5FA';
+                }
+            });
+            setTimeout(function(){ el.textContent = ''; }, 6000);
+        });
+    }
+
+    /* ══════════════ MODAL / FORM ══════════════ */
+
+    function openCreateModal() {
+        document.getElementById('modalTitle').textContent = 'Create New Rule';
+        document.getElementById('editingRuleId').value = '';
+        document.getElementById('ruleName').value = '';
+        document.querySelector('input[name="appliesTo"][value="campaign"]').checked = true;
+        document.querySelector('input[name="condLogic"][value="AND"]').checked = true;
+        document.getElementById('ruleSchedule').value = 'daily';
+        document.getElementById('rulePriority').value = 5;
+        document.getElementById('conditionsContainer').innerHTML = '';
+        document.getElementById('actionsContainer').innerHTML = '';
+        addConditionRow();
+        addActionRow();
+        document.getElementById('ruleModal').classList.add('show');
+    }
+
+    function openEditModal(ruleId) {
+        var rule = allRules.find(function(r){return r.id===ruleId;});
+        if (!rule) return;
+        document.getElementById('modalTitle').textContent = 'Edit Rule';
+        document.getElementById('editingRuleId').value = ruleId;
+        document.getElementById('ruleName').value = rule.name || '';
+        var radio = document.querySelector('input[name="appliesTo"][value="' + (rule.applies_to||'campaign') + '"]');
+        if (radio) radio.checked = true;
+        var logicRadio = document.querySelector('input[name="condLogic"][value="' + (rule.condition_logic||'AND') + '"]');
+        if (logicRadio) logicRadio.checked = true;
+        document.getElementById('ruleSchedule').value = rule.schedule || 'daily';
+        document.getElementById('rulePriority').value = rule.priority || 5;
+
+        // Populate conditions
+        document.getElementById('conditionsContainer').innerHTML = '';
+        (rule.conditions || []).forEach(function(c) {
+            addConditionRow(c.field, c.operator, c.value);
+        });
+        if ((rule.conditions || []).length === 0) addConditionRow();
+
+        // Populate actions
+        document.getElementById('actionsContainer').innerHTML = '';
+        (rule.actions || []).forEach(function(a) {
+            addActionRow(a.type, a.value, a.reason || a.message);
+        });
+        if ((rule.actions || []).length === 0) addActionRow();
+
+        document.getElementById('ruleModal').classList.add('show');
+    }
+
+    function closeModal() {
+        document.getElementById('ruleModal').classList.remove('show');
+    }
+
+    /* ── Condition rows ── */
+    var condCounter = 0;
+    function addConditionRow(field, op, val) {
+        condCounter++;
+        var id = 'cond_' + condCounter;
+        var div = document.createElement('div');
+        div.className = 'cond-row';
+        div.id = id;
+
+        // Build field options grouped
+        var fieldOptionsHtml = '<option value="">-- Select Field --</option>';
+        for (var group in availableFields) {
+            fieldOptionsHtml += '<optgroup label="' + group.toUpperCase() + '">';
+            availableFields[group].forEach(function(f) {
+                var fullField = group + '.' + f;
+                var dt = getFieldType(fullField);
+                var sel = (field === fullField) ? ' selected' : '';
+                fieldOptionsHtml += '<option value="' + fullField + '"' + sel + '>' + fullField + ' (' + dt + ')</option>';
+            });
+            fieldOptionsHtml += '</optgroup>';
+        }
+
+        // Operator options
+        var opHtml = '';
+        availableOperators.forEach(function(o) {
+            var sel = (op === o) ? ' selected' : '';
+            opHtml += '<option value="' + o + '"' + sel + '>' + o + '</option>';
+        });
+
+        div.innerHTML = '<select class="field-select" data-role="field">' + fieldOptionsHtml + '</select>'
+            + '<select class="op-select" data-role="operator">' + opHtml + '</select>'
+            + '<input class="val-input" data-role="value" type="text" placeholder="Value" value="' + (val !== undefined ? val : '') + '">'
+            + '<button class="remove-btn" onclick="this.parentElement.remove()" title="Remove">&times;</button>';
+
+        document.getElementById('conditionsContainer').appendChild(div);
+    }
+
+    /* ── Action rows ── */
+    var actCounter = 0;
+    function addActionRow(type, val, msg) {
+        actCounter++;
+        var id = 'act_' + actCounter;
+        var div = document.createElement('div');
+        div.className = 'action-row';
+        div.id = id;
+
+        var actHtml = '<option value="">-- Select Action --</option>';
+        availableActions.forEach(function(a) {
+            var sel = (type === a.type) ? ' selected' : '';
+            actHtml += '<option value="' + a.type + '"' + sel + '>' + a.label + '</option>';
+        });
+
+        div.innerHTML = '<select class="action-select" data-role="action_type" onchange="onActionChange(this)">' + actHtml + '</select>'
+            + '<input class="action-value" data-role="action_value" type="number" placeholder="Value (%)" value="' + (val || '') + '" style="' + (val ? '' : 'display:none') + '">'
+            + '<input class="action-msg" data-role="action_msg" type="text" placeholder="Message / Reason" value="' + (msg || '') + '">'
+            + '<button class="remove-btn" onclick="this.parentElement.remove()" title="Remove">&times;</button>';
+
+        document.getElementById('actionsContainer').appendChild(div);
+    }
+
+    function onActionChange(sel) {
+        var row = sel.parentElement;
+        var actionType = sel.value;
+        var act = availableActions.find(function(a){return a.type===actionType;});
+        var valInput = row.querySelector('[data-role="action_value"]');
+        if (act && act.needs_value) {
+            valInput.style.display = '';
+        } else {
+            valInput.style.display = 'none';
+            valInput.value = '';
+        }
+    }
+
+    /* ── Save Rule ── */
+    function saveRule() {
+        var ruleId = document.getElementById('editingRuleId').value;
+        var name = document.getElementById('ruleName').value.trim();
+        if (!name) { alert('Please enter a rule name.'); return; }
+
+        var appliesTo = document.querySelector('input[name="appliesTo"]:checked').value;
+        var condLogic = document.querySelector('input[name="condLogic"]:checked').value;
+        var schedule = document.getElementById('ruleSchedule').value;
+        var priority = parseInt(document.getElementById('rulePriority').value) || 5;
+
+        // Collect conditions
+        var conditions = [];
+        document.querySelectorAll('#conditionsContainer .cond-row').forEach(function(row) {
+            var f = row.querySelector('[data-role="field"]').value;
+            var o = row.querySelector('[data-role="operator"]').value;
+            var v = row.querySelector('[data-role="value"]').value;
+            if (f && o && v !== '') {
+                // Try to parse as number or boolean
+                var parsed = v;
+                if (v === 'true') parsed = true;
+                else if (v === 'false') parsed = false;
+                else if (!isNaN(Number(v)) && v !== '') parsed = Number(v);
+                conditions.push({field: f, operator: o, value: parsed});
+            }
+        });
+
+        if (conditions.length === 0) { alert('At least 1 condition is required.'); return; }
+
+        // Collect actions
+        var actions = [];
+        document.querySelectorAll('#actionsContainer .action-row').forEach(function(row) {
+            var t = row.querySelector('[data-role="action_type"]').value;
+            var v = row.querySelector('[data-role="action_value"]').value;
+            var m = row.querySelector('[data-role="action_msg"]').value;
+            if (t) {
+                var act = {type: t};
+                if (v) act.value = Number(v);
+                if (m) act.reason = m;
+                // For send_alert, use message instead of reason
+                var actDef = availableActions.find(function(a){return a.type===t;});
+                if (actDef && actDef.needs_message && m) {
+                    act.message = m;
+                    delete act.reason;
+                }
+                actions.push(act);
+            }
+        });
+
+        if (actions.length === 0) { alert('At least 1 action is required.'); return; }
+
+        var ruleData = {
+            name: name,
+            applies_to: appliesTo,
+            conditions: conditions,
+            condition_logic: condLogic,
+            actions: actions,
+            schedule: schedule,
+            priority: priority,
+            enabled: true
+        };
+
+        var url, method;
+        if (ruleId) {
+            url = '/api/rules/' + ruleId;
+            method = 'PUT';
+            // Preserve enabled state
+            var existing = allRules.find(function(r){return r.id===ruleId;});
+            if (existing) ruleData.enabled = existing.enabled;
+        } else {
+            url = '/api/rules';
+            method = 'POST';
+        }
+
+        fetch(url, {
+            method: method,
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(ruleData)
+        }).then(function(r){return r.json();}).then(function(d) {
+            if (d.status === 'created' || d.status === 'updated') {
+                closeModal();
+                loadRules();
+            } else {
+                alert(d.error || 'Failed to save rule');
+            }
+        }).catch(function() { alert('Network error saving rule'); });
+    }
+
+    /* ── Close modal on overlay click ── */
+    document.getElementById('ruleModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+
+    /* ── Init ── */
+    loadRules();
+    </script>
+</body>
+</html>"""
+
+
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--port', type=int, default=5000)
+    args = parser.parse_args()
+
+    print(f"\n  AutoGrow AI — Live Dashboard v1.1")
+    print(f"  Open:         http://localhost:{args.port}")
+    print(f"  Settings:     http://localhost:{args.port}/settings")
+    print(f"  FBA Settings: http://localhost:{args.port}/fba-settings")
+    print(f"  Rules:        http://localhost:{args.port}/rules")
+    print(f"  Press Ctrl+C to stop\n")
+    app.run(host='0.0.0.0', port=args.port, debug=False, use_reloader=False)

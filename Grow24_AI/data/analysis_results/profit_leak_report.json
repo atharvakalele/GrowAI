@@ -1,0 +1,246 @@
+{
+  "version": "1.0",
+  "timestamp": "2026-04-16T13:03:57.528411",
+  "summary": {
+    "total_bleeding_products": 21,
+    "total_est_daily_loss": 280.38
+  },
+  "top_offenders": [
+    {
+      "asin": "B0FRYJ26TJ",
+      "sku": "HorseGold_OneAnother",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 1691.8,
+      "ad_spend_7d": 302,
+      "orders_7d": 0,
+      "est_daily_loss": 43.14
+    },
+    {
+      "asin": "B0GT4T9JKB",
+      "sku": "Blue_CelticSalt_250GM_V1",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 514.2,
+      "ad_spend_7d": 218,
+      "orders_7d": 0,
+      "est_daily_loss": 31.14
+    },
+    {
+      "asin": "B0FVS9YQ7W",
+      "sku": "NamakJaitunSilver_Salt100gm_FB",
+      "reason": "Negative true profit while spending on ads",
+      "true_profit": -29.52,
+      "ad_spend_7d": 19,
+      "orders_7d": 0,
+      "est_daily_loss": 29.52
+    },
+    {
+      "asin": "B0GT1MTW5R",
+      "sku": "Blue_CelticSalt_920GM_V3",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 1020.2,
+      "ad_spend_7d": 194,
+      "orders_7d": 0,
+      "est_daily_loss": 27.71
+    },
+    {
+      "asin": "B0DFM7TY5T",
+      "sku": "AmazingCelticSalt2kg",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 1755.28,
+      "ad_spend_7d": 187,
+      "orders_7d": 0,
+      "est_daily_loss": 26.71
+    }
+  ],
+  "all_bleeding_products": [
+    {
+      "asin": "B0FRYJ26TJ",
+      "sku": "HorseGold_OneAnother",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 1691.8,
+      "ad_spend_7d": 302,
+      "orders_7d": 0,
+      "est_daily_loss": 43.14
+    },
+    {
+      "asin": "B0GT4T9JKB",
+      "sku": "Blue_CelticSalt_250GM_V1",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 514.2,
+      "ad_spend_7d": 218,
+      "orders_7d": 0,
+      "est_daily_loss": 31.14
+    },
+    {
+      "asin": "B0FVS9YQ7W",
+      "sku": "NamakJaitunSilver_Salt100gm_FB",
+      "reason": "Negative true profit while spending on ads",
+      "true_profit": -29.52,
+      "ad_spend_7d": 19,
+      "orders_7d": 0,
+      "est_daily_loss": 29.52
+    },
+    {
+      "asin": "B0GT1MTW5R",
+      "sku": "Blue_CelticSalt_920GM_V3",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 1020.2,
+      "ad_spend_7d": 194,
+      "orders_7d": 0,
+      "est_daily_loss": 27.71
+    },
+    {
+      "asin": "B0DFM7TY5T",
+      "sku": "AmazingCelticSalt2kg",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 1755.28,
+      "ad_spend_7d": 187,
+      "orders_7d": 0,
+      "est_daily_loss": 26.71
+    },
+    {
+      "asin": "B0DVQ7NR67",
+      "sku": "HorsePowerCap30",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 99.28,
+      "ad_spend_7d": 176,
+      "orders_7d": 0,
+      "est_daily_loss": 25.14
+    },
+    {
+      "asin": "B0GQGF94TF",
+      "sku": "Vidyapith_SugarChurna_100gm_P5",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 218.88,
+      "ad_spend_7d": 172,
+      "orders_7d": 0,
+      "est_daily_loss": 24.57
+    },
+    {
+      "asin": "B0GQGJ38X8",
+      "sku": "Vidyapith_SugarChurna_100gm__V",
+      "reason": "ACR is extremely high (206.6%)",
+      "true_profit": 77.85,
+      "ad_spend_7d": 161,
+      "orders_7d": 1,
+      "est_daily_loss": 23.0
+    },
+    {
+      "asin": "B0G39Y3TWS",
+      "sku": "SkyBlu_LibidexCartoon_Cap30_V7",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 283.28,
+      "ad_spend_7d": 108,
+      "orders_7d": 0,
+      "est_daily_loss": 15.43
+    },
+    {
+      "asin": "B0FMRNM72Q",
+      "sku": "HorseGold_Cap30",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 1497.68,
+      "ad_spend_7d": 90,
+      "orders_7d": 0,
+      "est_daily_loss": 12.86
+    },
+    {
+      "asin": "B0CXP5PNV4",
+      "sku": "DrRLX_RhodiolaRosea_30Cap",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 8.2,
+      "ad_spend_7d": 51,
+      "orders_7d": 0,
+      "est_daily_loss": 7.29
+    },
+    {
+      "asin": "B0FZM5G3W7",
+      "sku": "IH 5 Cap30",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 81.8,
+      "ad_spend_7d": 21,
+      "orders_7d": 0,
+      "est_daily_loss": 3.0
+    },
+    {
+      "asin": "B0DTPR8QPM",
+      "sku": "DrRlxLibidexGold30cap_Oil",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 344.92,
+      "ad_spend_7d": 19,
+      "orders_7d": 0,
+      "est_daily_loss": 2.71
+    },
+    {
+      "asin": "B0GNG7TF5Z",
+      "sku": "White_XenoprostCap30_1AnotherC",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 458.08,
+      "ad_spend_7d": 15,
+      "orders_7d": 0,
+      "est_daily_loss": 2.14
+    },
+    {
+      "asin": "B0G4JZ91FW",
+      "sku": "BlueWhite_XenoprostActive_Cap3",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 191.28,
+      "ad_spend_7d": 14,
+      "orders_7d": 0,
+      "est_daily_loss": 2.0
+    },
+    {
+      "asin": "B0G4K2NL2X",
+      "sku": "BlackGold_XenoprostActive_Cap3",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 467.28,
+      "ad_spend_7d": 8,
+      "orders_7d": 0,
+      "est_daily_loss": 1.14
+    },
+    {
+      "asin": "B0G85G1VD7",
+      "sku": "BluWit_HeightIncreaseCap_1Anot",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 102.04,
+      "ad_spend_7d": 7,
+      "orders_7d": 0,
+      "est_daily_loss": 1.0
+    },
+    {
+      "asin": "B0G43W7DC9",
+      "sku": "White_ProstaCare_Cap30",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 7.28,
+      "ad_spend_7d": 5,
+      "orders_7d": 0,
+      "est_daily_loss": 0.71
+    },
+    {
+      "asin": "B0FGYG5YN6",
+      "sku": "Black_HorsePower_Cap30_1Oil_V8",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 179.32,
+      "ad_spend_7d": 4,
+      "orders_7d": 0,
+      "est_daily_loss": 0.57
+    },
+    {
+      "asin": "B0FRZDZC83",
+      "sku": "Red_HorsePwr+WhitBlu_HorseLong",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 62.48,
+      "ad_spend_7d": 3,
+      "orders_7d": 0,
+      "est_daily_loss": 0.43
+    },
+    {
+      "asin": "B0G4K1ZYZ3",
+      "sku": "White_XenoprostActive_Cap30_P2",
+      "reason": "Spending on ads but 0 orders in 7 days",
+      "true_profit": 559.28,
+      "ad_spend_7d": 1,
+      "orders_7d": 0,
+      "est_daily_loss": 0.14
+    }
+  ]
+}

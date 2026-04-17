@@ -1,0 +1,292 @@
+#!/usr/bin/env python3
+"""
+GoAmrita - Stock Monitor v1.0 (P04)
+=====================================
+Checks COMBINED inventory (FBA + MFN/Self-Ship) for all ASINs.
+Alerts on low/zero stock. Recommends pausing ads for out-of-stock products.
+
+APIs:
+  FBA Inventory v1 (FBA stock)
+  Listings Items v2021-08-01 (MFN/self-ship stock via fulfillmentAvailability)
+
+Total Stock = FBA + MFN (both channels combined)
+
+Schedule: Every 2 hours (configurable)
+
+Usage:
+    python stock_monitor_v1.0.py
+    python stock_monitor_v1.0.py --threshold 10
+"""
+
+import json
+import os
+import sys
+import ssl
+import time
+import argparse
+from datetime import datetime, timedelta
+from urllib.request import Request, urlopen
+from urllib.parse import urlencode
+from urllib.error import HTTPError
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = os.path.dirname(os.path.dirname(SCRIPT_DIR))
+SP_CREDS = json.load(open(os.path.join(PROJECT_DIR, "sp_api_credentials.json")))["sp_api_credentials"]
+
+REPORT_BASE = os.path.join(SCRIPT_DIR, "..", "Report")
+report_folders = [f for f in os.listdir(REPORT_BASE) if os.path.isdir(os.path.join(REPORT_BASE, f))]
+report_folders.sort(key=lambda x: os.path.getmtime(os.path.join(REPORT_BASE, x)), reverse=True)
+LATEST_REPORT = report_folders[0] if report_folders else datetime.now().strftime("%d %B %Y")
+JSON_DIR = os.path.join(REPORT_BASE, LATEST_REPORT, "Json")
+
+MARKETPLACE_ID = "A21TJRUUN4KGV"
+SP_ENDPOINT = "https://sellingpartnerapi-eu.amazon.com"
+
+SSL_CONTEXT = None
+try:
+    import certifi
+    SSL_CONTEXT = ssl.create_default_context(cafile=certifi.where())
+except ImportError:
+    SSL_CONTEXT = ssl.create_default_context()
+
+_token = None
+_expiry = None
+
+def get_token():
+    global _token, _expiry
+    if _token and _expiry and datetime.now() < _expiry:
+        return _token
+    data = urlencode({'grant_type': 'refresh_token', 'refresh_token': SP_CREDS['refresh_token'],
+        'client_id': SP_CREDS['lwa_client_id'], 'client_secret': SP_CREDS['lwa_client_secret']}).encode()
+    req = Request(SP_CREDS['token_url'], data=data, headers={'Content-Type': 'application/x-www-form-urlencoded'})
+    result = json.loads(urlopen(req, context=SSL_CONTEXT).read().decode())
+    _token = result['access_token']
+    _expiry = datetime.now() + timedelta(seconds=result['expires_in'] - 60)
+    return _token
+
+
+def fetch_inventory(next_token=None):
+    """Fetch FBA inventory summaries"""
+    token = get_token()
+    params = {
+        'details': 'true',
+        'granularityType': 'Marketplace',
+        'granularityId': MARKETPLACE_ID,
+        'marketplaceIds': MARKETPLACE_ID,
+    }
+    if next_token:
+        params['nextToken'] = next_token
+
+    url = f"{SP_ENDPOINT}/fba/inventory/v1/summaries?" + urlencode(params)
+    headers = {
+        'x-amz-access-token': token,
+        'x-amz-date': datetime.utcnow().strftime('%Y%m%dT%H%M%SZ'),
+        'Host': 'sellingpartnerapi-eu.amazon.com',
+    }
+    req = Request(url, headers=headers)
+
+    try:
+        resp = urlopen(req, context=SSL_CONTEXT)
+        return json.loads(resp.read().decode())
+    except HTTPError as e:
+        print(f"  API Error {e.code}: {e.read().decode()[:300]}")
+        return None
+
+
+def main():
+    parser = argparse.ArgumentParser(description='Stock Monitor v1.0')
+    parser.add_argument('--threshold', type=int, default=5, help='Alert if stock below this (default: 5)')
+    args = parser.parse_args()
+
+    print("=" * 60)
+    print("  GoAmrita - Stock Monitor v1.0 (P04)")
+    print(f"  {datetime.now().strftime('%d %B %Y, %I:%M %p')}")
+    print(f"  Alert threshold: < {args.threshold} units")
+    print("=" * 60)
+
+    # Load ASIN-SKU mapping
+    ads_file = os.path.join(JSON_DIR, "sp_product_ads_list.json")
+    sku_map = {}  # sku → asin
+    asin_skus = {}  # asin → [skus]
+    if os.path.exists(ads_file):
+        with open(ads_file, encoding='utf-8') as f:
+            for a in json.load(f):
+                if a.get('sku'):
+                    sku_map[a['sku']] = a.get('asin', '')
+                    asin = a.get('asin', '')
+                    if asin not in asin_skus:
+                        asin_skus[asin] = []
+                    if a['sku'] not in asin_skus[asin]:
+                        asin_skus[asin].append(a['sku'])
+
+    # ========= STEP 1: FBA Inventory =========
+    print("\n  [1/3] Fetching FBA inventory...")
+    all_items = []
+    next_token = None
+    page = 0
+
+    while True:
+        page += 1
+        result = fetch_inventory(next_token)
+        if not result:
+            break
+
+        payload = result.get('payload', result)
+        summaries = payload.get('inventorySummaries', [])
+        all_items.extend(summaries)
+        print(f"  Page {page}: {len(summaries)} items")
+
+        pagination = payload.get('pagination', {})
+        next_token = pagination.get('nextToken')
+        if not next_token:
+            break
+
+    print(f"  FBA items: {len(all_items)}")
+
+    # Build FBA stock map: sku → fulfillable qty
+    fba_stock = {}
+    for item in all_items:
+        sku = item.get('sellerSku', '')
+        fba_stock[sku] = item.get('inventoryDetails', {}).get('fulfillableQuantity', item.get('totalQuantity', 0))
+
+    # ========= STEP 2: MFN (Self-Ship) Inventory =========
+    print(f"\n  [2/3] Fetching MFN inventory (Listings API)...")
+    from urllib.parse import quote
+    mnf_stock = {}  # sku → qty
+    seller_id = "A2AC2AS9R9CBEA"
+    unique_skus = list(set(sku_map.keys()))
+    fetched = 0
+    errors = 0
+
+    for i, sku in enumerate(unique_skus):
+        try:
+            token = get_token()
+            url = f"{SP_ENDPOINT}/listings/2021-08-01/items/{seller_id}/{quote(sku)}?marketplaceIds={MARKETPLACE_ID}&includedData=fulfillmentAvailability"
+            headers = {
+                'x-amz-access-token': token,
+                'x-amz-date': datetime.utcnow().strftime('%Y%m%dT%H%M%SZ'),
+                'Host': 'sellingpartnerapi-eu.amazon.com',
+            }
+            req = Request(url, headers=headers)
+            resp = urlopen(req, context=SSL_CONTEXT)
+            result = json.loads(resp.read().decode())
+
+            for fa in result.get('fulfillmentAvailability', []):
+                channel = fa.get('fulfillmentChannelCode', '')
+                qty = fa.get('quantity', 0)
+                if channel == 'DEFAULT':  # MFN
+                    mnf_stock[sku] = qty
+                    fetched += 1
+
+            # Also check attributes fallback
+            if sku not in mnf_stock:
+                attrs = result.get('attributes', {})
+                fa_list = attrs.get('fulfillment_availability', [])
+                if isinstance(fa_list, list):
+                    for fa in fa_list:
+                        if fa.get('fulfillment_channel_code') == 'DEFAULT':
+                            mnf_stock[sku] = fa.get('quantity', 0)
+                            fetched += 1
+
+        except Exception:
+            errors += 1
+
+        if (i + 1) % 50 == 0:
+            print(f"    Checked {i+1}/{len(unique_skus)} SKUs...")
+        time.sleep(0.5)  # Rate limit: 2 req/sec
+
+    print(f"  MFN stock fetched: {fetched} | Errors: {errors}")
+
+    # ========= STEP 3: Combine FBA + MFN =========
+    print(f"\n  [3/3] Combining FBA + MFN stock...")
+
+    combined = {}  # asin → {fba, mnf, total, skus}
+    for asin, skus in asin_skus.items():
+        fba_total = 0
+        mnf_total = 0
+        for sku in skus:
+            fba_total += fba_stock.get(sku, 0)
+            mnf_total += mnf_stock.get(sku, 0)
+
+        combined[asin] = {
+            'asin': asin,
+            'skus': skus,
+            'sku_display': skus[0] if skus else '',
+            'fba_stock': fba_total,
+            'mnf_stock': mnf_total,
+            'total_stock': fba_total + mnf_total,
+        }
+
+    print(f"  Combined: {len(combined)} ASINs")
+
+    # Analyze
+    zero_stock = []
+    low_stock = []
+    healthy_stock = []
+
+    for asin, info in combined.items():
+        item = info  # use combined data
+        entry = {
+            'asin': item['asin'],
+            'sku': item['sku_display'][:25],
+            'fba_stock': item['fba_stock'],
+            'mnf_stock': item['mnf_stock'],
+            'total_stock': item['total_stock'],
+        }
+
+        if item['total_stock'] == 0:
+            zero_stock.append(entry)
+        elif item['total_stock'] < args.threshold:
+            low_stock.append(entry)
+        else:
+            healthy_stock.append(entry)
+
+    # Display
+    if zero_stock:
+        print(f"\n  {'='*75}")
+        print(f"  ZERO STOCK — ADS SHOULD BE PAUSED! ({len(zero_stock)} products)")
+        print(f"  {'='*75}")
+        print(f"  {'ASIN':<14} {'SKU':<25} {'FBA':>6} {'MFN':>6} {'Total':>6} {'Action'}")
+        print(f"  {'-'*75}")
+        for item in sorted(zero_stock, key=lambda x: x['sku']):
+            print(f"  {item['asin']:<14} {item['sku'][:24]:<25} {item['fba_stock']:>6} {item['mnf_stock']:>6} {item['total_stock']:>6} PAUSE ADS!")
+
+    if low_stock:
+        print(f"\n  {'='*75}")
+        print(f"  LOW STOCK — REDUCE AD SPEND ({len(low_stock)} products)")
+        print(f"  {'='*75}")
+        print(f"  {'ASIN':<14} {'SKU':<25} {'FBA':>6} {'MFN':>6} {'Total':>6}")
+        print(f"  {'-'*75}")
+        for item in sorted(low_stock, key=lambda x: x['total_stock']):
+            print(f"  {item['asin']:<14} {item['sku'][:24]:<25} {item['fba_stock']:>6} {item['mnf_stock']:>6} {item['total_stock']:>6}")
+
+    # Summary
+    print(f"\n  {'='*70}")
+    print(f"  SUMMARY")
+    print(f"  {'='*70}")
+    print(f"  Total products:  {len(all_items)}")
+    print(f"  Zero stock:      {len(zero_stock)} (PAUSE ADS!)")
+    print(f"  Low stock (<{args.threshold}): {len(low_stock)} (REDUCE SPEND)")
+    print(f"  Healthy:         {len(healthy_stock)}")
+
+    # Save
+    output = os.path.join(JSON_DIR, "stock_status.json")
+    os.makedirs(JSON_DIR, exist_ok=True)
+    with open(output, 'w', encoding='utf-8') as f:
+        json.dump({
+            'timestamp': datetime.now().isoformat(),
+            'threshold': args.threshold,
+            'total': len(all_items),
+            'zero_stock': zero_stock,
+            'low_stock': low_stock,
+            'healthy_count': len(healthy_stock),
+        }, f, indent=2, ensure_ascii=False)
+    print(f"\n  Saved: {output}")
+
+    if zero_stock:
+        print(f"\n  ALERT: {len(zero_stock)} products OUT OF STOCK — ads wasting money!")
+
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(main())

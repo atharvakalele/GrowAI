@@ -1,0 +1,160 @@
+{
+  "version": "1.0",
+  "description": "Profit-Controlled Scaling Engine (PCSE) Configuration",
+  "last_updated": "2026-04-14",
+
+  "foundation": {
+    "target_acr_pct": 40.0,
+    "safety_factor": 0.7,
+    "acos_target_pct": 25.0,
+    "referral_fee_pct": 3.0,
+    "closing_fee_rs": 5.0,
+    "shipping_fee_rs": 95.0,
+    "return_cost_pct": 5.0
+  },
+
+  "entity_classification": {
+    "scale_acr_max": 40.0,
+    "optimize_acr_min": 40.0,
+    "optimize_acr_max": 60.0,
+    "fix_acr_min": 60.0,
+    "fix_acr_max": 120.0,
+    "kill_acr_min": 120.0
+  },
+
+  "impossible_product_filter": {
+    "min_true_profit_rs": 20.0,
+    "min_beacos_pct": 10.0,
+    "min_cpc_exception_rs": 2.0
+  },
+
+  "confidence": {
+    "clicks_to_confidence": {
+      "0-5": 0.1,
+      "6-15": 0.3,
+      "16-30": 0.5,
+      "31-50": 0.6,
+      "51-100": 0.7,
+      "101-300": 0.8,
+      "301-1000": 0.9,
+      "1000+": 1.0
+    },
+    "zero_orders_above_20_clicks_multiplier": 0.5,
+    "proven_converter_multiplier": 1.1,
+    "single_sale_multiplier": 0.7,
+    "min_confidence": 0.1,
+    "max_confidence": 1.0
+  },
+
+  "confidence_hard_caps": {
+    "below_0_3_max_change_pct": 10,
+    "between_0_3_and_0_5_max_change_pct": 25,
+    "between_0_5_and_0_8_max_change_pct": 40,
+    "above_0_8_max_change_pct": 50
+  },
+
+  "trend": {
+    "improving_multiplier": 0.5,
+    "stable_multiplier": 1.0,
+    "worsening_multiplier": 1.4,
+    "stable_band_pct": 5.0
+  },
+
+  "cvr_factor": {
+    "above_avg_threshold_pct": 120,
+    "above_avg_factor": 1.2,
+    "normal_factor": 1.0,
+    "below_avg_threshold_pct": 80,
+    "below_avg_factor": 0.7
+  },
+
+  "volume_factor": {
+    "low_ctr_threshold_pct": 0.2,
+    "low_ctr_factor": 0.7,
+    "low_impressions_threshold": 100,
+    "low_impressions_factor": 1.2,
+    "normal_factor": 1.0
+  },
+
+  "margin_factor": {
+    "high_margin_threshold_pct": 50,
+    "high_margin_factor": 1.2,
+    "medium_margin_min_pct": 20,
+    "medium_margin_factor": 1.0,
+    "low_margin_factor": 0.7
+  },
+
+  "quality_score": {
+    "min_clamp": 0.3,
+    "max_clamp": 1.8
+  },
+
+  "bid_engine": {
+    "gap_scale_multiplier": 0.5,
+    "gap_fix_multiplier": 0.5,
+    "min_bid_change_pct": 5,
+    "max_bid_change_pct": 50
+  },
+
+  "budget_engine": {
+    "utilization_threshold_pct": 90,
+    "scale_increase_multiplier": 0.7,
+    "max_budget_increase_pct": 50,
+    "max_budget_decrease_pct": 70,
+    "profit_weight_high_threshold_rs": 500,
+    "profit_weight_high": 1.2,
+    "profit_weight_medium_threshold_rs": 100,
+    "profit_weight_medium": 1.0,
+    "profit_weight_low": 0.7
+  },
+
+  "pause_rules": {
+    "rule1_spend_multiplier": 2.0,
+    "rule1_min_days": 7,
+    "rule2_acr_threshold_pct": 300,
+    "rule2_min_clicks": 20,
+    "rule3_consecutive_loss_days": 14,
+    "rule4_beacos_max_pct": 10,
+    "rule4_current_acos_min_pct": 50
+  },
+
+  "learning_period": {
+    "learning_period_days": 7,
+    "learning_period_budget_rs": 2000,
+    "learning_emergency_spend_multiplier": 3.0,
+    "min_learning_days": 3,
+    "max_learning_days": 14,
+    "min_learning_budget_rs": 500,
+    "max_learning_budget_rs": 10000
+  },
+
+  "new_campaign": {
+    "budget_pct_of_profit": 25.0,
+    "bid_pct_of_budget": 5.0,
+    "bidding_strategy": "DOWN_ONLY"
+  },
+
+  "cooling_periods": {
+    "bid_change_cooldown_days": 3,
+    "budget_change_cooldown_days": 2,
+    "pause_review_days": 7
+  },
+
+  "multi_cycle": {
+    "cycle_length_days": 3,
+    "observe_days": 3,
+    "max_cycles_before_pause": 2
+  },
+
+  "lifetime_limits": {
+    "max_total_bid_decrease_pct": 80,
+    "max_total_budget_decrease_pct": 90
+  },
+
+  "prioritization": {
+    "priority1": "high_spend_zero_sales",
+    "priority2": "high_loss_acr_above_200",
+    "priority3": "borderline_acr_60_to_120",
+    "priority4": "profitable_needs_scale"
+  }
+}

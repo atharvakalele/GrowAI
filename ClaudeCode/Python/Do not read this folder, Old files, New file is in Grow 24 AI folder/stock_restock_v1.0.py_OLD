@@ -1,0 +1,392 @@
+#!/usr/bin/env python3
+"""
+GoAmrita - Stock Restock Manager v1.0
+======================================
+1. Lists all out-of-stock products
+2. User approves which ones to restock (some intentionally OOS)
+3. Auto-restocks approved products to 1000 units (configurable)
+4. Detailed activity logs for audit + rollback
+
+FLOW:
+  Step 1: --list     → Shows OOS products, saves approval Excel
+  Step 2: User edits Excel (Approve / Reject per product)
+  Step 3: --execute  → Reads Excel, restocks approved to 1000
+
+API: Listings Items v2021-08-01 (PATCH — update quantity)
+
+Usage:
+    python stock_restock_v1.0.py --list              (generate approval list)
+    python stock_restock_v1.0.py --execute            (restock approved)
+    python stock_restock_v1.0.py --execute --dry-run  (preview only)
+"""
+
+import json
+import os
+import sys
+import ssl
+import time
+import argparse
+from datetime import datetime, timedelta
+from urllib.request import Request, urlopen
+from urllib.parse import urlencode, quote
+from urllib.error import HTTPError
+
+try:
+    from openpyxl import Workbook, load_workbook
+    from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
+    from openpyxl.worksheet.datavalidation import DataValidation
+except ImportError:
+    print("pip install openpyxl")
+    sys.exit(1)
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_DIR = os.path.dirname(os.path.dirname(SCRIPT_DIR))
+SP_CREDS = json.load(open(os.path.join(PROJECT_DIR, "sp_api_credentials.json")))["sp_api_credentials"]
+
+REPORT_BASE = os.path.join(SCRIPT_DIR, "..", "Report")
+report_folders = [f for f in os.listdir(REPORT_BASE) if os.path.isdir(os.path.join(REPORT_BASE, f))]
+report_folders.sort(key=lambda x: os.path.getmtime(os.path.join(REPORT_BASE, x)), reverse=True)
+LATEST_REPORT = report_folders[0] if report_folders else datetime.now().strftime("%d %B %Y")
+JSON_DIR = os.path.join(REPORT_BASE, LATEST_REPORT, "Json")
+
+MARKETPLACE_ID = "A21TJRUUN4KGV"
+SELLER_ID = "A2AC2AS9R9CBEA"
+SP_ENDPOINT = "https://sellingpartnerapi-eu.amazon.com"
+
+DEFAULT_RESTOCK_QTY = 1000
+RESTOCK_APPROVAL_FILE = os.path.join(REPORT_BASE, LATEST_REPORT, "GoAmrita_Restock_Approval.xlsx")
+ACTIVITY_LOG_FILE = os.path.join(JSON_DIR, "stock_activity_log.json")
+
+SSL_CONTEXT = None
+try:
+    import certifi
+    SSL_CONTEXT = ssl.create_default_context(cafile=certifi.where())
+except ImportError:
+    SSL_CONTEXT = ssl.create_default_context()
+
+_token = None
+_expiry = None
+
+def get_token():
+    global _token, _expiry
+    if _token and _expiry and datetime.now() < _expiry:
+        return _token
+    data = urlencode({'grant_type': 'refresh_token', 'refresh_token': SP_CREDS['refresh_token'],
+        'client_id': SP_CREDS['lwa_client_id'], 'client_secret': SP_CREDS['lwa_client_secret']}).encode()
+    req = Request(SP_CREDS['token_url'], data=data, headers={'Content-Type': 'application/x-www-form-urlencoded'})
+    result = json.loads(urlopen(req, context=SSL_CONTEXT).read().decode())
+    _token = result['access_token']
+    _expiry = datetime.now() + timedelta(seconds=result['expires_in'] - 60)
+    return _token
+
+
+def sp_api_patch(sku, body):
+    """PATCH listing item (update inventory)"""
+    token = get_token()
+    encoded_sku = quote(sku)
+    url = f"{SP_ENDPOINT}/listings/2021-08-01/items/{SELLER_ID}/{encoded_sku}?marketplaceIds={MARKETPLACE_ID}"
+    headers = {
+        'x-amz-access-token': token,
+        'x-amz-date': datetime.utcnow().strftime('%Y%m%dT%H%M%SZ'),
+        'Content-Type': 'application/json',
+        'Host': 'sellingpartnerapi-eu.amazon.com',
+    }
+    req = Request(url, data=json.dumps(body).encode(), headers=headers, method='PATCH')
+    try:
+        resp = urlopen(req, context=SSL_CONTEXT)
+        return json.loads(resp.read().decode()), resp.status
+    except HTTPError as e:
+        return {'error': e.read().decode()[:500]}, e.code
+
+
+# ============================================
+# ACTIVITY LOG
+# ============================================
+def load_activity_log():
+    if os.path.exists(ACTIVITY_LOG_FILE):
+        try:
+            with open(ACTIVITY_LOG_FILE, encoding='utf-8') as f:
+                return json.load(f)
+        except:
+            pass
+    return {'log_version': '1.0', 'activities': []}
+
+
+def save_activity_log(log):
+    os.makedirs(os.path.dirname(ACTIVITY_LOG_FILE), exist_ok=True)
+    with open(ACTIVITY_LOG_FILE, 'w', encoding='utf-8') as f:
+        json.dump(log, f, indent=2, ensure_ascii=False)
+
+
+def log_activity(log, activity):
+    """Add activity entry with full detail for audit + rollback"""
+    activity['timestamp'] = datetime.now().isoformat()
+    activity['log_id'] = f"ACT_{len(log['activities'])+1:04d}_{datetime.now().strftime('%H%M%S')}"
+    log['activities'].append(activity)
+    save_activity_log(log)
+    return activity['log_id']
+
+
+# ============================================
+# STEP 1: LIST — Generate approval Excel
+# ============================================
+def generate_approval_list():
+    print("\n  [1/2] Loading stock data...")
+
+    stock_file = os.path.join(JSON_DIR, "stock_status.json")
+    if not os.path.exists(stock_file):
+        print(f"  Run stock_monitor_v1.0.py first!")
+        return 1
+
+    with open(stock_file, encoding='utf-8') as f:
+        stock = json.load(f)
+
+    zero = stock.get('zero_stock', [])
+    low = stock.get('low_stock', [])
+    all_oos = zero + low
+
+    if not all_oos:
+        print("  No out-of-stock products found!")
+        return 0
+
+    print(f"  Out of stock: {len(zero)} | Low stock: {len(low)} | Total: {len(all_oos)}")
+
+    # Create approval Excel
+    print(f"\n  [2/2] Creating approval Excel...")
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Restock Approval"
+
+    # Title
+    ws.merge_cells("A1:H1")
+    ws["A1"].value = "GoAmrita — Stock Restock Approval"
+    ws["A1"].font = Font(name="Calibri", size=16, bold=True, color="1B3A5C")
+    ws["A1"].alignment = Alignment(horizontal="center")
+    ws.row_dimensions[1].height = 35
+
+    ws.merge_cells("A2:H2")
+    ws["A2"].value = f"Generated: {datetime.now().strftime('%d %B %Y, %I:%M %p')} | Restock Qty: {DEFAULT_RESTOCK_QTY} units"
+    ws["A2"].font = Font(name="Calibri", size=11, color="5D6D7E")
+    ws["A2"].alignment = Alignment(horizontal="center")
+
+    # Instructions
+    ws.merge_cells("A3:H3")
+    ws["A3"].value = "ALL products will be RESTOCKED to 1000 automatically. Only mark 'Don't Restock' for products you intentionally want OUT OF STOCK."
+    ws["A3"].font = Font(name="Calibri", size=10, bold=True, color="E74C3C")
+
+    # Headers
+    headers = ["#", "ASIN", "SKU", "FBA Stock", "MFN Stock", "Total", "Status", "Don't Restock"]
+    widths = [5, 16, 30, 12, 12, 10, 15, 15]
+
+    HEADER_FILL = PatternFill(start_color="1B3A5C", end_color="1B3A5C", fill_type="solid")
+    HEADER_FONT = Font(name="Calibri", size=11, bold=True, color="FFFFFF")
+
+    for i, h in enumerate(headers, 1):
+        cell = ws.cell(row=4, column=i, value=h)
+        cell.font = HEADER_FONT
+        cell.fill = HEADER_FILL
+        cell.alignment = Alignment(horizontal="center")
+        ws.column_dimensions[chr(64+i)].width = widths[i-1]
+
+    ws.cell(row=4, column=8).fill = PatternFill(start_color="27AE60", end_color="27AE60", fill_type="solid")
+
+    # Data
+    ALT_FILL = PatternFill(start_color="E8F0FE", end_color="E8F0FE", fill_type="solid")
+    RED_FILL = PatternFill(start_color="FADBD8", end_color="FADBD8", fill_type="solid")
+    YELLOW_FILL = PatternFill(start_color="FEF9E7", end_color="FEF9E7", fill_type="solid")
+
+    for idx, item in enumerate(all_oos, 1):
+        row = idx + 4
+        is_zero = item['total_stock'] == 0
+        status = "OUT OF STOCK" if is_zero else f"LOW ({item['total_stock']})"
+        row_fill = RED_FILL if is_zero else YELLOW_FILL
+
+        values = [idx, item['asin'], item['sku'], item['fba_stock'], item['mnf_stock'], item['total_stock'], status, ""]
+        for ci, v in enumerate(values, 1):
+            cell = ws.cell(row=row, column=ci, value=v)
+            cell.font = Font(name="Calibri", size=10)
+            cell.fill = row_fill if ci < 8 else PatternFill(start_color="EAFAF1", end_color="EAFAF1", fill_type="solid")
+            cell.alignment = Alignment(horizontal="center") if ci != 3 else Alignment(horizontal="left")
+        ws.row_dimensions[row].height = 28
+
+    # Dropdown
+    last_row = len(all_oos) + 4
+    dv = DataValidation(type="list", formula1='"Don\'t Restock"', allow_blank=True)
+    dv.prompt = "Leave EMPTY = auto restock to 1000. Select 'Don't Restock' ONLY for intentionally OOS products."
+    ws.add_data_validation(dv)
+    dv.add(f"H5:H{last_row}")
+
+    ws.freeze_panes = "C5"
+
+    wb.save(RESTOCK_APPROVAL_FILE)
+    print(f"\n  Saved: {RESTOCK_APPROVAL_FILE}")
+    print(f"  Products: {len(all_oos)}")
+    print("\n  NEXT: Open Excel -> Approve/Reject each -> Save -> Run: --execute")
+    return 0
+
+
+# ============================================
+# STEP 2: EXECUTE — Restock approved products
+# ============================================
+def execute_restock(dry_run=False, qty=DEFAULT_RESTOCK_QTY):
+    print(f"\n  Reading approval file...")
+
+    if not os.path.exists(RESTOCK_APPROVAL_FILE):
+        print(f"  File not found: {RESTOCK_APPROVAL_FILE}")
+        print(f"  Run --list first!")
+        return 1
+
+    wb = load_workbook(RESTOCK_APPROVAL_FILE, data_only=True)
+    ws = wb.active
+
+    activity_log = load_activity_log()
+
+    to_restock = []
+    dont_restock = []
+
+    for row in range(5, ws.max_row + 1):
+        asin = str(ws.cell(row=row, column=2).value or '').strip()
+        sku = str(ws.cell(row=row, column=3).value or '').strip()
+        current_stock = ws.cell(row=row, column=6).value or 0
+        exclude = str(ws.cell(row=row, column=8).value or '').strip().lower()
+
+        if not asin or not sku:
+            continue
+
+        if "don" in exclude and "restock" in exclude:
+            # User explicitly marked "Don't Restock"
+            dont_restock.append({'asin': asin, 'sku': sku, 'reason': 'Intentionally OOS (user excluded)'})
+        else:
+            # Empty or anything else = RESTOCK (default action)
+            to_restock.append({'asin': asin, 'sku': sku, 'current_stock': current_stock})
+
+    approved = to_restock  # For backward compat with rest of code
+    rejected = dont_restock
+
+    print(f"  Will Restock: {len(to_restock)} | Don't Restock: {len(dont_restock)}")
+
+    if not approved:
+        print("  Nothing to restock!")
+        return 0
+
+    # Log rejected (intentionally OOS)
+    for r in rejected:
+        log_activity(activity_log, {
+            'action': 'RESTOCK_REJECTED',
+            'asin': r['asin'],
+            'sku': r['sku'],
+            'reason': r['reason'],
+            'note': 'User marked as intentionally out of stock. Will not restock.',
+        })
+
+    # Execute restocks
+    print(f"\n  {'DRY RUN - ' if dry_run else ''}Restocking {len(approved)} products to {qty} units...")
+    success = 0
+    failed = 0
+
+    for item in approved:
+        sku = item['sku']
+        asin = item['asin']
+        before_stock = item['current_stock']
+
+        print(f"    {asin} ({sku[:25]}) : {before_stock} -> {qty}...", end=" ")
+
+        if dry_run:
+            print("DRY_RUN OK")
+            log_activity(activity_log, {
+                'action': 'RESTOCK_DRY_RUN',
+                'asin': asin, 'sku': sku,
+                'before_quantity': before_stock,
+                'after_quantity': qty,
+                'dry_run': True,
+            })
+            success += 1
+            continue
+
+        # PATCH inventory via Listings API
+        body = {
+            'productType': 'PRODUCT',
+            'patches': [{
+                'op': 'replace',
+                'path': '/attributes/fulfillment_availability',
+                'value': [{
+                    'fulfillment_channel_code': 'DEFAULT',
+                    'quantity': qty,
+                    'marketplace_id': MARKETPLACE_ID,
+                }]
+            }]
+        }
+
+        result, status = sp_api_patch(sku, body)
+
+        if 'error' not in result and status in (200, 202):
+            print("OK")
+            success += 1
+            log_activity(activity_log, {
+                'action': 'RESTOCK_SUCCESS',
+                'asin': asin, 'sku': sku,
+                'before_quantity': before_stock,
+                'after_quantity': qty,
+                'api_status': status,
+                'undo_action': f'Set quantity back to {before_stock}',
+                'undo_sku': sku,
+                'undo_quantity': before_stock,
+            })
+        else:
+            error_msg = result.get('error', str(result))[:200]
+            print(f"FAILED: {error_msg}")
+            failed += 1
+            log_activity(activity_log, {
+                'action': 'RESTOCK_FAILED',
+                'asin': asin, 'sku': sku,
+                'before_quantity': before_stock,
+                'target_quantity': qty,
+                'error': error_msg,
+            })
+
+        time.sleep(0.5)  # Rate limit
+
+    # Summary
+    print(f"\n  {'='*50}")
+    print(f"  RESTOCK {'PREVIEW' if dry_run else 'COMPLETE'}")
+    print(f"  {'='*50}")
+    print(f"  Approved:  {len(approved)}")
+    print(f"  Success:   {success}")
+    print(f"  Failed:    {failed}")
+    print(f"  Don't Restock: {len(rejected)} (intentionally OOS, user excluded)")
+    print(f"\n  Activity log: {ACTIVITY_LOG_FILE}")
+    print(f"  Log entries: {len(activity_log['activities'])}")
+
+    return 0
+
+
+def main():
+    parser = argparse.ArgumentParser(description='Stock Restock Manager v1.0')
+    parser.add_argument('--list', action='store_true', help='Generate approval Excel')
+    parser.add_argument('--execute', action='store_true', help='Execute approved restocks')
+    parser.add_argument('--dry-run', action='store_true', help='Preview only')
+    parser.add_argument('--qty', type=int, default=DEFAULT_RESTOCK_QTY, help=f'Restock quantity (default: {DEFAULT_RESTOCK_QTY})')
+    args = parser.parse_args()
+
+    print("=" * 60)
+    print("  GoAmrita - Stock Restock Manager v1.0")
+    print(f"  {datetime.now().strftime('%d %B %Y, %I:%M %p')}")
+    print("=" * 60)
+
+    if args.list:
+        return generate_approval_list()
+    elif args.execute:
+        return execute_restock(dry_run=args.dry_run, qty=args.qty)
+    else:
+        parser.print_help()
+        print("\nWorkflow:")
+        print("  1. python stock_restock_v1.0.py --list          (create approval Excel)")
+        print("  2. Open Excel -> Approve/Reject each product")
+        print("  3. python stock_restock_v1.0.py --execute        (restock approved)")
+        print("  4. python stock_restock_v1.0.py --execute --dry-run  (preview first)")
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

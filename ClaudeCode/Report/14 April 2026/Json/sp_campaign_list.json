@@ -1,0 +1,2953 @@
+[
+  {
+    "budget": {
+      "budget": 500.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "29137304488031",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - 13/1/2026 21:20:59.241",
+    "offAmazonSettings": {},
+    "startDate": "2026-01-13",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 500.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "210934865865971",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - Red- Horsepower",
+    "offAmazonSettings": {},
+    "startDate": "2026-01-14",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 500.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "229914575004886",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - Red Horsepower",
+    "offAmazonSettings": {},
+    "startDate": "2026-01-13",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 450.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "133458871245973",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Visiorax",
+    "offAmazonSettings": {},
+    "startDate": "2026-01-14",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 750.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "267834069910394",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - Red Horse power",
+    "offAmazonSettings": {},
+    "startDate": "2026-01-13",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 488.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "178967556818291",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 10,
+          "placement": "PLACEMENT_REST_OF_SEARCH"
+        },
+        {
+          "percentage": 10,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        },
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Red_Horse power",
+    "offAmazonSettings": {},
+    "startDate": "2026-01-13",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 1125.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "74133162947877",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - Grey_Libidex",
+    "offAmazonSettings": {},
+    "startDate": "2026-01-14",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 750.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "49041941392843",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign_Xenoprost caps",
+    "offAmazonSettings": {},
+    "startDate": "2026-02-20",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 500.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "24548112757383",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -shatavari caps",
+    "offAmazonSettings": {},
+    "startDate": "2026-02-20",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 750.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "139357691315524",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - HorsePower_p2",
+    "offAmazonSettings": {},
+    "startDate": "2026-02-20",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 5000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "215967555668245",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 200,
+          "placement": "PLACEMENT_REST_OF_SEARCH"
+        },
+        {
+          "percentage": 200,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - Sugar churna",
+    "offAmazonSettings": {},
+    "startDate": "2026-02-27",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 3000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "93552709264142",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 200,
+          "placement": "PLACEMENT_REST_OF_SEARCH"
+        },
+        {
+          "percentage": 200,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - Bigjack _libidex",
+    "offAmazonSettings": {},
+    "startDate": "2026-02-28",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 1500.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "161565584236416",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -  IH 4 Capsule +oil",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-03",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 400.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "17810330944554",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "libidex",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-05",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 1875.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "214887246684827",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Blue Celtic sea salt",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-20",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 500.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "119097939907137",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Metabon",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-20",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 3000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "169950210732860",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign height gain caps",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-24",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 1000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "219150225292743",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - Redhorse p2 FBA",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-25",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 5000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "165062746487960",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_REST_OF_SEARCH"
+        },
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        },
+        {
+          "percentage": 200,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Pancham Haldi",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-26",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 700.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "13003423684327",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Titanic K5 + 1 Another",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-26",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 1000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "155073957504277",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - Natural iron",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-26",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 2000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "59238665102526",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - Insugar",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-26",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 3000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "210797728852395",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Saw Palmetto",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-26",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 1000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "220269298438978",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -hawthorn  + Sea Buckthorn",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-26",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 3000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "65916490897100",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Vitamin ADk",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-29",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 3000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "160724507181475",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 50,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -BluWit_SafedMusliCap30",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-28",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 3000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "255449741959758",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -miracle gold",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-28",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 2000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "113927601645262",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 50,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -ShatavariCap30_1AnotherCap\"",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-28",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 2000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "40076834923305",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Reborn Nova",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-29",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 3000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "179492337455839",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 50,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign _AcvMoringaCap30",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-28",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 2000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "276232943293788",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -SpermidineCap30",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-29",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 3000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "158897536088196",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Stress Management",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-29",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 3000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "103239773381424",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 100,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Tentmax royal",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-29",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 3000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "216021605474290",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 50,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Diabexy Reversol",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-28",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 3000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "234849128487066",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Ashwagandha KSM",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-29",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 2000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "29196584297825",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 50,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -lung & liver detox capsules",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-28",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 3000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "227200672725119",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 50,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -BluWit_TejasyaAshwagandhaCap30\"",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-28",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 5000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "18542467437587",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -sugar bati",
+    "offAmazonSettings": {},
+    "startDate": "2026-03-28",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 5000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "105822071750880",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        },
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -GoliWajidAliShah30",
+    "offAmazonSettings": {},
+    "startDate": "2026-04-08",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 5000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "135541900371924",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        },
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Lycopene",
+    "offAmazonSettings": {},
+    "startDate": "2026-04-08",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 3000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "99231728158648",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Black sehT",
+    "offAmazonSettings": {},
+    "startDate": "2026-04-08",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 4000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "62814182106362",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        },
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Tongkat Ali",
+    "offAmazonSettings": {},
+    "startDate": "2026-04-08",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 3000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "162070235239225",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 10,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -AromaSeatoneCap30",
+    "offAmazonSettings": {},
+    "startDate": "2026-04-08",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 3000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "102962410383200",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -SerenoaRepens30",
+    "offAmazonSettings": {},
+    "startDate": "2026-04-08",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "AUTO"
+  },
+  {
+    "budget": {
+      "budget": 462.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "133254587730403",
+    "dynamicBidding": {
+      "placementBidding": [],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "LiBiDEXX30_13Apr2026_AI_BidDown5%OfAdSpend25%ofProfit",
+    "offAmazonSettings": {},
+    "startDate": "2026-04-13",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 439.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "30153940545068",
+    "dynamicBidding": {
+      "placementBidding": [],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "CelticSalt2kg_13Apr2026_AI_BidDown5pctAdSpend25pctProfit",
+    "offAmazonSettings": {},
+    "startDate": "2026-04-13",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 5000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "202205970240118",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - New sugar bati_LS",
+    "offAmazonSettings": {},
+    "startDate": "2026-04-12",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 200.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "302164316622266",
+    "dynamicBidding": {
+      "placementBidding": [],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - 6/7/2024 06:14:02.006",
+    "offAmazonSettings": {},
+    "startDate": "2024-07-06",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 300.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "320291965075611",
+    "dynamicBidding": {
+      "placementBidding": [],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "libidex gold",
+    "offAmazonSettings": {},
+    "startDate": "2024-08-04",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 900.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "468190873386723",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 500,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "libidex combo top on search",
+    "offAmazonSettings": {},
+    "startDate": "2024-10-02",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 200.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "551726471501812",
+    "dynamicBidding": {
+      "placementBidding": [],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "24kGoldLibidex",
+    "offAmazonSettings": {},
+    "startDate": "2024-10-05",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 150.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "441257269521367",
+    "dynamicBidding": {
+      "placementBidding": [],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "TL_EL_SPN_SG_BlackGoldHorsePower",
+    "offAmazonSettings": {},
+    "startDate": "2025-01-21",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 510.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "429878877190326",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 30,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "TL_EL_SPN_SG_FEB_Listed",
+    "offAmazonSettings": {},
+    "startDate": "2025-02-18",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 100.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "300416064382389",
+    "dynamicBidding": {
+      "placementBidding": [],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "TL_EL_SPN_SG_Growz | Growz - Defend ASINs-Salt | RegularPackCeltiSalt... | SG-63667",
+    "offAmazonSettings": {},
+    "startDate": "2025-07-25",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 100.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "559706969987718",
+    "dynamicBidding": {
+      "placementBidding": [],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "TL_EL_SPN_SG_Growz | Growz - Defend ASINs-Salt | RegularPackCeltiSalt... | SG-81786",
+    "offAmazonSettings": {},
+    "portfolioId": "120296397771823",
+    "startDate": "2025-07-25",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 150.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "343332567834643",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 20,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "TL_EL_SPN_SG_Growz | Growz - Defend ASINs | RegularPackCeltiSalt... | SG-36672",
+    "offAmazonSettings": {},
+    "portfolioId": "120296397771823",
+    "startDate": "2025-07-29",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 300.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "401325736018627",
+    "dynamicBidding": {
+      "placementBidding": [],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "TL_EL_SPN_SG_Growz | Libid - 59739",
+    "offAmazonSettings": {},
+    "startDate": "2025-07-29",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "AUTO"
+  },
+  {
+    "budget": {
+      "budget": 756.0,
+      "budgetType": "DAILY",
+      "effectiveBudget": 793.8
+    },
+    "campaignId": "284053803409071",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 70,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "TL_EL_SPN_SG_Growz | SP Auto - Ayurvedic Health Supplements - 18800",
+    "offAmazonSettings": {},
+    "startDate": "2025-08-06",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "AUTO"
+  },
+  {
+    "budget": {
+      "budget": 210.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "489636437383210",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 40,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "TL_EL_SPN_SG_Growz | SP Auto - Nutritional Supplements - 16365",
+    "offAmazonSettings": {},
+    "startDate": "2025-08-07",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "AUTO"
+  },
+  {
+    "budget": {
+      "budget": 300.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "513974424104456",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 60,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "TL_EL_SPN_SG_Growz | SP Auto - Health Supplements - 76045",
+    "offAmazonSettings": {},
+    "startDate": "2025-08-07",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "AUTO"
+  },
+  {
+    "budget": {
+      "budget": 430.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "315669267872113",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 50,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "TL_EL_SPN_SG_Horse FR",
+    "offAmazonSettings": {},
+    "startDate": "2025-08-18",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 150.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "504530411330718",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 20,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "TL_EL_SPN_SG_Celtic Salt",
+    "offAmazonSettings": {},
+    "startDate": "2025-08-18",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 3000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "447632091052179",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        },
+        {
+          "percentage": 30,
+          "placement": "PLACEMENT_REST_OF_SEARCH"
+        },
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "TL_EL_SPN_SG_Jetun Salt",
+    "offAmazonSettings": {},
+    "startDate": "2025-08-20",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 659.1,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "380421310418471",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "TL_EL_SPN_SG_Vedalabs libidex",
+    "offAmazonSettings": {},
+    "startDate": "2025-08-23",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 300.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "302014829439837",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        },
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "TL_EL_SPN_SG_Campaign -Epsom salt",
+    "offAmazonSettings": {},
+    "startDate": "2025-08-24",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 500.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "432465171189876",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 20,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 50,
+          "placement": "PLACEMENT_REST_OF_SEARCH"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "BluWit_TitanicK5_K2Cap30",
+    "offAmazonSettings": {},
+    "startDate": "2025-08-26",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 1300.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "469149478693708",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 15,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 30,
+          "placement": "PLACEMENT_REST_OF_SEARCH"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Celtic Salt Blue +Orange",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-07",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 360.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "447106679560995",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "TL_EL_SPN_SG_Campaign - Vedalabs LiBiDEXX30",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-08",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 800.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "482942485380023",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        },
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Magnesium Glycinate",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-14",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 130.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "475036044119581",
+    "dynamicBidding": {
+      "placementBidding": [],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "BstPump2BigBooms",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-07",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 1300.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "480640809086221",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - GrayBottle_Libidex_",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-08",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 2000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "501032265023977",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 100,
+          "placement": "SITE_AMAZON_BUSINESS"
+        },
+        {
+          "percentage": 70,
+          "placement": "PLACEMENT_REST_OF_SEARCH"
+        },
+        {
+          "percentage": 30,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Herbal Fire -GREEN",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-03",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 800.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "480221430005566",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        },
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -B0FH2HRPT6",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-15",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 750.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "561029410150389",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        },
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - B0FH2H6RT4",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-15",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 1000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "527997018244401",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        },
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - Libidex",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-15",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 750.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "423222776774400",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - B0DFVJC4DL_Man Power",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-15",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 750.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "403766708756459",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        },
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Red_HorsePower With OneAnother",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-21",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 500.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "423735423809730",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -BlackGold_StayExtraLong",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-21",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 750.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "370818528707617",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Big JAck",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-21",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 800.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "550976884268337",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - Height Gain",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-21",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 750.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "511295141952515",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -ManPower_P2",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-21",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 1125.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "495609431015415",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 10,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        },
+        {
+          "percentage": 30,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Black_HorsePower With 1Another",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-21",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 750.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "458864027194721",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Cordyceps",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-21",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 750.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "440305192013930",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "TL_EL_SPN_SG_Campaign - Horse Power Group",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-24",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 5250.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "435031720598753",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 55,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Namak Jaitun olive salt",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-26",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 2040.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "450680753070157",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 60,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "TL_EL_SPN_SG_Made in Heavens_SPAuto_Drona-AAM_29/09/2025 02:50:33",
+    "offAmazonSettings": {},
+    "startDate": "2025-09-29",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "AUTO"
+  },
+  {
+    "budget": {
+      "budget": 600.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "485963092940732",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -ih-4 oil",
+    "offAmazonSettings": {},
+    "startDate": "2025-10-13",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 750.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "353409442988171",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -vastu sea salt",
+    "offAmazonSettings": {},
+    "startDate": "2025-10-06",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 500.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "332106927193446",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -sehat tablet",
+    "offAmazonSettings": {},
+    "startDate": "2025-10-05",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 3000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "391941528934592",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 50,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        },
+        {
+          "percentage": 50,
+          "placement": "SITE_AMAZON_BUSINESS"
+        },
+        {
+          "percentage": 50,
+          "placement": "PLACEMENT_REST_OF_SEARCH"
+        },
+        {
+          "percentage": 50,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - SkyBlue_Proman_Cap30",
+    "offAmazonSettings": {},
+    "startDate": "2025-10-15",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 500.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "470882742702976",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Epsom Bath salt",
+    "offAmazonSettings": {},
+    "startDate": "2025-10-06",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 500.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "301800271201080",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        },
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -sea buckthorn berry",
+    "offAmazonSettings": {},
+    "startDate": "2025-10-05",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 5000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "476478359412929",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_REST_OF_SEARCH"
+        },
+        {
+          "percentage": 100,
+          "placement": "SITE_AMAZON_BUSINESS"
+        },
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 100,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - Zaitoon salt silver, gold, diamond",
+    "offAmazonSettings": {},
+    "startDate": "2025-10-14",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 750.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "363501903089685",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        },
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - Blk Libidex Power",
+    "offAmazonSettings": {},
+    "startDate": "2025-10-05",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 750.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "549731057321433",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 10,
+          "placement": "PLACEMENT_REST_OF_SEARCH"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        },
+        {
+          "percentage": 50,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 15,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - B0DG3N1XWR Lungs Detox",
+    "offAmazonSettings": {},
+    "startDate": "2025-10-25",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 750.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "452635064748939",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        },
+        {
+          "percentage": 10,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        },
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 10,
+          "placement": "PLACEMENT_REST_OF_SEARCH"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -B0DLBSL86Y Man Power",
+    "offAmazonSettings": {},
+    "startDate": "2025-10-25",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 500.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "512399078426319",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 10,
+          "placement": "PLACEMENT_REST_OF_SEARCH"
+        },
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 10,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - Multi ASIN",
+    "offAmazonSettings": {},
+    "startDate": "2025-10-30",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 2000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "415263136235639",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 15,
+          "placement": "PLACEMENT_REST_OF_SEARCH"
+        },
+        {
+          "percentage": 15,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Proman",
+    "offAmazonSettings": {},
+    "startDate": "2025-11-03",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 2000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "295051997288316",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -IH 5 Cap30",
+    "offAmazonSettings": {},
+    "startDate": "2025-11-06",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 750.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "457502259773023",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - Horse power+oli",
+    "offAmazonSettings": {},
+    "startDate": "2025-11-11",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 600.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "347374395657911",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -af-43, vatkam, stress, weight gainer",
+    "offAmazonSettings": {},
+    "startDate": "2025-11-15",
+    "state": "PAUSED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 1000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "430447293604849",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 10,
+          "placement": "PLACEMENT_REST_OF_SEARCH"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        },
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 10,
+          "placement": "PLACEMENT_PRODUCT_PAGE"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -insugar",
+    "offAmazonSettings": {},
+    "startDate": "2025-11-18",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 1000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "322151813598362",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -insugr",
+    "offAmazonSettings": {},
+    "startDate": "2025-11-18",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 1470.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "536483623351199",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Proman, xenoprost,libidex",
+    "offAmazonSettings": {},
+    "startDate": "2025-11-15",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 1013.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "407322014558764",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 35,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - Libidexx",
+    "offAmazonSettings": {},
+    "startDate": "2025-11-28",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 1000.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "494992904904651",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -Blk_ insugar",
+    "offAmazonSettings": {},
+    "startDate": "2025-11-24",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 100.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "401259983222777",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign - Orange_HealthTone",
+    "offAmazonSettings": {},
+    "startDate": "2025-11-24",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 1500.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "397729387742170",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        },
+        {
+          "percentage": 35,
+          "placement": "PLACEMENT_TOP"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -prostate care",
+    "offAmazonSettings": {},
+    "startDate": "2025-11-26",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 1125.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "468295749469209",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 60,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "LEGACY_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -xenoprostate active",
+    "offAmazonSettings": {},
+    "startDate": "2025-12-02",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  },
+  {
+    "budget": {
+      "budget": 500.0,
+      "budgetType": "DAILY"
+    },
+    "campaignId": "357128676273041",
+    "dynamicBidding": {
+      "placementBidding": [
+        {
+          "percentage": 25,
+          "placement": "PLACEMENT_TOP"
+        },
+        {
+          "percentage": 25,
+          "placement": "SITE_AMAZON_BUSINESS"
+        }
+      ],
+      "strategy": "AUTO_FOR_SALES"
+    },
+    "marketplaceBudgetAllocation": "MANUAL",
+    "name": "Campaign -height gain capsule",
+    "offAmazonSettings": {},
+    "startDate": "2025-12-28",
+    "state": "ENABLED",
+    "tags": {},
+    "targetingType": "MANUAL"
+  }
+]

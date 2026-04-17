@@ -1,0 +1,57 @@
+{
+  "schema_type": "activity_summary",
+  "schema_version": "1.0",
+  "feature_id": "M03",
+  "feature_key": "listing_monitor",
+  "feature_name": "Top Listing Monitor",
+  "module_group": "listing_health",
+  "run_id": "listing_monitor_20260415_172010",
+  "generated_at": "2026-04-13T18:59:12.148349",
+  "status": "warning",
+  "run_mode": "manual",
+  "duration_sec": 0.0,
+  "freshness_hours": 0.5,
+  "needs_review": true,
+  "input_sources": [
+    "ClaudeCode/Report/15 April 2026/Json/sp_advertisedproduct_daily.json",
+    "ClaudeCode/Report/15 April 2026/Json/sp_product_ads_list.json",
+    "ClaudeCode/Report/12 April 2026/Json/top_listing_status.json"
+  ],
+  "output_files": [
+    "ClaudeCode/Report/15 April 2026/Json/top_listing_status.json",
+    "ClaudeCode/Report/15 April 2026/Json/top_listing_status_backfill_20260415_172010.json",
+    "ClaudeCode/Report/15 April 2026/Json/impact_listing_monitor_20260415_172010.json",
+    "ClaudeCode/Report/15 April 2026/Json/activity_listing_monitor_latest.json",
+    "ClaudeCode/Report/15 April 2026/Json/report_registry_latest.json"
+  ],
+  "counts": {
+    "items_scanned": 51,
+    "items_processed": 51,
+    "alerts_generated": 1,
+    "approvals_needed": 1,
+    "warnings": 1,
+    "errors": 0,
+    "action_routes_created": 0,
+    "action_routes_executed": 0
+  },
+  "run_events": [
+    "Selected top revenue ASINs from ads data.",
+    "Checked listing status via Amazon Listings API.",
+    "Saved legacy top_listing_status.json output.",
+    "Action routing status: skipped."
+  ],
+  "warnings_list": [
+    "1 top ASIN(s) are NOT ACTIVE."
+  ],
+  "errors_list": [],
+  "review_items": {
+    "user_review": [
+      "1 top ASIN(s) are NOT ACTIVE."
+    ],
+    "developer_review": [],
+    "blocked_items": []
+  },
+  "action_history": [],
+  "source_report_folder": "15 April 2026",
+  "notes": "Top listing monitor now publishes future-module impact/activity beside legacy output."
+}

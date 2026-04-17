@@ -1,0 +1,60 @@
+{
+  "import_date": "2026-04-14T10:51:29.172465",
+  "period": {
+    "start": "2026-04-13",
+    "end": "2026-04-13",
+    "days": 1
+  },
+  "account": "Made in Heavens",
+  "marketplace": "amazon.in",
+  "results": {
+    "campaigns_daily": {
+      "rows": 0,
+      "status": "❌"
+    },
+    "campaigns_summary": {
+      "rows": 0,
+      "status": "❌"
+    },
+    "searchterm": {
+      "rows": 0,
+      "status": "❌"
+    },
+    "targeting": {
+      "rows": 0,
+      "status": "❌"
+    },
+    "advertisedproduct": {
+      "rows": 0,
+      "status": "❌"
+    },
+    "purchasedproduct": {
+      "rows": 0,
+      "status": "❌"
+    },
+    "campaign_list": {
+      "rows": 110,
+      "status": "✅"
+    },
+    "adgroup_list": {
+      "rows": 142,
+      "status": "✅"
+    },
+    "keyword_list": {
+      "rows": 1000,
+      "status": "✅"
+    },
+    "negative_keyword_list": {
+      "rows": 383,
+      "status": "✅"
+    },
+    "product_ads_list": {
+      "rows": 468,
+      "status": "✅"
+    }
+  },
+  "total_rows": 2103,
+  "success_count": 5,
+  "total_reports": 11,
+  "version": "1.0"
+}

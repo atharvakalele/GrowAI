@@ -1,0 +1,57 @@
+{
+  "last_run": "2026-04-15T14:54:15.627115",
+  "dry_run": true,
+  "route_mode": true,
+  "route_run_id": "test_route_001",
+  "route_source": "competitor_tracker",
+  "summary": {
+    "total_qualified": 1,
+    "price_increased": 0,
+    "price_decreased": 1,
+    "blocked": 0,
+    "skipped": 0
+  },
+  "inactive_found": [],
+  "recoveries": [],
+  "actions": [
+    {
+      "asin": "B0FBWXQ9JL",
+      "sku": "LS_SkyBlu_CelticSeaSalt_2",
+      "old_price": 99.0,
+      "new_price": 98.0,
+      "action": "DECREASE_COMPETITOR",
+      "reason": "Dry-run competitor routing test",
+      "status": "DRY_RUN",
+      "route_run_id": "test_route_001",
+      "route_source": "competitor_tracker"
+    }
+  ],
+  "impact": [
+    {
+      "asin": "B0FBWXQ9JL",
+      "sku": "LS_SkyBlu_CelticSeaSalt_250gm",
+      "original_price": 99.0,
+      "current_price": 98.0,
+      "price_change_pct": -1.0,
+      "total_changes": 1,
+      "increases": 0,
+      "decreases": 1,
+      "before_sales_7d": 0.0,
+      "current_sales_7d": 0.0,
+      "sales_change": 0.0,
+      "sales_change_pct": 0,
+      "before_orders_7d": 0,
+      "current_orders_7d": 0,
+      "before_profit_per_unit": 0.0,
+      "current_profit_per_unit": 0.0,
+      "profit_change": 0.0,
+      "buy_box_status": "WON",
+      "deactivation_count": 0,
+      "recovery_count": 0,
+      "total_inactive_minutes": 0,
+      "anti_oscillation_blocked": false,
+      "first_change_date": "2026-04-15T14:54:15.627115",
+      "last_change_date": "2026-04-15T14:54:15.627115"
+    }
+  ]
+}

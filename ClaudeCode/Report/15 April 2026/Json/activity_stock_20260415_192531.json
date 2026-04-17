@@ -1,0 +1,71 @@
+{
+  "schema_type": "activity_summary",
+  "schema_version": "1.0",
+  "feature_id": "M04",
+  "feature_key": "stock",
+  "feature_name": "Stock Monitor",
+  "module_group": "inventory",
+  "run_id": "stock_20260415_192531",
+  "generated_at": "2026-04-15T19:25:31.085697",
+  "status": "warning",
+  "run_mode": "manual",
+  "duration_sec": 0.0,
+  "freshness_hours": 2,
+  "needs_review": true,
+  "input_sources": [
+    "ClaudeCode/Report/15 April 2026/Json/sp_advertisedproduct_daily.json"
+  ],
+  "output_files": [
+    "ClaudeCode/Report/15 April 2026/Json/stock_status.json",
+    "ClaudeCode/Report/15 April 2026/Json/stock_status_20260415_192531.json",
+    "ClaudeCode/Report/15 April 2026/Json/impact_stock_20260415_192531.json",
+    "ClaudeCode/Report/15 April 2026/Json/activity_stock_latest.json",
+    "ClaudeCode/Report/15 April 2026/Json/report_registry_latest.json",
+    "ClaudeCode/Report/15 April 2026/Json/stock_restock_route_latest.json",
+    "ClaudeCode/Report/15 April 2026/Json/stock_restock_route_20260415_192531.json",
+    "ClaudeCode/Report/15 April 2026/Json/stock_restock_route_result_latest.json",
+    "ClaudeCode/Report/15 April 2026/Json/stock_restock_route_result_20260415_192531.json"
+  ],
+  "counts": {
+    "items_scanned": 50,
+    "items_processed": 50,
+    "alerts_generated": 2,
+    "approvals_needed": 0,
+    "warnings": 2,
+    "errors": 0,
+    "action_routes_created": 38,
+    "action_routes_executed": 0
+  },
+  "run_events": [
+    "Loaded seller listing stock position from Listings API or source status file.",
+    "Saved legacy stock_status.json for compatibility.",
+    "Published stock impact summary, activity summary, and report registry entry.",
+    "Seller auto stock routing status: pending."
+  ],
+  "warnings_list": [
+    "38 ASIN(s) are out of stock.",
+    "7 ASIN(s) are below stock threshold."
+  ],
+  "errors_list": [],
+  "review_items": {
+    "user_review": [
+      "38 ASIN(s) are out of stock.",
+      "7 ASIN(s) are below stock threshold.",
+      "Self action disabled for stock feature."
+    ],
+    "developer_review": [],
+    "blocked_items": []
+  },
+  "action_history": [
+    {
+      "route_type": "stock_restock_auto",
+      "engine": "stock_restock",
+      "status": "pending",
+      "request_count": 38,
+      "actions_executed": 0,
+      "reason": "Self action disabled for stock feature."
+    }
+  ],
+  "source_report_folder": "15 April 2026",
+  "notes": "Compatibility migration: legacy stock_status.json remains available while auto stock control is now panel-driven and seller listing only."
+}

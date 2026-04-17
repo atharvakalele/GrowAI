@@ -1,0 +1,56 @@
+{
+  "schema_type": "impact_summary",
+  "schema_version": "1.0",
+  "feature_id": "M01",
+  "feature_key": "competitor_tracker",
+  "feature_name": "Competitor Tracker",
+  "module_group": "market_intelligence",
+  "generated_at": "2026-04-15T08:26:23.925830",
+  "period": "manual",
+  "status": "failed",
+  "impact_level": "critical",
+  "business_areas": [
+    "buy_box",
+    "pricing",
+    "competitor_pressure",
+    "revenue_protection"
+  ],
+  "headline": "Competitor tracker could not complete live competitor analysis.",
+  "summary_metrics": {
+    "profit_impact_rs": 0,
+    "loss_prevented_rs": 0,
+    "waste_blocked_rs": 0,
+    "revenue_protected_rs": 0,
+    "rank_up_count": 0,
+    "rank_down_count": 0,
+    "buy_box_won_count": 0,
+    "buy_box_lost_count": 0,
+    "conversion_up_count": 0,
+    "conversion_down_count": 0,
+    "organic_gain_count": 0,
+    "organic_decline_count": 0,
+    "tracked_asins_count": 0,
+    "no_buy_box_count": 0,
+    "high_pressure_count": 0,
+    "revenue_at_risk_7d_rs": 0,
+    "low_pressure_opportunities_count": 0
+  },
+  "positive_impacts": [],
+  "negative_impacts": [],
+  "top_winners": [],
+  "top_risks": [],
+  "ai_learning": {
+    "new_rule_learned": false,
+    "rule_promoted_count": 0,
+    "confidence": 0.25,
+    "notes": "New-standard wrapper created from competitor tracker raw output."
+  },
+  "recommendations": [
+    "Maintain price discipline on low-pressure ASINs and continue daily monitoring."
+  ],
+  "detail_ref": {
+    "raw_file": "ClaudeCode/Report/14 April 2026/Json/competitor_tracker_latest.json",
+    "detail_file": "ClaudeCode/Report/14 April 2026/Json/competitor_tracker_20260415_082623.json",
+    "supporting_report": "ClaudeCode/Report/14 April 2026/Json/competitor_tracker_latest.json"
+  }
+}

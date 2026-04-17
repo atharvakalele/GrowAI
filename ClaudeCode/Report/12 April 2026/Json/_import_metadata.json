@@ -1,0 +1,40 @@
+{
+  "import_date": "2026-04-12T20:15:54.203185",
+  "period": {
+    "start": "2026-04-05",
+    "end": "2026-04-11",
+    "days": 7
+  },
+  "account": "Made in Heavens",
+  "marketplace": "amazon.in",
+  "results": {
+    "targeting": {
+      "rows": 2276,
+      "status": "✅"
+    },
+    "campaign_list": {
+      "rows": 108,
+      "status": "✅"
+    },
+    "adgroup_list": {
+      "rows": 140,
+      "status": "✅"
+    },
+    "keyword_list": {
+      "rows": 1000,
+      "status": "✅"
+    },
+    "negative_keyword_list": {
+      "rows": 192,
+      "status": "✅"
+    },
+    "product_ads_list": {
+      "rows": 467,
+      "status": "✅"
+    }
+  },
+  "total_rows": 4183,
+  "success_count": 6,
+  "total_reports": 6,
+  "version": "1.0"
+}

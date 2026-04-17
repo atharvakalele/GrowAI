@@ -1,0 +1,30 @@
+{
+  "schema_type": "action_route_request",
+  "schema_version": "1.0",
+  "route_run_id": "listing_recovery_price_20260415_160753",
+  "generated_at": "2026-04-15T16:07:55.827739",
+  "source_feature_key": "listing_recovery",
+  "source_feature_name": "Listing Recovery",
+  "action_engine": "price_optimizer",
+  "requests": [],
+  "status_checks": [
+    {
+      "asin": "B0FKHJQCCG",
+      "sku": "fallback_test_sku",
+      "current_price": 205.0,
+      "price_source": "sp_pricing_data",
+      "listing_status": "ERROR",
+      "issues": [],
+      "source_issue_type": "no_buy_box_listing_check",
+      "source_reason": "Fallback price resolution test"
+    }
+  ],
+  "blocked_items": [
+    {
+      "asin": "B0FKHJQCCG",
+      "sku": "fallback_test_sku",
+      "status": "SKIPPED",
+      "reason": "Listing status is ERROR; recovery price route not needed."
+    }
+  ]
+}

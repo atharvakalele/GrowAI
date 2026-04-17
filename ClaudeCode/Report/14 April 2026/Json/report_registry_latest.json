@@ -1,0 +1,58 @@
+{
+  "schema_type": "report_registry",
+  "schema_version": "1.0",
+  "generated_at": "2026-04-15T09:29:00.037645",
+  "entries": [
+    {
+      "schema_type": "registry_entry",
+      "schema_version": "1.0",
+      "feature_id": "M01",
+      "feature_key": "competitor_tracker",
+      "feature_name": "Competitor Tracker",
+      "module_group": "market_intelligence",
+      "files": {
+        "raw_output": "ClaudeCode/Report/14 April 2026/Json/competitor_tracker_latest.json",
+        "impact_summary": "ClaudeCode/Report/14 April 2026/Json/impact_competitor_tracker_latest.json",
+        "activity_summary": "ClaudeCode/Report/14 April 2026/Json/activity_competitor_tracker_latest.json",
+        "detail_report": "ClaudeCode/Report/14 April 2026/Json/competitor_tracker_20260415_092900.json"
+      },
+      "generated_at": "2026-04-15T09:29:00.033632",
+      "dashboard_visibility": {
+        "show_on_main": true,
+        "show_on_activity": true,
+        "show_on_home": true,
+        "main_section": "Critical Impact Alerts",
+        "activity_section": "Run Status"
+      },
+      "importance": {
+        "status": "warning",
+        "impact_level": "high",
+        "priority_score": 70,
+        "strategic_weight": 7,
+        "is_critical": false
+      },
+      "display_rules": {
+        "headline": "Competitor risk found on 1 ASIN(s); review Buy Box and listing pressure.",
+        "badge": "Review",
+        "sort_order": 70,
+        "collapse_by_default": false,
+        "pin_to_top_when": [
+          "critical",
+          "failed",
+          "warning"
+        ]
+      },
+      "review_state": {
+        "needs_review": true,
+        "needs_approval": false,
+        "has_warnings": true,
+        "has_errors": false
+      },
+      "notes": {
+        "dashboard_note": "Shows competitor pressure, Buy Box status, and revenue-at-risk signals.",
+        "developer_note": "AI-only compatible wrapper added beside legacy competitor tracker output.",
+        "migration_note": "Legacy raw competitor_tracker_latest.json remains unchanged."
+      }
+    }
+  ]
+}

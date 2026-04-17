@@ -1,0 +1,75 @@
+{
+  "schema_type": "impact_summary",
+  "schema_version": "1.0",
+  "feature_id": "M03",
+  "feature_key": "listing_monitor",
+  "feature_name": "Top Listing Monitor",
+  "module_group": "listing_health",
+  "generated_at": "2026-04-13T18:59:12.148349",
+  "period": "manual",
+  "status": "warning",
+  "impact_level": "high",
+  "business_areas": [
+    "listing_health",
+    "visibility",
+    "revenue_protection"
+  ],
+  "headline": "Listing risk detected on 1 top ASIN(s).",
+  "summary_metrics": {
+    "profit_impact_rs": 0,
+    "loss_prevented_rs": 0,
+    "waste_blocked_rs": 0,
+    "revenue_protected_rs": 102546.41,
+    "ai_action_sales_protected_rs": 0,
+    "ai_actions_executed_count": 0,
+    "ai_actions_identified_count": 0,
+    "tracked_asins_count": 51,
+    "buy_box_won_count": 0,
+    "buy_box_lost_count": 1,
+    "no_buy_box_count": 0,
+    "revenue_at_risk_7d_rs": 257.14
+  },
+  "positive_impacts": [
+    {
+      "type": "healthy_listings",
+      "message": "50 top ASIN(s) are active and discoverable.",
+      "estimated_sales7d_rs": 102546.41
+    }
+  ],
+  "negative_impacts": [
+    {
+      "type": "listing_risk",
+      "message": "1 inactive and 0 not-searchable ASIN(s) need attention.",
+      "estimated_sales7d_at_risk_rs": 257.14
+    }
+  ],
+  "top_risks": [
+    {
+      "asin": "B0DBKXY4JZ",
+      "sku": "DrRelaxKeedaJadiGold_30cps",
+      "sales7d_rs": 257.14,
+      "buy_box_status": "NOT ACTIVE",
+      "competitor_count": 0,
+      "price_gap_rs": 0,
+      "recommendation": "Start listing recovery workflow"
+    }
+  ],
+  "ai_action_summary": {
+    "headline": "AI did not execute a listing recovery action in this cycle.",
+    "status": "skipped",
+    "actions_identified": 0,
+    "actions_executed": 0,
+    "expected_sales_protected_rs": 0,
+    "items": []
+  },
+  "recommendations": [
+    "Inactive top ASINs should route into listing recovery.",
+    "Not-searchable top ASINs should be checked for suppression and discovery issues.",
+    "Action routing status: skipped."
+  ],
+  "detail_ref": {
+    "raw_file": "ClaudeCode/Report/15 April 2026/Json/top_listing_status.json",
+    "detail_file": "ClaudeCode/Report/15 April 2026/Json/top_listing_status_backfill_20260415_172010.json",
+    "supporting_report": "ClaudeCode/Report/15 April 2026/Json/top_listing_status.json"
+  }
+}
